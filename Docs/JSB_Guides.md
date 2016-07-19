@@ -1,6 +1,5 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [JSB框架热更原理](#jsb%E6%A1%86%E6%9E%B6%E7%83%AD%E6%9B%B4%E5%8E%9F%E7%90%86)
 - [JSB框架结构](#jsb%E6%A1%86%E6%9E%B6%E7%BB%93%E6%9E%84)
@@ -13,8 +12,6 @@
 - [参考资料](#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-[TOC]
 
 ## JSB框架热更原理
 
