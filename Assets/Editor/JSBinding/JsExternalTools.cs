@@ -67,7 +67,7 @@ public class JsExternalTools
         string workingDir = Application.dataPath.Replace("/Assets", "");
 #if UNITY_EDITOR_WIN
         string exePath = Path.Combine(workingDir, "JSBExternalTools/closure-compiler/minifyJs.bat");
-        string arguments = string.Join(" ", jsFiles.ToArray());
+        string arguments = String.Join(" ", jsFiles.ToArray());
 #else
 		string exePath = "/bin/bash";
 		string arguments = Path.Combine(workingDir, "JSBExternalTools/closure-compiler/minifyJs.sh") +" "+string.Join(" ", jsFiles.ToArray());
@@ -118,7 +118,7 @@ public class JsExternalTools
 
         //输出Minify日志
 #if !USE_SHELL
-		string logFile = JSAnalyzer.GetTempFileNameFullPath("minify_log.txt");
+		string logFile = GetTempFileNameFullPath("minify_log.txt");
         File.WriteAllText(logFile, outputLog);
         Debug.LogError(outputLog);
 
@@ -266,14 +266,14 @@ public class JsExternalTools
         }
 
         // 把参数写到文件中，然后把这个文件路径做为参数传递给 skc5.exe
-        string argFile = JSAnalyzer.GetTempFileNameFullPath("skc_args.txt");
+        string argFile = GetTempFileNameFullPath("skc_args.txt");
         string strArgs = args.Format(args.ArgsFormat.Space);
         File.WriteAllText(argFile, strArgs);
 
         //windows下直接调用skc5编译，mac下需要通过mono调用skc5
 #if UNITY_EDITOR_WIN
         string exePath = Path.Combine(workingDir, JsCompilerPath);
-        string arguments = string.Format("/paramFile:\"{0}\"", argFile);
+        string arguments = String.Format("/paramFile:\"{0}\"", argFile);
 #else
 		string exePath = "/usr/local/bin/mono";
 		string arguments = Path.Combine(workingDir,JsCompilerPath) + string.Format(" /paramFile:\"{0}\"",argFile);
@@ -340,7 +340,7 @@ public class JsExternalTools
         for (int i = 0; i < lines.Length; i++)
         {
             string line = lines[i];
-            if (string.IsNullOrEmpty(line))
+            if (String.IsNullOrEmpty(line))
                 continue;
 
             if (line[0] == '[')
@@ -363,7 +363,7 @@ public class JsExternalTools
             {
                 var loc = line.Substring(8).Split(',');
                 //int index = int.Parse(loc[0]);
-                L.Add(new Location {FileName = loc[1], Line = int.Parse(loc[2])});
+                L.Add(new Location { FileName = loc[1], Line = Int32.Parse(loc[2]) });
             }
             else
                 throw new Exception("Line is invalid: '" + line + "'");
@@ -386,7 +386,7 @@ public class JsExternalTools
         for (int i = 0; i < lines.Length; i++)
         {
             string line = lines[i];
-            if (string.IsNullOrEmpty(line))
+            if (String.IsNullOrEmpty(line))
                 continue;
 
             if (line[0] == '[')
@@ -411,18 +411,18 @@ public class JsExternalTools
         if (typesImpByJs == null)
         {
             typesImpByJs = new Dictionary<string, List<string>>();
-            typesImpByJs["T"] = new List<string> {"T"};
-            typesImpByJs["System.Action"] = new List<string> {"" /* 调用 action */};
-            typesImpByJs["System.Action$1"] = new List<string> {"" /* 调用 action */};
-            typesImpByJs["System.Action$2"] = new List<string> {"" /* 调用 action */};
-            typesImpByJs["System.Action$3"] = new List<string> {"" /* 调用 action */};
-            typesImpByJs["System.Action$4"] = new List<string> {"" /* 调用 action */};
-            typesImpByJs["System.Func$1"] = new List<string> {"" /* 调用 action */};
-            typesImpByJs["System.Func$2"] = new List<string> {"" /* 调用 action */};
-            typesImpByJs["System.Func$3"] = new List<string> {"" /* 调用 action */};
-            typesImpByJs["System.Func$4"] = new List<string> {"" /* 调用 action */};
-            typesImpByJs["System.Exception"] = new List<string> {"ctor$$String"};
-            typesImpByJs["System.NotImplementedException"] = new List<string> {"ctor"};
+            typesImpByJs["T"] = new List<string> { "T" };
+            typesImpByJs["System.Action"] = new List<string> { "" /* 调用 action */};
+            typesImpByJs["System.Action$1"] = new List<string> { "" /* 调用 action */};
+            typesImpByJs["System.Action$2"] = new List<string> { "" /* 调用 action */};
+            typesImpByJs["System.Action$3"] = new List<string> { "" /* 调用 action */};
+            typesImpByJs["System.Action$4"] = new List<string> { "" /* 调用 action */};
+            typesImpByJs["System.Func$1"] = new List<string> { "" /* 调用 action */};
+            typesImpByJs["System.Func$2"] = new List<string> { "" /* 调用 action */};
+            typesImpByJs["System.Func$3"] = new List<string> { "" /* 调用 action */};
+            typesImpByJs["System.Func$4"] = new List<string> { "" /* 调用 action */};
+            typesImpByJs["System.Exception"] = new List<string> { "ctor$$String" };
+            typesImpByJs["System.NotImplementedException"] = new List<string> { "ctor" };
             typesImpByJs["System.Array"] = new List<string>
             {
                 "length",
@@ -493,10 +493,10 @@ public class JsExternalTools
                 "get_Value",
                 "ctor$$TKey$$TValue"
             };
-            typesImpByJs["System.Collections.Generic.Dictionary.ValueCollection$2"] = new List<string> {"CopyTo"};
+            typesImpByJs["System.Collections.Generic.Dictionary.ValueCollection$2"] = new List<string> { "CopyTo" };
             // 特殊！
-            typesImpByJs["System.Collections.Generic.Dictionary.KeyCollection$2"] = new List<string> {"CopyTo"}; // 特殊！
-            typesImpByJs["System.Linq.Enumerable"] = new List<string> {"Static_ToArray$1"};
+            typesImpByJs["System.Collections.Generic.Dictionary.KeyCollection$2"] = new List<string> { "CopyTo" }; // 特殊！
+            typesImpByJs["System.Linq.Enumerable"] = new List<string> { "Static_ToArray$1" };
             typesImpByJs["System.Collections.Generic.HashSet$1"] = new List<string>
             {
                 "ctor",
@@ -571,7 +571,7 @@ public class JsExternalTools
                 "PadRight$$Int32$$Char",
                 "ToCharArray"
             };
-            typesImpByJs["System.Char"] = new List<string> {"toString", "Static_IsNumber$$Char"};
+            typesImpByJs["System.Char"] = new List<string> { "toString", "Static_IsNumber$$Char" };
             typesImpByJs["System.Int32"] = new List<string>
             {
                 "toString",
@@ -618,12 +618,12 @@ public class JsExternalTools
                 "Static_TryParse$$String$$Single"
             };
             //			typesImpByJs["System.Int32"] = new List<string> { "toString", "Static_Parse$$String",  };
-            typesImpByJs["System.Enum"] = new List<string> {"toString"};
+            typesImpByJs["System.Enum"] = new List<string> { "toString" };
             typesImpByJs["System.MulticastDelegate"] = new List<string>();
         }
 
 
-        string allExportedMembersFile = JSAnalyzer.GetAllExportedMembersFile();
+        string allExportedMembersFile = GetAllExportedMembersFile();
 
         var allInvoked = LoadAllInvoked(allInvokeWithLocationOutputPath);
         var allExported = LoadAllExported(allExportedMembersFile);
@@ -695,7 +695,7 @@ public class JsExternalTools
             }
         }
 
-        string fullpath = JSAnalyzer.GetTempFileNameFullPath("CompilerCheckErrorResult.txt");
+        string fullpath = GetTempFileNameFullPath("CompilerCheckErrorResult.txt");
         File.Delete(fullpath);
 
         if (errCount > 0)
@@ -724,16 +724,16 @@ public class JsExternalTools
                 var types = a.GetTypes();
                 foreach (var type in types)
                 {
-                    bool toJS = JSSerializerEditor.WillTypeBeTranslatedToJavaScript(type);
+                    bool toJS = WillTypeBeTranslatedToJavaScript(type);
                     if (!toJS)
                         continue;
 
                     var baseType = type.BaseType;
                     if (baseType == null ||
-                        baseType == typeof (object) ||
-                        baseType == typeof (Enum) ||
-                        baseType == typeof (ValueType) ||
-                        baseType == typeof (MonoBehaviour))
+                        baseType == typeof(object) ||
+                        baseType == typeof(Enum) ||
+                        baseType == typeof(ValueType) ||
+                        baseType == typeof(MonoBehaviour))
                     {
                         continue;
                     }
@@ -747,7 +747,7 @@ public class JsExternalTools
                     //					}
 
 
-                    bool baseToJS = JSSerializerEditor.WillTypeBeTranslatedToJavaScript(baseType);
+                    bool baseToJS = WillTypeBeTranslatedToJavaScript(baseType);
                     if (!baseToJS)
                     {
                         errCount++;
@@ -796,11 +796,11 @@ public class JsExternalTools
     public static void CompileCsToJs()
     {
         // 这个用于查看
-        string allInvokeOutputPath = JSAnalyzer.GetTempFileNameFullPath("AllInvocations.txt");
+        string allInvokeOutputPath = GetTempFileNameFullPath("AllInvocations.txt");
         // 这个用于分析
-        string allInvokeWithLocationOutputPath = JSAnalyzer.GetTempFileNameFullPath("AllInvocationsWithLocation.txt");
+        string allInvokeWithLocationOutputPath = GetTempFileNameFullPath("AllInvocationsWithLocation.txt");
         // 
-        string YieldReturnTypeOutputPath = JSAnalyzer.GetTempFileNameFullPath("YieldReturnTypes.txt");
+        string YieldReturnTypeOutputPath = GetTempFileNameFullPath("YieldReturnTypes.txt");
 
         // 编译
         if (!CompileJsCode(allInvokeOutputPath, allInvokeWithLocationOutputPath, YieldReturnTypeOutputPath))
@@ -833,9 +833,9 @@ public class JsExternalTools
         public int Line;
     }
 
-#endregion
+    #endregion
 
-#region JsTypeGenerator
+    #region JsTypeGenerator
 
     public const string FilesToAddJsType = "FilesToAddJsType.txt";
     private static HashSet<string> _jsTypeNameSet;
@@ -851,7 +851,7 @@ public class JsExternalTools
             if (_jsTypeNameSet == null)
             {
                 _jsTypeNameSet = new HashSet<string>();
-                var assemblyAttrs = typeof (JSAnalyzer).Assembly.GetCustomAttributes(typeof (JsTypeAttribute), false);
+                var assemblyAttrs = typeof(JsExternalTools).Assembly.GetCustomAttributes(typeof(JsTypeAttribute), false);
                 foreach (var attr in assemblyAttrs)
                 {
                     JsTypeAttribute jsAttr = attr as JsTypeAttribute;
@@ -944,11 +944,11 @@ using SharpKit.JavaScript;
         }
 
         // 把参数写到文件中，然后把这个文件路径做为参数传递给 skc5.exe
-        string argFile = JSAnalyzer.GetTempFileNameFullPath("JsTypeGenerator_Args.txt");
+        string argFile = GetTempFileNameFullPath("JsTypeGenerator_Args.txt");
         string strArgs = args.Format(args.ArgsFormat.Space);
         File.WriteAllText(argFile, strArgs);
 
-        string addTypeInfoFile = JSAnalyzer.GetTempFileNameFullPath(FilesToAddJsType);
+        string addTypeInfoFile = GetTempFileNameFullPath(FilesToAddJsType);
         File.WriteAllText(addTypeInfoFile, fileInfoSb.ToString());
         AssetDatabase.Refresh();
 
@@ -963,7 +963,7 @@ using SharpKit.JavaScript;
 
 #if UNITY_EDITOR_WIN
         string exePath = Path.Combine(workingDir, JsTypeGeneratorPath);
-        string arguments = string.Format("/paramFile:\"{0}\"", argFile);
+        string arguments = String.Format("/paramFile:\"{0}\"", argFile);
 #else
         string exePath = "/usr/local/bin/mono";
         string arguments = Path.Combine(workingDir, JsTypeGeneratorPath) + string.Format(" /paramFile:\"{0}\"",argFile);
@@ -990,7 +990,7 @@ using SharpKit.JavaScript;
         if (exitCode != 0)
         {
             EditorUtility.DisplayDialog("JsTypeGenerator", "Generate failed. exit code = " + exitCode, "OK");
-            if (!string.IsNullOrEmpty(errorLog))
+            if (!String.IsNullOrEmpty(errorLog))
                 Debug.LogError(errorLog);
 
             return;
@@ -1014,7 +1014,7 @@ using SharpKit.JavaScript;
             return;
         }
 
-        File.WriteAllText(JsTypeInfoFile, string.Format(JsTypeInfoFileTemplate, ""));
+        File.WriteAllText(JsTypeInfoFile, String.Format(JsTypeInfoFileTemplate, ""));
         EditorUtility.DisplayDialog("Tip", "RemoveJsTypeAttribute Success!", "OK");
         AssetDatabase.Refresh();
     }
@@ -1048,9 +1048,9 @@ using SharpKit.JavaScript;
             var types = logicCodeLib.GetExportedTypes();
             foreach (var t in types)
             {
-                if (t.IsSubclassOf(typeof (MonoBehaviour)))
+                if (t.IsSubclassOf(typeof(MonoBehaviour)))
                 {
-                    if (JSSerializerEditor.WillTypeBeTranslatedToJavaScript(t))
+                    if (WillTypeBeTranslatedToJavaScript(t))
                     {
                         string jsComponentName = JSComponentGenerator.GetJSComponentClassName(t);
                         mono2JsCom.Add(JSNameMgr.GetTypeFullName(t, false), jsComponentName);
@@ -1068,5 +1068,42 @@ using SharpKit.JavaScript;
         Debug.Log(string.Format("Mono2JsCom:{0}\nOK. File: {1}", mono2JsCom.Count, filePath));
     }
 
-#endregion
+    /// <summary>
+    /// Wills the type be translated to javascript.
+    /// </summary>
+    /// <param name="type">The type.</param>
+    /// <returns></returns>
+    public static bool WillTypeBeTranslatedToJavaScript(Type type)
+    {
+        if (type.IsDefined(typeof(JsTypeAttribute), false))
+            return true;
+
+        if (JsTypeNameSet.Contains(type.FullName))
+            return true;
+
+        return false;
+    }
+
+    #endregion
+
+    #region Helper Func
+    public static string GetTempFileNameFullPath(string shortPath)
+    {
+        Directory.CreateDirectory(Application.dataPath + "/Temp/");
+        return Application.dataPath + "/Temp/" + shortPath;
+    }
+
+    public static string GetAllExportedMembersFile()
+    {
+        return GetTempFileNameFullPath("AllExportedMembers.txt");
+    }
+
+    #endregion
+
+    [MenuItem("JSB/Others/Online Documents", false, 174)]
+    public static void OpenHelp()
+    {
+        Application.OpenURL("http://www.cnblogs.com/answerwinner/p/4469021.html");
+        // Application.OpenURL("http://www.cnblogs.com/answerwinner/p/4591144.html"); // English
+    }
 }

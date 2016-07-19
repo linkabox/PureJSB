@@ -1400,7 +1400,7 @@ public class {0}
             return false;
         }
         //不能导出带有JsType属性的类型
-        if (JSSerializerEditor.WillTypeBeTranslatedToJavaScript(type))
+        if (JsExternalTools.WillTypeBeTranslatedToJavaScript(type))
         {
             return false;
         }

@@ -6,8 +6,9 @@ using UnityEngine;
 ///     A class redirect event functions (Awake, Start, Update, etc.) to JavaScript
 ///     Support serializations
 /// </summary>
-public class JSComponent : JSSerializer
+public class JSComponent : MonoBehaviour
 {
+    public string jsClassName = string.Empty;
     private bool _isInit;           //标记是否初始化完成,所有Mono事件对应的jsFuncId都设置完毕
     private bool _enableBeforeInit; //标记是否在初始化之前就触发过OnEnable事件
     private GameObject mGo;
@@ -67,7 +68,7 @@ public class JSComponent : JSSerializer
         //通过AddComponent添加的JsCom需要设置好jsClassName,再调用Awake方法来进行初始化操作
         if (!string.IsNullOrEmpty(jsClassName))
         {
-            init(true);
+            init();
             callAwake();
         }
     }
@@ -165,8 +166,8 @@ public class JSComponent : JSSerializer
             // we must remove it here
             // having a finalize is another approach
             //
-            JSApi.removeByID(jsObjID);
-            removeMemberFunction();
+            //JSApi.removeByID(jsObjID);
+            //removeMemberFunction();
         }
     }
 
@@ -176,45 +177,45 @@ public class JSComponent : JSSerializer
     ///     Removes if exist.
     /// </summary>
     /// <param name="id">The identifier.</param>
-    private void removeIfExist(int id)
-    {
-        if (id != 0)
-        {
-            JSApi.removeByID(id);
-        }
-    }
+    //private void removeIfExist(int id)
+    //{
+    //    if (id != 0)
+    //    {
+    //        JSApi.removeByID(id);
+    //    }
+    //}
 
-    private void removeMemberFunction()
-    {
-        // ATTENSION
-        // same script have same idAwake idStart ... values
-        // if these lines are executed in OnDestroy (for example  for gameObject A)
-        // other gameObjects (for example B) with the same script
-        // will also miss these functions
-        // 
-        // and if another C (with the same script) is born later   
-        // it will re-get these values  but they are new values 
-        // 
-        // 
-        // but if they are not removed in OnDestroy 
-        // C valueMap may grow to a very big size
-        //
-        //         removeIfExist(idAwake);
-        //         removeIfExist(idStart);
-        //         removeIfExist(idFixedUpdate);
-        //         removeIfExist(idUpdate);
-        //         removeIfExist(idOnDestroy);
-        //         removeIfExist(idOnGUI);
-        //         removeIfExist(idOnEnable);
-        //         removeIfExist(idOnTriggerEnter2D);
-        //         removeIfExist(idOnTriggerStay);
-        //         removeIfExist(idOnTriggerExit);
-        //         removeIfExist(idOnAnimatorMove);
-        //         removeIfExist(idOnAnimatorIK);
-        //         removeIfExist(idDestroyChildGameObject);
-        //         removeIfExist(idDisableChildGameObject);
-        //         removeIfExist(idDestroyGameObject);
-    }
+    //private void removeMemberFunction()
+    //{
+    //    // ATTENSION
+    //    // same script have same idAwake idStart ... values
+    //    // if these lines are executed in OnDestroy (for example  for gameObject A)
+    //    // other gameObjects (for example B) with the same script
+    //    // will also miss these functions
+    //    // 
+    //    // and if another C (with the same script) is born later   
+    //    // it will re-get these values  but they are new values 
+    //    // 
+    //    // 
+    //    // but if they are not removed in OnDestroy 
+    //    // C valueMap may grow to a very big size
+    //    //
+    //    //         removeIfExist(idAwake);
+    //    //         removeIfExist(idStart);
+    //    //         removeIfExist(idFixedUpdate);
+    //    //         removeIfExist(idUpdate);
+    //    //         removeIfExist(idOnDestroy);
+    //    //         removeIfExist(idOnGUI);
+    //    //         removeIfExist(idOnEnable);
+    //    //         removeIfExist(idOnTriggerEnter2D);
+    //    //         removeIfExist(idOnTriggerStay);
+    //    //         removeIfExist(idOnTriggerExit);
+    //    //         removeIfExist(idOnAnimatorMove);
+    //    //         removeIfExist(idOnAnimatorIK);
+    //    //         removeIfExist(idDestroyChildGameObject);
+    //    //         removeIfExist(idDisableChildGameObject);
+    //    //         removeIfExist(idDestroyGameObject);
+    //}
 
     //protected void callIfExist(int funID)
     //{
@@ -278,7 +279,7 @@ public class JSComponent : JSSerializer
     //
     // 总结：以上那么多分类，做的事情其实就是，当一个类X要在Awake时去获取Y类组件，甚至访问Y类成员，如果此时Y类的Awake还没有调用，此时会得到undefined，那么我们只好先初始化一下Y类的JS对象。
     // 
-    private void init(bool callSerialize)
+    private void init()
     {
         if (!JSEngine.initSuccess && !JSEngine.initFail)
         {
@@ -290,27 +291,7 @@ public class JSComponent : JSSerializer
         }
 
         initJS();
-
-        if (jsSuccess && callSerialize && !DataSerialized)
-        {
-            initSerializedData(jsObjID);
-        }
     }
-
-    public override void initSerializedData(int jsObjID)
-    {
-        if (DataSerialized)
-            return;
-        base.initSerializedData(jsObjID);
-
-        // init child
-        for (int i = 0; waitSerialize != null && i < waitSerialize.Count; i++)
-        {
-            waitSerialize[i].initSerializedData(waitSerialize[i].jsObjID);
-        }
-        waitSerialize = null;
-    }
-
 
     /// <summary>
     ///     get javascript object id of this JSComponent.
@@ -318,11 +299,11 @@ public class JSComponent : JSSerializer
     ///     in this case, we call initJS() for this JSComponent immediately.
     /// </summary>
     /// <returns></returns>
-    public int GetJSObjID(bool callSerialize)
+    public int GetJSObjID()
     {
         if (jsObjID == 0)
         {
-            init(callSerialize);
+            init();
         }
         return jsObjID;
     }

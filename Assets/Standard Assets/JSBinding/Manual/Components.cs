@@ -30,7 +30,7 @@ public partial class UnityEngineManual
             if (jsCom.jsClassName == typeString ||
                 JSCache.IsInheritanceRel(typeString, jsCom.jsClassName))
             {
-                id = jsCom.GetJSObjID(true);
+                id = jsCom.GetJSObjID();
                 break;
             }
         }
@@ -50,7 +50,7 @@ public partial class UnityEngineManual
         }
         for (int i = 0; i < lst.Count; i++)
         {
-            int jsObjID = lst[i].GetJSObjID(true);
+            int jsObjID = lst[i].GetJSObjID();
             JSApi.setObject((int) JSApi.SetType.SaveAndTempTrace, jsObjID);
             JSApi.moveSaveID2Arr(i);
         }
@@ -117,7 +117,7 @@ public partial class UnityEngineManual
             jsComp.Setup(); // 要调用 js 的 Awake
 
             //JSApi.JSh_SetRvalObject(vc.cx, vc.vp, jsComp.jsObj);
-            JSApi.setObject((int) JSApi.SetType.Rval, jsComp.GetJSObjID(false));
+            JSApi.setObject((int) JSApi.SetType.Rval, jsComp.GetJSObjID());
         }
         return true;
     }

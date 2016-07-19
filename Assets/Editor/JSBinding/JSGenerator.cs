@@ -51,17 +51,8 @@ public static class JSGenerator
             }
             sb.Append("\r\n");
         }
-        File.WriteAllText(JSAnalyzer.GetAllExportedMembersFile(), sb.ToString());
+        File.WriteAllText(JsExternalTools.GetAllExportedMembersFile(), sb.ToString());
     }
-
-    //[MenuItem("JSB/TestGenerate")]
-    //public static void TestGenerate()
-    //{
-    //    GenerateJsTypeBindings(new HashSet<Type>
-    //    {
-    //        typeof (PerTest)
-    //    });
-    //}
 
     #region Generate Flow
 
