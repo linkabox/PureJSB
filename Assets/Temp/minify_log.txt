@@ -1,0 +1,52 @@
+inputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/CSExportTypes.bytes
+outputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/CSExportTypes.min.bytes
+
+inputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/ErrorHandler.bytes
+outputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/ErrorHandler.min.bytes
+
+inputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/GameLogicCode.bytes
+outputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/GameLogicCode.min.bytes
+
+inputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/includes.bytes
+outputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/includes.min.bytes
+
+inputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/Manual/JsonUtils.bytes
+outputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/Manual/JsonUtils.min.bytes
+
+inputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/Manual/UnityEngine_Mathf.bytes
+outputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/Manual/UnityEngine_Mathf.min.bytes
+
+inputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/Manual/UnityEngine_MonoBehaviour.bytes
+outputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/Manual/UnityEngine_MonoBehaviour.min.bytes
+
+inputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/Manual/UnityEngine_Vector2.bytes
+outputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/Manual/UnityEngine_Vector2.min.bytes
+
+inputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/Manual/UnityEngine_Vector3.bytes
+outputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/Manual/UnityEngine_Vector3.min.bytes
+
+inputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/Manual/UnityEngine_WaitForSeconds.bytes
+outputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/Manual/UnityEngine_WaitForSeconds.min.bytes
+
+inputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/SharpKit/clrlibrary.bytes
+outputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/SharpKit/clrlibrary.min.bytes
+
+inputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/SharpKit/jsclr.bytes
+outputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/SharpKit/jsclr.min.bytes
+
+/Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/SharpKit/jsclr.bytes:6: WARNING - Suspicious code. Is there a missing '+' on the previous line?
+"use strict";
+^
+
+/Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/SharpKit/jsclr.bytes:301: WARNING - unreachable code
+    if (obj == null)
+    ^
+
+/Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/SharpKit/jsclr.bytes:686: WARNING - Suspicious code. This code lacks side-effects. Is there a bug?
+	if(source.toString!=Object.prototype.toString)
+	^
+
+0 error(s), 3 warning(s)
+inputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/SharpKit/myclrhandler.bytes
+outputFile: /Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/SharpKit/myclrhandler.min.bytes
+

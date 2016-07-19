@@ -1,0 +1,119 @@
+_jstype = jsb_GetJsType("UnityEngine.Mathf");
+
+if (_jstype) {
+    var mathFields = _jstype.staticFields;
+    mathFields.PI = Math.PI;
+    mathFields.Infinity = Number.POSITIVE_INFINITY;
+    mathFields.NegativeInfinity = Number.NEGATIVE_INFINITY;
+    mathFields.Deg2Rad = 0.01745329;
+    mathFields.Rad2Deg = 57.29578;
+    mathFields.Epsilon = Number.EPSILON;
+
+    var mathfDefs = _jstype.staticDefinition;
+    //=======Base Function=======
+    mathfDefs.Abs$$Single = Math.abs;
+    mathfDefs.Abs$$Int32 = Math.abs;
+    mathfDefs.Approximately = function(a, b) {
+        return Math.abs(b - a) < Math.max(1e-06 * Math.max(Math.abs(a), Math.abs(b)), 1.121039e-44);
+    }
+
+    mathfDefs.Repeat = function(t, length) {
+        return t - Math.floor(t / length) * length;
+    }
+    mathfDefs.DeltaAngle = function(current, target) {
+        var num = this.Repeat(target - current, 360);
+        if (num > 180.0)
+            num -= 360;
+        return num;
+    }
+
+    mathfDefs.Sqrt = Math.sqrt;
+    mathfDefs.Pow = Math.pow;
+    mathfDefs.Exp = Math.exp;
+    mathfDefs.Sign = Math.sign;
+    //=======Triangle Function=======
+    mathfDefs.Sin = Math.sin;
+    mathfDefs.Asin = Math.asin;
+    mathfDefs.Cos = Math.cos;
+    mathfDefs.Acos = Math.acos;
+    mathfDefs.Tan = Math.tan;
+    mathfDefs.Atan = Math.atan;
+    mathfDefs.Atan2 = Math.atan2;
+
+    //=======Ceil Function=======
+    mathfDefs.Ceil = Math.ceil;
+    mathfDefs.CeilToInt = Math.ceil;
+    //=======Floor Function=======
+    mathfDefs.Floor = Math.floor;
+    mathfDefs.FloorToInt = Math.floor;
+    //=======Round Function=======
+    mathfDefs.Round = Math.round;
+    mathfDefs.RoundToInt = Math.round;
+
+    //=======Clamp Function=======
+    Math.clamp = function(value, min, max) {
+        if (value < min)
+            value = min;
+        else if (value > max)
+            value = max;
+        return value;
+    }
+    mathfDefs.Clamp$$Int32$$Int32$$Int32 = Math.clamp;
+    mathfDefs.Clamp$$Single$$Single$$Single = Math.clamp;
+    mathfDefs.Clamp01 = function(value) {
+        return Math.clamp(value, 0, 1);
+    }
+
+    //=======Lerp Function=======
+    mathfDefs.Lerp = function(from, to, t) {
+        return from + (to - from) * this.Clamp01(t);
+    }
+    mathfDefs.InverseLerp = function(from, to, value) {
+        if (from < to) {
+            if (value < from)
+                return 0;
+            if (value > to)
+                return 1;
+            value -= from;
+            value /= to - from;
+            return value;
+        }
+        if (from <= to)
+            return 0;
+        if (value < to)
+            return 1;
+        if (value > from)
+            return 0;
+        return (1.0 - (value - to) / (from - to));
+    }
+    mathfDefs.LerpAngle = function(a, b, t) {
+        var num = this.Repeat(b - a, 360);
+        if (num > 180)
+            num -= 360;
+        return a + num * this.Clamp01(t);
+    }
+
+    //=======Log Function=======
+    mathfDefs.Log$$Single = Math.log;
+    mathfDefs.Log10 = Math.log10;
+    mathfDefs.Log$$Single$$Single = function(x, b) {
+        return Math.log(x) / Math.log(b);
+    }
+
+    //=======MaxMin Function=======
+    Math.maxArray = function(array) {
+        return Math.max.apply(null, array);
+    }
+    mathfDefs.Max$$Int32$$Int32 = Math.max;
+    mathfDefs.Max$$Int32$Array = Math.maxArray;
+    mathfDefs.Max$$Single$$Single = Math.max;
+    mathfDefs.Max$$Single$Array = Math.maxArray;
+
+    Math.minArray = function(array) {
+        return Math.min.apply(null, array);
+    }
+    mathfDefs.Min$$Int32$$Int32 = Math.min;
+    mathfDefs.Min$$Int32$Array = Math.minArray;
+    mathfDefs.Min$$Single$$Single = Math.min;
+    mathfDefs.Min$$Single$Array = Math.minArray;
+}

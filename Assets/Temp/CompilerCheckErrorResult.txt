@@ -1,0 +1,717 @@
+[System.Text.StringBuilder] not exported.
+      ctor
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 31
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 167
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 19
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 15
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 110
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 16
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 17
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 19
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 17
+        ./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs 21
+        ./Assets/Scripts/JsbUnitTest/Samples/GUITest/GUITest.cs 16
+        ./Assets/Scripts/JsbUnitTest/Samples/JSImpTest/JSImpTest1.cs 37
+      AppendLine$$String
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 66
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 75
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 88
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 99
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 101
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 111
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 113
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 123
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 125
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 182
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 184
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 195
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 197
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 210
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 212
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 24
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 25
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 28
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 31
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 34
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 37
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 46
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 47
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 48
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 49
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 50
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 51
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 53
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 54
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 56
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 57
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 58
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 59
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 60
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 65
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 66
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 67
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 69
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 70
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 71
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 72
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 73
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 78
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 79
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 80
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 81
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 82
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 83
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 88
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 89
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 90
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 91
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 92
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 93
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 94
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 95
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 96
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 97
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 98
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 99
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 104
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 106
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 107
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 109
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 110
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 112
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 113
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 114
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 115
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 116
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 122
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 123
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 18
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 19
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 20
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 21
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 26
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 27
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 33
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 34
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 35
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 36
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 37
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 41
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 42
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 43
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 111
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 112
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 114
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 115
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 116
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 117
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 118
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 119
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 120
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 121
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 122
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 124
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 125
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 128
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 130
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 133
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 135
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 138
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 140
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 143
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 18
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 19
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 20
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 21
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 22
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 23
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 28
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 29
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 30
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 31
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 32
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 33
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 34
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 35
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 40
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 41
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 42
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 43
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 44
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 45
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 46
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 51
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 52
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 53
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 54
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 55
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 56
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 58
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 59
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 60
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 61
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 62
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 63
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 68
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 69
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 70
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 71
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 72
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 73
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 75
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 76
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 77
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 78
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 79
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 80
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 90
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 91
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 92
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 93
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 94
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 95
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 96
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 97
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 98
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 99
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 101
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 102
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 103
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 104
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 105
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 106
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 107
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 108
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 109
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 110
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 115
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 116
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 121
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 122
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 123
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 128
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 129
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 130
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 135
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 136
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 137
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 142
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 143
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 144
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 145
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 147
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 148
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 149
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 150
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 20
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 22
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 24
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 26
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 33
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 35
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 36
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 37
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 39
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 57
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 22
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 23
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 25
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 26
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 27
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 28
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 29
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 31
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 37
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 40
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 43
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 46
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 49
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 52
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 55
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 58
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 61
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 64
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 67
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 72
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 73
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 74
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 75
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 76
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 78
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 79
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 80
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 81
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 82
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 83
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 88
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 93
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 94
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 95
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 96
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 97
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 98
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 103
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 104
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 105
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 106
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 117
+      toString
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 68
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 77
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 90
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 103
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 115
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 127
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 186
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 199
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 214
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 233
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 252
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 42
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 61
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 74
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 84
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 100
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 117
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 124
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 22
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 28
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 38
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 44
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/JsonTest.cs 145
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 24
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 36
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 47
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 64
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 81
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 111
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 117
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 124
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 131
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 138
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 151
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 27
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 40
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 51
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 58
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 63
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 76
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 82
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 90
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 32
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 68
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 84
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 89
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 99
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 107
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 119
+        ./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs 28
+        ./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs 33
+        ./Assets/Scripts/JsbUnitTest/Samples/GUITest/GUITest.cs 56
+      set_Length
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 69
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 78
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 91
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 104
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 116
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 128
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 187
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 200
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 215
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 234
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 253
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 43
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 62
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 75
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 85
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 101
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 118
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 125
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 23
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 29
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 39
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 45
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 25
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 37
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 48
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 65
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 82
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 112
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 118
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 125
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 132
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 139
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs 152
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 28
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 34
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 41
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 52
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 59
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 64
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 77
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 83
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 91
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 33
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 69
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 85
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 90
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 100
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 108
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 120
+        ./Assets/Scripts/JsbUnitTest/Samples/GUITest/GUITest.cs 53
+      Append$$String
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 221
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 224
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 227
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 230
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 240
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 243
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 246
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 249
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 31
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 55
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 67
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 80
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 86
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 87
+      AppendLine
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 226
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 232
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 245
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 251
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 56
+      ctor$$Int32
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 21
+      ctor$$Int32$$Int32
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 23
+      ctor$$String
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 25
+      set_Capacity
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 32
+      get_Capacity
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 33
+      get_Length
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 35
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 51
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 58
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 63
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 76
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 82
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 90
+        ./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs 30
+      get_MaxCapacity
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 36
+      get_Chars$$Int32
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 37
+      set_Chars$$Int32
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 38
+      Append$$Boolean
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 44
+      Append$$Char
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 45
+      Append$$Char$Array
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 46
+      Append$$Single
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 47
+      Append$$Double
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 48
+      Append$$Int32
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 49
+      Append$$Int64
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 50
+      AppendFormat$$String$$Object$Array
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 62
+        ./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs 28
+        ./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs 33
+      Insert$$Int32$$Boolean
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 68
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 69
+      Insert$$Int32$$Char
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 70
+      Insert$$Int32$$Char$Array
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 71
+      Insert$$Int32$$Single
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 72
+      Insert$$Int32$$Double
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 73
+      Insert$$Int32$$Int32
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 74
+      Insert$$Int32$$Int64
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 75
+      Remove
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 81
+        ./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs 30
+      Replace$$String$$String
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 88
+      Replace$$Char$$Char
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringBuilderTest.cs 89
+      AppendFormat$$String$$Object$$Object$$Object
+        ./Assets/Scripts/JsbUnitTest/Samples/JSImpTest/JSImpTest1.cs 37
+[System.Collections.Generic.List$1].CopyTo$$T$Array not valid.
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 95
+[System.Collections.Generic.List$1].CopyTo$$T$Array$$Int32 not valid.
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 107
+[System.Collections.Generic.List$1].CopyTo$$Int32$$T$Array$$Int32$$Int32 not valid.
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 119
+[System.String].Static_Join$$String$$String$Array$$Int32$$Int32 not valid.
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs 37
+[System.String].ToCharArray$$Int32$$Int32 not valid.
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs 51
+[System.String].Equals$$String not valid.
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs 66
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs 67
+[System.String].Equals$$String$$StringComparison not valid.
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs 68
+[System.String].Static_Equals$$String$$String not valid.
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs 69
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs 70
+[System.String].Static_Compare$$String$$String not valid.
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs 83
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs 84
+[System.String].Static_Compare$$String$$String$$Boolean not valid.
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs 85
+[System.Array].Static_Copy not valid.
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 191
+[System.Array].Static_ConvertAll not valid.
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs 203
+[System.DateTime] not exported.
+      Static_MinValue
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 20
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 24
+      ctor$$Int32$$Int32$$Int32$$Int32$$Int32$$Int32$$Int32
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 21
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 36
+      Static_MaxValue
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 25
+      ctor
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 27
+      ctor$$Int32$$Int32$$Int32
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 30
+      ctor$$Int32$$Int32$$Int32$$Int32$$Int32$$Int32
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 33
+      Static_get_Today
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 46
+      get_Date
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 48
+      get_Year
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 49
+      get_Month
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 50
+      get_Day
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 51
+      get_DayOfWeek
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 53
+      get_DayOfYear
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 54
+      get_Hour
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 56
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 69
+      get_Minute
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 57
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 70
+      get_Second
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 58
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 71
+      get_Millisecond
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 59
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 72
+      get_Ticks
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 60
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 73
+      AddYears
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 65
+      AddMonths
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 66
+      AddDays
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 67
+      AddHours
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 69
+      AddMinutes
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 70
+      AddSeconds
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 71
+      AddMilliseconds
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 72
+      AddTicks
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 73
+      CompareTo$$DateTime
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 83
+      Static_Parse$$String
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 88
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 89
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 90
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 91
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 92
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 93
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 94
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 95
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 96
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 97
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 98
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 99
+      toString
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 104
+      ToLongTimeString
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 106
+      ToLongDateString
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 107
+      ToShortTimeString
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 109
+      ToShortDateString
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 110
+      ToString$$String
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 112
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 113
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 114
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 115
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/DateTimeTest.cs 116
+[System.IO.Path] not exported.
+      Static_DirectorySeparatorChar
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 18
+      Static_AltDirectorySeparatorChar
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 19
+      Static_PathSeparator
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 20
+      Static_VolumeSeparatorChar
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 21
+      Static_Combine
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 26
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 27
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 32
+      Static_GetDirectoryName
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 33
+      Static_GetExtension
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 34
+      Static_GetFileName
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 35
+      Static_GetFileNameWithoutExtension
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 36
+      Static_GetPathRoot
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 37
+      Static_HasExtension
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 41
+      Static_ChangeExtension
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 42
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/IOTest.cs 43
+[System.Linq.Enumerable].Static_ToList$1 not valid.
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/LingQTest.cs 20
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/LingQTest.cs 25
+[System.Linq.Enumerable].Static_Any$1$$IEnumerable$1$$Func$2 not valid.
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/LingQTest.cs 44
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/LingQTest.cs 45
+[System.Linq.Enumerable].Static_Any$1$$IEnumerable$1 not valid.
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/LingQTest.cs 46
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/LingQTest.cs 48
+[System.TimeSpan] not exported.
+      Static_MinValue
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 18
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 22
+      ctor$$Int32$$Int32$$Int32$$Int32$$Int32
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 19
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 45
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 104
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 105
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 106
+      Static_MaxValue
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 23
+      Static_Zero
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 31
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 88
+      ctor
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 36
+      ctor$$Int32$$Int32$$Int32
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 39
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 88
+      ctor$$Int32$$Int32$$Int32$$Int32
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 42
+      ctor$$Int64
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 48
+      Static_FromTicks
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 51
+      Static_FromDays
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 54
+      Static_FromHours
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 57
+      Static_FromMinutes
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 60
+      Static_FromSeconds
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 63
+      Static_FromMilliseconds
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 66
+      get_Days
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 72
+      get_Hours
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 73
+      get_Minutes
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 74
+      get_Seconds
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 75
+      get_Milliseconds
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 76
+      get_Ticks
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 78
+      get_TotalDays
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 79
+      get_TotalHours
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 80
+      get_TotalMinutes
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 81
+      get_TotalSeconds
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 82
+      get_TotalMilliseconds
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 83
+      Add
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 88
+      CompareTo$$TimeSpan
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 98
+      toString
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 103
+      Static_Parse
+        ./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs 116
+[UnityEngine.Time].Static__jsComManager.dT not valid.
+        ./Assets/Scripts/JsbUnitTest/Samples/DelegateTest.cs 28
+        ./Assets/Scripts/JsbUnitTest/Samples/DictionaryTest.cs 18
+        ./Assets/Scripts/JsbUnitTest/Samples/ListTest.cs 18
+        ./Assets/Scripts/JsbUnitTest/Samples/PerformanceTest1.cs 205
+        ./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs 17
+        ./Assets/Scripts/JsbUnitTest/Samples/GUITest/GUITest.cs 24
+        ./Assets/Scripts/JsbUnitTest/Samples/JSImpTest/JSImpTest1.cs 28
+        ./Assets/Scripts/JsbUnitTest/Samples/Serialization/Wheel.cs 31
+[System.Text.Decoder] not exported.
+      GetCharCount$$Byte$Array$$Int32$$Int32
+        ./Assets/Scripts/JsbUnitTest/Samples/EncodingTest.cs 14
+      GetChars$$Byte$Array$$Int32$$Int32$$Char$Array$$Int32
+        ./Assets/Scripts/JsbUnitTest/Samples/EncodingTest.cs 16
+        ./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs 62
+[JSEngine] not exported.
+      Static_inst
+        ./Assets/Scripts/JsbUnitTest/Samples/SampleViewer.cs 14
+        ./Assets/Scripts/JsbUnitTest/Samples/SampleViewer.cs 16
+[System.Text.UnicodeEncoding] not exported.
+      ctor
+        ./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs 17
+      GetCharCount$$Byte$Array$$Int32$$Int32
+        ./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs 60
+      GetDecoder
+        ./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs 62
+[System.IO.MemoryStream] not exported.
+      ctor$$Int32
+        ./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs 25
+      Write
+        ./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs 28
+      WriteByte
+        ./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs 34
+      get_Capacity
+        ./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs 40
+      get_Length
+        ./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs 41
+        ./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs 48
+        ./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs 52
+      get_Position
+        ./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs 42
+      Seek
+        ./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs 45
+      Read
+        ./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs 49
+      ReadByte
+        ./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs 55

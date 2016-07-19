@@ -1,0 +1,12 @@
+[UnityEngine.WaitForSeconds]
+    1,./Assets/Scripts/JsbUnitTest/Samples/Coroutine/TestCoroutine.cs,31
+    2,./Assets/Scripts/JsbUnitTest/Samples/Coroutine/TestCoroutine.cs,41
+    3,./Assets/Scripts/JsbUnitTest/Samples/Coroutine/TestCoroutine.cs,60
+    4,./Assets/Scripts/JsbUnitTest/Samples/GUITest/GUITest.cs,77
+    5,./Assets/Scripts/JsbUnitTest/Samples/GUITest/GUITest.cs,101
+[null]
+    1,./Assets/Scripts/JsbUnitTest/Samples/Coroutine/TestCoroutine.cs,37
+[UnityEngine.WWW]
+    1,./Assets/Scripts/JsbUnitTest/Samples/Coroutine/TestCoroutine.cs,50
+[UnityEngine.Coroutine]
+    1,./Assets/Scripts/JsbUnitTest/Samples/Coroutine/TestCoroutine.cs,54

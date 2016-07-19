@@ -1,0 +1,133 @@
+/*
+ *
+ * JSRepresentedObject
+ * to represent C# object whose type is unknown to JS
+ * currently, it is only used to represent C# delegate objects, which only exists in C#, and are only available in C#
+ *
+ */
+
+if (typeof(JsTypes) == "undefined")
+    var JsTypes = [];
+
+JsTypes.push({
+    definition: {},
+    staticDefinition: {},
+    fields: {},
+    staticFields: {},
+    assemblyName: "",
+    Kind: "Class",
+    fullname: "JSRepresentedObject"
+});
+
+/*
+ * Compile Now !!
+ */
+
+var printError = function() {};
+var print = function() {};
+(function() {
+    var uDebug = jsb_GetJsType("UnityEngine.Debug");
+    if(uDebug != null){
+        printError = uDebug.staticDefinition.LogError$$Object;
+        print = uDebug.staticDefinition.Log$$Object;
+    }
+}());
+
+/*
+ * Sort JsTypes before Compile()
+ * if we have 2 types: A.B.C and A.B
+ * A.B will be in front of A.B.C after sort
+ */
+JsTypes.sort(function(a, b) {
+    return (a.fullname < b.fullname ? -1 : 1);
+});
+
+try {
+    Compile();
+} catch (ex) {
+    printError("JS Error! Error: " + ex + "\n\nStack: \n" + ex.stack);
+}
+
+function jsb_NewMonoBehaviour(name, nativeObj) {
+    var jsType = this[name];
+    if (jsType && jsType.ctor) {
+        var obj = new jsType.ctor();
+        obj.__nativeObj = nativeObj;
+        return obj;
+    }
+    return undefined;
+}
+
+function jsb_NewObject(name) {
+    var arr = name.split(".");
+    var obj = this;
+    arr.forEach(function(a) {
+        if (obj)
+            obj = obj[a];
+    });
+    if (obj && obj.ctor) {
+        var o = {};
+        o.__proto__ = obj.ctor.prototype;
+        return o;
+    }
+    return undefined;
+}
+
+function jsb_CallObjectCtor(name) {
+    var arr = name.split(".");
+    var obj = this;
+    arr.forEach(function(a) {
+        if (obj)
+            obj = obj[a];
+    });
+    if (obj && obj.ctor) {
+        return new obj.ctor();
+    }
+    return undefined;
+}
+
+function jsb_formatParamsArray(preCount, argArray, funArguments) {
+    if (Object.prototype.toString.apply(argArray) === "[object Array]") {
+        return argArray;
+    } else {
+        return Array.prototype.slice.apply(funArguments).slice(preCount);
+    }
+}
+
+function jsb_convertTypeParamsArray(jsTypeArray) {
+    //将[Typeof(),...]类型数组转换为其[FullName,...]类型全名数组
+    var fullNames = new Array();
+    for (var i = jsTypeArray.length - 1; i >= 0; i--) {
+        fullNames[i] = jsTypeArray[i].get_FullName();
+    }
+    return fullNames;
+}
+
+function jsb_IsInheritanceRel(baseClassName, subClassName) {
+    var arr = subClassName.split(".");
+    var obj = window;
+    arr.forEach(function(a) {
+        if (obj)
+            obj = obj[a];
+    });
+
+    if (obj == undefined || obj === this)
+        return false;
+
+    while (true) {
+        if (obj.baseType != undefined) {
+            if (obj.baseType.fullname == baseClassName)
+                return true;
+
+            if (obj.interfaceNames !== undefined) {
+                for (var i in obj.interfaceNames) {
+                    if (obj.interfaceNames[i] == baseClassName) {
+                        return true;
+                    }
+                }
+            }
+            obj = obj.baseType;
+        } else break;
+    }
+    return false;
+}

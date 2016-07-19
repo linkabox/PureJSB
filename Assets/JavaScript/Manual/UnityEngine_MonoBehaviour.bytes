@@ -1,0 +1,549 @@
+
+//============JsComManager============
+function JsComManager(){
+    this.dT = 0;        //Time.deltaTime
+    this.uDT = 0;       //Time.unscaledDeltaTime
+    this.fDT = 0.02;    //Time.fixedDeltaTime
+    this.UMap = {};
+    this.LUMap = {};
+    this.FUMap = {};
+    this.COMap = {};
+    this.Register = function(jsCom){
+        var instanceId = jsCom.GetInstanceID();
+        if(jsCom.$U){
+            this.$Register(this.UMap,instanceId,jsCom,"UpdateMap");
+        }
+
+        if(jsCom.$LU){
+            this.$Register(this.LUMap,instanceId,jsCom,"LateUpdateMap");
+        }
+
+        if(jsCom.$FU){
+            this.$Register(this.FUMap,instanceId,jsCom,"FixedUpdateMap");
+        }
+        
+        if(jsCom.$CO){
+            this.$Register(this.COMap,instanceId,jsCom,"CoroutineMap");
+        }
+    };
+    this.$Register = function(map,instanceId,jsCom,mapName){
+        if(map == null)
+            return;
+
+        if (instanceId in map){
+            var oldJsCom = map[instanceId];
+            var log ="";
+            log +='Register <'+ mapName +'> the OldJsCom multiple: ' + oldJsCom.get_name() + ' instanceId: ' + instanceId;
+            log +='\nRegister <'+ mapName +'> the NewJsCom multiple: ' + jsCom.get_name() + ' instanceId: ' + instanceId;
+            printError(log);
+        }
+        map[instanceId] = jsCom;
+    };
+    this.UnRegister = function(jsCom, jsTypeName){
+        var instanceId = jsCom.GetInstanceID();
+        if(jsCom.$U){
+            this.$UnRegister(this.UMap,instanceId,jsCom,"UpdateMap");
+        }
+
+        if(jsCom.$LU){
+            this.$UnRegister(this.LUMap,instanceId,jsCom,"LateUpdateMap");
+        }
+
+        if(jsCom.$FU){
+            this.$UnRegister(this.FUMap,instanceId,jsCom,"FixedUpdateMap");
+        }
+        
+        if(jsCom.$CO){
+            this.$UnRegister(this.COMap,instanceId,jsCom,"CoroutineMap");
+        }
+    };
+    this.$UnRegister = function(map,instanceId,jsCom,mapName){
+        if (instanceId in map) {
+            delete map[instanceId];
+        } else {
+            printError('Has not register the JsCom in <' + mapName + '>: ' + jsCom.get_name() + ' instanceId: ' + instanceId);
+        }
+    };
+    this.Update = function(){
+        this.dT = UnityEngine.Time.get_deltaTime();
+        this.uDT = UnityEngine.Time.get_unscaledDeltaTime();
+        // printError("Update Js deltaTime: "+this.dT+"\nUnity deltaTime: "+UnityEngine.Time.get_deltaTime());
+        if (this.UMap != null){
+            for(var k in this.UMap){
+                var com = this.UMap[k];
+                if(com != null && com.$IsJsComActive()) {
+                    com.Update();
+                }
+            }
+        }
+    };
+    this.LateUpdate = function(){
+        // printError("LateUpdate Js deltaTime: "+this.dT+"\nUnity deltaTime: "+UnityEngine.Time.get_deltaTime());
+        if (this.LUMap != null){
+            for(var k in this.LUMap){
+                var com = this.LUMap[k];
+                if(com != null && com.$IsJsComActive()) {
+                    com.LateUpdate();
+                }
+            }
+        }
+        
+        if(this.COMap != null){
+            for(var k in this.COMap){
+                var com = this.COMap[k];
+                if(com != null) {
+                    //在脚本所属的GameObject处于activeInHierarchy=false的状态下无法开启新协程,但enable=false下是可以的
+                    //当activeInHierarchy=false时中止其关联的所有协程
+                    com.$UpdateAllCoroutines(this.dT);
+                    //Invoke一旦调用了,不管是否处于激活状态一定会被调用
+                    com.$UpdateAllInvokes(this.dT);
+                }
+            }
+        }
+    };
+    this.FixedUpdate = function(){
+        // fixedDeltaTime很少改动,而且是固定的
+        // 所以在定义里直接设置好,而不用每次FixedUpdate都调用C#获取一遍
+        // this.fDT = UnityEngine.Time.get_fixedDeltaTime();
+        if (this.FUMap != null){
+            for(var k in this.FUMap){
+                var com = this.FUMap[k];
+                if(com != null && com.$IsJsComActive()) {
+                    com.FixedUpdate();
+                }
+            }
+        }
+    };
+    this.DumpInfo = function(){
+        this.DumpMapInfo("UpdateMap",this.UMap);
+        this.DumpMapInfo("LateUpdateMap",this.LUMap);
+        this.DumpMapInfo("FixedUpdateMap",this.FUMap);
+        this.DumpMapInfo("CoroutineMap",this.COMap);
+    };
+    this.DumpMapInfo = function(name,map){
+        if (map == null) {
+            printError(name + " is null");
+            return;
+        }
+        var log = "";
+        var size = 0;
+        for (var k in map) {
+            log += "[" + k + "," + map[k] + "]" + "\n";
+            size++;
+        }
+        printError(name + ": " + size + "\n" + log);
+    };
+}
+
+var _jsComManager = new JsComManager();
+//JSEngine ==> UpdateEvent
+//JSEngine调用以下全局js接口完成Update事件的交互
+function jsb_UpdateJsCom(){
+    _jsComManager.Update();
+}
+
+function jsb_LateUpdateJsCom(){
+    _jsComManager.LateUpdate();
+}
+
+function jsb_FixedUpdateJsCom(){
+    _jsComManager.FixedUpdate();
+}
+
+function jsb_DumpJsComMapInfo(){
+    _jsComManager.DumpInfo();
+}
+//============JsComManager============
+
+//============重定义MonoBehaviour部分方法============
+//将Invoke和Coroutine相关方法改为js原生实现
+_jstype = jsb_GetJsType("UnityEngine.MonoBehaviour");
+
+if (_jstype) {
+    //JSComponent Awake时调用注册
+    _jstype.definition.$RegisterJsCom = function(jsTypeName){
+        this.$CheckOutJsType();
+        _jsComManager.Register(this);
+    };
+    //JSComponent OnDestroy时调用注销
+    _jstype.definition.$UnRegisterJscom = function(){
+       _jsComManager.UnRegister(this);
+    };
+    _jstype.definition.$CheckOutJsType = function(){
+        // //检索JsType定义,缓存UpdateEvent的定义情况
+        // if (jsTypeName == null)
+        // {
+        //     printError("CheckOutJsType jsTypeName is null");
+        //     return;
+        // }
+
+        // var jsType = window[jsTypeName];
+        // if(jsType == null)
+        // {
+        //     printError("CheckOutJsType JsType definition not find:" + jsTypeName);
+        //     return;
+        // }
+
+        // var jsTypeDef = jsType.definition;
+        this.$U = this.Update != null;
+        this.$LU = this.LateUpdate != null;
+        this.$FU = this.FixedUpdate != null;
+
+        //检索当前JsType是否包含function*,若有将其注册到CoroutineMap中
+        this.$CO = true;
+        // for(var k in jsTypeDef){
+        //     var fn = jsTypeDef[k];
+        //     if('function' === typeof fn
+        //         && fn.constructor.name === 'GeneratorFunction'){
+        //         this.$CO = true;
+        //         break;
+        //     }
+        // }
+    };
+    //JSComponent OnEnable和OnDisable时更新其激活状态,来决定JsComManager发送Update事件时是否调用其Update方法
+    _jstype.definition.$UpdateJsComState = function(activeInHierarchy,isActiveAndEnabled){
+        this.$activeInHierarchy = activeInHierarchy;
+        this.$isActiveAndEnabled = isActiveAndEnabled;
+        //当activeInHierarchy为false时,停止相关联的所有协程
+        if(!activeInHierarchy){
+            this.$RemoveAllCoroutines();
+        }
+        // printError("UpdateJsComState\nactiveInHierarchy: "+activeInHierarchy+"\nisActiveAndEnabled: "+isActiveAndEnabled);
+        // printError("UpdateJsComState\nJs: "+this.$isActiveAndEnabled+"\nUnity: "+this.get_isActiveAndEnabled());
+    };
+    _jstype.definition.$IsJsComActive = function(){
+        if(this.$isActiveAndEnabled === undefined){
+            return false;
+        }
+        return this.$isActiveAndEnabled;
+    };
+    _jstype.definition.CancelInvoke$$String = function(a0/*String*/) {
+        this.$RemoveInvokeByName(a0);
+    };
+    _jstype.definition.CancelInvoke = function() {
+        this.$RemoveAllInvokes();
+    };
+    _jstype.definition.Invoke = function(a0/*String*/, a1/*Single*/) {
+        if (this[a0]) {
+            var fun = this[a0].bind(this);
+            this.$AddInvoke(a0, fun, a1, 0, false);
+        }
+    };
+    _jstype.definition.InvokeRepeating = function(a0/*String*/, a1/*Single*/, a2/*Single*/) {
+        if (this[a0]) {
+            var fun = this[a0].bind(this);
+            this.$AddInvoke(a0, fun, a1, a2, true);
+        }
+    };
+    _jstype.definition.IsInvoking$$String = function(a0/*String*/) {
+        return this.$IsInvoking(a0);
+    };
+    _jstype.definition.IsInvoking = function() {
+        return this.$IsInvoking(undefined);
+    };
+    _jstype.definition.StartCoroutine$$String$$Object = function(a0/*String*/, a1/*Object*/) {
+        if(!this.$activeInHierarchy){
+            printError("Coroutine["+a0+"]"+" couldn't be started because the gameObject ["+this.get_name()+"] is inactive!");
+            return;
+        }
+
+        if (this[a0]) {
+            var fiber = this[a0].call(this, a1);
+            return this.$AddCoroutine(fiber, a0);
+        }
+    };
+    _jstype.definition.StartCoroutine$$String = function(a0/*String*/) {
+        if(!this.$activeInHierarchy){
+            printError("Coroutine["+a0+"]"+" couldn't be started because the gameObject ["+this.get_name()+"] is inactive!");
+            return;
+        }
+
+        if (this[a0]) {
+            var fiber = this[a0].call(this);
+            return this.$AddCoroutine(fiber, a0);
+        }
+    };
+    _jstype.definition.StartCoroutine$$IEnumerator = function(a0/*IEnumerator*/) {
+        if(!this.$activeInHierarchy){
+            printError("Coroutine["+a0+"]"+" couldn't be started because the gameObject ["+this.get_name()+"] is inactive!");
+            return;
+        } 
+        return this.$AddCoroutine(a0);
+    };
+    _jstype.definition.StartCoroutine_Auto = function(a0/*IEnumerator*/) {
+        if(!this.$activeInHierarchy){
+            printError("Coroutine["+a0+"]"+" couldn't be started because the gameObject ["+this.get_name()+"] is inactive!");
+            return;
+        }
+        return this.$AddCoroutine(a0);
+    };
+    _jstype.definition.StopAllCoroutines = function() {
+        return this.$RemoveAllCoroutines();
+    };
+    _jstype.definition.StopCoroutine$$IEnumerator = function(a0/*Coroutine*/) {
+        return this.$RemoveCoroutineByFiber(a0);
+    };
+    _jstype.definition.StopCoroutine$$String = function(a0/*String*/) {
+        return this.$RemoveCoroutineByName(a0);
+    };
+    //
+    // Invoke Scheduler
+    //
+    _jstype.definition.$AddInvoke = function (funName, fun, delay, interval, bRepeat) {
+        var invokeNode = {
+            funName: funName,
+            fun: fun,
+            delay: delay,
+            interval: interval,
+            accum: 0,
+            bRepeat: bRepeat,
+
+            prev: undefined,
+            next: undefined
+        };
+        if (this.$firstInvoke) {
+            invokeNode.next = this.$firstInvoke;
+            this.$firstInvoke.prev = invokeNode;
+        };
+        this.$firstInvoke = invokeNode;
+    };
+    _jstype.definition.$UpdateAllInvokes = function (elapsed) {
+        var invoke = this.$firstInvoke,
+            next,
+            bCall;
+        while (invoke != undefined) {
+            next = invoke.next;
+            bCall = false;
+            if (invoke.delay > 0) {
+                invoke.delay -= elapsed;
+                if (invoke.delay <= 0) {
+                    bCall = true;
+                }
+            } else {
+                invoke.accum += elapsed;
+                if (invoke.accum >= invoke.interval) {
+                    invoke.accum -= invoke.interval;
+                    bCall = true;
+                }
+            }
+            if (bCall) {
+                invoke.fun();
+                if (!invoke.bRepeat) {
+                    this.$RemoveInvoke(invoke);
+                }
+            }
+            invoke = next;
+        }
+    };
+    _jstype.definition.$IsInvoking = function (funName) {
+        if (funName == undefined) {
+            return (this.$firstInvoke != undefined);
+        } else {
+            var invoke = this.$firstInvoke,
+                next,
+                bCall;
+            while (invoke != undefined) {
+                next = invoke.next;
+                if (invoke.funName == funName) {
+                    return true;
+                }
+                invoke = next;
+            }
+            return false;
+        }
+    };
+    _jstype.definition.$RemoveAllInvokes = function () {
+        this.$firstInvoke = undefined;
+    };
+    _jstype.definition.$RemoveInvokeByName = function (funName) {
+        var invoke = this.$firstInvoke,
+            next,
+            bCall;
+        while (invoke != undefined) {
+            next = invoke.next;
+            if (invoke.funName == funName) {
+                this.$RemoveInvoke(invoke);
+            }
+            invoke = next;
+        }
+    };
+    _jstype.definition.$RemoveInvoke = function (invoke) {
+        if (this.$firstInvoke == invoke) {
+            this.$firstInvoke = invoke.next;
+        }
+        else {
+            if (invoke.next != undefined) {
+                invoke.prev.next = invoke.next;
+                invoke.next.prev = invoke.prev;
+            }
+            else if (invoke.prev) {
+                invoke.prev.next = undefined;
+            }
+        }
+        invoke.prev = undefined;
+        invoke.next = undefined;
+    };
+
+    //
+    // Coroutine Scheduler
+    // 
+    // REFERENCE FROM
+    // 
+    // Coroutine Scheduler:
+    // http://wiki.unity3d.com/index.php/CoroutineScheduler
+    //
+    // JavaScript yield documents:
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield
+    // 
+
+    // fiber 类似于 C# 的 IEnumerator
+    _jstype.definition.$AddCoroutine = function (fiber, name) {
+        var coroutineNode = {
+            $__CN: true,  // mark this is a coroutine node
+            prev: undefined,
+            next: undefined,
+            fiber: fiber,
+            finished: false,
+            name: name,
+
+            waitForFrames: 0,          // yield null
+            waitForSeconds: undefined, // WaitForSeconds
+            www: undefined,            // WWW
+            asyncOp: undefined,         // AsyncOperation
+            waitForCoroutine: undefined, // Coroutine
+        };
+
+        if (this.$first) {
+            coroutineNode.next = this.$first;
+            this.$first.prev = coroutineNode;
+        };
+
+        this.$first = coroutineNode;
+        // NOTE
+        // return coroutine node itself!
+        return coroutineNode;
+    };
+    // this method is called from LateUpdate
+    _jstype.definition.$UpdateAllCoroutines = function (elapsed) {
+        // cn is short for Coroutine Node
+        var cn = this.$first;
+        while (cn != undefined) {
+            // store next coroutineNode before it is removed from the list
+            var next = cn.next;
+            // var update = false;
+
+            if (cn.waitForFrames > 0) {
+                cn.waitForFrames--;
+                if (cn.waitForFrames <= 0) {
+                    waitForFrames = 0;
+                    this.$UpdateCoroutine(cn);
+                }
+            }
+            else if (cn.waitForSeconds) {
+                if (cn.waitForSeconds.get_finished(elapsed)) {
+                    cn.waitForSeconds = undefined;
+                    this.$UpdateCoroutine(cn);
+                }
+            }
+            else if (cn.www) {
+                if (cn.www.get_isDone()) {
+                    cn.www = undefined;
+                    this.$UpdateCoroutine(cn);
+                }
+            }
+            else if (cn.asyncOp) {
+                if (cn.asyncOp.get_isDone()) {
+                    cn.asyncOp = undefined;
+                    this.$UpdateCoroutine(cn);
+                }
+            }
+            else if (cn.waitForCoroutine) {
+                if (cn.waitForCoroutine.finished == true) {
+                    cn.waitForCoroutine = undefined;
+                    this.$UpdateCoroutine(cn);
+                }  
+            }
+            else {
+                this.$UpdateCoroutine(cn);
+            }
+            cn = next;
+        }
+    };
+    _jstype.definition.$UpdateCoroutine = function (cn) { // cn is short for Coroutine Node
+        var fiber = cn.fiber;
+        var obj = fiber.next();
+        if (!obj.done) {
+            var yieldCommand = obj.value;
+            // UnityEngine.Debug.Log$$Object(JSON.stringify(yieldCommand));
+            if (yieldCommand == null) {
+                cn.waitForFrames = 1;
+            }
+            else {
+                if (yieldCommand instanceof UnityEngine.WaitForEndOfFrame.ctor) {
+                    cn.waitForFrames = 1;
+                }
+                else if (yieldCommand instanceof UnityEngine.WaitForSeconds.ctor) {
+                    cn.waitForSeconds = yieldCommand;
+                } 
+                else if (yieldCommand instanceof UnityEngine.WWW.ctor) {
+                    cn.www = yieldCommand;
+                }
+                else if (yieldCommand instanceof UnityEngine.AsyncOperation.ctor) {
+                    cn.asyncOp = yieldCommand;
+                }
+                else if (yieldCommand.$__CN === true/*yieldCommand.toString() == "[object Generator]"*/) {
+                    cn.waitForCoroutine = yieldCommand;
+                }
+                else {
+                    throw "Unexpected coroutine yield type: " + yieldCommand.GetType();
+                }
+            }
+        } 
+        else {
+            // UnityEngine.Debug.Log$$Object("cn.finished = true;");
+            cn.finished = true;
+            this.$RemoveCoroutine(cn);
+        }
+    };
+    _jstype.definition.$RemoveAllCoroutines = function () {
+        this.$first = undefined;
+    };
+    _jstype.definition.$RemoveCoroutineByFiber = function (fiber) {
+        var cn = this.$first;
+        while (cn != undefined) {
+            // store next coroutineNode before it is removed from the list
+            var next = cn.next;
+            if (cn.fiber === fiber) {
+                this.$RemoveCoroutine(cn);
+            }
+            cn = next;
+        }
+    };
+    _jstype.definition.$RemoveCoroutineByName = function (name) {
+        var cn = this.$first;
+        while (cn != undefined) {
+            // store next coroutineNode before it is removed from the list
+            var next = cn.next;
+            if (cn.name == name) {
+                this.$RemoveCoroutine(cn);
+            }
+            cn = next;
+        }
+    };
+    _jstype.definition.$RemoveCoroutine = function (cn) { // cn is short for Coroutine Node
+        if (this.$first == cn) {
+            this.$first = cn.next;
+        }
+        else {
+            if (cn.next != undefined) {
+                cn.prev.next = cn.next;
+                cn.next.prev = cn.prev;
+            }
+            else if (cn.prev) {
+                cn.prev.next = undefined;
+            }
+        }
+        cn.prev = undefined;
+        cn.next = undefined;
+    };
+}

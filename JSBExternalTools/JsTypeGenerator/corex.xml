@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>corex</name>
+    </assembly>
+    <members>
+        <member name="M:Corex.Helpers.WindowsServiceHelper.CreateService(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="serviceName"></param>
+            <param name="binPath"></param>
+            <param name="start">start=boot, system, auto, demand, disabled Start type for the service. Option values include types used by drivers.(default = demand)</param>
+        </member>
+        <member name="M:System.Linq.Extensions.IsEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Returns true if the collection is empty
+            </summary>
+            <typeparam name="T">Collection item type</typeparam>
+            <param name="collection">a collection of items</param>
+            <returns>true if the collection contains no elements</returns>
+        </member>
+        <member name="M:System.Linq.Extensions.SetItems``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Removes all items in Target that are not present in source, and Adds all items in Source that are not present in target
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="target"></param>
+            <param name="source"></param>
+        </member>
+    </members>
+</doc>

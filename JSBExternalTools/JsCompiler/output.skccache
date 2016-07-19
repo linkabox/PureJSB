@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Manifest SkcVersion="5.5.0">
+  <SkcFile Filename="T:\Downloads\SharpKit\Compiler\skc5\bin\skc5.exe" Modified="-8587350443354775808" />
+  <SourceFiles />
+  <ContentFiles />
+  <ReferencedFiles>
+    <ManifestFile Filename="C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscorlib.dll" Modified="-8587364169921647612" />
+  </ReferencedFiles>
+  <NoneFiles />
+  <ExternalFiles />
+</Manifest>

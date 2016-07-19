@@ -1,0 +1,456 @@
+[UnityEngine.Debug]
+    Static_Log$$Object
+    Static_LogError$$Object
+
+[System.Int32]
+    ToString$$String
+    Static_Parse$$String
+    Static_TryParse$$String$$Int32
+    CompareTo$$Int32
+    toString
+
+[System.Single]
+    ToString$$String
+    Static_Parse$$String
+    Static_TryParse$$String$$Single
+    CompareTo$$Single
+    toString
+
+[System.Double]
+    ToString$$String
+    Static_Parse$$String
+    Static_TryParse$$String$$Double
+    CompareTo$$Double
+
+[System.Int64]
+    Static_Parse$$String
+    Static_TryParse$$String$$Int64
+    CompareTo$$Int64
+    toString
+
+[System.Boolean]
+    CompareTo$$Boolean
+
+[System.Text.StringBuilder]
+    ctor
+    AppendLine$$String
+    toString
+    set_Length
+    Append$$String
+    AppendLine
+    ctor$$Int32
+    ctor$$Int32$$Int32
+    ctor$$String
+    set_Capacity
+    get_Capacity
+    get_Length
+    get_MaxCapacity
+    get_Chars$$Int32
+    set_Chars$$Int32
+    Append$$Boolean
+    Append$$Char
+    Append$$Char$Array
+    Append$$Single
+    Append$$Double
+    Append$$Int32
+    Append$$Int64
+    AppendFormat$$String$$Object$Array
+    Insert$$Int32$$Boolean
+    Insert$$Int32$$Char
+    Insert$$Int32$$Char$Array
+    Insert$$Int32$$Single
+    Insert$$Int32$$Double
+    Insert$$Int32$$Int32
+    Insert$$Int32$$Int64
+    Remove
+    Replace$$String$$String
+    Replace$$Char$$Char
+    AppendFormat$$String$$Object$$Object$$Object
+
+[System.Collections.Generic.List$1]
+    ctor
+    Add
+    Find
+    FindIndex$$Predicate$1
+    FindIndex$$Int32$$Predicate$1
+    FindIndex$$Int32$$Int32$$Predicate$1
+    FindLastIndex$$Predicate$1
+    FindLastIndex$$Int32$$Predicate$1
+    FindLastIndex$$Int32$$Int32$$Predicate$1
+    FindAll
+    GetRange
+    ctor$$IEnumerable$1
+    InsertRange
+    CopyTo$$T$Array
+    CopyTo$$T$Array$$Int32
+    CopyTo$$Int32$$T$Array$$Int32$$Int32
+    get_Count
+    get_Item$$Int32
+    Clear
+
+[System.String]
+    Contains
+    toString
+    ctor$$Char$Array
+    ctor$$Char$Array$$Int32$$Int32
+    Static_Join$$String$$String$Array
+    Static_Join$$String$$String$Array$$Int32$$Int32
+    ToCharArray
+    ToCharArray$$Int32$$Int32
+    Equals$$String
+    Equals$$String$$StringComparison
+    Static_Equals$$String$$String
+    Static_Equals$$String$$String$$StringComparison
+    Static_Compare$$String$$String
+    Static_Compare$$String$$String$$Boolean
+    Static_Format$$String$$Object$$Object
+    Static_Format$$String$$Object$$Object$$Object
+    length
+
+[System.Collections.Generic.Dictionary$2]
+    ctor$$Int32
+    Add
+    get_Count
+    Remove
+    set_Item$$TKey
+    Clear
+    ctor
+    TryGetValue
+
+[System.Array]
+    CopyTo
+    Static_Copy
+    Static_ConvertAll
+    length
+
+[System.DateTime]
+    Static_MinValue
+    ctor$$Int32$$Int32$$Int32$$Int32$$Int32$$Int32$$Int32
+    Static_MaxValue
+    ctor
+    ctor$$Int32$$Int32$$Int32
+    ctor$$Int32$$Int32$$Int32$$Int32$$Int32$$Int32
+    Static_get_Today
+    get_Date
+    get_Year
+    get_Month
+    get_Day
+    get_DayOfWeek
+    get_DayOfYear
+    get_Hour
+    get_Minute
+    get_Second
+    get_Millisecond
+    get_Ticks
+    AddYears
+    AddMonths
+    AddDays
+    AddHours
+    AddMinutes
+    AddSeconds
+    AddMilliseconds
+    AddTicks
+    CompareTo$$DateTime
+    Static_Parse$$String
+    toString
+    ToLongTimeString
+    ToLongDateString
+    ToShortTimeString
+    ToShortDateString
+    ToString$$String
+
+[System.IO.Path]
+    Static_DirectorySeparatorChar
+    Static_AltDirectorySeparatorChar
+    Static_PathSeparator
+    Static_VolumeSeparatorChar
+    Static_Combine
+    Static_GetDirectoryName
+    Static_GetExtension
+    Static_GetFileName
+    Static_GetFileNameWithoutExtension
+    Static_GetPathRoot
+    Static_HasExtension
+    Static_ChangeExtension
+
+[UnityEngine.Application]
+    Static_get_dataPath
+    Static_LoadLevel$$String
+
+[UnityEngine.Vector2]
+    ctor$$Single$$Single
+    Static_get_zero
+
+[UnityEngine.Vector3]
+    ctor$$Single$$Single$$Single
+    GetHashCode
+    Static_MoveTowards
+    Static_get_zero
+    Static_get_one
+    Static_get_down
+    Static_Normalize$$Vector3
+    Normalize
+    get_normalized
+    x
+    y
+    z
+    Static_Cross
+    get_magnitude
+    Static_Dot
+    Static_Angle
+    Static_Project
+    toString
+
+[UnityEngine.Vector4]
+    ctor$$Single$$Single$$Single$$Single
+
+[UnityEngine.Quaternion]
+    ctor$$Single$$Single$$Single$$Single
+
+[UnityEngine.Color]
+    Static_get_green
+    Static_get_cyan
+    Static_get_white
+    Static_get_yellow
+    Static_get_red
+
+[UnityEngine.Bounds]
+    ctor$$Vector3$$Vector3
+
+[UnityEngine.Rect]
+    ctor$$Single$$Single$$Single$$Single
+    get_xMin
+    get_yMin
+
+[UnityEngine.RectOffset]
+    ctor$$Int32$$Int32$$Int32$$Int32
+
+[System.Collections.Generic.KeyValuePair$2]
+    get_Key
+    get_Value
+
+[System.Action]
+    
+
+[System.Action$1]
+    
+
+[System.Linq.Enumerable]
+    Static_ToList$1
+    Static_Any$1$$IEnumerable$1$$Func$2
+    Static_Any$1$$IEnumerable$1
+
+[UnityEngine.Mathf]
+    Static_Abs$$Int32
+    Static_Abs$$Single
+    Static_Approximately
+    Static_Repeat
+    Static_DeltaAngle
+    Static_Sqrt
+    Static_Pow
+    Static_Exp
+    Static_Sin
+    Static_Asin
+    Static_Cos
+    Static_Acos
+    Static_Tan
+    Static_Atan
+    Static_Atan2
+    Static_Ceil
+    Static_CeilToInt
+    Static_Floor
+    Static_FloorToInt
+    Static_Round
+    Static_RoundToInt
+    Static_Sign
+    Static_Clamp$$Int32$$Int32$$Int32
+    Static_Clamp$$Single$$Single$$Single
+    Static_Clamp01
+    Static_Lerp
+    Static_InverseLerp
+    Static_LerpAngle
+    Static_Log$$Single$$Single
+    Static_Log$$Single
+    Static_Log10
+    Static_Max$$Int32$$Int32
+    Static_Max$$Int32$Array
+    Static_Max$$Single$$Single
+    Static_Max$$Single$Array
+    Static_Min$$Int32$$Int32
+    Static_Min$$Int32$Array
+    Static_Min$$Single$$Single
+    Static_Min$$Single$Array
+
+[System.TimeSpan]
+    Static_MinValue
+    ctor$$Int32$$Int32$$Int32$$Int32$$Int32
+    Static_MaxValue
+    Static_Zero
+    ctor
+    ctor$$Int32$$Int32$$Int32
+    ctor$$Int32$$Int32$$Int32$$Int32
+    ctor$$Int64
+    Static_FromTicks
+    Static_FromDays
+    Static_FromHours
+    Static_FromMinutes
+    Static_FromSeconds
+    Static_FromMilliseconds
+    get_Days
+    get_Hours
+    get_Minutes
+    get_Seconds
+    get_Milliseconds
+    get_Ticks
+    get_TotalDays
+    get_TotalHours
+    get_TotalMinutes
+    get_TotalSeconds
+    get_TotalMilliseconds
+    Add
+    CompareTo$$TimeSpan
+    toString
+    Static_Parse
+
+[UnityEngine.Time]
+    Static__jsComManager.dT
+    Static_get_timeScale
+
+[System.Text.Encoding]
+    GetDecoder
+    Static_get_UTF8
+    GetBytes$$String
+
+[System.Text.Decoder]
+    GetCharCount$$Byte$Array$$Int32$$Int32
+    GetChars$$Byte$Array$$Int32$$Int32$$Char$Array$$Int32
+
+[UnityEngine.Component]
+    get_transform
+    get_gameObject
+    GetComponent$1
+
+[System.Diagnostics.Stopwatch]
+    ctor
+    Start
+    Stop
+    get_ElapsedMilliseconds
+
+[UnityEngine.Transform]
+    get_position
+    set_position
+
+[UnityEngine.GameObject]
+    ctor$$String
+    AddComponent$1
+    ctor$$String$$Type$Array
+    AddComponent$$Type
+    AddComponent$$String
+    GetComponent$1
+
+[UnityEngine.Object]
+    Static_DestroyImmediate$$Object
+    Static_Destroy$$Object
+    Static_DontDestroyOnLoad
+    get_name
+    GetInstanceID
+
+[APIExportTest.RefObject]
+    x
+    y
+
+[APIExportTest]
+    Static_StaticObject
+    ctor
+    Static_OnStaticDelegateFinish
+    OnDelegateFinish
+    AddDelegate
+    RemoveDelegate
+    Static_SendStaticEvent
+    AddEvent
+    SendEvent
+    RemoveEvent
+    IDs
+
+[JSEngine]
+    Static_inst
+
+[UnityEngine.Screen]
+    Static_get_height
+    Static_get_width
+
+[UnityEngine.GUI]
+    Static_BeginScrollView$$Rect$$Vector2$$Rect$$Boolean$$Boolean
+    Static_Button$$Rect$$String
+    Static_EndScrollView
+    Static_Window$$Int32$$Rect$$WindowFunction$$String
+    Static_DragWindow
+    Static_set_color
+
+[UnityEngine.MonoBehaviour]
+    Static_print
+    StartCoroutine$$String
+    StartCoroutine$$IEnumerator
+    InvokeRepeating
+    Invoke
+    StopCoroutine$$String
+
+[UnityEngine.Resources]
+    Static_FindObjectsOfTypeAll$1
+    Static_Load$$String
+    Static_Load$1$$String
+
+[TestExtensionMethod]
+    Static_GetOrAddComponent$1
+
+[UnityEngine.Input]
+    Static_GetMouseButtonUp
+
+[UnityEngine.WaitForSeconds]
+    ctor
+
+[UnityEngine.WWW]
+    ctor$$String
+    get_text
+
+[UnityEngine.GUILayout]
+    Static_Button$$String$$GUILayoutOption$Array
+    Static_BeginScrollView$$Vector2$$GUILayoutOption$Array
+    Static_EndScrollView
+    Static_BeginScrollView$$Vector2$$GUIStyle$$GUILayoutOption$Array
+    Static_Height
+    Static_Label$$String$$GUILayoutOption$Array
+
+[UnityEngine.Profiler]
+    Static_get_usedHeapSize
+    Static_GetMonoUsedSize
+    Static_GetMonoHeapSize
+
+[UnityEngine.AnimationCurve]
+    get_length
+    get_preWrapMode
+    get_postWrapMode
+    Evaluate
+
+[UnityEngine.Random]
+    Static_Range$$Single$$Single
+
+[System.Text.UnicodeEncoding]
+    ctor
+    GetCharCount$$Byte$Array$$Int32$$Int32
+    GetDecoder
+
+[System.IO.MemoryStream]
+    ctor$$Int32
+    Write
+    WriteByte
+    get_Capacity
+    get_Length
+    get_Position
+    Seek
+    Read
+    ReadByte
+
+[System.Convert]
+    Static_ToByte$$Int32
+

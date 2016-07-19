@@ -1,0 +1,289 @@
+(function() {
+    function _parse(json, T, cT) {
+        if (json == null) {
+            return;
+        }
+
+        var jsObj = JSON.parse(json);
+        return _ParseJsObj(jsObj, JsTypeHelper.GetType(T), JsTypeHelper.GetType(cT));
+    }
+
+    function _ParseJsObj(jsObj, type, cType) {
+        if (_IsJsPrimitive(jsObj)) {
+            return jsObj;
+        }
+
+        //当前jsObj为Array时,直接遍历解析其子元素
+        if (Array.isArray(jsObj)) {
+            var cT = cType != null ? cType.ctor : System.Object.ctor;
+            var list = new System.Collections.Generic.List$1.ctor(cT);
+            if (jsObj.length > 0) {
+                for (var i = 0; i < jsObj.length; i++) {
+                    var item = _ParseJsObj(jsObj[i], cType);
+                    if (item != null) list.Add(item);
+                };
+            }
+            return list;
+        }
+
+        //类型为空时,检查一下jsObj是否包含_t类型标识字段
+        if (type == null) {
+            type = _ReadType(jsObj);
+            if (type == null) {
+                // throw $CreateException(new Error("Type " + jsObj + " was not found"), new Error());
+                return jsObj;
+            }
+        }
+
+        if (TypeIs(type, System.Collections.Generic.Dictionary$2)) {
+            var cT = cType != null ? cType.ctor : System.Object.ctor;
+            var map = new type.ctor(System.String.ctor, cT);
+            for (var mk in jsObj) {
+                var item = _ParseJsObj(jsObj[mk], cType);
+                map.Add(mk, item);
+            }
+            return map;
+        }
+
+        //-------Unity ValueType-----------
+        // if (TypeIs(type, UnityEngine.Bounds)) {
+        //     var center = new UnityEngine.Vector3.ctor$$Single$$Single$$Single(jsObj.center.x, jsObj.center.y, jsObj.center.z);
+        //     var size = new UnityEngine.Vector3.ctor$$Single$$Single$$Single(jsObj.size.x, jsObj.size.y, jsObj.size.z);
+        //     return new UnityEngine.Bounds.ctor$$Vector3$$Vector3(center, size);
+        // }
+
+        // if (TypeIs(type, UnityEngine.Rect)) {
+        //     return new UnityEngine.Rect.ctor$$Single$$Single$$Single$$Single(jsObj.x, jsObj.y, jsObj.width, jsObj.height);
+        // }
+
+        // if (TypeIs(type, UnityEngine.RectOffset)) {
+        //     return new UnityEngine.RectOffset.ctor$$Int32$$Int32$$Int32$$Int32(jsObj.left, jsObj.right, jsObj.top, jsObj.bottom);
+        // }
+        //-------Unity ValueType-----------
+
+        var csObj = new type.ctor();
+        for (var k in jsObj) {
+            if (k == "_t" || jsObj[k] == null)
+                continue;
+
+            if (csObj[k] === undefined) {
+                // printError("csObj can not find k:" + k);
+                continue;
+            }
+            var jsField = jsObj[k];
+            var csField = csObj[k];
+            if (csField === null) {
+                csObj[k] = _ParseJsObj(jsField);
+            } else {
+                //基础类型直接赋值
+                if (_IsJsPrimitive(jsField)) {
+                    csObj[k] = jsField;
+                } else {
+                    //IDictionary类型
+                    if (Is(csField, System.Collections.Generic.Dictionary$2.ctor)) {
+                        var map = csField;
+                        var eType = JsTypeHelper.GetType(map.TValue);
+                        for (var jk in jsField) {
+                            map.Add(jk, _ParseJsObj(jsField[jk], eType));
+                        }
+                    } else if (Is(csField, System.Collections.Generic.List$1.ctor)) {
+                        if (jsField.length > 0) {
+                            var list = csField;
+                            var eType = JsTypeHelper.GetType(list.T);
+                            for (var i = 0; i < jsField.length; i++) {
+                                var item = _ParseJsObj(jsField[i], eType);
+                                if (item != null) list.Add(item);
+                            }
+                        }
+                    } else {
+                        csObj[k] = _ParseJsObj(jsField, csField.getType());
+                    }
+                }
+            }
+        }
+        return csObj;
+    }
+
+    function _toJson(csObj, tFlag) {
+        var jsObj = _ConvertToJsObj(csObj, tFlag);
+        return JSON.stringify(jsObj);
+    }
+
+    function _ConvertToJsObj(csObj, tFlag) {
+        if (_IsJsPrimitive(csObj)) {
+            return csObj;
+        }
+
+        if (Is(csObj, System.Collections.Generic.List$1.ctor)) {
+            var array = [];
+            var count = csObj.get_Count();
+            if (count > 0) {
+                for (var i = 0; i < count; i++) {
+                    array.push(_ConvertToJsObj(csObj._list[i], tFlag));
+                };
+            }
+            return array;
+        }
+
+        if (Is(csObj, System.Collections.Generic.Dictionary$2.ctor)) {
+            var map = {};
+            var $it = csObj.GetEnumerator();
+            while ($it.MoveNext()) {
+                var v = $it.get_Current();
+                map[v.get_Key()] = _ConvertToJsObj(v.get_Value(), tFlag);
+            }
+            return map;
+        }
+
+        //-------Unity ValueType-----------
+        if (Is(csObj, UnityEngine.Vector2.ctor)) {
+            return _WriteV2(csObj);
+        }
+
+        if (Is(csObj, UnityEngine.Vector3.ctor)) {
+            return _WriteV3(csObj);
+        }
+
+        if (Is(csObj, UnityEngine.Vector4.ctor)) {
+            return _WriteV4(csObj);
+        }
+
+        if (Is(csObj, UnityEngine.Quaternion.ctor)) {
+            return _WriteV4(csObj);
+        }
+
+        if (Is(csObj, UnityEngine.Color.ctor) || Is(csObj, UnityEngine.Color32.ctor)) {
+            return _WriteColor(csObj);
+        }
+
+        // if (Is(csObj, UnityEngine.Bounds.ctor)) {
+        //     return _WriteBounds(csObj);
+        // }
+
+        // if (Is(csObj, UnityEngine.Rect.ctor)) {
+        //     return _WriteRect(csObj);
+        // }
+
+        // if (Is(csObj, UnityEngine.RectOffset.ctor)) {
+        //     return _WriteRectOffset(csObj);
+        // }
+        //-------Unity ValueType-----------
+
+        var jsObj = {};
+        if (tFlag) {
+            _WriteType(jsObj, csObj.getType());
+        }
+        for (var k in csObj) {
+            if (!csObj.hasOwnProperty(k))
+                continue;
+
+            var sv = csObj[k];
+            if (sv == null)
+                continue;
+
+            if (typeof sv == "function" || k.charAt(0) == '_' || k.endsWith("$$")) {
+                // printError("ConvertToJsObj:" + k + " is ignore.");
+                continue;
+            }
+
+            jsObj[k] = _ConvertToJsObj(sv, tFlag);
+        }
+        return jsObj;
+    }
+
+    //----------------Helper-------------------
+    function _IsJsPrimitive(val) {
+        return (val == null || val == undefined || typeof val == "boolean" || typeof val == "number" || typeof val == "string");
+    }
+
+    function _ReadType(obj) {
+        var tf = obj._t;
+        if (tf == null) {
+            return null;
+        }
+
+        var type = null;
+        if (JsonUtils.TypeGetter != null) {
+            var clrType = JsonUtils.TypeGetter(tf);
+            type = clrType._JsType;
+        }
+        if (type == null) {
+            type = JsTypeHelper.GetType(tf);
+        }
+        return type;
+    }
+
+    function _WriteType(obj, type) {
+        if (JsonUtils.TypeWritter != null) {
+            obj._t = JsonUtils.TypeWritter(type);
+        }
+        obj._t = type.fullname;
+    }
+    //----------------Helper-------------------
+
+    //-------Unity ValueType Writer-----------
+    function _WriteV2(v2) {
+        var v = {};
+        v.x = v2.x;
+        v.y = v2.y;
+        return v;
+    }
+
+    function _WriteV3(v3) {
+        var v = {};
+        v.x = v3.x;
+        v.y = v3.y;
+        v.z = v3.z;
+        return v;
+    }
+
+    function _WriteV4(v4) {
+        var v = {};
+        v.x = v4.x;
+        v.y = v4.y;
+        v.z = v4.z;
+        v.w = v4.w;
+        return v;
+    }
+
+    function _WriteColor(color) {
+        var c = {};
+        c.r = color.r;
+        c.g = color.g;
+        c.b = color.b;
+        c.a = color.a;
+        return c;
+    }
+
+    function _WriteBounds(bounds) {
+        var b = {};
+        b.center = _WriteV3(bounds.get_center());
+        b.size = _WriteV3(bounds.get_size());
+        return b;
+    }
+
+    function _WriteRect(rect) {
+        var r = {};
+        r.x = rect.get_x();
+        r.y = rect.get_y();
+        r.width = rect.get_width();
+        r.height = rect.get_height();
+        return r;
+    }
+
+    function _WriteRectOffset(rectOffset) {
+        var ro = {};
+        ro.top = rectOffset.get_top();
+        ro.left = rectOffset.get_left();
+        ro.bottom = rectOffset.get_bottom();
+        ro.right = rectOffset.get_right();
+        return ro;
+    }
+    //-------Unity ValueType Writer-----------
+
+    JsonUtils = {};
+    JsonUtils.TypeGetter = null;
+    JsonUtils.TypeWritter = null;
+    JsonUtils.parse = _parse;
+    JsonUtils.stringify = _toJson;
+})();

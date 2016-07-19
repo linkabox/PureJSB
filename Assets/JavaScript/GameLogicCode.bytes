@@ -1,0 +1,2514 @@
+var JsHelper = function (){
+};
+JsHelper.IsInt = function (obj){
+    return Number.isInteger(obj);
+};
+JsHelper.IsFloat = function (obj){
+    return typeof obj === 'number';
+};
+JsHelper.Random = function (list){
+    var count = list.get_Count();
+    if (count == 0)
+        return null;
+    var randomIndex = Math.floor(count*Math.random());
+    return list.get_Item$$Int32(randomIndex);
+};
+JsHelper.ToJson = function (obj, tFlag){
+    return JsonUtils.stringify(obj, tFlag);
+};
+JsHelper.ToObject = function (T, json){
+    return JsonUtils.parse(json, T);
+};
+JsHelper.ToCollection = function (T, TChild, json){
+    return JsonUtils.parse(json, T, TChild);
+};
+if (typeof(JsTypes) == "undefined")
+    var JsTypes = [];
+var BasicVariableTest = {
+    fullname: "BasicVariableTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            this.BS_ToString();
+            this.BS_Parse();
+            this.BS_TryParse();
+            this.BS_ComapreTo();
+        },
+        BS_ToString: function (){
+            UnityEngine.Debug.Log$$Object("==============BS_ToString==============");
+            var i = 1;
+            var l = 2;
+            var f = 3.33;
+            var d = 4.44;
+            UnityEngine.Debug.Log$$Object(i.ToString$$String("D5"));
+            UnityEngine.Debug.Log$$Object(i.ToString$$String("D5"));
+            UnityEngine.Debug.Log$$Object(f.ToString$$String("F1"));
+            UnityEngine.Debug.Log$$Object(d.ToString$$String("F1"));
+            UnityEngine.Debug.Log$$Object("==============BS_ToString==============");
+        },
+        BS_Parse: function (){
+            UnityEngine.Debug.Log$$Object("==============BS_Parse==============");
+            var s1 = "-14124";
+            var s2 = "123.456";
+            UnityEngine.Debug.Log$$Object("int.Parse:" + System.Int32.Parse$$String(s1));
+            UnityEngine.Debug.Log$$Object("long.Parse:" + System.Int64.Parse$$String(s1));
+            UnityEngine.Debug.Log$$Object("float.Parse:" + System.Single.Parse$$String(s2));
+            UnityEngine.Debug.Log$$Object("double.Parse:" + System.Double.Parse$$String(s2));
+            UnityEngine.Debug.Log$$Object("==============BS_Parse==============");
+        },
+        BS_TryParse: function (){
+            UnityEngine.Debug.Log$$Object("==============BS_TryParse==============");
+            var i = 1;
+            var l = 2;
+            var f = 3.33;
+            var d = 4.44;
+            var s = "123.456";
+            (function (){
+                var $1 = $Ref(null, i);
+                var $res = System.Int32.TryParse$$String$$Int32(s, $1);
+                i = $1.Value;
+                return $res;
+            }).call(this);
+            UnityEngine.Debug.Log$$Object("int.TryParse:" + i);
+            (function (){
+                var $1 = $Ref(null, l);
+                var $res = System.Int64.TryParse$$String$$Int64(s, $1);
+                l = $1.Value;
+                return $res;
+            }).call(this);
+            UnityEngine.Debug.Log$$Object("long.TryParse:" + l);
+            (function (){
+                var $1 = $Ref(null, f);
+                var $res = System.Single.TryParse$$String$$Single(s, $1);
+                f = $1.Value;
+                return $res;
+            }).call(this);
+            UnityEngine.Debug.Log$$Object("float.TryParse:" + f);
+            (function (){
+                var $1 = $Ref(null, d);
+                var $res = System.Double.TryParse$$String$$Double(s, $1);
+                d = $1.Value;
+                return $res;
+            }).call(this);
+            UnityEngine.Debug.Log$$Object("double.TryParse:" + d);
+            UnityEngine.Debug.Log$$Object("==============BS_TryParse==============");
+        },
+        BS_ComapreTo: function (){
+            UnityEngine.Debug.Log$$Object("==============BS_ComapreTo==============");
+            var i = 1;
+            var l = 2;
+            var f = 3.33;
+            var d = 4.44;
+            var b = false;
+            UnityEngine.Debug.Log$$Object("Int.CompareTo:" + i.CompareTo$$Int32(i));
+            UnityEngine.Debug.Log$$Object("Int.CompareTo:" + i.CompareTo$$Int32(i + 1));
+            UnityEngine.Debug.Log$$Object("Long.CompareTo:" + l.CompareTo$$Int64(l));
+            UnityEngine.Debug.Log$$Object("Long.CompareTo:" + l.CompareTo$$Int64(l + 1));
+            UnityEngine.Debug.Log$$Object("Float.CompareTo:" + f.CompareTo$$Single(f));
+            UnityEngine.Debug.Log$$Object("Float.CompareTo:" + f.CompareTo$$Single(f + 1));
+            UnityEngine.Debug.Log$$Object("Double.CompareTo:" + d.CompareTo$$Double(d));
+            UnityEngine.Debug.Log$$Object("Double.CompareTo:" + d.CompareTo$$Double(d + 1));
+            UnityEngine.Debug.Log$$Object("Boolean.CompareTo:" + b.CompareTo$$Boolean(b));
+            UnityEngine.Debug.Log$$Object("Boolean.CompareTo:" + b.CompareTo$$Boolean(!b));
+            UnityEngine.Debug.Log$$Object("==============BS_ComapreTo==============");
+        }
+    }
+};
+JsTypes.push(BasicVariableTest);
+var CollectionItem = {
+    fullname: "CollectionItem",
+    baseTypeName: "System.Object",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.name = null;
+            this.id = 0;
+            System.Object.ctor.call(this);
+        },
+        toString: function (){
+            return "id: " + this.id + " name: " + this.name;
+        }
+    }
+};
+JsTypes.push(CollectionItem);
+var CollectionTest = {
+    fullname: "CollectionTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            this.TestList();
+            this.TestDictionary();
+            this.TestArray();
+        },
+        TestList: function (){
+            UnityEngine.Debug.LogError$$Object("##########TestList##########");
+            var sb = new System.Text.StringBuilder.ctor();
+            var list = new System.Collections.Generic.List$1.ctor(CollectionItem.ctor);
+            list.Add((function (){
+                var $v1 = new CollectionItem.ctor();
+                $v1.name = "Petter";
+                $v1.id = 1;
+                return $v1;
+            }).call(this));
+            list.Add((function (){
+                var $v2 = new CollectionItem.ctor();
+                $v2.name = "Andy";
+                $v2.id = 2;
+                return $v2;
+            }).call(this));
+            list.Add((function (){
+                var $v3 = new CollectionItem.ctor();
+                $v3.name = "Bob";
+                $v3.id = 3;
+                return $v3;
+            }).call(this));
+            list.Add((function (){
+                var $v4 = new CollectionItem.ctor();
+                $v4.name = "George";
+                $v4.id = 4;
+                return $v4;
+            }).call(this));
+            list.Add((function (){
+                var $v5 = new CollectionItem.ctor();
+                $v5.name = "Kelly";
+                $v5.id = 5;
+                return $v5;
+            }).call(this));
+            var target = list.Find($CreateDelegate(this, this.ListFindPredicate));
+            UnityEngine.Debug.Log$$Object("Find Target: " + target.toString());
+            UnityEngine.Debug.Log$$Object("=======FindIndex=======");
+            var targetIndex = list.FindIndex$$Predicate$1($CreateDelegate(this, this.ListFindPredicate));
+            UnityEngine.Debug.Log$$Object("FindIndex$$Predicate$1: " + targetIndex);
+            targetIndex = list.FindIndex$$Int32$$Predicate$1(1, $CreateDelegate(this, this.ListFindPredicate));
+            UnityEngine.Debug.Log$$Object("FindIndex$$Int32$$Predicate$1: " + targetIndex);
+            targetIndex = list.FindIndex$$Int32$$Int32$$Predicate$1(1, 2, $CreateDelegate(this, this.ListFindPredicate));
+            UnityEngine.Debug.Log$$Object("FindIndex$$Int32$$Int32$$Predicate$1: " + targetIndex);
+            UnityEngine.Debug.Log$$Object("=======FindLastIndex=======");
+            targetIndex = list.FindLastIndex$$Predicate$1($CreateDelegate(this, this.ListFindPredicate));
+            UnityEngine.Debug.Log$$Object("FindLastIndex$$Predicate$1: " + targetIndex);
+            targetIndex = list.FindLastIndex$$Int32$$Predicate$1(1, $CreateDelegate(this, this.ListFindPredicate));
+            UnityEngine.Debug.Log$$Object("FindLastIndex$$Int32$$Predicate$1: " + targetIndex);
+            targetIndex = list.FindLastIndex$$Int32$$Int32$$Predicate$1(1, 2, $CreateDelegate(this, this.ListFindPredicate));
+            UnityEngine.Debug.Log$$Object("FindLastIndex$$Int32$$Int32$$Predicate$1: " + targetIndex);
+            UnityEngine.Debug.Log$$Object("=======FindAll=======");
+            var targetList = list.FindAll($CreateAnonymousDelegate(this, function (item){
+                if (item.name.Contains("e"))
+                    return true;
+                return false;
+            }));
+            var $it1 = targetList.GetEnumerator();
+            while ($it1.MoveNext()){
+                var item = $it1.get_Current();
+                sb.AppendLine$$String(item.toString());
+            }
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======GetRange=======");
+            targetList = list.GetRange(1, 3);
+            var $it2 = targetList.GetEnumerator();
+            while ($it2.MoveNext()){
+                var item = $it2.get_Current();
+                sb.AppendLine$$String(item.toString());
+            }
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======InsertRange=======");
+            var newList = new System.Collections.Generic.List$1.ctor$$IEnumerable$1(CollectionItem.ctor, list);
+            var insertList = new System.Collections.Generic.List$1.ctor(CollectionItem.ctor);
+            insertList.Add((function (){
+                var $v6 = new CollectionItem.ctor();
+                $v6.name = "I_ONE";
+                $v6.id = 88;
+                return $v6;
+            }).call(this));
+            insertList.Add((function (){
+                var $v7 = new CollectionItem.ctor();
+                $v7.name = "I_TWO";
+                $v7.id = 89;
+                return $v7;
+            }).call(this));
+            newList.InsertRange(2, insertList);
+            var $it3 = newList.GetEnumerator();
+            while ($it3.MoveNext()){
+                var item = $it3.get_Current();
+                sb.AppendLine$$String(item.toString());
+            }
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======CopyTo=======");
+            var array1 = new Array(10);
+            list.CopyTo$$T$Array(array1);
+            for (var $i5 = 0,$l5 = array1.length,item = array1[$i5]; $i5 < $l5; $i5++, item = array1[$i5]){
+                if (item != null)
+                    sb.AppendLine$$String(item.toString());
+                else
+                    sb.AppendLine$$String("item is Null");
+            }
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            var array2 = new Array(10);
+            list.CopyTo$$T$Array$$Int32(array2, 2);
+            for (var $i6 = 0,$l6 = array2.length,item = array2[$i6]; $i6 < $l6; $i6++, item = array2[$i6]){
+                if (item != null)
+                    sb.AppendLine$$String(item.toString());
+                else
+                    sb.AppendLine$$String("item is Null");
+            }
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            var array3 = new Array(10);
+            list.CopyTo$$Int32$$T$Array$$Int32$$Int32(1, array3, 2, 3);
+            for (var $i7 = 0,$l7 = array3.length,item = array3[$i7]; $i7 < $l7; $i7++, item = array3[$i7]){
+                if (item != null)
+                    sb.AppendLine$$String(item.toString());
+                else
+                    sb.AppendLine$$String("item is Null");
+            }
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+        },
+        ListFindPredicate: function (item){
+            if (item.id == 2)
+                return true;
+            return false;
+        },
+        TestDictionary: function (){
+            UnityEngine.Debug.LogError$$Object("##########TestDictionary##########");
+            var dic = new System.Collections.Generic.Dictionary$2.ctor$$Int32(System.Int32.ctor, CollectionItem.ctor, 10);
+            UnityEngine.Debug.Log$$Object("=======Add=======");
+            dic.Add(1, (function (){
+                var $v8 = new CollectionItem.ctor();
+                $v8.name = "Petter";
+                $v8.id = 1;
+                return $v8;
+            }).call(this));
+            dic.Add(2, (function (){
+                var $v9 = new CollectionItem.ctor();
+                $v9.name = "Andy";
+                $v9.id = 2;
+                return $v9;
+            }).call(this));
+            dic.Add(3, (function (){
+                var $v10 = new CollectionItem.ctor();
+                $v10.name = "Bob";
+                $v10.id = 3;
+                return $v10;
+            }).call(this));
+            dic.Add(4, (function (){
+                var $v11 = new CollectionItem.ctor();
+                $v11.name = "George";
+                $v11.id = 4;
+                return $v11;
+            }).call(this));
+            dic.Add(5, (function (){
+                var $v12 = new CollectionItem.ctor();
+                $v12.name = "Kelly";
+                $v12.id = 5;
+                return $v12;
+            }).call(this));
+            UnityEngine.Debug.Log$$Object("dic Count: " + dic.get_Count());
+            UnityEngine.Debug.Log$$Object("=======Remove=======");
+            UnityEngine.Debug.Log$$Object("Remove 1:" + dic.Remove(1));
+            UnityEngine.Debug.Log$$Object("Remove 2:" + dic.Remove(2));
+            UnityEngine.Debug.Log$$Object("Remove 90:" + dic.Remove(90));
+            UnityEngine.Debug.Log$$Object("dic Count: " + dic.get_Count());
+            UnityEngine.Debug.Log$$Object("=======set_Item=======");
+            dic.set_Item$$TKey(90, (function (){
+                var $v13 = new CollectionItem.ctor();
+                $v13.name = "Duck";
+                $v13.id = 90;
+                return $v13;
+            }).call(this));
+            UnityEngine.Debug.Log$$Object("dic Count: " + dic.get_Count());
+            UnityEngine.Debug.Log$$Object("=======Clear=======");
+            dic.Clear();
+            UnityEngine.Debug.Log$$Object("dic Count: " + dic.get_Count());
+        },
+        TestArray: function (){
+            var sb = new System.Text.StringBuilder.ctor();
+            UnityEngine.Debug.LogError$$Object("##########TestArray##########");
+            var array = new Array(5);
+            array[0] = (function (){
+                var $v14 = new CollectionItem.ctor();
+                $v14.name = "Petter";
+                $v14.id = 1;
+                return $v14;
+            }).call(this);
+            array[1] = (function (){
+                var $v15 = new CollectionItem.ctor();
+                $v15.name = "Andy";
+                $v15.id = 2;
+                return $v15;
+            }).call(this);
+            array[2] = (function (){
+                var $v16 = new CollectionItem.ctor();
+                $v16.name = "Bob";
+                $v16.id = 3;
+                return $v16;
+            }).call(this);
+            array[3] = (function (){
+                var $v17 = new CollectionItem.ctor();
+                $v17.name = "George";
+                $v17.id = 4;
+                return $v17;
+            }).call(this);
+            array[4] = (function (){
+                var $v18 = new CollectionItem.ctor();
+                $v18.name = "Kelly";
+                $v18.id = 5;
+                return $v18;
+            }).call(this);
+            UnityEngine.Debug.Log$$Object("=======CopyTo=======");
+            var array1 = new Array(10);
+            array.CopyTo(array1, 1);
+            for (var $i8 = 0,$l8 = array1.length,item = array1[$i8]; $i8 < $l8; $i8++, item = array1[$i8]){
+                if (item != null)
+                    sb.AppendLine$$String(item.toString());
+                else
+                    sb.AppendLine$$String("item is Null");
+            }
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Array.Copy=======");
+            var array2 = new Array(10);
+            System.Array.Copy(array, array2, 3);
+            for (var $i9 = 0,$l9 = array2.length,item = array2[$i9]; $i9 < $l9; $i9++, item = array2[$i9]){
+                if (item != null)
+                    sb.AppendLine$$String(item.toString());
+                else
+                    sb.AppendLine$$String("item is Null");
+            }
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======ConvertAll=======");
+            var nameArray = System.Array.ConvertAll(array, $CreateAnonymousDelegate(this, function (item){
+                return item.name;
+            }));
+            for (var $i10 = 0,$l10 = nameArray.length,item = nameArray[$i10]; $i10 < $l10; $i10++, item = nameArray[$i10]){
+                if (item != null)
+                    sb.AppendLine$$String(item.toString());
+                else
+                    sb.AppendLine$$String("item is Null");
+            }
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Int32 Array CopyTo=======");
+            var ints1 = new Int32Array(8);
+            var ints2 = new Int32Array([-1 /* -1 */, 3, 0, 7]);
+            ints2.CopyTo(ints1, 0);
+            sb.Append$$String("ints1:");
+            for (var $i11 = 0,$l11 = ints1.length,i = ints1[$i11]; $i11 < $l11; $i11++, i = ints1[$i11]){
+                sb.Append$$String(i + ",");
+            }
+            sb.AppendLine();
+            sb.Append$$String("ints2:");
+            for (var $i12 = 0,$l12 = ints2.length,i = ints2[$i12]; $i12 < $l12; $i12++, i = ints2[$i12]){
+                sb.Append$$String(i + ",");
+            }
+            sb.AppendLine();
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Float32 Array CopyTo=======");
+            var floats1 = new Float32Array(8);
+            var floats2 = new Float32Array([-1.89 /* -1.89f */, 3.14, 0, 0.4]);
+            floats2.CopyTo(floats1, 0);
+            sb.Append$$String("floats1:");
+            for (var $i13 = 0,$l13 = floats1.length,i = floats1[$i13]; $i13 < $l13; $i13++, i = floats1[$i13]){
+                sb.Append$$String(i + ",");
+            }
+            sb.AppendLine();
+            sb.Append$$String("floats2:");
+            for (var $i14 = 0,$l14 = floats2.length,i = floats2[$i14]; $i14 < $l14; $i14++, i = floats2[$i14]){
+                sb.Append$$String(i + ",");
+            }
+            sb.AppendLine();
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+        }
+    }
+};
+JsTypes.push(CollectionTest);
+var DateTimeTest = {
+    fullname: "DateTimeTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    staticDefinition: {
+        UnixTimeStampToDateTime: function (unixTimestamp){
+            return new Date(unixTimestamp);
+        },
+        DateTimeToUnixTimestamp: function (dateTime){
+            return dateTime.getTime();
+        }
+    },
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            this.TestDateTime();
+        },
+        TestDateTime: function (){
+            var sb = new System.Text.StringBuilder.ctor();
+            var dateMin = System.DateTime.MinValue;
+            var dateCustom = new System.DateTime.ctor$$Int32$$Int32$$Int32$$Int32$$Int32$$Int32$$Int32(2008, 3, 8, 15, 8, 7, 400);
+            UnityEngine.Debug.Log$$Object("=======Ctor=======");
+            sb.AppendLine$$String("MinValue:" + System.DateTime.MinValue);
+            sb.AppendLine$$String("MaxValue:" + System.DateTime.MaxValue);
+            var dateTime1 = new System.DateTime.ctor();
+            sb.AppendLine$$String("dataTime1:" + dateTime1);
+            var dateTime2 = new System.DateTime.ctor$$Int32$$Int32$$Int32(2011, 1, 3);
+            sb.AppendLine$$String("dateTime2:" + dateTime2);
+            var dateTime3 = new System.DateTime.ctor$$Int32$$Int32$$Int32$$Int32$$Int32$$Int32(2011, 1, 3, 15, 33, 8);
+            sb.AppendLine$$String("dateTime3:" + dateTime3);
+            var dateTime4 = new System.DateTime.ctor$$Int32$$Int32$$Int32$$Int32$$Int32$$Int32$$Int32(2011, 1, 3, 15, 33, 8, 30);
+            sb.AppendLine$$String("dateTime4:" + dateTime4);
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Property=======");
+            sb.AppendLine$$String("Today:" + System.DateTime.get_Today());
+            sb.AppendLine$$String("Now:" + dateCustom);
+            sb.AppendLine$$String("Date:" + dateCustom.get_Date());
+            sb.AppendLine$$String("Year:" + dateCustom.get_Year());
+            sb.AppendLine$$String("Month:" + dateCustom.get_Month());
+            sb.AppendLine$$String("Day:" + dateCustom.get_Day());
+            sb.AppendLine$$String("DayOfWeek:" + dateCustom.get_DayOfWeek());
+            sb.AppendLine$$String("DayOfYear:" + dateCustom.get_DayOfYear());
+            sb.AppendLine$$String("Hour:" + dateCustom.get_Hour());
+            sb.AppendLine$$String("Minute:" + dateCustom.get_Minute());
+            sb.AppendLine$$String("Second:" + dateCustom.get_Second());
+            sb.AppendLine$$String("Millisecond:" + dateCustom.get_Millisecond());
+            sb.AppendLine$$String("Ticks:" + dateCustom.get_Ticks());
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Add=======");
+            sb.AppendLine$$String("AddYears:" + dateMin.AddYears(2));
+            sb.AppendLine$$String("AddMonths:" + dateMin.AddMonths(2));
+            sb.AppendLine$$String("AddDays:" + dateMin.AddDays(2));
+            sb.AppendLine$$String("AddHours:" + dateMin.AddHours(2).get_Hour());
+            sb.AppendLine$$String("AddMinutes:" + dateMin.AddMinutes(2).get_Minute());
+            sb.AppendLine$$String("AddSeconds:" + dateMin.AddSeconds(2).get_Second());
+            sb.AppendLine$$String("AddMilliseconds:" + dateMin.AddMilliseconds(2).get_Millisecond());
+            sb.AppendLine$$String("AddTicks:" + dateMin.AddTicks(2000).get_Ticks());
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Operator=======");
+            sb.AppendLine$$String("Now > Min:" + (System.DateTime.op_GreaterThan(dateCustom, dateMin)));
+            sb.AppendLine$$String("Now >= Min:" + (System.DateTime.op_GreaterThanOrEqual(dateCustom, dateMin)));
+            sb.AppendLine$$String("Now == Now:" + (System.DateTime.op_Equality(dateCustom, dateMin)));
+            sb.AppendLine$$String("Now < Min:" + (System.DateTime.op_LessThan(dateCustom, dateMin)));
+            sb.AppendLine$$String("Now <= Min:" + (System.DateTime.op_LessThanOrEqual(dateCustom, dateMin)));
+            sb.AppendLine$$String("Now CompareTo Min:" + dateCustom.CompareTo$$DateTime(dateMin));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Parse=======");
+            sb.AppendLine$$String("Parse1:" + System.DateTime.Parse$$String("2016-4-8"));
+            sb.AppendLine$$String("Parse1-1:" + System.DateTime.Parse$$String("2016-4-8 18:40"));
+            sb.AppendLine$$String("Parse1-2:" + System.DateTime.Parse$$String("2016-4-8 18:40:28"));
+            sb.AppendLine$$String("Parse2:" + System.DateTime.Parse$$String("2016-04-08"));
+            sb.AppendLine$$String("Parse2-1:" + System.DateTime.Parse$$String("2016-04-08 18:40"));
+            sb.AppendLine$$String("Parse2-2:" + System.DateTime.Parse$$String("2016-04-08 18:40:28"));
+            sb.AppendLine$$String("Parse3:" + System.DateTime.Parse$$String("2016/04/08"));
+            sb.AppendLine$$String("Parse3-1:" + System.DateTime.Parse$$String("2016/04/08 18:40"));
+            sb.AppendLine$$String("Parse3-2:" + System.DateTime.Parse$$String("2016/04/08 18:40:28"));
+            sb.AppendLine$$String("Parse4:" + System.DateTime.Parse$$String("2016/4/8"));
+            sb.AppendLine$$String("Parse4-1:" + System.DateTime.Parse$$String("2016/4/8 18:40"));
+            sb.AppendLine$$String("Parse4-2:" + System.DateTime.Parse$$String("2016/4/8 18:40:28"));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Format=======");
+            sb.AppendLine$$String("ToString:" + dateCustom.toString());
+            sb.AppendLine$$String("ToLongTimeString:" + dateCustom.ToLongTimeString());
+            sb.AppendLine$$String("ToLongDateString:" + dateCustom.ToLongDateString());
+            sb.AppendLine$$String("ToShortTimeString:" + dateCustom.ToShortTimeString());
+            sb.AppendLine$$String("ToShortDateString:" + dateCustom.ToShortDateString());
+            sb.AppendLine$$String("ToString(G):" + dateCustom.ToString$$String("G"));
+            sb.AppendLine$$String("ToString(yy-MM-dd):" + dateCustom.ToString$$String("yy-MM-dd"));
+            sb.AppendLine$$String("ToString(yyyy-MM-dd):" + dateCustom.ToString$$String("yyyy-MM-dd"));
+            sb.AppendLine$$String("ToString(hh:mm:ss):" + dateCustom.ToString$$String("hh:mm:ss"));
+            sb.AppendLine$$String("ToString(yyyy年MM月dd日):" + dateCustom.ToString$$String("yyyy年MM月dd日"));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======UnixTimeStamp <=> DateTime=======");
+            var unixTimestamp = DateTimeTest.DateTimeToUnixTimestamp(dateCustom);
+            sb.AppendLine$$String("Now -> UnixTimeStamp:" + unixTimestamp);
+            sb.AppendLine$$String("UnixTimeStamp -> Now:" + DateTimeTest.UnixTimeStampToDateTime(unixTimestamp));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+        }
+    }
+};
+JsTypes.push(DateTimeTest);
+var IOTest = {
+    fullname: "IOTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            this.TestPath();
+        },
+        TestPath: function (){
+            var sb = new System.Text.StringBuilder.ctor();
+            UnityEngine.Debug.Log$$Object("=======Path Property=======");
+            sb.AppendLine$$String("DirectorySeparatorChar: " + System.IO.Path.DirectorySeparatorChar);
+            sb.AppendLine$$String("AltDirectorySeparatorChar: " + System.IO.Path.AltDirectorySeparatorChar);
+            sb.AppendLine$$String("PathSeparator: " + System.IO.Path.PathSeparator);
+            sb.AppendLine$$String("VolumeSeparatorChar: " + System.IO.Path.VolumeSeparatorChar);
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Path Combine=======");
+            sb.AppendLine$$String(System.IO.Path.Combine("D:/JSB_Test/", "testDir/file.txt"));
+            sb.AppendLine$$String(System.IO.Path.Combine("D:/JSB_Test/", "/testDir/file.txt"));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Path GetXXX=======");
+            var filePath = System.IO.Path.Combine(UnityEngine.Application.get_dataPath(), "happy.jpg");
+            sb.AppendLine$$String("GetDirectoryName: " + System.IO.Path.GetDirectoryName(filePath));
+            sb.AppendLine$$String("GetExtension: " + System.IO.Path.GetExtension(filePath));
+            sb.AppendLine$$String("GetFileName: " + System.IO.Path.GetFileName(filePath));
+            sb.AppendLine$$String("GetFileNameWithoutExtension: " + System.IO.Path.GetFileNameWithoutExtension(filePath));
+            sb.AppendLine$$String("GetPathRoot: " + System.IO.Path.GetPathRoot(filePath));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            sb.AppendLine$$String("HasExtension: " + System.IO.Path.HasExtension(filePath));
+            sb.AppendLine$$String("ChangeExtension: " + System.IO.Path.ChangeExtension(filePath, "png"));
+            sb.AppendLine$$String("ChangeExtension: " + System.IO.Path.ChangeExtension(filePath, ".png"));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+        }
+    }
+};
+JsTypes.push(IOTest);
+var JsonTest = {
+    fullname: "JsonTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            this.TestJson();
+        },
+        TestJson: function (){
+            var entityList = new System.Collections.Generic.List$1.ctor(JsonTest.Entity.ctor);
+            var entity = new JsonTest.Entity.ctor();
+            for (var i = 0; i < entity.map.get_Count(); i++){
+                UnityEngine.Debug.LogError$$Object(entity.map.get_Item$$Int32(i));
+            }
+            entity.id = 20160217;
+            entity.name = "bozo";
+            entity.coordinate = new UnityEngine.Vector2.ctor$$Single$$Single(-1 /* -1f */, 3.14);
+            entity.pos = new UnityEngine.Vector3.ctor$$Single$$Single$$Single(-16.1 /* -16.1f */, 0, 15.8);
+            UnityEngine.Debug.LogError$$Object(entity.pos.GetHashCode());
+            UnityEngine.Debug.LogError$$Object(UnityEngine.Vector3.MoveTowards(entity.pos, UnityEngine.Vector3.get_zero(), 2));
+            entity.v4 = new UnityEngine.Vector4.ctor$$Single$$Single$$Single$$Single(-1 /* -1f */, 2.12, 0, 3);
+            entity.quaternion = new UnityEngine.Quaternion.ctor$$Single$$Single$$Single$$Single(-21 /* -21f */, 31.48, 77, 1);
+            entity.color32 = UnityEngine.Color32.op_Implicit$$Color(UnityEngine.Color.get_green());
+            entity.color = UnityEngine.Color.get_cyan();
+            entity.bounds = new UnityEngine.Bounds.ctor$$Vector3$$Vector3(entity.pos, UnityEngine.Vector3.op_Multiply$$Vector3$$Single(UnityEngine.Vector3.get_one(), 3));
+            entity.rect = new UnityEngine.Rect.ctor$$Single$$Single$$Single$$Single(0, 0, 800, 600);
+            entity.rectOffset = new UnityEngine.RectOffset.ctor$$Int32$$Int32$$Int32$$Int32(10, 20, 30, -40 /* -40 */);
+            entity.defaultAction = (function (){
+                var $v19 = new JsonTest.EntityAction.ctor();
+                $v19.id = 6666;
+                $v19.content = "Happy Day";
+                return $v19;
+            }).call(this);
+            entity.simpleList.Add("abc");
+            entity.simpleList.Add("efg");
+            entity.simpleList.Add("ko");
+            entity.simpleDic.Add("4001", "What\'s up");
+            entity.simpleDic.Add("4002", "Good bye");
+            var action = (function (){
+                var $v20 = new JsonTest.EntityAction.ctor();
+                $v20.id = 1;
+                $v20.content = "Hello World";
+                return $v20;
+            }).call(this);
+            entity.complexDic.Add(action.id.toString(), action);
+            entity.complexList.Add(action);
+            action = (function (){
+                var $v21 = new JsonTest.EntityAction.ctor();
+                $v21.id = 2;
+                $v21.content = "Help me";
+                return $v21;
+            }).call(this);
+            entity.complexDic.set_Item$$TKey(action.id.toString(), action);
+            entity.complexList.Add(action);
+            entityList.Add(entity);
+            entityList.Add(entity);
+            var entityJson = JsHelper.ToJson(entity, true);
+            UnityEngine.Debug.LogError$$Object(entityJson);
+            var listJson = JsHelper.ToJson(entityList, false);
+            UnityEngine.Debug.LogError$$Object(listJson);
+            UnityEngine.Debug.LogError$$Object("============Log jsonDic============");
+            var jsonDic = JsHelper.ToObject(System.Collections.Generic.Dictionary$2.ctor, JsHelper.ToJson(UnityEngine.Vector3.get_down(), false));
+            var log = "";
+            var $it14 = jsonDic.GetEnumerator();
+            while ($it14.MoveNext()){
+                var item = $it14.get_Current();
+                log += "k:" + item.get_Key() + " v:" + item.get_Value() + "\n";
+            }
+            UnityEngine.Debug.LogError$$Object(log);
+            UnityEngine.Debug.LogError$$Object("============Log jsonEntity============");
+            var jsonEntity = JsHelper.ToObject(JsonTest.Entity.ctor, entityJson);
+            jsonEntity.PrintLog();
+            UnityEngine.Debug.LogError$$Object("============Log jsonEntityList============");
+            var jsonEntityList = JsHelper.ToCollection(System.Collections.Generic.List$1.ctor, JsonTest.Entity.ctor, listJson);
+            var $it15 = jsonEntityList.GetEnumerator();
+            while ($it15.MoveNext()){
+                var item = $it15.get_Current();
+                this.PrintEntityInfo(item);
+            }
+        },
+        PrintEntityInfo: function (jsonEntity){
+            var sb = new System.Text.StringBuilder.ctor();
+            sb.AppendLine$$String("name: " + jsonEntity.name);
+            sb.AppendLine$$String("id: " + jsonEntity.id);
+            sb.AppendLine$$String("coordinate: " + jsonEntity.coordinate);
+            sb.AppendLine$$String("pos: " + jsonEntity.pos);
+            sb.AppendLine$$String("v4: " + jsonEntity.v4);
+            sb.AppendLine$$String("quaternion: " + jsonEntity.quaternion);
+            sb.AppendLine$$String("color32: " + jsonEntity.color32);
+            sb.AppendLine$$String("color: " + jsonEntity.color);
+            sb.AppendLine$$String("bounds: " + jsonEntity.bounds);
+            sb.AppendLine$$String("rect: " + jsonEntity.rect);
+            sb.AppendLine$$String("rectOffset: " + jsonEntity.rectOffset);
+            sb.AppendLine$$String("defaultAction:" + jsonEntity.defaultAction.id + " | " + jsonEntity.defaultAction.content);
+            sb.AppendLine$$String("simpleList: " + jsonEntity.simpleList.get_Count());
+            var $it16 = jsonEntity.simpleList.GetEnumerator();
+            while ($it16.MoveNext()){
+                var item = $it16.get_Current();
+                sb.AppendLine$$String(item);
+            }
+            sb.AppendLine$$String("complexList: " + jsonEntity.complexList.get_Count());
+            var $it17 = jsonEntity.complexList.GetEnumerator();
+            while ($it17.MoveNext()){
+                var item = $it17.get_Current();
+                sb.AppendLine$$String(item.content);
+            }
+            sb.AppendLine$$String("simpleDic: " + jsonEntity.simpleDic.get_Count());
+            var $it18 = jsonEntity.simpleDic.GetEnumerator();
+            while ($it18.MoveNext()){
+                var item = $it18.get_Current();
+                sb.AppendLine$$String(item.get_Value());
+            }
+            sb.AppendLine$$String("complexDic: " + jsonEntity.complexDic.get_Count());
+            var $it19 = jsonEntity.complexDic.GetEnumerator();
+            while ($it19.MoveNext()){
+                var item = $it19.get_Current();
+                sb.AppendLine$$String(item.get_Value().content);
+            }
+            UnityEngine.Debug.LogError$$Object(sb.toString());
+            jsonEntity.PrintLog();
+        }
+    }
+};
+JsTypes.push(JsonTest);
+var LambdaTest = {
+    fullname: "LambdaTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            this.L_Closure();
+        },
+        L_Closure: function (){
+            UnityEngine.Debug.Log$$Object("");
+            UnityEngine.Debug.Log$$Object("L_Closure");
+            var aList = new System.Collections.Generic.List$1.ctor(System.Action.ctor);
+            var bList = new System.Collections.Generic.List$1.ctor(System.Action.ctor);
+            var cList = new System.Collections.Generic.List$1.ctor(System.Action$1.ctor);
+            for (var i = 0; i < 3; i++){
+                aList.Add($CreateAnonymousDelegate(this, function (){
+                    UnityEngine.Debug.Log$$Object("aList:" + i);
+                }));
+                var t = i;
+                bList.Add($CreateAnonymousDelegate(this, function (){
+                    UnityEngine.Debug.Log$$Object("bList:" + t);
+                }));
+                cList.Add($CreateAnonymousDelegate(this, function (i1){
+                    UnityEngine.Debug.Log$$Object("cList:" + i1);
+                }));
+            }
+            for (var i = 0; i < 3; i++){
+                aList.get_Item$$Int32(i)();
+            }
+            for (var i = 0; i < 3; i++){
+                bList.get_Item$$Int32(i)();
+            }
+            for (var i = 0; i < 3; i++){
+                cList.get_Item$$Int32(i)(i);
+            }
+        }
+    }
+};
+JsTypes.push(LambdaTest);
+var LingQTest = {
+    fullname: "LingQTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            this.LQ_ToList();
+            this.LQ_Any();
+        },
+        LQ_ToList: function (){
+            UnityEngine.Debug.Log$$Object("");
+            UnityEngine.Debug.Log$$Object("LQ_ToList");
+            var array = ["a", "ab", "abc"];
+            var list = System.Linq.Enumerable.ToList$1(System.String.ctor, array);
+            var $it20 = list.GetEnumerator();
+            while ($it20.MoveNext()){
+                var l = $it20.get_Current();
+                UnityEngine.Debug.Log$$Object(l);
+            }
+            list = System.Linq.Enumerable.ToList$1(System.String.ctor, list);
+            var $it21 = list.GetEnumerator();
+            while ($it21.MoveNext()){
+                var l = $it21.get_Current();
+                UnityEngine.Debug.Log$$Object(l);
+            }
+        },
+        LQ_Any: function (){
+            UnityEngine.Debug.Log$$Object("");
+            UnityEngine.Debug.Log$$Object("LQ_Any");
+            var list = (function (){
+                var $v22 = new System.Collections.Generic.List$1.ctor(System.String.ctor);
+                $v22.Add("a");
+                $v22.Add("ab");
+                $v22.Add("abc");
+                return $v22;
+            }).call(this);
+            UnityEngine.Debug.Log$$Object(System.Linq.Enumerable.Any$1$$IEnumerable$1$$Func$2(System.String.ctor, list, $CreateAnonymousDelegate(this, function (s){
+                return s == "a";
+            })));
+            UnityEngine.Debug.Log$$Object(System.Linq.Enumerable.Any$1$$IEnumerable$1$$Func$2(System.String.ctor, list, $CreateAnonymousDelegate(this, function (s){
+                return s == "cba";
+            })));
+            UnityEngine.Debug.Log$$Object(System.Linq.Enumerable.Any$1$$IEnumerable$1(System.String.ctor, list));
+            list.Clear();
+            UnityEngine.Debug.Log$$Object(System.Linq.Enumerable.Any$1$$IEnumerable$1(System.String.ctor, list));
+        }
+    }
+};
+JsTypes.push(LingQTest);
+var MathTest = {
+    fullname: "MathTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            this.TestMath();
+        },
+        TestMath: function (){
+            var sb = new System.Text.StringBuilder.ctor();
+            UnityEngine.Debug.Log$$Object("=======Property=======");
+            sb.AppendLine$$String("Deg2Rad:" + 0.01745329 /* Mathf.Deg2Rad */);
+            sb.AppendLine$$String("Rad2Deg:" + 57.29578 /* Mathf.Rad2Deg */);
+            sb.AppendLine$$String("Epsilon:" + 1.401298E-45 /* Mathf.Epsilon */);
+            sb.AppendLine$$String("Infinity:" + Infinity /* Mathf.Infinity */);
+            sb.AppendLine$$String("NegativeInfinity:" + -Infinity /* Mathf.NegativeInfinity */);
+            sb.AppendLine$$String("PI:" + 3.141593 /* Mathf.PI */);
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Base Function=======");
+            sb.AppendLine$$String("Abs Int:" + UnityEngine.Mathf.Abs$$Int32(-10 /* -10 */));
+            sb.AppendLine$$String("Abs Float:" + UnityEngine.Mathf.Abs$$Single(-10.5 /* -10.5f */));
+            sb.AppendLine$$String("Approximately:" + UnityEngine.Mathf.Approximately(1, 1 /* 10.0f / 10.0f */));
+            sb.AppendLine$$String("Repeat:" + UnityEngine.Mathf.Repeat(3, 2.5));
+            sb.AppendLine$$String("DeltaAngle:" + UnityEngine.Mathf.DeltaAngle(1080, 90));
+            sb.AppendLine$$String("Sqrt:" + UnityEngine.Mathf.Sqrt(12));
+            sb.AppendLine$$String("Pow:" + UnityEngine.Mathf.Pow(6, 1.8));
+            sb.AppendLine$$String("Exp:" + UnityEngine.Mathf.Exp(6));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Triangle Function=======");
+            sb.AppendLine$$String("Sin:" + UnityEngine.Mathf.Sin(3));
+            sb.AppendLine$$String("Asin:" + UnityEngine.Mathf.Asin(0.5));
+            sb.AppendLine$$String("Cos:" + UnityEngine.Mathf.Cos(3));
+            sb.AppendLine$$String("Acos:" + UnityEngine.Mathf.Acos(0.5));
+            sb.AppendLine$$String("Tan:" + UnityEngine.Mathf.Tan(0.5));
+            sb.AppendLine$$String("Atan:" + UnityEngine.Mathf.Atan(0.5));
+            sb.AppendLine$$String("Atan2:" + UnityEngine.Mathf.Atan2(0.5, 0.5));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Ceil Function=======");
+            sb.AppendLine$$String("Ceil 10.0:" + UnityEngine.Mathf.Ceil(10));
+            sb.AppendLine$$String("Ceil 10.2:" + UnityEngine.Mathf.Ceil(10.2));
+            sb.AppendLine$$String("Ceil 10.7:" + UnityEngine.Mathf.Ceil(10.7));
+            sb.AppendLine$$String("Ceil -10.0:" + UnityEngine.Mathf.Ceil(-10 /* -10.0f */));
+            sb.AppendLine$$String("Ceil -10.2:" + UnityEngine.Mathf.Ceil(-10.2 /* -10.2f */));
+            sb.AppendLine$$String("Ceil -10.7:" + UnityEngine.Mathf.Ceil(-10.7 /* -10.7f */));
+            sb.AppendLine$$String("CeilToInt 10.0:" + UnityEngine.Mathf.CeilToInt(10));
+            sb.AppendLine$$String("CeilToInt 10.2:" + UnityEngine.Mathf.CeilToInt(10.2));
+            sb.AppendLine$$String("CeilToInt 10.7:" + UnityEngine.Mathf.CeilToInt(10.7));
+            sb.AppendLine$$String("CeilToInt -10.0:" + UnityEngine.Mathf.CeilToInt(-10 /* -10.0f */));
+            sb.AppendLine$$String("CeilToInt -10.2:" + UnityEngine.Mathf.CeilToInt(-10.2 /* -10.2f */));
+            sb.AppendLine$$String("CeilToInt -10.7:" + UnityEngine.Mathf.CeilToInt(-10.7 /* -10.7f */));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Floor Function=======");
+            sb.AppendLine$$String("Floor 10.0:" + UnityEngine.Mathf.Floor(10));
+            sb.AppendLine$$String("Floor 10.2:" + UnityEngine.Mathf.Floor(10.2));
+            sb.AppendLine$$String("Floor 10.7:" + UnityEngine.Mathf.Floor(10.7));
+            sb.AppendLine$$String("Floor -10.0:" + UnityEngine.Mathf.Floor(-10 /* -10.0f */));
+            sb.AppendLine$$String("Floor -10.2:" + UnityEngine.Mathf.Floor(-10.2 /* -10.2f */));
+            sb.AppendLine$$String("Floor -10.7:" + UnityEngine.Mathf.Floor(-10.7 /* -10.7f */));
+            sb.AppendLine$$String("FloorToInt 10.0:" + UnityEngine.Mathf.FloorToInt(10));
+            sb.AppendLine$$String("FloorToInt 10.2:" + UnityEngine.Mathf.FloorToInt(10.2));
+            sb.AppendLine$$String("FloorToInt 10.7:" + UnityEngine.Mathf.FloorToInt(10.7));
+            sb.AppendLine$$String("FloorToInt -10.0:" + UnityEngine.Mathf.FloorToInt(-10 /* -10.0f */));
+            sb.AppendLine$$String("FloorToInt -10.2:" + UnityEngine.Mathf.FloorToInt(-10.2 /* -10.2f */));
+            sb.AppendLine$$String("FloorToInt -10.7:" + UnityEngine.Mathf.FloorToInt(-10.7 /* -10.7f */));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Round Function=======");
+            sb.AppendLine$$String("Round 10.0:" + UnityEngine.Mathf.Round(10));
+            sb.AppendLine$$String("Round 10.2:" + UnityEngine.Mathf.Round(10.2));
+            sb.AppendLine$$String("Round 10.7:" + UnityEngine.Mathf.Round(10.7));
+            sb.AppendLine$$String("Round 10.5:" + UnityEngine.Mathf.Round(10.5));
+            sb.AppendLine$$String("Round 11.5:" + UnityEngine.Mathf.Round(11.5));
+            sb.AppendLine$$String("Round -10.0:" + UnityEngine.Mathf.Round(-10 /* -10.0f */));
+            sb.AppendLine$$String("Round -10.2:" + UnityEngine.Mathf.Round(-10.2 /* -10.2f */));
+            sb.AppendLine$$String("Round -10.7:" + UnityEngine.Mathf.Round(-10.7 /* -10.7f */));
+            sb.AppendLine$$String("Round -10.5:" + UnityEngine.Mathf.Round(-10.5 /* -10.5f */));
+            sb.AppendLine$$String("Round -11.5:" + UnityEngine.Mathf.Round(-11.5 /* -11.5f */));
+            sb.AppendLine$$String("RoundToInt 10.0:" + UnityEngine.Mathf.RoundToInt(10));
+            sb.AppendLine$$String("RoundToInt 10.2:" + UnityEngine.Mathf.RoundToInt(10.2));
+            sb.AppendLine$$String("RoundToInt 10.7:" + UnityEngine.Mathf.RoundToInt(10.7));
+            sb.AppendLine$$String("RoundToInt 10.5:" + UnityEngine.Mathf.RoundToInt(10.5));
+            sb.AppendLine$$String("RoundToInt 11.5:" + UnityEngine.Mathf.RoundToInt(11.5));
+            sb.AppendLine$$String("RoundToInt -10.0:" + UnityEngine.Mathf.RoundToInt(-10 /* -10.0f */));
+            sb.AppendLine$$String("RoundToInt -10.2:" + UnityEngine.Mathf.RoundToInt(-10.2 /* -10.2f */));
+            sb.AppendLine$$String("RoundToInt -10.7:" + UnityEngine.Mathf.RoundToInt(-10.7 /* -10.7f */));
+            sb.AppendLine$$String("RoundToInt -10.5:" + UnityEngine.Mathf.RoundToInt(-10.5 /* -10.5f */));
+            sb.AppendLine$$String("RoundToInt -11.5:" + UnityEngine.Mathf.RoundToInt(-11.5 /* -11.5f */));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Sign Function=======");
+            sb.AppendLine$$String("Sign -10:" + UnityEngine.Mathf.Sign(-10));
+            sb.AppendLine$$String("Sign 10:" + UnityEngine.Mathf.Sign(10));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Clamp Function=======");
+            sb.AppendLine$$String("Clamp Int:" + UnityEngine.Mathf.Clamp$$Int32$$Int32$$Int32(10, 1, 3));
+            sb.AppendLine$$String("Clamp Float:" + UnityEngine.Mathf.Clamp$$Single$$Single$$Single(10, 1, 3));
+            sb.AppendLine$$String("Clamp01:" + UnityEngine.Mathf.Clamp01(3.14));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Lerp Function=======");
+            sb.AppendLine$$String("Lerp:" + UnityEngine.Mathf.Lerp(1, 100, 0.3));
+            sb.AppendLine$$String("InverseLerp:" + UnityEngine.Mathf.InverseLerp(0, 100, 30));
+            sb.AppendLine$$String("LerpAngle:" + UnityEngine.Mathf.LerpAngle(0, 90, 0.3));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Log Function=======");
+            sb.AppendLine$$String("Log:" + UnityEngine.Mathf.Log$$Single$$Single(6, 2));
+            sb.AppendLine$$String("Log E:" + UnityEngine.Mathf.Log$$Single(100));
+            sb.AppendLine$$String("Log10:" + UnityEngine.Mathf.Log10(100));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======MaxMin Function=======");
+            sb.AppendLine$$String("Max Int:" + UnityEngine.Mathf.Max$$Int32$$Int32(1, 2));
+            sb.AppendLine$$String("Max IntArray:" + UnityEngine.Mathf.Max$$Int32$Array(new Int32Array([1, 2, 3, 4, 5])));
+            sb.AppendLine$$String("Max Float:" + UnityEngine.Mathf.Max$$Single$$Single(1.2, 2.4));
+            sb.AppendLine$$String("Max FloatArray:" + UnityEngine.Mathf.Max$$Single$Array(new Float32Array([1.2, 2.4, 3.5, 4.6, 5.7])));
+            sb.AppendLine$$String("Min Int:" + UnityEngine.Mathf.Min$$Int32$$Int32(1, 2));
+            sb.AppendLine$$String("Min IntArray:" + UnityEngine.Mathf.Min$$Int32$Array(new Int32Array([1, 2, 3, 4, 5])));
+            sb.AppendLine$$String("Min Float:" + UnityEngine.Mathf.Min$$Single$$Single(1.2, 2.4));
+            sb.AppendLine$$String("Min FloatArray:" + UnityEngine.Mathf.Min$$Single$Array(new Float32Array([1.2, 2.4, 3.5, 4.6, 5.7])));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+        }
+    }
+};
+JsTypes.push(MathTest);
+var StringBuilderTest = {
+    fullname: "StringBuilderTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            this.TestStringBuilder();
+        },
+        TestStringBuilder: function (){
+            var log = new System.Text.StringBuilder.ctor();
+            UnityEngine.Debug.Log$$Object("=======Ctor=======");
+            var sb1 = new System.Text.StringBuilder.ctor();
+            log.AppendLine$$String("sb1:" + sb1);
+            var sb2 = new System.Text.StringBuilder.ctor$$Int32(10);
+            log.AppendLine$$String("sb2:" + sb2);
+            var sb3 = new System.Text.StringBuilder.ctor$$Int32$$Int32(10, 1000);
+            log.AppendLine$$String("sb3:" + sb3);
+            var sb4 = new System.Text.StringBuilder.ctor$$String("HelloWorld");
+            log.AppendLine$$String("sb4:" + sb4);
+            UnityEngine.Debug.Log$$Object(log.toString());
+            log.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Property=======");
+            sb1.Append$$String("Hello,my name is xxxx.");
+            sb1.set_Capacity(1000);
+            log.AppendLine$$String("sb1.Capacity:" + sb1.get_Capacity());
+            sb1.set_Length(5);
+            log.AppendLine$$String("sb1.Length:" + sb1.get_Length());
+            log.AppendLine$$String("sb1.MaxCapacity:" + sb1.get_MaxCapacity());
+            log.AppendLine$$String("sb1[0]:" + sb1.get_Chars$$Int32(0));
+            sb1.set_Chars$$Int32(0, "G");
+            log.AppendLine$$String("sb1:" + sb1);
+            UnityEngine.Debug.Log$$Object(log.toString());
+            log.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Append=======");
+            log.Append$$Boolean(false);
+            log.Append$$Char("X");
+            log.Append$$Char$Array(["y", "u", "o"]);
+            log.Append$$Single(0.32);
+            log.Append$$Double(6.28);
+            log.Append$$Int32(123);
+            log.Append$$Int64(678);
+            UnityEngine.Debug.Log$$Object("Length:" + log.get_Length() + " " + log.toString());
+            log.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======AppendLine=======");
+            log.Append$$String("hehe");
+            log.AppendLine();
+            log.AppendLine$$String("you are foo");
+            UnityEngine.Debug.Log$$Object("Length:" + log.get_Length() + " " + log.toString());
+            log.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======AppendFormat=======");
+            log.AppendFormat$$String$$Object$Array("int:{0},float:{1},double:{2},bool:{3}", [123, 3.14, 6.28, true]);
+            UnityEngine.Debug.Log$$Object("Length:" + log.get_Length() + " " + log.toString());
+            log.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Insert=======");
+            log.Append$$String("|Mid|");
+            log.Insert$$Int32$$Boolean(0, false);
+            log.Insert$$Int32$$Boolean(0, false);
+            log.Insert$$Int32$$Char(0, "X");
+            log.Insert$$Int32$$Char$Array(0, ["y", "u", "o"]);
+            log.Insert$$Int32$$Single(0, 0.32);
+            log.Insert$$Int32$$Double(0, 6.28);
+            log.Insert$$Int32$$Int32(0, 123);
+            log.Insert$$Int32$$Int64(0, 678);
+            UnityEngine.Debug.Log$$Object("Length:" + log.get_Length() + " " + log.toString());
+            log.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Remove=======");
+            log.Append$$String("Something to remove");
+            log.Remove(0, 3);
+            UnityEngine.Debug.Log$$Object("Length:" + log.get_Length() + " " + log.toString());
+            log.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Replace=======");
+            log.Append$$String("Something to replace");
+            log.Append$$String("Something to change");
+            log.Replace$$String$$String("Something", "Any");
+            log.Replace$$Char$$Char("e", "X");
+            UnityEngine.Debug.Log$$Object("Length:" + log.get_Length() + " " + log.toString());
+            log.set_Length(0);
+        }
+    }
+};
+JsTypes.push(StringBuilderTest);
+var StringTest = {
+    fullname: "StringTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            this.S_Ctor();
+            this.S_Join();
+            this.S_ToCharArray();
+            this.S_Equals();
+            this.S_Compare();
+        },
+        S_Ctor: function (){
+            UnityEngine.Debug.Log$$Object("");
+            UnityEngine.Debug.Log$$Object("S_Ctor");
+            var strs = ["a", "b", "c"];
+            var str = System.String.ctor$$Char$Array(strs);
+            UnityEngine.Debug.Log$$Object("ctor$$Char$Array: " + str);
+            str = System.String.ctor$$Char$Array$$Int32$$Int32(strs, 1, 2);
+            UnityEngine.Debug.Log$$Object("ctor$$Char$Array$$Int32$$Int32: " + str);
+        },
+        S_Join: function (){
+            UnityEngine.Debug.Log$$Object("");
+            UnityEngine.Debug.Log$$Object("S_Join");
+            var strs = ["a", "ab", "abc", "abcd"];
+            UnityEngine.Debug.Log$$Object(System.String.Join$$String$$String$Array("|", strs));
+            UnityEngine.Debug.Log$$Object(System.String.Join$$String$$String$Array$$Int32$$Int32("|", strs, 1, 2));
+        },
+        S_ToCharArray: function (){
+            UnityEngine.Debug.Log$$Object("");
+            UnityEngine.Debug.Log$$Object("S_ToCharArray");
+            var str = "abcdefg";
+            for (var $i23 = 0,$t23 = str.ToCharArray(),$l23 = $t23.length,s = $t23[$i23]; $i23 < $l23; $i23++, s = $t23[$i23]){
+                UnityEngine.Debug.Log$$Object(s);
+            }
+            for (var $i24 = 0,$t24 = str.ToCharArray$$Int32$$Int32(2, 2),$l24 = $t24.length,s = $t24[$i24]; $i24 < $l24; $i24++, s = $t24[$i24]){
+                UnityEngine.Debug.Log$$Object(s);
+            }
+        },
+        S_Equals: function (){
+            UnityEngine.Debug.Log$$Object("");
+            UnityEngine.Debug.Log$$Object("S_Equals");
+            var str1 = "abcd";
+            var str2 = "abcd";
+            var str3 = "ABCD";
+            UnityEngine.Debug.Log$$Object(str1.Equals$$String(str2));
+            UnityEngine.Debug.Log$$Object(str1.Equals$$String(str3));
+            UnityEngine.Debug.Log$$Object(str1.Equals$$String$$StringComparison(str3, 1));
+            UnityEngine.Debug.Log$$Object(System.String.Equals$$String$$String(str1, str2));
+            UnityEngine.Debug.Log$$Object(System.String.Equals$$String$$String(str1, str3));
+            UnityEngine.Debug.Log$$Object(System.String.Equals$$String$$String$$StringComparison(str1, str3, 1));
+        },
+        S_Compare: function (){
+            UnityEngine.Debug.Log$$Object("");
+            UnityEngine.Debug.Log$$Object("S_Compare");
+            var str1 = "abcd";
+            var str2 = "abcd";
+            var str3 = "ABCD";
+            UnityEngine.Debug.Log$$Object(System.String.Compare$$String$$String(str1, str2));
+            UnityEngine.Debug.Log$$Object(System.String.Compare$$String$$String(str1, str3));
+            UnityEngine.Debug.Log$$Object(System.String.Compare$$String$$String$$Boolean(str1, str3, true));
+        }
+    }
+};
+JsTypes.push(StringTest);
+var TimeSpanTest = {
+    fullname: "TimeSpanTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            this.TestDateTime();
+        },
+        TestDateTime: function (){
+            var sb = new System.Text.StringBuilder.ctor();
+            var tsMin = System.TimeSpan.MinValue;
+            var tsCustom = new System.TimeSpan.ctor$$Int32$$Int32$$Int32$$Int32$$Int32(6, 3, 1, 4, 3448);
+            UnityEngine.Debug.Log$$Object("=======Static Field=======");
+            sb.AppendLine$$String("MinValue:" + System.TimeSpan.MinValue);
+            sb.AppendLine$$String("MaxValue:" + System.TimeSpan.MaxValue);
+            sb.AppendLine$$String("TicksPerDay:" + 864000000000 /* TimeSpan.TicksPerDay */);
+            sb.AppendLine$$String("TicksPerHour:" + 36000000000 /* TimeSpan.TicksPerHour */);
+            sb.AppendLine$$String("TicksPerMinute:" + 600000000 /* TimeSpan.TicksPerMinute */);
+            sb.AppendLine$$String("TicksPerSecond:" + 10000000 /* TimeSpan.TicksPerSecond */);
+            sb.AppendLine$$String("TicksPerMillisecond:" + 10000 /* TimeSpan.TicksPerMillisecond */);
+            sb.AppendLine$$String("Zero:" + System.TimeSpan.Zero);
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Ctor=======");
+            var timeSpan1 = new System.TimeSpan.ctor();
+            sb.AppendLine$$String("timeSpan1:" + timeSpan1);
+            var timeSpan2 = new System.TimeSpan.ctor$$Int32$$Int32$$Int32(3, 1, 4);
+            sb.AppendLine$$String("timeSpan2:" + timeSpan2);
+            var timeSpan3 = new System.TimeSpan.ctor$$Int32$$Int32$$Int32$$Int32(3, 1, 4, 8);
+            sb.AppendLine$$String("timeSpan3:" + timeSpan3);
+            var timeSpan4 = new System.TimeSpan.ctor$$Int32$$Int32$$Int32$$Int32$$Int32(3, 1, 4, 8, 700);
+            sb.AppendLine$$String("timeSpan4:" + timeSpan4);
+            var timeSpan5 = new System.TimeSpan.ctor$$Int64(6048000000000 /* 604800000L * 10000 */);
+            sb.AppendLine$$String("timeSpan5:" + timeSpan5);
+            var timeSpan6 = System.TimeSpan.FromTicks(6048000000000 /* 604800000L * 10000 */);
+            sb.AppendLine$$String("FromTicks:" + timeSpan6);
+            var timeSpan7 = System.TimeSpan.FromDays(7);
+            sb.AppendLine$$String("FromDays:" + timeSpan7);
+            var timeSpan8 = System.TimeSpan.FromHours(168);
+            sb.AppendLine$$String("FromHours:" + timeSpan8);
+            var timeSpan9 = System.TimeSpan.FromMinutes(10080);
+            sb.AppendLine$$String("FromMinutes:" + timeSpan9);
+            var timeSpan10 = System.TimeSpan.FromSeconds(604800);
+            sb.AppendLine$$String("FromSeconds:" + timeSpan10);
+            var timeSpan11 = System.TimeSpan.FromMilliseconds(604800000);
+            sb.AppendLine$$String("FromMilliseconds:" + timeSpan11);
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Property=======");
+            sb.AppendLine$$String("Days:" + tsCustom.get_Days());
+            sb.AppendLine$$String("Hours:" + tsCustom.get_Hours());
+            sb.AppendLine$$String("Minutes:" + tsCustom.get_Minutes());
+            sb.AppendLine$$String("Seconds:" + tsCustom.get_Seconds());
+            sb.AppendLine$$String("Milliseconds:" + tsCustom.get_Milliseconds());
+            sb.AppendLine$$String("Ticks:" + tsCustom.get_Ticks());
+            sb.AppendLine$$String("TotalDays:" + tsCustom.get_TotalDays());
+            sb.AppendLine$$String("TotalHours:" + tsCustom.get_TotalHours());
+            sb.AppendLine$$String("TotalMinutes:" + tsCustom.get_TotalMinutes());
+            sb.AppendLine$$String("TotalSeconds:" + tsCustom.get_TotalSeconds());
+            sb.AppendLine$$String("TotalMilliseconds:" + tsCustom.get_TotalMilliseconds());
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Add=======");
+            sb.AppendLine$$String("Add:" + System.TimeSpan.Zero.Add(new System.TimeSpan.ctor$$Int32$$Int32$$Int32(2, 30, 50)));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Operator=======");
+            sb.AppendLine$$String("Now > Min:" + (System.TimeSpan.op_GreaterThan(tsCustom, tsMin)));
+            sb.AppendLine$$String("Now >= Min:" + (System.TimeSpan.op_GreaterThanOrEqual(tsCustom, tsMin)));
+            sb.AppendLine$$String("Now == Now:" + (System.TimeSpan.op_Equality(tsCustom, tsMin)));
+            sb.AppendLine$$String("Now < Min:" + (System.TimeSpan.op_LessThan(tsCustom, tsMin)));
+            sb.AppendLine$$String("Now <= Min:" + (System.TimeSpan.op_LessThanOrEqual(tsCustom, tsMin)));
+            sb.AppendLine$$String("Now CompareTo Min:" + tsCustom.CompareTo$$TimeSpan(tsMin));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Format=======");
+            sb.AppendLine$$String("TimeSpan(6, 3, 1, 4, 3448):" + tsCustom.toString());
+            sb.AppendLine$$String("TimeSpan(16, 0, 0, 0, 0):" + new System.TimeSpan.ctor$$Int32$$Int32$$Int32$$Int32$$Int32(16, 0, 0, 0, 0));
+            sb.AppendLine$$String("TimeSpan(0, 0, 0, 0, 448):" + new System.TimeSpan.ctor$$Int32$$Int32$$Int32$$Int32$$Int32(0, 0, 0, 0, 448));
+            sb.AppendLine$$String("TimeSpan(0, 3, 1, 4, 0):" + new System.TimeSpan.ctor$$Int32$$Int32$$Int32$$Int32$$Int32(0, 3, 1, 4, 0));
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+            UnityEngine.Debug.Log$$Object("=======Parse=======");
+            var strValues = ["6", "6:12", "6:12:14", "6.12:14:45", "6.12:14:45", "6.12:14:45.3448"];
+            for (var $i25 = 0,$l25 = strValues.length,s = strValues[$i25]; $i25 < $l25; $i25++, s = strValues[$i25]){
+                var ts = System.TimeSpan.Parse(s);
+                sb.AppendLine$$String(s + " --> " + ts);
+            }
+            UnityEngine.Debug.Log$$Object(sb.toString());
+            sb.set_Length(0);
+        }
+    }
+};
+JsTypes.push(TimeSpanTest);
+var DelegateTest = {
+    fullname: "DelegateTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.lst = null;
+            this.mi = 0;
+            this.elapsed = 0;
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Awake: function (){
+            this.lst = new System.Collections.Generic.List$1.ctor(System.Int32.ctor);
+            for (var i = 0; i < 10; i++){
+                this.lst.Add(i);
+            }
+        },
+        Start: function (){
+        },
+        Update: function (){
+            this.elapsed += _jsComManager.dT;
+            if (this.elapsed > 1){
+                this.elapsed = 0;
+                var f = this.lst.Find($CreateAnonymousDelegate(this, function (v){
+                    return v == this.mi;
+                }));
+                UnityEngine.Debug.Log$$Object("Found: " + f);
+                this.mi++;
+                if (this.mi >= 10)
+                    this.mi -= 10;
+            }
+        }
+    }
+};
+JsTypes.push(DelegateTest);
+var DictionaryTest = {
+    fullname: "DictionaryTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.elapsed = 0;
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+        },
+        Update: function (){
+            this.elapsed += _jsComManager.dT;
+            if (this.elapsed > 1){
+                this.elapsed = 0;
+                var dict = new System.Collections.Generic.Dictionary$2.ctor(System.String.ctor, System.Int32.ctor);
+                dict.Add("qiucw", 28);
+                dict.Add("helj", 27);
+                var age;
+                if ((function (){
+                    var $1 = $Ref(null, age);
+                    var $res = dict.TryGetValue("qiucw", $1);
+                    age = $1.Value;
+                    return $res;
+                }).call(this)){
+                    UnityEngine.Debug.Log$$Object("age: " + age.toString());
+                }
+                else {
+                    UnityEngine.Debug.Log$$Object("not found");
+                }
+                var $it25 = dict.GetEnumerator();
+                while ($it25.MoveNext()){
+                    var v = $it25.get_Current();
+                    UnityEngine.Debug.Log$$Object(v.get_Key().toString() + "->" + v.get_Value().toString());
+                }
+            }
+        }
+    }
+};
+JsTypes.push(DictionaryTest);
+var EncodingTest = {
+    fullname: "EncodingTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    staticDefinition: {
+        byteConverString: function (data, index, count){
+            var d = System.Text.Encoding.get_UTF8().GetDecoder();
+            var arrSize = d.GetCharCount$$Byte$Array$$Int32$$Int32(data, index, count);
+            var chars = new Array(arrSize);
+            var charSize = d.GetChars$$Byte$Array$$Int32$$Int32$$Char$Array$$Int32(data, index, count, chars, 0);
+            var str = System.String.ctor$$Char$Array$$Int32$$Int32(chars, 0, charSize);
+            return str;
+        }
+    },
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            var bytes = new Uint8Array([65, 66, 67, 0]);
+            var str = EncodingTest.byteConverString(bytes, 0, 3);
+            UnityEngine.Debug.Log$$Object(str);
+        }
+    }
+};
+JsTypes.push(EncodingTest);
+var LoginMgr = {
+    fullname: "LoginMgr",
+    baseTypeName: "System.Object",
+    staticDefinition: {
+        cctor: function (){
+            LoginMgr._instance = null;
+        },
+        Instance$$: "LoginMgr",
+        get_Instance: function (){
+            if (LoginMgr._instance == null){
+                LoginMgr._instance = new LoginMgr.ctor();
+            }
+            return LoginMgr._instance;
+        }
+    },
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.onHaConnected = null;
+            System.Object.ctor.call(this);
+        },
+        add_onHaConnected: function (value){
+            this.onHaConnected = $CombineDelegates(this.onHaConnected, value);
+        },
+        remove_onHaConnected: function (value){
+            this.onHaConnected = $RemoveDelegate(this.onHaConnected, value);
+        }
+    }
+};
+JsTypes.push(LoginMgr);
+var TestLogin = {
+    fullname: "TestLogin",
+    baseTypeName: "System.Object",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            System.Object.ctor.call(this);
+        },
+        Dofun: function (){
+            LoginMgr.get_Instance().add_onHaConnected($CreateDelegate(this, this.HandleonHaConnected));
+        },
+        HandleonHaConnected: function (){
+        }
+    }
+};
+JsTypes.push(TestLogin);
+var EventTest = {
+    fullname: "EventTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+        },
+        Update: function (){
+        }
+    }
+};
+JsTypes.push(EventTest);
+var ListTest = {
+    fullname: "ListTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.elapsed = 0;
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+        },
+        Update: function (){
+            this.elapsed += _jsComManager.dT;
+            if (this.elapsed > 1){
+                this.elapsed = 0;
+                var lst = new System.Collections.Generic.List$1.ctor(System.Int32.ctor);
+                lst.Add(6);
+                lst.Add(95);
+                var $it26 = lst.GetEnumerator();
+                while ($it26.MoveNext()){
+                    var v = $it26.get_Current();
+                    UnityEngine.Debug.Log$$Object(v);
+                }
+                var vFind = lst.Find($CreateAnonymousDelegate(this, function (val){
+                    return (val == 6);
+                }));
+                UnityEngine.Debug.Log$$Object("vFind = " + vFind);
+            }
+        }
+    }
+};
+JsTypes.push(ListTest);
+var PerformanceTest1 = {
+    fullname: "PerformanceTest1",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    staticDefinition: {
+        Run: function (refObject){
+            APIExportTest.StaticObject.x += refObject.x;
+            APIExportTest.StaticObject.y += refObject.y;
+            return APIExportTest.StaticObject;
+        }
+    },
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.mTransform = null;
+            this.elapsed = 0;
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            this.mTransform = this.get_transform();
+            this.TestActioCallback();
+        },
+        Test0: function (){
+            var N = 10000000;
+            var sw = new System.Diagnostics.Stopwatch.ctor();
+            sw.Start();
+            var g = 0;
+            var f = 0;
+            for (var i = 0; i < N; i++){
+                g += 1;
+                f += 1;
+            }
+            sw.Stop();
+            UnityEngine.Debug.Log$$Object("test0 time: " + sw.get_ElapsedMilliseconds() + " ms");
+        },
+        Test1: function (){
+            var sw = new System.Diagnostics.Stopwatch.ctor();
+            sw.Start();
+            var m;
+            for (var i = 0; i < 2000; i++){
+                m = this.mTransform.get_position();
+                this.mTransform.set_position(m);
+            }
+            UnityEngine.Debug.Log$$Object("test1 time: " + sw.get_ElapsedMilliseconds() + " ms");
+        },
+        Test2: function (){
+            var sw = new System.Diagnostics.Stopwatch.ctor();
+            sw.Start();
+            var m = this.mTransform.get_position();
+            for (var i = 0; i < 2000; i++){
+                m = UnityEngine.Vector3.Normalize$$Vector3(m);
+            }
+            UnityEngine.Debug.Log$$Object("test2 time: " + sw.get_ElapsedMilliseconds() + " ms");
+        },
+        Test3: function (){
+            var sw = new System.Diagnostics.Stopwatch.ctor();
+            sw.Start();
+            var m = this.mTransform.get_position();
+            for (var i = 0; i < 2000; i++){
+                m.Normalize();
+            }
+            UnityEngine.Debug.Log$$Object("test3 time: " + sw.get_ElapsedMilliseconds() + " ms");
+        },
+        Test4: function (){
+            var sw = new System.Diagnostics.Stopwatch.ctor();
+            sw.Start();
+            var m = this.mTransform.get_position();
+            for (var i = 0; i < 2000; i++){
+                this.mTransform.set_position(m);
+            }
+            UnityEngine.Debug.Log$$Object("test4 time: " + sw.get_ElapsedMilliseconds() + " ms");
+        },
+        Test5: function (){
+            var sw = new System.Diagnostics.Stopwatch.ctor();
+            sw.Start();
+            for (var i = 0; i < 2000; i++){
+                new UnityEngine.Vector3.ctor$$Single$$Single$$Single(i, i, i);
+            }
+            UnityEngine.Debug.Log$$Object("test5 time: " + sw.get_ElapsedMilliseconds() + " ms");
+        },
+        Test6: function (){
+            var sw = new System.Diagnostics.Stopwatch.ctor();
+            sw.Start();
+            for (var i = 0; i < 50000; i++){
+                var go = new UnityEngine.GameObject.ctor$$String("init");
+                UnityEngine.Object.DestroyImmediate$$Object(go);
+            }
+            UnityEngine.Debug.Log$$Object("test6 time: " + sw.get_ElapsedMilliseconds() + " ms");
+        },
+        Test7: function (){
+            var sw = new System.Diagnostics.Stopwatch.ctor();
+            sw.Start();
+            var obj = APIExportTest.StaticObject;
+            for (var i = 0; i < 50000; i++){
+                obj = PerformanceTest1.Run(obj);
+            }
+            sw.Stop();
+            UnityEngine.Debug.Log$$Object("test7 time: " + sw.get_ElapsedMilliseconds() + " ms");
+        },
+        TestActioCallback: function (){
+            var obj = new APIExportTest.ctor();
+            APIExportTest.OnStaticDelegateFinish = $CreateAnonymousDelegate(this, function (){
+                UnityEngine.Debug.LogError$$Object("PerTest OnStaticUpdate");
+            });
+            APIExportTest.OnStaticDelegateFinish();
+            obj.OnDelegateFinish = $CombineDelegates(obj.OnDelegateFinish, $CreateDelegate(this, this.OnPerTestDelegateFinish));
+            obj.OnDelegateFinish();
+            obj.OnDelegateFinish = $RemoveDelegate(obj.OnDelegateFinish, $CreateDelegate(this, this.OnPerTestDelegateFinish));
+            if (obj.OnDelegateFinish == null)
+                UnityEngine.Debug.LogError$$Object("====Remove OnPerTestDelegateFinish====");
+            var delegateAction = $CreateAnonymousDelegate(this, function (){
+                UnityEngine.Debug.LogError$$Object("PerTest AddDelegate");
+            });
+            obj.AddDelegate(delegateAction);
+            obj.OnDelegateFinish();
+            obj.RemoveDelegate(delegateAction);
+            if (obj.OnDelegateFinish == null)
+                UnityEngine.Debug.LogError$$Object("====Remove AddDelegate====");
+            APIExportTest.add_OnStaticEventFinish($CreateDelegate(this, this.OnPerTestStaticEventFinish));
+            APIExportTest.SendStaticEvent();
+            UnityEngine.Debug.LogError$$Object("====Remove OnPerTestStaticEventFinish====");
+            APIExportTest.remove_OnStaticEventFinish($CreateDelegate(this, this.OnPerTestStaticEventFinish));
+            APIExportTest.SendStaticEvent();
+            UnityEngine.Debug.LogError$$Object("====Test AddEvent====");
+            var eventAction = $CreateAnonymousDelegate(this, function (mono){
+                UnityEngine.Debug.LogError$$Object("PerTest AddEvent");
+            });
+            obj.AddEvent(eventAction);
+            obj.SendEvent();
+            UnityEngine.Debug.LogError$$Object("====Remove AddEvent====");
+            obj.RemoveEvent(eventAction);
+            obj.SendEvent();
+            UnityEngine.Debug.LogError$$Object("====Test OnPerTestEventFinish====");
+            obj.add_OnEventFinish($CreateDelegate(this, this.OnPerTestEventFinish));
+            obj.SendEvent();
+            UnityEngine.Debug.LogError$$Object("====Remove OnPerTestEventFinish====");
+            obj.remove_OnEventFinish($CreateDelegate(this, this.OnPerTestEventFinish));
+            obj.SendEvent();
+        },
+        OnPerTestDelegateFinish: function (){
+            UnityEngine.Debug.LogError$$Object("PerTest OnPerTestDelegateFinish");
+        },
+        OnPerTestEventFinish: function (mono){
+            UnityEngine.Debug.LogError$$Object("PerTest OnPerTestEventFinish");
+        },
+        OnPerTestStaticEventFinish: function (){
+            UnityEngine.Debug.LogError$$Object("PerTest OnPerTestStaticEventFinish");
+        },
+        OnChangeEvent: function (){
+        },
+        Update: function (){
+            this.elapsed += _jsComManager.dT;
+            if (this.elapsed > 3){
+                this.elapsed = 0;
+                this.Test0();
+                this.Test1();
+                this.Test2();
+                this.Test3();
+                this.Test4();
+                this.Test5();
+                this.Test6();
+            }
+        }
+    }
+};
+JsTypes.push(PerformanceTest1);
+var SampleViewer = {
+    fullname: "SampleViewer",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    staticDefinition: {
+        cctor: function (){
+            SampleViewer.inst = null;
+        }
+    },
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.showScenesList = true;
+            this.scenes = [new SampleViewer.stScene.ctor$$String$$String("V3Test", ""), new SampleViewer.stScene.ctor$$String$$String("V3Test_JS", ""), new SampleViewer.stScene.ctor$$String$$String("PerformanceTest1", ""), new SampleViewer.stScene.ctor$$String$$String("PerformanceTest1_JS", ""), new SampleViewer.stScene.ctor$$String$$String("ListTest", ""), new SampleViewer.stScene.ctor$$String$$String("ListTest_JS", ""), new SampleViewer.stScene.ctor$$String$$String("DictionaryTest", ""), new SampleViewer.stScene.ctor$$String$$String("DictionaryTest_JS", ""), new SampleViewer.stScene.ctor$$String$$String("DelegateTest", ""), new SampleViewer.stScene.ctor$$String$$String("DelegateTest_JS", ""), new SampleViewer.stScene.ctor$$String$$String("TestCoroutine", ""), new SampleViewer.stScene.ctor$$String$$String("TestCoroutine_JS", ""), new SampleViewer.stScene.ctor$$String$$String("JSImpTest1", ""), new SampleViewer.stScene.ctor$$String$$String("JSImpTest1_JS", ""), new SampleViewer.stScene.ctor$$String$$String("Car", ""), new SampleViewer.stScene.ctor$$String$$String("Car_JS", ""), new SampleViewer.stScene.ctor$$String$$String("SerializeSimple", ""), new SampleViewer.stScene.ctor$$String$$String("SerializeSimple_JS", ""), new SampleViewer.stScene.ctor$$String$$String("SerializeStruct", ""), new SampleViewer.stScene.ctor$$String$$String("SerializeStruct_JS", ""), new SampleViewer.stScene.ctor$$String$$String("XmlTest", ""), new SampleViewer.stScene.ctor$$String$$String("XmlTest_JS", "")];
+            this.scrollPosition = UnityEngine.Vector2.get_zero();
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Awake: function (){
+            if (UnityEngine.Object.op_Inequality(JSEngine.inst, null)){
+                UnityEngine.Object.Destroy$$Object(JSEngine.inst.get_gameObject());
+            }
+            if (UnityEngine.Object.op_Inequality(SampleViewer.inst, null)){
+                UnityEngine.Object.Destroy$$Object(this.get_gameObject());
+            }
+            else {
+                SampleViewer.inst = this;
+                UnityEngine.Object.DontDestroyOnLoad(this.get_gameObject());
+            }
+        },
+        Start: function (){
+        },
+        Update: function (){
+        },
+        OnGUI: function (){
+            if (this.showScenesList){
+                var h = ((UnityEngine.Screen.get_height() / 10) | 0);
+                this.scrollPosition = UnityEngine.GUI.BeginScrollView$$Rect$$Vector2$$Rect$$Boolean$$Boolean(new UnityEngine.Rect.ctor$$Single$$Single$$Single$$Single(0, 0, UnityEngine.Screen.get_width(), UnityEngine.Screen.get_height()), this.scrollPosition, new UnityEngine.Rect.ctor$$Single$$Single$$Single$$Single(0, 0, UnityEngine.Screen.get_width(), this.scenes.length * h), false, false);
+                for (var i = 0; i < this.scenes.length; i++){
+                    if (UnityEngine.GUI.Button$$Rect$$String(new UnityEngine.Rect.ctor$$Single$$Single$$Single$$Single(((UnityEngine.Screen.get_width() / 4) | 0), h * i, ((UnityEngine.Screen.get_width() / 2) | 0), h), this.scenes[i].showText)){
+                        this.showScenesList = false;
+                        UnityEngine.Application.LoadLevel$$String(this.scenes[i].levelName);
+                        break;
+                    }
+                }
+                UnityEngine.GUI.EndScrollView();
+            }
+            else {
+                var w = ((UnityEngine.Screen.get_width() / 10) | 0);
+                var h = ((UnityEngine.Screen.get_height() / 10) | 0);
+                if (w < 100)
+                    w = 150;
+                if (UnityEngine.GUI.Button$$Rect$$String(new UnityEngine.Rect.ctor$$Single$$Single$$Single$$Single(UnityEngine.Screen.get_width() - w, 0, w, h), "Back To Scene List")){
+                    this.showScenesList = true;
+                    UnityEngine.Application.LoadLevel$$String("SampleViewer");
+                }
+            }
+        }
+    }
+};
+JsTypes.push(SampleViewer);
+var V3Test = {
+    fullname: "V3Test",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.elapsed = 0;
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+        },
+        Update: function (){
+            this.elapsed += _jsComManager.dT;
+            if (this.elapsed > 1){
+                this.elapsed = 0;
+                var sb = new System.Text.StringBuilder.ctor();
+                this.elapsed = 0;
+                var v = new UnityEngine.Vector3.ctor$$Single$$Single$$Single(2, 3, 6);
+                var w = new UnityEngine.Vector3.ctor$$Single$$Single$$Single(7, 23, 1);
+                var n = v.get_normalized();
+                var arr = [n.x, n.y, n.z];
+                UnityEngine.Debug.Log$$Object(sb.AppendFormat$$String$$Object$Array("v.normalized = ({0}, {1}, {2})", arr).toString());
+                sb.Remove(0, sb.get_Length());
+                var cross = UnityEngine.Vector3.Cross(v, w);
+                arr = [cross.x, cross.y, cross.z];
+                UnityEngine.Debug.Log$$Object(sb.AppendFormat$$String$$Object$Array("Cross(v, w) = ({0}, {1}, {2})", arr).toString());
+                UnityEngine.Debug.Log$$Object("v.magnitude = " + v.get_magnitude());
+                UnityEngine.Debug.Log$$Object("w.magnitude = " + w.get_magnitude());
+                UnityEngine.Debug.Log$$Object("Dot(v, w) = " + UnityEngine.Vector3.Dot(v, w));
+                UnityEngine.Debug.Log$$Object("Angle(v, w) = " + UnityEngine.Vector3.Angle(v, w));
+                var proj = UnityEngine.Vector3.Project(v, w);
+                UnityEngine.Debug.Log$$Object("Project(v,w) = " + proj.toString());
+                v.Normalize();
+                w.Normalize();
+                UnityEngine.Debug.Log$$Object("normalized v = " + v.toString());
+                UnityEngine.Debug.Log$$Object("normalized w = " + w.toString());
+            }
+        }
+    }
+};
+JsTypes.push(V3Test);
+var AwakeA = {
+    fullname: "AwakeA",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.valueOfA = 0;
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Awake: function (){
+            var b = this.GetComponent$1(AwakeB.ctor);
+            UnityEngine.MonoBehaviour.print(System.String.Format$$String$$Object$$Object("A.GetComponent<B>: {0}, value: {1}", b.get_name(), b.valueOfB));
+        }
+    }
+};
+JsTypes.push(AwakeA);
+var AwakeB = {
+    fullname: "AwakeB",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.valueOfB = 0;
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Awake: function (){
+            var a = this.GetComponent$1(AwakeA.ctor);
+            UnityEngine.MonoBehaviour.print(System.String.Format$$String$$Object$$Object("B.GetComponent<A>: {0}, value: {1}", a.get_name(), a.valueOfA));
+            var c = this.get_gameObject().AddComponent$1(AwakeC.ctor);
+            UnityEngine.MonoBehaviour.print("c.valueOfC = " + c.valueOfC);
+            this.get_gameObject().AddComponent$1(AwakeC.ctor);
+            this.get_gameObject().AddComponent$1(AwakeC.ctor);
+            this.get_gameObject().AddComponent$1(AwakeC.ctor);
+            this.get_gameObject().AddComponent$1(AwakeC.ctor);
+        }
+    }
+};
+JsTypes.push(AwakeB);
+var AwakeC = {
+    fullname: "AwakeC",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.valueOfC = 0;
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Awake: function (){
+            this.valueOfC = 8;
+        },
+        Update: function (){
+            UnityEngine.Debug.LogError$$Object("AwakeC:" + this.GetInstanceID());
+        }
+    }
+};
+JsTypes.push(AwakeC);
+var ComponentTest = {
+    fullname: "ComponentTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            var go = new UnityEngine.GameObject.ctor$$String$$Type$Array("NewGo", [Typeof(UnityEngine.SphereCollider.ctor), Typeof(UnityEngine.BoxCollider.ctor), Typeof(UnityEngine.Animation.ctor)]);
+            this.get_gameObject().AddComponent$$Type(Typeof(UnityEngine.SphereCollider.ctor));
+            this.get_gameObject().AddComponent$1(UnityEngine.BoxCollider.ctor);
+            this.get_gameObject().AddComponent$$String("Animation");
+            var objs = UnityEngine.Resources.FindObjectsOfTypeAll$1(UnityEngine.Animation.ctor);
+            UnityEngine.Debug.LogError$$Object("Find Objects: " + objs.length);
+            var eb = this.GetComponent$1(TEnemyBase.ctor);
+            if (UnityEngine.Object.op_Inequality(eb, null)){
+                eb.set_enemyName("BULL");
+                UnityEngine.Debug.Log$$Object("enemyName = " + eb.get_enemyName());
+            }
+            else {
+                UnityEngine.Debug.Log$$Object("GetComponent<TEnemyBase>() returns null!");
+            }
+            TestExtensionMethod.GetOrAddComponent$1(MentosKXT.ctor, this.get_gameObject());
+        },
+        Update: function (){
+        }
+    }
+};
+JsTypes.push(ComponentTest);
+var MentosKXT = {
+    fullname: "MentosKXT",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.bUpdatePrinted = false;
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            UnityEngine.MonoBehaviour.print("Hello this is MentosKXT Start()");
+        },
+        Update: function (){
+            if (!this.bUpdatePrinted){
+                this.bUpdatePrinted = true;
+                UnityEngine.MonoBehaviour.print("Hello this is MentosKXT Update()");
+            }
+        }
+    }
+};
+JsTypes.push(MentosKXT);
+var TEnemy = {
+    fullname: "TEnemy",
+    baseTypeName: "TEnemyBase",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.pos = new UnityEngine.Vector3.ctor();
+            TEnemyBase.ctor.call(this);
+        },
+        Start: function (){
+        },
+        Update: function (){
+        }
+    }
+};
+JsTypes.push(TEnemy);
+var TEnemyBase = {
+    fullname: "TEnemyBase",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this._enemyID = 0;
+            this._enemyName = null;
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        enemyID$$: "System.Int32",
+        get_enemyID: function (){
+            return this._enemyID;
+        },
+        set_enemyID: function (value){
+            this._enemyID = value;
+        },
+        enemyName$$: "System.String",
+        get_enemyName: function (){
+            return this._enemyName;
+        },
+        set_enemyName: function (value){
+            this._enemyName = value;
+        },
+        Start: function (){
+        },
+        Update: function (){
+        }
+    }
+};
+JsTypes.push(TEnemyBase);
+var TestCoroutine = {
+    fullname: "TestCoroutine",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            this.StartCoroutine$$String("DoTest");
+            this.StartCoroutine$$IEnumerator(this.DoTest2($CreateAnonymousDelegate(this, function (){
+                UnityEngine.Debug.Log$$Object("Action called!");
+            })));
+            this.InvokeRepeating("PrintHelloInvoke", 4, 1);
+            this.Invoke("DelayInvoke", 5);
+        },
+        Update: function (){
+            if (UnityEngine.Input.GetMouseButtonUp(0)){
+                this.StopCoroutine$$String("DoTest");
+            }
+        },
+        WaitForCangJingKong: function*(){
+            yield(new UnityEngine.WaitForSeconds.ctor(2));
+        },
+        DoTest: function*(){
+            UnityEngine.Debug.Log$$Object("DoTest 1");
+            yield(null);
+            UnityEngine.Debug.Log$$Object("DoTest 2");
+            yield(new UnityEngine.WaitForSeconds.ctor(1));
+            var www = new UnityEngine.WWW.ctor$$String("file://" + UnityEngine.Application.get_dataPath() + "/JSBinding/Samples/Coroutine/CoroutineReadme.txt");
+            yield(www);
+            UnityEngine.Debug.Log$$Object("DoTest 3 Text from WWW: " + www.get_text());
+            yield(this.StartCoroutine$$IEnumerator(this.WaitForCangJingKong()));
+            UnityEngine.Debug.Log$$Object("DoTest 4 Wait for CangJingKong finished!");
+        },
+        DoTest2: function*(a){
+            UnityEngine.Debug.Log$$Object("will call action 2 seconds later");
+            yield(new UnityEngine.WaitForSeconds.ctor(2));
+            a();
+        },
+        PrintHelloInvoke: function (){
+            UnityEngine.MonoBehaviour.print("Hello, Invoke! (every 1 second)");
+        },
+        DelayInvoke: function (){
+            UnityEngine.MonoBehaviour.print("This is call 5 seconds later, only once!");
+        }
+    }
+};
+JsTypes.push(TestCoroutine);
+var GUITest = {
+    fullname: "GUITest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.consoleRect = new UnityEngine.Rect.ctor();
+            this._consoleScrollPos = new UnityEngine.Vector3.ctor();
+            this._hide = false;
+            this._logScrollPos = new UnityEngine.Vector3.ctor();
+            this._logBuilder = null;
+            this.fpsFrequency = 0.5;
+            this.nbDecimal = 1;
+            this.accum = 0;
+            this.frames = 0;
+            this.fpsColor = UnityEngine.Color.get_white();
+            this.sFPS = "";
+            this.memoryFrequency = 5;
+            this._useHeapSize = 0;
+            this._monoUsedSize = 0;
+            this._monoHeapSize = 0;
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            this.consoleRect = new UnityEngine.Rect.ctor$$Single$$Single$$Single$$Single(0, 0, UnityEngine.Screen.get_width() * 0.8, UnityEngine.Screen.get_height() * 0.8);
+            this._logBuilder = new System.Text.StringBuilder.ctor();
+            this.StartCoroutine$$IEnumerator(this.RefreshFPS());
+            this.StartCoroutine$$IEnumerator(this.RefreshMemory());
+        },
+        Update: function (){
+            this.accum += UnityEngine.Time.get_timeScale() / _jsComManager.dT;
+            ++this.frames;
+        },
+        OnGUI: function (){
+            this.consoleRect = UnityEngine.GUI.Window$$Int32$$Rect$$WindowFunction$$String(0, this.consoleRect, $CreateDelegate(this, this.DrawConsoleWindow), "GameConsole");
+        },
+        DrawConsoleWindow: function (windowId){
+            if (UnityEngine.GUILayout.Button$$String$$GUILayoutOption$Array("Hide", new Array(0))){
+                this._hide = !this._hide;
+                this.consoleRect = this._hide ? new UnityEngine.Rect.ctor$$Single$$Single$$Single$$Single(this.consoleRect.get_xMin(), this.consoleRect.get_yMin(), 100, 50) : new UnityEngine.Rect.ctor$$Single$$Single$$Single$$Single(0, 0, UnityEngine.Screen.get_width() * 0.8, UnityEngine.Screen.get_height() * 0.8);
+            }
+            if (!this._hide){
+                this._consoleScrollPos = UnityEngine.Vector2.op_Implicit$$Vector2(UnityEngine.GUILayout.BeginScrollView$$Vector2$$GUILayoutOption$Array(UnityEngine.Vector2.op_Implicit$$Vector3(this._consoleScrollPos), new Array(0)));
+                this.DrawFPSInfo();
+                this.DrawMemoryInfo();
+                this.DrawLogPanel();
+                UnityEngine.GUILayout.EndScrollView();
+            }
+            UnityEngine.GUI.DragWindow();
+        },
+        DrawLogPanel: function (){
+            if (UnityEngine.GUILayout.Button$$String$$GUILayoutOption$Array("Clear", new Array(0))){
+                this._logBuilder.set_Length(0);
+            }
+            this._logScrollPos = UnityEngine.Vector2.op_Implicit$$Vector2(UnityEngine.GUILayout.BeginScrollView$$Vector2$$GUIStyle$$GUILayoutOption$Array(UnityEngine.Vector2.op_Implicit$$Vector3(this._logScrollPos), UnityEngine.GUIStyle.op_Implicit("TextArea"), [UnityEngine.GUILayout.Height(400)]));
+            UnityEngine.GUILayout.Label$$String$$GUILayoutOption$Array(this._logBuilder.toString(), new Array(0));
+            UnityEngine.GUILayout.EndScrollView();
+        },
+        RefreshFPS: function*(){
+            while (true){
+                var fps = this.accum / this.frames;
+                this.sFPS = fps.ToString$$String("f" + UnityEngine.Mathf.Clamp$$Int32$$Int32$$Int32(this.nbDecimal, 0, 10));
+                this.fpsColor = (fps >= 30) ? UnityEngine.Color.get_green() : ((fps > 10) ? UnityEngine.Color.get_yellow() : UnityEngine.Color.get_red());
+                this.accum = 0;
+                this.frames = 0;
+                yield(new UnityEngine.WaitForSeconds.ctor(this.fpsFrequency));
+            }
+        },
+        DrawFPSInfo: function (){
+            UnityEngine.GUI.set_color(this.fpsColor);
+            UnityEngine.GUILayout.Label$$String$$GUILayoutOption$Array(this.sFPS + " FPS", new Array(0));
+            UnityEngine.GUI.set_color(UnityEngine.Color.get_white());
+        },
+        RefreshMemory: function*(){
+            while (true){
+                this._useHeapSize = UnityEngine.Profiler.get_usedHeapSize();
+                this._monoUsedSize = UnityEngine.Profiler.GetMonoUsedSize();
+                this._monoHeapSize = UnityEngine.Profiler.GetMonoHeapSize();
+                yield(new UnityEngine.WaitForSeconds.ctor(this.memoryFrequency));
+            }
+        },
+        DrawMemoryInfo: function (){
+            UnityEngine.GUILayout.Label$$String$$GUILayoutOption$Array("UseHeapSize: " + this._useHeapSize, new Array(0));
+            UnityEngine.GUILayout.Label$$String$$GUILayoutOption$Array("MonoUsedSize: " + this._monoUsedSize, new Array(0));
+            UnityEngine.GUILayout.Label$$String$$GUILayoutOption$Array("MonoHeapSize: " + this._monoHeapSize, new Array(0));
+        }
+    }
+};
+JsTypes.push(GUITest);
+var jsimp$Reflection = {
+    fullname: "jsimp.Reflection",
+    baseTypeName: "System.Object",
+    staticDefinition: {
+        CreateInstance$1: function (T){
+            // 这2个函数，如果T是C#类型，比如说 GameObject，是否仍然有效？
+        	// 答案是：有点神奇，我认为是有效的！
+        	// 得测试一下
+			var ret = new T();
+            return ret;
+        },
+        CreateInstance$$Type: function (type){
+            return new type._JsType.ctor();
+        },
+        SetFieldValue: function (obj, fieldName, value){
+            if (obj != null) {
+                //if (obj.hasOwnProperty(fieldName))
+                {
+                    obj[fieldName] = value;
+                    return true;
+                }
+            }
+            return false;
+        },
+        GetFieldType: function (type, fieldName){
+            if (type != null) {
+                var typeStr = type._JsType.ctor.prototype[fieldName + "$$"];
+                //print(type.fullname + "." + fieldName + " = " + typeStr);
+                if (typeStr != undefined) {
+                    if (typeStr == "System.Int32[]") {
+                        //return Int32Array;
+                        var fieldType = Typeof(Int32Array);
+                        //print(fieldType.fullname);
+                        print("[] " + fieldType)
+                        return fieldType;
+                    } else {
+                        var fieldType = Typeof(typeStr);
+                        //print(fieldType.fullname);
+                        return fieldType;
+                    }
+                }
+            }
+            return null;
+        },
+        SetPropertyValue: function (obj, propertyName, value){
+            return this.SetFieldValue(obj, "_" + propertyName, value);
+        },
+        GetPropertyType: function (type, propertyName){
+            return this.GetFieldType(type, propertyName);
+        },
+        PropertyTypeIsIntArray: function (type, propertyName){
+            if (type != null) {
+                var typeStr = type._JsType.ctor.prototype[propertyName + "$$"];
+                return typeStr == "System.Int32[]";
+            }
+            return false;
+        },
+        SimpleTEquals$1: function (T, a, b){
+            return (a == b);
+        },
+        TypeIsIntArray: function (type){
+            return type._JsType == Int32Array;
+        },
+        CallObjMethod: function (obj, methodName, parameters){
+            var args = Array.prototype.slice.apply(arguments);
+			var obj = args[0];
+			var methodName = args[1];
+            obj[methodName].apply(obj, args.slice(2));
+            return true;
+        }
+    },
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            System.Object.ctor.call(this);
+        }
+    }
+};
+JsTypes.push(jsimp$Reflection);
+var JSImpTest1 = {
+    fullname: "JSImpTest1",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.elapsed = 0;
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+        },
+        Update: function (){
+            this.elapsed += _jsComManager.dT;
+            if (this.elapsed > 1){
+                this.elapsed = 0;
+                var dict = new System.Collections.Generic.Dictionary$2.ctor(System.String.ctor, System.String.ctor);
+                dict.Add("firstName", "De Hua");
+                dict.Add("lastName", "Liu");
+                dict.Add("age", "55");
+                var person = XmlParser.ComvertType$1(JSImpTest1.Person.ctor, dict);
+                UnityEngine.Debug.Log$$Object(new System.Text.StringBuilder.ctor().AppendFormat$$String$$Object$$Object$$Object("{0} {1}, {2}", person.lastName, person.firstName, person.age));
+            }
+        }
+    }
+};
+JsTypes.push(JSImpTest1);
+var XmlParser = {
+    fullname: "XmlParser",
+    baseTypeName: "System.Object",
+    staticDefinition: {
+        ComvertType$1: function (T, dict){
+            var obj = jsimp.Reflection.CreateInstance$1(T);
+            var $it27 = dict.GetEnumerator();
+            while ($it27.MoveNext()){
+                var ele = $it27.get_Current();
+                var fieldName = ele.get_Key();
+                var fieldValue = ele.get_Value();
+                jsimp.Reflection.SetFieldValue(obj, fieldName, fieldValue);
+            }
+            return obj;
+        }
+    },
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            System.Object.ctor.call(this);
+        }
+    }
+};
+JsTypes.push(XmlParser);
+var MiscTest = {
+    fullname: "MiscTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            var logo = UnityEngine.Resources.Load$$String("Textures/logo");
+            UnityEngine.Debug.LogError$$Object("Resources.Load: " + logo);
+            logo = UnityEngine.Resources.Load$1$$String(UnityEngine.Texture2D.ctor, "Textures/logo");
+            UnityEngine.Debug.LogError$$Object("Resources.Load<T>: " + logo);
+            var contents = new System.Collections.Generic.List$1.ctor(System.String.ctor);
+            contents.Add("hello");
+            contents.Add("fxck");
+            contents.Add("foo");
+            UnityEngine.Debug.LogError$$Object(JsHelper.Random(contents));
+            UnityEngine.Debug.LogError$$Object("ForEach contents");
+            var $it28 = contents.GetEnumerator();
+            while ($it28.MoveNext()){
+                var content = $it28.get_Current();
+                UnityEngine.Debug.LogError$$Object(content);
+            }
+            UnityEngine.Debug.LogError$$Object("For contents");
+            for (var i = 0; i < contents.get_Count(); i++){
+                UnityEngine.Debug.LogError$$Object(contents.get_Item$$Int32(i));
+            }
+            var obj = new APIExportTest.ctor();
+            obj.IDs.Add(123);
+            obj.IDs.Add(456);
+            UnityEngine.Debug.LogError$$Object("For IDs");
+            for (var i = 0; i < obj.IDs.get_Count(); i++){
+                UnityEngine.Debug.LogError$$Object(obj.IDs.get_Item$$Int32(i));
+            }
+            UnityEngine.Debug.LogError$$Object("ForEach IDs");
+            var $it29 = obj.IDs.GetEnumerator();
+            while ($it29.MoveNext()){
+                var i = $it29.get_Current();
+                UnityEngine.Debug.LogError$$Object(i);
+            }
+        },
+        PrintStrings: function (s, strs){
+            for (var $i31 = 0,$l31 = strs.length,v = strs[$i31]; $i31 < $l31; $i31++, v = strs[$i31])
+                UnityEngine.MonoBehaviour.print(v);
+        }
+    }
+};
+JsTypes.push(MiscTest);
+var AnimationCurveTest = {
+    fullname: "AnimationCurveTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.curve = null;
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            var s = "";
+            s += "length " + this.curve.get_length() + "\n";
+            s += "prevWrapMode " + this.curve.get_preWrapMode() + "\n";
+            s += "postWrapMode " + this.curve.get_postWrapMode() + "\n";
+            s += "\n";
+            for (var f = -3 /* -3f */; f < 3; f += 0.4){
+                s += f.toString() + " = " + this.curve.Evaluate(f) + "\n";
+            }
+            UnityEngine.MonoBehaviour.print(s);
+        },
+        Update: function (){
+        }
+    }
+};
+JsTypes.push(AnimationCurveTest);
+var Car = {
+    fullname: "Car",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.wheels = null;
+            this.goWheels = null;
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            for (var $i32 = 0,$t32 = this.wheels,$l32 = $t32.length,w = $t32[$i32]; $i32 < $l32; $i32++, w = $t32[$i32]){
+                if (UnityEngine.Object.op_Inequality(w, null)){
+                    w.setSpeed(UnityEngine.Random.Range$$Single$$Single(1, 4));
+                }
+            }
+            for (var $i33 = 0,$t33 = this.goWheels,$l33 = $t33.length,go = $t33[$i33]; $i33 < $l33; $i33++, go = $t33[$i33]){
+                if (UnityEngine.Object.op_Inequality(go, null)){
+                    var w = go.GetComponent$1(Wheel.ctor);
+                    if (UnityEngine.Object.op_Inequality(w, null)){
+                        w.setSpeed(UnityEngine.Random.Range$$Single$$Single(1, 4));
+                    }
+                }
+            }
+        }
+    }
+};
+JsTypes.push(Car);
+var SerializeSimple = {
+    fullname: "SerializeSimple",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.age = 0;
+            this.shortAge = 0;
+            this.go = null;
+            this.firstName = "QIU";
+            this.doYouLoveMe = false;
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            UnityEngine.Debug.Log$$Object("age: " + this.age);
+            UnityEngine.Debug.Log$$Object("shortAge: " + this.shortAge);
+            if (UnityEngine.Object.op_Inequality(this.go, null))
+                UnityEngine.Debug.Log$$Object("go: " + this.go.get_name());
+            else
+                UnityEngine.Debug.Log$$Object("go: null");
+            UnityEngine.Debug.Log$$Object("firstName: " + this.firstName);
+            UnityEngine.Debug.Log$$Object("doYouLoveMe: " + (this.doYouLoveMe ? "true" : "false"));
+        },
+        Update: function (){
+        }
+    }
+};
+JsTypes.push(SerializeSimple);
+var SerializeStruct = {
+    fullname: "SerializeStruct",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.appleInfo = new SerializeStruct.AppleInfo.ctor();
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            UnityEngine.Debug.Log$$Object("age: " + this.appleInfo.age);
+            if (UnityEngine.Object.op_Inequality(this.appleInfo.go, null))
+                UnityEngine.Debug.Log$$Object("go: " + this.appleInfo.go.get_name());
+            else
+                UnityEngine.Debug.Log$$Object("go: null");
+            UnityEngine.Debug.Log$$Object("firstName: " + this.appleInfo.firstName);
+            UnityEngine.Debug.Log$$Object("doYouLoveMe: " + (this.appleInfo.doYouLoveMe ? "true" : "false"));
+        },
+        Update: function (){
+        }
+    }
+};
+JsTypes.push(SerializeStruct);
+var Wheel = {
+    fullname: "Wheel",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.ePos = Wheel.Pos.LeftFront;
+            this.speed = 1;
+            this.accum = 0;
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        setSpeed: function (speed){
+            this.speed = speed;
+        },
+        Start: function (){
+        },
+        Update: function (){
+            this.accum += _jsComManager.dT;
+            if (this.accum > this.speed){
+                switch (this.ePos){
+                    case Wheel.Pos.LeftFront:
+                        UnityEngine.Debug.Log$$Object("LeftFront go..");
+                        break;
+                    case Wheel.Pos.RightFront:
+                        UnityEngine.Debug.Log$$Object("RightFront go..");
+                        break;
+                    case Wheel.Pos.LeftBack:
+                        UnityEngine.Debug.Log$$Object("LeftBack go..");
+                        break;
+                    case Wheel.Pos.RightBack:
+                        UnityEngine.Debug.Log$$Object("RightBack go..");
+                        break;
+                }
+                this.accum = 0;
+            }
+        }
+    }
+};
+JsTypes.push(Wheel);
+var StreamTest = {
+    fullname: "StreamTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        },
+        Start: function (){
+            var count;
+            var byteArray;
+            var charArray;
+            var uniEncoding = new System.Text.UnicodeEncoding.ctor();
+            var firstString = uniEncoding.GetBytes$$String("Invalid file path characters are: ");
+            var secondString = uniEncoding.GetBytes$$String("123456789");
+            var memStream = new System.IO.MemoryStream.ctor$$Int32(100);
+            try{
+                memStream.Write(firstString, 0, firstString.length);
+                count = 0;
+                while (count < secondString.length){
+                    memStream.WriteByte(secondString[count++]);
+                }
+                UnityEngine.Debug.Log$$Object(System.String.Format$$String$$Object$$Object$$Object("Capacity = {0}, Length = {1}, Position = {2}\n", memStream.get_Capacity().toString(), memStream.get_Length().toString(), memStream.get_Position().toString()));
+                memStream.Seek(0, 0);
+                byteArray = new Uint8Array(memStream.get_Length());
+                count = memStream.Read(byteArray, 0, 20);
+                while (count < memStream.get_Length()){
+                    byteArray[count++] = System.Convert.ToByte$$Int32(memStream.ReadByte());
+                }
+                charArray = new Array(uniEncoding.GetCharCount$$Byte$Array$$Int32$$Int32(byteArray, 0, count));
+                uniEncoding.GetDecoder().GetChars$$Byte$Array$$Int32$$Int32$$Char$Array$$Int32(byteArray, 0, count, charArray, 0);
+                UnityEngine.Debug.Log$$Object(charArray);
+            }
+            finally{
+                memStream.Dispose();
+            }
+        }
+    }
+};
+JsTypes.push(StreamTest);
+var XmlTest = {
+    fullname: "XmlTest",
+    baseTypeName: "UnityEngine.MonoBehaviour",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            UnityEngine.MonoBehaviour.ctor.call(this);
+        }
+    }
+};
+JsTypes.push(XmlTest);
+var JsonTest$Entity = {
+    fullname: "JsonTest.Entity",
+    baseTypeName: "System.Object",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.bounds = new UnityEngine.Bounds.ctor();
+            this.color = new UnityEngine.Color.ctor();
+            this.color32 = new UnityEngine.Color32.ctor();
+            this.complexDic = new System.Collections.Generic.Dictionary$2.ctor(System.String.ctor, JsonTest.EntityAction.ctor);
+            this.complexList = new System.Collections.Generic.List$1.ctor(JsonTest.EntityAction.ctor);
+            this.coordinate = new UnityEngine.Vector2.ctor();
+            this.defaultAction = null;
+            this.id = 0;
+            this.map = (function (){
+                var $v23 = new System.Collections.Generic.List$1.ctor(System.String.ctor);
+                $v23.Add("abc");
+                $v23.Add("hello");
+                $v23.Add("echo");
+                return $v23;
+            }).call(this);
+            this.name = null;
+            this.pos = new UnityEngine.Vector3.ctor();
+            this.quaternion = new UnityEngine.Quaternion.ctor();
+            this.rect = new UnityEngine.Rect.ctor();
+            this.rectOffset = null;
+            this.simpleDic = new System.Collections.Generic.Dictionary$2.ctor(System.String.ctor, System.String.ctor);
+            this.simpleList = new System.Collections.Generic.List$1.ctor(System.String.ctor);
+            this.v4 = new UnityEngine.Vector4.ctor();
+            System.Object.ctor.call(this);
+        },
+        PrintLog: function (){
+            UnityEngine.Debug.LogError$$Object("id: " + this.id + "\nname: " + this.name);
+        }
+    }
+};
+JsTypes.push(JsonTest$Entity);
+var JsonTest$EntityAction = {
+    fullname: "JsonTest.EntityAction",
+    baseTypeName: "System.Object",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.content = null;
+            this.id = 0;
+            System.Object.ctor.call(this);
+        },
+        DumpInfo: function (){
+            return "id: " + this.id + " content: " + this.content;
+        }
+    }
+};
+JsTypes.push(JsonTest$EntityAction);
+var JsonTest$EntityList = {
+    fullname: "JsonTest.EntityList",
+    baseTypeName: "System.Object",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.list = new System.Collections.Generic.List$1.ctor(JsonTest.Entity.ctor);
+            System.Object.ctor.call(this);
+        }
+    }
+};
+JsTypes.push(JsonTest$EntityList);
+var SampleViewer$stScene = {
+    fullname: "SampleViewer.stScene",
+    baseTypeName: "System.ValueType",
+    assemblyName: "SharpKitProj",
+    Kind: "Struct",
+    definition: {
+        ctor$$String$$String: function (a, b){
+            this.levelName = null;
+            this.showText = null;
+            System.ValueType.ctor.call(this);
+            this.levelName = a;
+            this.showText = (b.length > 0 ? b : a);
+        },
+        ctor: function (){
+            this.levelName = null;
+            this.showText = null;
+            System.ValueType.ctor.call(this);
+        }
+    }
+};
+JsTypes.push(SampleViewer$stScene);
+var JSImpTest1$Person = {
+    fullname: "JSImpTest1.Person",
+    baseTypeName: "System.Object",
+    assemblyName: "SharpKitProj",
+    Kind: "Class",
+    definition: {
+        ctor: function (){
+            this.firstName = null;
+            this.lastName = null;
+            this.age = null;
+            System.Object.ctor.call(this);
+        }
+    }
+};
+JsTypes.push(JSImpTest1$Person);
+var SerializeStruct$AppleInfo = {
+    fullname: "SerializeStruct.AppleInfo",
+    baseTypeName: "System.ValueType",
+    assemblyName: "SharpKitProj",
+    Kind: "Struct",
+    definition: {
+        ctor: function (){
+            this.age = 0;
+            this.go = null;
+            this.firstName = null;
+            this.doYouLoveMe = false;
+            System.ValueType.ctor.call(this);
+        }
+    }
+};
+JsTypes.push(SerializeStruct$AppleInfo);
+var Wheel$Pos = {
+    fullname: "Wheel.Pos",
+    staticDefinition: {
+        LeftFront: 0,
+        RightFront: 1,
+        LeftBack: 2,
+        RightBack: 3
+    },
+    Kind: "Enum"
+};
+JsTypes.push(Wheel$Pos);
+var Wheel$Pos = {
+    fullname: "Wheel.Pos",
+    staticDefinition: {
+        LeftFront: 0,
+        RightFront: 1,
+        LeftBack: 2,
+        RightBack: 3
+    },
+    Kind: "Enum"
+};
+JsTypes.push(Wheel$Pos);
+var Wheel$Pos = {
+    fullname: "Wheel.Pos",
+    staticDefinition: {
+        LeftFront: 0,
+        RightFront: 1,
+        LeftBack: 2,
+        RightBack: 3
+    },
+    Kind: "Enum"
+};
+JsTypes.push(Wheel$Pos);
+

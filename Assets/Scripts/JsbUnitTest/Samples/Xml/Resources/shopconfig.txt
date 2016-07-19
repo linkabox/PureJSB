@@ -1,0 +1,52 @@
+<root>
+<Packets>
+    <Packet ID="1" RefreshRate="1">
+        <Item ID="1" IsPack="0" ItemType="1" ItemId="301" ItemNum="1" Currency="2" OldPrice="0" CurPrice="15" Recommend="0" RefreshRate="1" Globe="0">
+            <Limit SubType="DayNum" Count="10"/>
+            <Price SubType="BuyNumPrice" Prices="15,15,15,15,30,30,30,30,50,50"/>
+        </Item>
+        <Item ID="2" ItemType="1" ItemId="302" ItemNum="1" Currency="2" OldPrice="0" CurPrice="10" Recommend="0" RefreshRate="1" Globe="0" />
+        <Item ID="3" ItemType="1" ItemId="3031" ItemNum="1" Currency="2" OldPrice="0" CurPrice="5" Recommend="0" RefreshRate="1" Globe="0">
+            <Limit SubType="DayNum" Count="10"/>
+            <Price SubType="BuyNumPrice" Prices="5,5,5,5,10,10,10,10,20,20"/>
+        </Item>
+        <Item ID="4" ItemType="1" ItemId="3032" ItemNum="1" Currency="2" OldPrice="0" CurPrice="10" Recommend="0" RefreshRate="1" Globe="0">
+            <Limit SubType="DayNum" Count="10"/>
+            <Price SubType="BuyNumPrice" Prices="10,10,10,10,20,20,20,20,50,50"/>
+        </Item>
+        <Item ID="5" ItemType="1" ItemId="3033" ItemNum="1" Currency="2" OldPrice="0" CurPrice="20" Recommend="0" RefreshRate="1" Globe="0">
+            <Limit SubType="DayNum" Count="10"/>
+            <Price SubType="BuyNumPrice" Prices="20,20,20,20,50,50,50,50,100,100"/>
+        </Item>
+        <Item ID="6" ItemType="1" ItemId="3034" ItemNum="1" Currency="2" OldPrice="0" CurPrice="50" Recommend="0" RefreshRate="1" Globe="0">
+            <Limit SubType="DayNum" Count="10"/>
+            <Price SubType="BuyNumPrice" Prices="50,50,50,50,100,100,100,100,200,200"/>
+        </Item>
+        <Item ID="7" ItemType="1" ItemId="3041" ItemNum="1" Currency="2" OldPrice="0" CurPrice="30" Recommend="0" RefreshRate="1" Globe="0">
+            <Limit SubType="DayNum" Count="30"/>
+            <Price SubType="BuyNumPrice" Prices="30,30,30,30,30,30,30,30,30,30,50,50,50,50,50,50,50,50,50,50,100,100,100,100,100,100,100,100,100,100"/>
+        </Item>
+        <Item ID="8" ItemType="1" ItemId="305" ItemNum="1" Currency="2" OldPrice="0" CurPrice="10" Recommend="0" RefreshRate="1" Globe="0"/>
+        <Item ID="9" ItemType="1" ItemId="307" ItemNum="1" Currency="2" OldPrice="0" CurPrice="5" Recommend="0" RefreshRate="1" Globe="0"/>
+        <Item ID="10" ItemType="1" ItemId="308" ItemNum="1" Currency="2" OldPrice="0" CurPrice="10" Recommend="0" RefreshRate="1" Globe="0">
+            <Limit SubType="DayNum" Count="10"/>
+            <Price SubType="BuyNumPrice" Prices="10,10,10,10,10,15,15,15,15,15"/>
+        </Item>
+        <Item ID="11"  ItemType="1" ItemId="439" ItemNum="1" Currency="2" OldPrice="0" CurPrice="10" Recommend="0" RefreshRate="1" Globe="0">
+            <Limit SubType="DayNum" Count="10"/>
+            <Price SubType="BuyNumPrice" Prices="10,10,10,10,10,15,15,15,15,15"/>
+        </Item>
+        <Item ID="12"  ItemType="1" ItemId="5413" ItemNum="1" Currency="2" OldPrice="0" CurPrice="10" Recommend="0" RefreshRate="1" Globe="0">
+            <Limit SubType="DayNum" Count="10"/>
+            <Price SubType="BuyNumPrice" Prices="10,10,10,10,10,15,15,15,15,15"/>
+        </Item>
+    </Packet>
+</Packets>
+
+
+
+<Shops>
+    <StaticShop ID="1" ShopCategory="1" Career="-1" ShopName="shop" ShopDes="shop" Packet="1"/>
+</Shops>
+
+</root>
