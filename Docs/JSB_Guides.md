@@ -37,7 +37,10 @@
 	- List，HashSet类型参数，改为直接传递数组:`void Add(int[] list)`
 	- Dictionary类型参数，改为传递Hashtable:`void Add(Hashtable dic)`
 	- 复合类型参数，需要先转json:`void Add(string obj)`
-2. 在Android的Dll热更新时遇到这种情况，修改框架层组件时需要注意一下，如果需要增加字段来满足一些新需求时，不能定义public的字段，因为这会导致引用该组件的prefab变更，导致加载相关prefab的AssetBundle出现脚本不兼容的问题，导致加载失败。所以只能通过添加private字段，然后通过代码动态设置其属性值。
+2. 在Android的Dll热更时遇到过这种情况，需要增加字段来满足新需求，如UISprite上增加置灰属性，这时候旧包加载Bundle时会报序列化异常的错误，导致加载失败。这是因为新增public字段使得脚本打包时生成的Hash值变更了。
+	- 方案1：不定义public字段，只能通过添加private字段，然后通过代码动态设置其属性值。
+	- 方案2：如果组件改动太大，可以直接将组件改名后，再重新打包Bundle
+	- 方案3：打包Bundle后将Bundle内相关Hash值清零，打包apk后将apk内相关Hash值清零
 3. 按照以下原则封装C#接口供业务层调用：
 	- 线程操作，js中不支持线程操作，所有线程操作应该封装到C#中的线程管理器中实现，通过回调的方式通知js层。
 	- 字节操作，js层处理字节操作非常低效，可以将字节数组封装为一个ByteArray对象并提供一系列操作接口供业务层使用。
@@ -61,17 +64,7 @@
 		}
 		```
 
-2. XXXModel尽量不要缓存其他Model中的引用，而是调用的时候通过其接口获取相关引用，如果一定要缓存，记得再适当的时机清空该引用，具体细节可以查看这条commit的修改情况
-
-	```
-	Revision: 43869
-	Author: jiaye.lin
-	Date: 2016年4月21日 14:41:21
-	Message:
-	Refactor 调整所有HeroView引用通过WorldManager获取
-	Refactor 整合AutoFramWalk代码到HeroView中
-	Refactor 整合WorldClickChecker到WorldJoystick中
-	```
+2. XXXModel尽量不要缓存其他Model中的引用，而是调用的时候通过其接口获取相关引用，如果一定要缓存，记得再适当的时机清空该引用
 3. 如果需要记录DateTime的值到本地时，最好按照以下方式处理：
 	- 因为直接记录DateTime.Ticks的值是long类型，转换到js那边使用会有溢出的风险
 	- 当然也可以先转UnixTimeStamp再保存，获取时从UnixTimeStamp转回DateTime使用，不过过程比较繁琐
