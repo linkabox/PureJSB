@@ -1,2 +1,0 @@
-CS.CSEntry=CS.Call;CS.Call=function(){var b=void 0;try{b=CS.CSEntry.apply(CS,arguments)}catch(c){var a;a="JS call CS Exception!\n\n----------- 1) CS Stack -----------\n\n"+(c.toString()+"\n\n\n");a+="----------- 2) JS Stack -----------\n\n";a+=c.stack;UnityEngine.Debug.LogError$$Object(a)}return b};
-CS.jsFunctionEntry=function(){var b=Array.prototype.slice.apply(arguments),a=b[0],c=b[1],d=void 0;try{d=c.apply(a,b.slice(2))}catch(e){UnityEngine.Debug.LogError$$Object("JS Error! Error:\n"+e+"\n\nStack:\n\n"+e.stack)}return d};

@@ -1,1 +1,0 @@
-if(_jstype=jsb_GetJsType("UnityEngine.WaitForSeconds"))_jstype.definition.ctor=function(a){this.$totalTime=a;this.$elapsedTime=0;this.$finished=!1},_jstype.definition.get_finished=function(a){this.$finished||(this.$elapsedTime+=a,this.$elapsedTime>=this.$totalTime&&(this.$finished=!0));return this.$finished};
