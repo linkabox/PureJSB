@@ -912,9 +912,9 @@ using SharpKit.JavaScript;
             }
 
             //检查是否在忽略文件目录列表中
-            for (int j = 0; j < JSBindingSettings.PathsNotToJavaScript.Length; j++)
+			for (int j = 0; j < JSBCodeGenSettings.PathsNotToJavaScript.Length; j++)
             {
-                string dir = JSBindingSettings.PathsNotToJavaScript[j];
+				string dir = JSBCodeGenSettings.PathsNotToJavaScript[j];
                 if (filePath.Contains(dir))
                 {
                     export = false;
@@ -923,11 +923,11 @@ using SharpKit.JavaScript;
             }
 
             //检查是否在指定文件目录列表中
-            if (!export && JSBindingSettings.PathsToJavaScript != null)
+			if (!export && JSBCodeGenSettings.PathsToJavaScript != null)
             {
-                for (int k = 0; k < JSBindingSettings.PathsToJavaScript.Length; k++)
+				for (int k = 0; k < JSBCodeGenSettings.PathsToJavaScript.Length; k++)
                 {
-                    string dir = JSBindingSettings.PathsToJavaScript[k];
+					string dir = JSBCodeGenSettings.PathsToJavaScript[k];
                     if (filePath.Contains(dir))
                     {
                         export = true;

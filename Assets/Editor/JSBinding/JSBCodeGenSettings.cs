@@ -28,6 +28,28 @@ using Random = UnityEngine.Random;
 //#endregion
 public static class JSBCodeGenSettings
 {
+	/// <summary>
+	/// 以下文件或目录不参与转换为js脚本
+	/// </summary>
+	public static string[] PathsNotToJavaScript =
+	{
+		"JSBinding/",
+		"NGUI/",
+		"Assets/Plugins/",
+		"Resources/",
+		"Standard Assets/",
+		"StreamingAssets/",
+		"WebPlayerTemplates/",
+	};
+
+	/// <summary>
+	/// 参与编译js脚本白名单
+	/// </summary>
+	public static string[] PathsToJavaScript =
+	{
+		
+	};
+
     /// <summary>
     ///     导出指定Assembly内的指定命名空间下的类型，若没有指定命名空间列表则导出这个dll的所有接口
     ///     导出dll内的根命名空间用null来表示
