@@ -808,9 +808,9 @@ public class JsExternalTools
             return;
         }
 
-        // 查错
-        CheckError_Invocation(allInvokeWithLocationOutputPath);
-        CheckError_Inheritance();
+//        // 查错
+//        CheckError_Invocation(allInvokeWithLocationOutputPath);
+//        CheckError_Inheritance();
 
         // 生成JSC
 #if UNITY_EDITOR_WIN
