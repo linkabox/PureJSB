@@ -80,8 +80,10 @@ public class StringTest: MonoBehaviour
         var str2 = "abcd";
         var str3 = "ABCD";
 
-        Debug.Log(string.Compare(str1, str2));
-        Debug.Log(string.Compare(str1, str3));
-        Debug.Log(string.Compare(str1, str3, true));
+		Debug.Log("string.Compare(str1,str2):"+string.Compare(str1, str2));
+		Debug.Log("string.Compare(str1,str3):"+string.Compare(str1, str3));
+		Debug.Log("string.Compare(str1,str3,true):"+string.Compare(str1, str3, true));
+		Debug.Log("st1.CompareTo(str2):"+str1.CompareTo(str2));
+		Debug.Log("st1.CompareTo(str3):"+str1.CompareTo(str3));
     }
 }

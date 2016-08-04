@@ -812,12 +812,6 @@ public class JsExternalTools
 //        CheckError_Invocation(allInvokeWithLocationOutputPath);
 //        CheckError_Inheritance();
 
-        // 生成JSC
-#if UNITY_EDITOR_WIN
-        //JSCGenerator.ConvertJavaScriptToBytecode();
-        //JSCGenerator.ChangeExtensionJsc2Bytes();
-#endif
-
         AssetDatabase.Refresh();
 
         // 提示生成 yield 结果

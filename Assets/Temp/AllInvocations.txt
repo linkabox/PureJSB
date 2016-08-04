@@ -103,6 +103,7 @@
     Static_Equals$$String$$String$$StringComparison
     Static_Compare$$String$$String
     Static_Compare$$String$$String$$Boolean
+    CompareTo$$String
     Static_Format$$String$$Object$$Object
     Static_Format$$String$$Object$$Object$$Object
     length

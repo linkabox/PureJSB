@@ -1100,9 +1100,11 @@ var StringTest = {
             var str1 = "abcd";
             var str2 = "abcd";
             var str3 = "ABCD";
-            UnityEngine.Debug.Log$$Object(System.String.Compare$$String$$String(str1, str2));
-            UnityEngine.Debug.Log$$Object(System.String.Compare$$String$$String(str1, str3));
-            UnityEngine.Debug.Log$$Object(System.String.Compare$$String$$String$$Boolean(str1, str3, true));
+            UnityEngine.Debug.Log$$Object("string.Compare(str1,str2):" + System.String.Compare$$String$$String(str1, str2));
+            UnityEngine.Debug.Log$$Object("string.Compare(str1,str3):" + System.String.Compare$$String$$String(str1, str3));
+            UnityEngine.Debug.Log$$Object("string.Compare(str1,str3,true):" + System.String.Compare$$String$$String$$Boolean(str1, str3, true));
+            UnityEngine.Debug.Log$$Object("st1.CompareTo(str2):" + str1.CompareTo$$String(str2));
+            UnityEngine.Debug.Log$$Object("st1.CompareTo(str3):" + str1.CompareTo$$String(str3));
         }
     }
 };

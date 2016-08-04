@@ -169,70 +169,72 @@
         167,./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs,83
         168,./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs,84
         169,./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs,85
-        170,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,21
-        171,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,32
-        172,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,35
-        173,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,68
-        174,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,71
-        175,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,84
-        176,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,87
-        177,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,89
-        178,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,92
-        179,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,99
-        180,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,102
-        181,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,107
-        182,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,110
-        183,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,119
-        184,./Assets/Scripts/JsbUnitTest/Samples/DelegateTest.cs,33
-        185,./Assets/Scripts/JsbUnitTest/Samples/DictionaryTest.cs,29
-        186,./Assets/Scripts/JsbUnitTest/Samples/DictionaryTest.cs,33
-        187,./Assets/Scripts/JsbUnitTest/Samples/DictionaryTest.cs,37
-        188,./Assets/Scripts/JsbUnitTest/Samples/EncodingTest.cs,24
-        189,./Assets/Scripts/JsbUnitTest/Samples/ListTest.cs,27
-        190,./Assets/Scripts/JsbUnitTest/Samples/ListTest.cs,30
-        191,./Assets/Scripts/JsbUnitTest/Samples/PerformanceTest1.cs,29
-        192,./Assets/Scripts/JsbUnitTest/Samples/PerformanceTest1.cs,43
-        193,./Assets/Scripts/JsbUnitTest/Samples/PerformanceTest1.cs,55
-        194,./Assets/Scripts/JsbUnitTest/Samples/PerformanceTest1.cs,67
-        195,./Assets/Scripts/JsbUnitTest/Samples/PerformanceTest1.cs,79
-        196,./Assets/Scripts/JsbUnitTest/Samples/PerformanceTest1.cs,90
-        197,./Assets/Scripts/JsbUnitTest/Samples/PerformanceTest1.cs,103
-        198,./Assets/Scripts/JsbUnitTest/Samples/PerformanceTest1.cs,125
-        199,./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs,28
-        200,./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs,33
-        201,./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs,35
-        202,./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs,36
-        203,./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs,37
-        204,./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs,38
-        205,./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs,41
-        206,./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs,45
-        207,./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs,46
-        208,./Assets/Scripts/JsbUnitTest/Samples/ComponentTest/ComponentTest.cs,45
-        209,./Assets/Scripts/JsbUnitTest/Samples/ComponentTest/ComponentTest.cs,49
-        210,./Assets/Scripts/JsbUnitTest/Samples/Coroutine/TestCoroutine.cs,11
-        211,./Assets/Scripts/JsbUnitTest/Samples/Coroutine/TestCoroutine.cs,36
-        212,./Assets/Scripts/JsbUnitTest/Samples/Coroutine/TestCoroutine.cs,40
-        213,./Assets/Scripts/JsbUnitTest/Samples/Coroutine/TestCoroutine.cs,51
-        214,./Assets/Scripts/JsbUnitTest/Samples/Coroutine/TestCoroutine.cs,55
-        215,./Assets/Scripts/JsbUnitTest/Samples/Coroutine/TestCoroutine.cs,59
-        216,./Assets/Scripts/JsbUnitTest/Samples/JSImpTest/JSImpTest1.cs,37
-        217,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeSimple.cs,17
-        218,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeSimple.cs,18
-        219,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeSimple.cs,20
-        220,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeSimple.cs,22
-        221,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeSimple.cs,23
-        222,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeSimple.cs,24
-        223,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeStruct.cs,25
-        224,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeStruct.cs,27
-        225,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeStruct.cs,29
-        226,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeStruct.cs,30
-        227,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeStruct.cs,31
-        228,./Assets/Scripts/JsbUnitTest/Samples/Serialization/Wheel.cs,37
-        229,./Assets/Scripts/JsbUnitTest/Samples/Serialization/Wheel.cs,40
-        230,./Assets/Scripts/JsbUnitTest/Samples/Serialization/Wheel.cs,43
-        231,./Assets/Scripts/JsbUnitTest/Samples/Serialization/Wheel.cs,46
-        232,./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs,38
-        233,./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs,64
+        170,./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs,86
+        171,./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs,87
+        172,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,21
+        173,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,32
+        174,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,35
+        175,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,68
+        176,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,71
+        177,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,84
+        178,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,87
+        179,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,89
+        180,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,92
+        181,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,99
+        182,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,102
+        183,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,107
+        184,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,110
+        185,./Assets/Scripts/JsbUnitTest/AssortedTest/TimeSpanTest.cs,119
+        186,./Assets/Scripts/JsbUnitTest/Samples/DelegateTest.cs,33
+        187,./Assets/Scripts/JsbUnitTest/Samples/DictionaryTest.cs,29
+        188,./Assets/Scripts/JsbUnitTest/Samples/DictionaryTest.cs,33
+        189,./Assets/Scripts/JsbUnitTest/Samples/DictionaryTest.cs,37
+        190,./Assets/Scripts/JsbUnitTest/Samples/EncodingTest.cs,24
+        191,./Assets/Scripts/JsbUnitTest/Samples/ListTest.cs,27
+        192,./Assets/Scripts/JsbUnitTest/Samples/ListTest.cs,30
+        193,./Assets/Scripts/JsbUnitTest/Samples/PerformanceTest1.cs,29
+        194,./Assets/Scripts/JsbUnitTest/Samples/PerformanceTest1.cs,43
+        195,./Assets/Scripts/JsbUnitTest/Samples/PerformanceTest1.cs,55
+        196,./Assets/Scripts/JsbUnitTest/Samples/PerformanceTest1.cs,67
+        197,./Assets/Scripts/JsbUnitTest/Samples/PerformanceTest1.cs,79
+        198,./Assets/Scripts/JsbUnitTest/Samples/PerformanceTest1.cs,90
+        199,./Assets/Scripts/JsbUnitTest/Samples/PerformanceTest1.cs,103
+        200,./Assets/Scripts/JsbUnitTest/Samples/PerformanceTest1.cs,125
+        201,./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs,28
+        202,./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs,33
+        203,./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs,35
+        204,./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs,36
+        205,./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs,37
+        206,./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs,38
+        207,./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs,41
+        208,./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs,45
+        209,./Assets/Scripts/JsbUnitTest/Samples/V3Test.cs,46
+        210,./Assets/Scripts/JsbUnitTest/Samples/ComponentTest/ComponentTest.cs,45
+        211,./Assets/Scripts/JsbUnitTest/Samples/ComponentTest/ComponentTest.cs,49
+        212,./Assets/Scripts/JsbUnitTest/Samples/Coroutine/TestCoroutine.cs,11
+        213,./Assets/Scripts/JsbUnitTest/Samples/Coroutine/TestCoroutine.cs,36
+        214,./Assets/Scripts/JsbUnitTest/Samples/Coroutine/TestCoroutine.cs,40
+        215,./Assets/Scripts/JsbUnitTest/Samples/Coroutine/TestCoroutine.cs,51
+        216,./Assets/Scripts/JsbUnitTest/Samples/Coroutine/TestCoroutine.cs,55
+        217,./Assets/Scripts/JsbUnitTest/Samples/Coroutine/TestCoroutine.cs,59
+        218,./Assets/Scripts/JsbUnitTest/Samples/JSImpTest/JSImpTest1.cs,37
+        219,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeSimple.cs,17
+        220,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeSimple.cs,18
+        221,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeSimple.cs,20
+        222,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeSimple.cs,22
+        223,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeSimple.cs,23
+        224,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeSimple.cs,24
+        225,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeStruct.cs,25
+        226,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeStruct.cs,27
+        227,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeStruct.cs,29
+        228,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeStruct.cs,30
+        229,./Assets/Scripts/JsbUnitTest/Samples/Serialization/SerializeStruct.cs,31
+        230,./Assets/Scripts/JsbUnitTest/Samples/Serialization/Wheel.cs,37
+        231,./Assets/Scripts/JsbUnitTest/Samples/Serialization/Wheel.cs,40
+        232,./Assets/Scripts/JsbUnitTest/Samples/Serialization/Wheel.cs,43
+        233,./Assets/Scripts/JsbUnitTest/Samples/Serialization/Wheel.cs,46
+        234,./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs,38
+        235,./Assets/Scripts/JsbUnitTest/Samples/Stream/StreamTest.cs,64
     Static_LogError$$Object
         1,./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs,30
         2,./Assets/Scripts/JsbUnitTest/AssortedTest/CollectionTest.cs,140
@@ -913,6 +915,9 @@
         2,./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs,84
     Static_Compare$$String$$String$$Boolean
         1,./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs,85
+    CompareTo$$String
+        1,./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs,86
+        2,./Assets/Scripts/JsbUnitTest/AssortedTest/StringTest.cs,87
     Static_Format$$String$$Object$$Object
         1,./Assets/Scripts/JsbUnitTest/Samples/AwakeTest/AwakeA.cs,11
         2,./Assets/Scripts/JsbUnitTest/Samples/AwakeTest/AwakeB.cs,12
