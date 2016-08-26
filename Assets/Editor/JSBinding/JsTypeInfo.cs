@@ -6,7 +6,7 @@
 //------------------------------------------------------------------------------
 using SharpKit.JavaScript;
 
-[assembly: JsExport(Minify = false, DefaultFilename = "Assets/JavaScript/GameLogicCode.bytes")]
+[assembly: JsExport(Minify = false, DefaultFilename = "/Users/Linkabox/GitHub/PureJSB/Assets/JavaScript/GameLogicCode.bytes")]
 
 #region JsType
 [assembly: JsType(TargetTypeName = "BasicVariableTest", Mode = JsMode.Clr)]
