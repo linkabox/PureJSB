@@ -1,5 +1,7 @@
 # PureJSBFramework
-简化原JSB框架代码，抽离出核心代码建库，并对原代码重构整理，新增了一些特性。
+- 简化原JSB框架代码，抽离出核心代码建库，并对原代码重构整理，新增了一些特性。
+- **如果是用Unity5运行的，请checkout u5分支进行使用**
+
 [https://github.com/qcwgithub/qjsbunitynew](https://github.com/qcwgithub/qjsbunitynew)
 
 ## JSB编译流程
