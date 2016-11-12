@@ -141,6 +141,51 @@ static void ConfigurableJoint_angularZMotion(JSVCall vc)
         _this.angularZMotion = arg0;
     }
 }
+static void ConfigurableJoint_linearLimitSpring(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.ConfigurableJoint _this = (UnityEngine.ConfigurableJoint)vc.csObj;
+        var result = _this.linearLimitSpring;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.SoftJointLimitSpring arg0 = (UnityEngine.SoftJointLimitSpring)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.ConfigurableJoint _this = (UnityEngine.ConfigurableJoint)vc.csObj;
+        _this.linearLimitSpring = arg0;
+    }
+}
+static void ConfigurableJoint_angularXLimitSpring(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.ConfigurableJoint _this = (UnityEngine.ConfigurableJoint)vc.csObj;
+        var result = _this.angularXLimitSpring;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.SoftJointLimitSpring arg0 = (UnityEngine.SoftJointLimitSpring)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.ConfigurableJoint _this = (UnityEngine.ConfigurableJoint)vc.csObj;
+        _this.angularXLimitSpring = arg0;
+    }
+}
+static void ConfigurableJoint_angularYZLimitSpring(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.ConfigurableJoint _this = (UnityEngine.ConfigurableJoint)vc.csObj;
+        var result = _this.angularYZLimitSpring;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.SoftJointLimitSpring arg0 = (UnityEngine.SoftJointLimitSpring)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.ConfigurableJoint _this = (UnityEngine.ConfigurableJoint)vc.csObj;
+        _this.angularYZLimitSpring = arg0;
+    }
+}
 static void ConfigurableJoint_linearLimit(JSVCall vc)
 {
     if (vc.bGet)
@@ -479,6 +524,9 @@ public static void __Register()
         ConfigurableJoint_angularXMotion,
         ConfigurableJoint_angularYMotion,
         ConfigurableJoint_angularZMotion,
+        ConfigurableJoint_linearLimitSpring,
+        ConfigurableJoint_angularXLimitSpring,
+        ConfigurableJoint_angularYZLimitSpring,
         ConfigurableJoint_linearLimit,
         ConfigurableJoint_lowAngularXLimit,
         ConfigurableJoint_highAngularXLimit,

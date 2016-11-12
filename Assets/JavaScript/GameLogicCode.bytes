@@ -835,7 +835,7 @@ var MathTest = {
             UnityEngine.Debug.Log$$Object("=======Property=======");
             sb.AppendLine$$String("Deg2Rad:" + 0.01745329 /* Mathf.Deg2Rad */);
             sb.AppendLine$$String("Rad2Deg:" + 57.29578 /* Mathf.Rad2Deg */);
-            sb.AppendLine$$String("Epsilon:" + 1.401298E-45 /* Mathf.Epsilon */);
+            sb.AppendLine$$String("Epsilon:" + UnityEngine.Mathf.Epsilon);
             sb.AppendLine$$String("Infinity:" + Infinity /* Mathf.Infinity */);
             sb.AppendLine$$String("NegativeInfinity:" + -Infinity /* Mathf.NegativeInfinity */);
             sb.AppendLine$$String("PI:" + 3.141593 /* Mathf.PI */);
@@ -1748,7 +1748,7 @@ var ComponentTest = {
             var go = new UnityEngine.GameObject.ctor$$String$$Type$Array("NewGo", [Typeof(UnityEngine.SphereCollider.ctor), Typeof(UnityEngine.BoxCollider.ctor), Typeof(UnityEngine.Animation.ctor)]);
             this.get_gameObject().AddComponent$$Type(Typeof(UnityEngine.SphereCollider.ctor));
             this.get_gameObject().AddComponent$1(UnityEngine.BoxCollider.ctor);
-            this.get_gameObject().AddComponent$$String("Animation");
+            this.get_gameObject().AddComponent$1(UnityEngine.Animation.ctor);
             var objs = UnityEngine.Resources.FindObjectsOfTypeAll$1(UnityEngine.Animation.ctor);
             UnityEngine.Debug.LogError$$Object("Find Objects: " + objs.length);
             var eb = this.GetComponent$1(TEnemyBase.ctor);

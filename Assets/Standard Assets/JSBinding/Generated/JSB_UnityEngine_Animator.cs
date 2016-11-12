@@ -60,6 +60,12 @@ static void Animator_humanScale(JSVCall vc)
         var result = _this.humanScale;
                 JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
 }
+static void Animator_isInitialized(JSVCall vc)
+{
+        UnityEngine.Animator _this = (UnityEngine.Animator)vc.csObj;
+        var result = _this.isInitialized;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
 static void Animator_deltaPosition(JSVCall vc)
 {
         UnityEngine.Animator _this = (UnityEngine.Animator)vc.csObj;
@@ -71,6 +77,18 @@ static void Animator_deltaRotation(JSVCall vc)
         UnityEngine.Animator _this = (UnityEngine.Animator)vc.csObj;
         var result = _this.deltaRotation;
                 JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void Animator_velocity(JSVCall vc)
+{
+        UnityEngine.Animator _this = (UnityEngine.Animator)vc.csObj;
+        var result = _this.velocity;
+                JSApi.setVector3S((int)JSApi.SetType.Rval, result);
+}
+static void Animator_angularVelocity(JSVCall vc)
+{
+        UnityEngine.Animator _this = (UnityEngine.Animator)vc.csObj;
+        var result = _this.angularVelocity;
+                JSApi.setVector3S((int)JSApi.SetType.Rval, result);
 }
 static void Animator_rootPosition(JSVCall vc)
 {
@@ -115,6 +133,21 @@ static void Animator_applyRootMotion(JSVCall vc)
         System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
         UnityEngine.Animator _this = (UnityEngine.Animator)vc.csObj;
         _this.applyRootMotion = arg0;
+    }
+}
+static void Animator_linearVelocityBlending(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Animator _this = (UnityEngine.Animator)vc.csObj;
+        var result = _this.linearVelocityBlending;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Animator _this = (UnityEngine.Animator)vc.csObj;
+        _this.linearVelocityBlending = arg0;
     }
 }
 static void Animator_updateMode(JSVCall vc)
@@ -193,6 +226,24 @@ static void Animator_layerCount(JSVCall vc)
 {
         UnityEngine.Animator _this = (UnityEngine.Animator)vc.csObj;
         var result = _this.layerCount;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+}
+static void Animator_parameters(JSVCall vc)
+{
+        UnityEngine.Animator _this = (UnityEngine.Animator)vc.csObj;
+        var result = _this.parameters;
+                var arrRet = result;
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+}
+static void Animator_parameterCount(JSVCall vc)
+{
+        UnityEngine.Animator _this = (UnityEngine.Animator)vc.csObj;
+        var result = _this.parameterCount;
                 JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
 }
 static void Animator_feetPivotActive(JSVCall vc)
@@ -315,6 +366,12 @@ static void Animator_recorderStopTime(JSVCall vc)
         _this.recorderStopTime = arg0;
     }
 }
+static void Animator_recorderMode(JSVCall vc)
+{
+        UnityEngine.Animator _this = (UnityEngine.Animator)vc.csObj;
+        var result = _this.recorderMode;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
+}
 static void Animator_runtimeAnimatorController(JSVCall vc)
 {
     if (vc.bGet)
@@ -405,16 +462,12 @@ static void Animator_fireEvents(JSVCall vc)
 
 // methods
 
-static bool Animator_CrossFade__String__Single__Int32__Single(JSVCall vc, int argc)
+static bool Animator_ApplyBuiltinRootMotion(JSVCall vc, int argc)
 {
     int len = argc;
-    if (len == 4) 
+    if (len == 0) 
     {
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        System.Single arg3 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        ((UnityEngine.Animator)vc.csObj).CrossFade(arg0, arg1, arg2, arg3);
+        ((UnityEngine.Animator)vc.csObj).ApplyBuiltinRootMotion();
     }
 
     return true;
@@ -426,6 +479,21 @@ static bool Animator_CrossFade__Int32__Single__Int32__Single(JSVCall vc, int arg
     if (len == 4) 
     {
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Single arg3 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).CrossFade(arg0, arg1, arg2, arg3);
+    }
+
+    return true;
+}
+
+static bool Animator_CrossFade__String__Single__Int32__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
         System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         System.Single arg3 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
@@ -489,6 +557,90 @@ static bool Animator_CrossFade__Int32__Single(JSVCall vc, int argc)
     return true;
 }
 
+static bool Animator_CrossFadeInFixedTime__Int32__Single__Int32__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Single arg3 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).CrossFadeInFixedTime(arg0, arg1, arg2, arg3);
+    }
+
+    return true;
+}
+
+static bool Animator_CrossFadeInFixedTime__String__Single__Int32__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Single arg3 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).CrossFadeInFixedTime(arg0, arg1, arg2, arg3);
+    }
+
+    return true;
+}
+
+static bool Animator_CrossFadeInFixedTime__String__Single__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).CrossFadeInFixedTime(arg0, arg1, arg2);
+    }
+
+    return true;
+}
+
+static bool Animator_CrossFadeInFixedTime__Int32__Single__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).CrossFadeInFixedTime(arg0, arg1, arg2);
+    }
+
+    return true;
+}
+
+static bool Animator_CrossFadeInFixedTime__String__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).CrossFadeInFixedTime(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Animator_CrossFadeInFixedTime__Int32__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).CrossFadeInFixedTime(arg0, arg1);
+    }
+
+    return true;
+}
+
 static bool Animator_GetAnimatorTransitionInfo__Int32(JSVCall vc, int argc)
 {
     int len = argc;
@@ -496,6 +648,46 @@ static bool Animator_GetAnimatorTransitionInfo__Int32(JSVCall vc, int argc)
     {
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
                 JSMgr.datax.setObject((int)JSApi.SetType.Rval, ((UnityEngine.Animator)vc.csObj).GetAnimatorTransitionInfo(arg0));
+    }
+
+    return true;
+}
+public static MethodID methodID14 = new MethodID("GetBehaviour", "T", TypeFlag.IsT, null, null);
+
+static bool Animator_GetBehaviourT1(JSVCall vc, int argc)
+{
+    // Get generic method by name and param count.
+    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(vc.csObj.GetType(), methodID14, 1); 
+    if (method == null) return true;
+
+    int len = argc - 1;
+    if (len == 0) 
+    {
+        object[] arr_t = null;
+                JSMgr.datax.setWhatever((int)JSApi.SetType.Rval, method.Invoke(vc.csObj, arr_t));
+    }
+
+    return true;
+}
+public static MethodID methodID15 = new MethodID("GetBehaviours", "T[]", TypeFlag.None, null, null);
+
+static bool Animator_GetBehavioursT1(JSVCall vc, int argc)
+{
+    // Get generic method by name and param count.
+    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(vc.csObj.GetType(), methodID15, 1); 
+    if (method == null) return true;
+
+    int len = argc - 1;
+    if (len == 0) 
+    {
+        object[] arr_t = null;
+                var arrRet = (Array)method.Invoke(vc.csObj, arr_t);
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setWhatever((int)JSApi.SetType.SaveAndTempTrace, arrRet.GetValue(i));
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
     }
 
     return true;
@@ -513,18 +705,6 @@ static bool Animator_GetBoneTransform__HumanBodyBones(JSVCall vc, int argc)
     return true;
 }
 
-static bool Animator_GetBool__String(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(((UnityEngine.Animator)vc.csObj).GetBool(arg0)));
-    }
-
-    return true;
-}
-
 static bool Animator_GetBool__Int32(JSVCall vc, int argc)
 {
     int len = argc;
@@ -537,13 +717,25 @@ static bool Animator_GetBool__Int32(JSVCall vc, int argc)
     return true;
 }
 
-static bool Animator_GetCurrentAnimationClipState__Int32(JSVCall vc, int argc)
+static bool Animator_GetBool__String(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(((UnityEngine.Animator)vc.csObj).GetBool(arg0)));
+    }
+
+    return true;
+}
+
+static bool Animator_GetCurrentAnimatorClipInfo__Int32(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 1) 
     {
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-                var arrRet = ((UnityEngine.Animator)vc.csObj).GetCurrentAnimationClipState(arg0);
+                var arrRet = ((UnityEngine.Animator)vc.csObj).GetCurrentAnimatorClipInfo(arg0);
         for (int i = 0; arrRet != null && i < arrRet.Length; i++)
         {
             JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
@@ -586,6 +778,30 @@ static bool Animator_GetFloat__String(JSVCall vc, int argc)
     {
         System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
                 JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(((UnityEngine.Animator)vc.csObj).GetFloat(arg0)));
+    }
+
+    return true;
+}
+
+static bool Animator_GetIKHintPosition__AvatarIKHint(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.AvatarIKHint arg0 = (UnityEngine.AvatarIKHint)JSApi.getEnum((int)JSApi.GetType.Arg);
+                JSApi.setVector3S((int)JSApi.SetType.Rval, ((UnityEngine.Animator)vc.csObj).GetIKHintPosition(arg0));
+    }
+
+    return true;
+}
+
+static bool Animator_GetIKHintPositionWeight__AvatarIKHint(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.AvatarIKHint arg0 = (UnityEngine.AvatarIKHint)JSApi.getEnum((int)JSApi.GetType.Arg);
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(((UnityEngine.Animator)vc.csObj).GetIKHintPositionWeight(arg0)));
     }
 
     return true;
@@ -663,6 +879,18 @@ static bool Animator_GetInteger__String(JSVCall vc, int argc)
     return true;
 }
 
+static bool Animator_GetLayerIndex__String(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(((UnityEngine.Animator)vc.csObj).GetLayerIndex(arg0)));
+    }
+
+    return true;
+}
+
 static bool Animator_GetLayerName__Int32(JSVCall vc, int argc)
 {
     int len = argc;
@@ -687,13 +915,13 @@ static bool Animator_GetLayerWeight__Int32(JSVCall vc, int argc)
     return true;
 }
 
-static bool Animator_GetNextAnimationClipState__Int32(JSVCall vc, int argc)
+static bool Animator_GetNextAnimatorClipInfo__Int32(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 1) 
     {
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-                var arrRet = ((UnityEngine.Animator)vc.csObj).GetNextAnimationClipState(arg0);
+                var arrRet = ((UnityEngine.Animator)vc.csObj).GetNextAnimatorClipInfo(arg0);
         for (int i = 0; arrRet != null && i < arrRet.Length; i++)
         {
             JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
@@ -712,6 +940,31 @@ static bool Animator_GetNextAnimatorStateInfo__Int32(JSVCall vc, int argc)
     {
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
                 JSMgr.datax.setObject((int)JSApi.SetType.Rval, ((UnityEngine.Animator)vc.csObj).GetNextAnimatorStateInfo(arg0));
+    }
+
+    return true;
+}
+
+static bool Animator_GetParameter__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, ((UnityEngine.Animator)vc.csObj).GetParameter(arg0));
+    }
+
+    return true;
+}
+
+static bool Animator_HasState__Int32__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(((UnityEngine.Animator)vc.csObj).HasState(arg0, arg1)));
     }
 
     return true;
@@ -752,24 +1005,24 @@ static bool Animator_IsInTransition__Int32(JSVCall vc, int argc)
     return true;
 }
 
-static bool Animator_IsParameterControlledByCurve__Int32(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(((UnityEngine.Animator)vc.csObj).IsParameterControlledByCurve(arg0)));
-    }
-
-    return true;
-}
-
 static bool Animator_IsParameterControlledByCurve__String(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 1) 
     {
         System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(((UnityEngine.Animator)vc.csObj).IsParameterControlledByCurve(arg0)));
+    }
+
+    return true;
+}
+
+static bool Animator_IsParameterControlledByCurve__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(((UnityEngine.Animator)vc.csObj).IsParameterControlledByCurve(arg0)));
     }
 
@@ -887,24 +1140,90 @@ static bool Animator_Play__Int32(JSVCall vc, int argc)
     return true;
 }
 
+static bool Animator_PlayInFixedTime__String__Int32__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).PlayInFixedTime(arg0, arg1, arg2);
+    }
+
+    return true;
+}
+
+static bool Animator_PlayInFixedTime__Int32__Int32__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).PlayInFixedTime(arg0, arg1, arg2);
+    }
+
+    return true;
+}
+
+static bool Animator_PlayInFixedTime__String__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).PlayInFixedTime(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Animator_PlayInFixedTime__Int32__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).PlayInFixedTime(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Animator_PlayInFixedTime__String(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).PlayInFixedTime(arg0);
+    }
+
+    return true;
+}
+
+static bool Animator_PlayInFixedTime__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).PlayInFixedTime(arg0);
+    }
+
+    return true;
+}
+
 static bool Animator_Rebind(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 0) 
     {
         ((UnityEngine.Animator)vc.csObj).Rebind();
-    }
-
-    return true;
-}
-
-static bool Animator_ResetTrigger__Int32(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        ((UnityEngine.Animator)vc.csObj).ResetTrigger(arg0);
     }
 
     return true;
@@ -922,14 +1241,26 @@ static bool Animator_ResetTrigger__String(JSVCall vc, int argc)
     return true;
 }
 
-static bool Animator_SetBool__Int32__Boolean(JSVCall vc, int argc)
+static bool Animator_ResetTrigger__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).ResetTrigger(arg0);
+    }
+
+    return true;
+}
+
+static bool Animator_SetBoneLocalRotation__HumanBodyBones__Quaternion(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 2) 
     {
-        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        System.Boolean arg1 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        ((UnityEngine.Animator)vc.csObj).SetBool(arg0, arg1);
+        UnityEngine.HumanBodyBones arg0 = (UnityEngine.HumanBodyBones)JSApi.getEnum((int)JSApi.GetType.Arg);
+        UnityEngine.Quaternion arg1 = (UnityEngine.Quaternion)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).SetBoneLocalRotation(arg0, arg1);
     }
 
     return true;
@@ -948,16 +1279,14 @@ static bool Animator_SetBool__String__Boolean(JSVCall vc, int argc)
     return true;
 }
 
-static bool Animator_SetFloat__Int32__Single__Single__Single(JSVCall vc, int argc)
+static bool Animator_SetBool__Int32__Boolean(JSVCall vc, int argc)
 {
     int len = argc;
-    if (len == 4) 
+    if (len == 2) 
     {
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        System.Single arg3 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        ((UnityEngine.Animator)vc.csObj).SetFloat(arg0, arg1, arg2, arg3);
+        System.Boolean arg1 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).SetBool(arg0, arg1);
     }
 
     return true;
@@ -969,6 +1298,21 @@ static bool Animator_SetFloat__String__Single__Single__Single(JSVCall vc, int ar
     if (len == 4) 
     {
         System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg3 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).SetFloat(arg0, arg1, arg2, arg3);
+    }
+
+    return true;
+}
+
+static bool Animator_SetFloat__Int32__Single__Single__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         System.Single arg3 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
@@ -999,6 +1343,32 @@ static bool Animator_SetFloat__Int32__Single(JSVCall vc, int argc)
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         ((UnityEngine.Animator)vc.csObj).SetFloat(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Animator_SetIKHintPosition__AvatarIKHint__Vector3(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        UnityEngine.AvatarIKHint arg0 = (UnityEngine.AvatarIKHint)JSApi.getEnum((int)JSApi.GetType.Arg);
+        UnityEngine.Vector3 arg1 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).SetIKHintPosition(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Animator_SetIKHintPositionWeight__AvatarIKHint__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        UnityEngine.AvatarIKHint arg0 = (UnityEngine.AvatarIKHint)JSApi.getEnum((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).SetIKHintPositionWeight(arg0, arg1);
     }
 
     return true;
@@ -1056,12 +1426,12 @@ static bool Animator_SetIKRotationWeight__AvatarIKGoal__Single(JSVCall vc, int a
     return true;
 }
 
-static bool Animator_SetInteger__Int32__Int32(JSVCall vc, int argc)
+static bool Animator_SetInteger__String__Int32(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 2) 
     {
-        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
         System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         ((UnityEngine.Animator)vc.csObj).SetInteger(arg0, arg1);
     }
@@ -1069,12 +1439,12 @@ static bool Animator_SetInteger__Int32__Int32(JSVCall vc, int argc)
     return true;
 }
 
-static bool Animator_SetInteger__String__Int32(JSVCall vc, int argc)
+static bool Animator_SetInteger__Int32__Int32(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 2) 
     {
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         ((UnityEngine.Animator)vc.csObj).SetInteger(arg0, arg1);
     }
@@ -1190,24 +1560,24 @@ static bool Animator_SetTarget__AvatarTarget__Single(JSVCall vc, int argc)
     return true;
 }
 
-static bool Animator_SetTrigger__String(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        ((UnityEngine.Animator)vc.csObj).SetTrigger(arg0);
-    }
-
-    return true;
-}
-
 static bool Animator_SetTrigger__Int32(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 1) 
     {
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        ((UnityEngine.Animator)vc.csObj).SetTrigger(arg0);
+    }
+
+    return true;
+}
+
+static bool Animator_SetTrigger__String(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
         ((UnityEngine.Animator)vc.csObj).SetTrigger(arg0);
     }
 
@@ -1300,11 +1670,15 @@ public static void __Register()
         Animator_isHuman,
         Animator_hasRootMotion,
         Animator_humanScale,
+        Animator_isInitialized,
         Animator_deltaPosition,
         Animator_deltaRotation,
+        Animator_velocity,
+        Animator_angularVelocity,
         Animator_rootPosition,
         Animator_rootRotation,
         Animator_applyRootMotion,
+        Animator_linearVelocityBlending,
         Animator_updateMode,
         Animator_hasTransformHierarchy,
         Animator_gravityWeight,
@@ -1312,6 +1686,8 @@ public static void __Register()
         Animator_bodyRotation,
         Animator_stabilizeFeet,
         Animator_layerCount,
+        Animator_parameters,
+        Animator_parameterCount,
         Animator_feetPivotActive,
         Animator_pivotWeight,
         Animator_pivotPosition,
@@ -1323,6 +1699,7 @@ public static void __Register()
         Animator_playbackTime,
         Animator_recorderStartTime,
         Animator_recorderStopTime,
+        Animator_recorderMode,
         Animator_runtimeAnimatorController,
         Animator_avatar,
         Animator_layersAffectMassCenter,
@@ -1339,35 +1716,49 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
-        new JSMgr.MethodCallBackInfo(Animator_CrossFade__String__Single__Int32__Single, "CrossFade"),
+        new JSMgr.MethodCallBackInfo(Animator_ApplyBuiltinRootMotion, "ApplyBuiltinRootMotion"),
         new JSMgr.MethodCallBackInfo(Animator_CrossFade__Int32__Single__Int32__Single, "CrossFade"),
+        new JSMgr.MethodCallBackInfo(Animator_CrossFade__String__Single__Int32__Single, "CrossFade"),
         new JSMgr.MethodCallBackInfo(Animator_CrossFade__String__Single__Int32, "CrossFade"),
         new JSMgr.MethodCallBackInfo(Animator_CrossFade__Int32__Single__Int32, "CrossFade"),
         new JSMgr.MethodCallBackInfo(Animator_CrossFade__String__Single, "CrossFade"),
         new JSMgr.MethodCallBackInfo(Animator_CrossFade__Int32__Single, "CrossFade"),
+        new JSMgr.MethodCallBackInfo(Animator_CrossFadeInFixedTime__Int32__Single__Int32__Single, "CrossFadeInFixedTime"),
+        new JSMgr.MethodCallBackInfo(Animator_CrossFadeInFixedTime__String__Single__Int32__Single, "CrossFadeInFixedTime"),
+        new JSMgr.MethodCallBackInfo(Animator_CrossFadeInFixedTime__String__Single__Int32, "CrossFadeInFixedTime"),
+        new JSMgr.MethodCallBackInfo(Animator_CrossFadeInFixedTime__Int32__Single__Int32, "CrossFadeInFixedTime"),
+        new JSMgr.MethodCallBackInfo(Animator_CrossFadeInFixedTime__String__Single, "CrossFadeInFixedTime"),
+        new JSMgr.MethodCallBackInfo(Animator_CrossFadeInFixedTime__Int32__Single, "CrossFadeInFixedTime"),
         new JSMgr.MethodCallBackInfo(Animator_GetAnimatorTransitionInfo__Int32, "GetAnimatorTransitionInfo"),
+        new JSMgr.MethodCallBackInfo(Animator_GetBehaviourT1, "GetBehaviour"),
+        new JSMgr.MethodCallBackInfo(Animator_GetBehavioursT1, "GetBehaviours"),
         new JSMgr.MethodCallBackInfo(Animator_GetBoneTransform__HumanBodyBones, "GetBoneTransform"),
-        new JSMgr.MethodCallBackInfo(Animator_GetBool__String, "GetBool"),
         new JSMgr.MethodCallBackInfo(Animator_GetBool__Int32, "GetBool"),
-        new JSMgr.MethodCallBackInfo(Animator_GetCurrentAnimationClipState__Int32, "GetCurrentAnimationClipState"),
+        new JSMgr.MethodCallBackInfo(Animator_GetBool__String, "GetBool"),
+        new JSMgr.MethodCallBackInfo(Animator_GetCurrentAnimatorClipInfo__Int32, "GetCurrentAnimatorClipInfo"),
         new JSMgr.MethodCallBackInfo(Animator_GetCurrentAnimatorStateInfo__Int32, "GetCurrentAnimatorStateInfo"),
         new JSMgr.MethodCallBackInfo(Animator_GetFloat__Int32, "GetFloat"),
         new JSMgr.MethodCallBackInfo(Animator_GetFloat__String, "GetFloat"),
+        new JSMgr.MethodCallBackInfo(Animator_GetIKHintPosition__AvatarIKHint, "GetIKHintPosition"),
+        new JSMgr.MethodCallBackInfo(Animator_GetIKHintPositionWeight__AvatarIKHint, "GetIKHintPositionWeight"),
         new JSMgr.MethodCallBackInfo(Animator_GetIKPosition__AvatarIKGoal, "GetIKPosition"),
         new JSMgr.MethodCallBackInfo(Animator_GetIKPositionWeight__AvatarIKGoal, "GetIKPositionWeight"),
         new JSMgr.MethodCallBackInfo(Animator_GetIKRotation__AvatarIKGoal, "GetIKRotation"),
         new JSMgr.MethodCallBackInfo(Animator_GetIKRotationWeight__AvatarIKGoal, "GetIKRotationWeight"),
         new JSMgr.MethodCallBackInfo(Animator_GetInteger__Int32, "GetInteger"),
         new JSMgr.MethodCallBackInfo(Animator_GetInteger__String, "GetInteger"),
+        new JSMgr.MethodCallBackInfo(Animator_GetLayerIndex__String, "GetLayerIndex"),
         new JSMgr.MethodCallBackInfo(Animator_GetLayerName__Int32, "GetLayerName"),
         new JSMgr.MethodCallBackInfo(Animator_GetLayerWeight__Int32, "GetLayerWeight"),
-        new JSMgr.MethodCallBackInfo(Animator_GetNextAnimationClipState__Int32, "GetNextAnimationClipState"),
+        new JSMgr.MethodCallBackInfo(Animator_GetNextAnimatorClipInfo__Int32, "GetNextAnimatorClipInfo"),
         new JSMgr.MethodCallBackInfo(Animator_GetNextAnimatorStateInfo__Int32, "GetNextAnimatorStateInfo"),
+        new JSMgr.MethodCallBackInfo(Animator_GetParameter__Int32, "GetParameter"),
+        new JSMgr.MethodCallBackInfo(Animator_HasState__Int32__Int32, "HasState"),
         new JSMgr.MethodCallBackInfo(Animator_InterruptMatchTarget__Boolean, "InterruptMatchTarget"),
         new JSMgr.MethodCallBackInfo(Animator_InterruptMatchTarget, "InterruptMatchTarget"),
         new JSMgr.MethodCallBackInfo(Animator_IsInTransition__Int32, "IsInTransition"),
-        new JSMgr.MethodCallBackInfo(Animator_IsParameterControlledByCurve__Int32, "IsParameterControlledByCurve"),
         new JSMgr.MethodCallBackInfo(Animator_IsParameterControlledByCurve__String, "IsParameterControlledByCurve"),
+        new JSMgr.MethodCallBackInfo(Animator_IsParameterControlledByCurve__Int32, "IsParameterControlledByCurve"),
         new JSMgr.MethodCallBackInfo(Animator_MatchTarget__Vector3__Quaternion__AvatarTarget__MatchTargetWeightMask__Single__Single, "MatchTarget"),
         new JSMgr.MethodCallBackInfo(Animator_MatchTarget__Vector3__Quaternion__AvatarTarget__MatchTargetWeightMask__Single, "MatchTarget"),
         new JSMgr.MethodCallBackInfo(Animator_Play__String__Int32__Single, "Play"),
@@ -1376,21 +1767,30 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Animator_Play__Int32__Int32, "Play"),
         new JSMgr.MethodCallBackInfo(Animator_Play__String, "Play"),
         new JSMgr.MethodCallBackInfo(Animator_Play__Int32, "Play"),
+        new JSMgr.MethodCallBackInfo(Animator_PlayInFixedTime__String__Int32__Single, "PlayInFixedTime"),
+        new JSMgr.MethodCallBackInfo(Animator_PlayInFixedTime__Int32__Int32__Single, "PlayInFixedTime"),
+        new JSMgr.MethodCallBackInfo(Animator_PlayInFixedTime__String__Int32, "PlayInFixedTime"),
+        new JSMgr.MethodCallBackInfo(Animator_PlayInFixedTime__Int32__Int32, "PlayInFixedTime"),
+        new JSMgr.MethodCallBackInfo(Animator_PlayInFixedTime__String, "PlayInFixedTime"),
+        new JSMgr.MethodCallBackInfo(Animator_PlayInFixedTime__Int32, "PlayInFixedTime"),
         new JSMgr.MethodCallBackInfo(Animator_Rebind, "Rebind"),
-        new JSMgr.MethodCallBackInfo(Animator_ResetTrigger__Int32, "ResetTrigger"),
         new JSMgr.MethodCallBackInfo(Animator_ResetTrigger__String, "ResetTrigger"),
-        new JSMgr.MethodCallBackInfo(Animator_SetBool__Int32__Boolean, "SetBool"),
+        new JSMgr.MethodCallBackInfo(Animator_ResetTrigger__Int32, "ResetTrigger"),
+        new JSMgr.MethodCallBackInfo(Animator_SetBoneLocalRotation__HumanBodyBones__Quaternion, "SetBoneLocalRotation"),
         new JSMgr.MethodCallBackInfo(Animator_SetBool__String__Boolean, "SetBool"),
-        new JSMgr.MethodCallBackInfo(Animator_SetFloat__Int32__Single__Single__Single, "SetFloat"),
+        new JSMgr.MethodCallBackInfo(Animator_SetBool__Int32__Boolean, "SetBool"),
         new JSMgr.MethodCallBackInfo(Animator_SetFloat__String__Single__Single__Single, "SetFloat"),
+        new JSMgr.MethodCallBackInfo(Animator_SetFloat__Int32__Single__Single__Single, "SetFloat"),
         new JSMgr.MethodCallBackInfo(Animator_SetFloat__String__Single, "SetFloat"),
         new JSMgr.MethodCallBackInfo(Animator_SetFloat__Int32__Single, "SetFloat"),
+        new JSMgr.MethodCallBackInfo(Animator_SetIKHintPosition__AvatarIKHint__Vector3, "SetIKHintPosition"),
+        new JSMgr.MethodCallBackInfo(Animator_SetIKHintPositionWeight__AvatarIKHint__Single, "SetIKHintPositionWeight"),
         new JSMgr.MethodCallBackInfo(Animator_SetIKPosition__AvatarIKGoal__Vector3, "SetIKPosition"),
         new JSMgr.MethodCallBackInfo(Animator_SetIKPositionWeight__AvatarIKGoal__Single, "SetIKPositionWeight"),
         new JSMgr.MethodCallBackInfo(Animator_SetIKRotation__AvatarIKGoal__Quaternion, "SetIKRotation"),
         new JSMgr.MethodCallBackInfo(Animator_SetIKRotationWeight__AvatarIKGoal__Single, "SetIKRotationWeight"),
-        new JSMgr.MethodCallBackInfo(Animator_SetInteger__Int32__Int32, "SetInteger"),
         new JSMgr.MethodCallBackInfo(Animator_SetInteger__String__Int32, "SetInteger"),
+        new JSMgr.MethodCallBackInfo(Animator_SetInteger__Int32__Int32, "SetInteger"),
         new JSMgr.MethodCallBackInfo(Animator_SetLayerWeight__Int32__Single, "SetLayerWeight"),
         new JSMgr.MethodCallBackInfo(Animator_SetLookAtPosition__Vector3, "SetLookAtPosition"),
         new JSMgr.MethodCallBackInfo(Animator_SetLookAtWeight__Single__Single__Single__Single__Single, "SetLookAtWeight"),
@@ -1399,8 +1799,8 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Animator_SetLookAtWeight__Single__Single, "SetLookAtWeight"),
         new JSMgr.MethodCallBackInfo(Animator_SetLookAtWeight__Single, "SetLookAtWeight"),
         new JSMgr.MethodCallBackInfo(Animator_SetTarget__AvatarTarget__Single, "SetTarget"),
-        new JSMgr.MethodCallBackInfo(Animator_SetTrigger__String, "SetTrigger"),
         new JSMgr.MethodCallBackInfo(Animator_SetTrigger__Int32, "SetTrigger"),
+        new JSMgr.MethodCallBackInfo(Animator_SetTrigger__String, "SetTrigger"),
         new JSMgr.MethodCallBackInfo(Animator_StartPlayback, "StartPlayback"),
         new JSMgr.MethodCallBackInfo(Animator_StartRecording__Int32, "StartRecording"),
         new JSMgr.MethodCallBackInfo(Animator_StopPlayback, "StopPlayback"),

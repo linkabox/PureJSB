@@ -242,6 +242,7 @@
     Static_Any$1$$IEnumerable$1
 
 [UnityEngine.Mathf]
+    Static_Epsilon
     Static_Abs$$Int32
     Static_Abs$$Single
     Static_Approximately
@@ -346,7 +347,6 @@
     AddComponent$1
     ctor$$String$$Type$Array
     AddComponent$$Type
-    AddComponent$$String
     GetComponent$1
 
 [UnityEngine.Object]

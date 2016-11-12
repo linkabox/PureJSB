@@ -101,19 +101,35 @@ static void Particle_startLifetime(JSVCall vc)
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
-static void Particle_size(JSVCall vc)
+static void Particle_startSize(JSVCall vc)
 {
     if (vc.bGet)
     { 
         UnityEngine.ParticleSystem.Particle _this = (UnityEngine.ParticleSystem.Particle)vc.csObj;
-        var result = _this.size;
+        var result = _this.startSize;
                 JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
     }
     else
     { 
         System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         UnityEngine.ParticleSystem.Particle _this = (UnityEngine.ParticleSystem.Particle)vc.csObj;
-        _this.size = arg0;
+        _this.startSize = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
+static void Particle_startSize3D(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.ParticleSystem.Particle _this = (UnityEngine.ParticleSystem.Particle)vc.csObj;
+        var result = _this.startSize3D;
+                JSApi.setVector3S((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.Vector3 arg0 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        UnityEngine.ParticleSystem.Particle _this = (UnityEngine.ParticleSystem.Particle)vc.csObj;
+        _this.startSize3D = arg0;
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
@@ -149,6 +165,22 @@ static void Particle_rotation(JSVCall vc)
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
+static void Particle_rotation3D(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.ParticleSystem.Particle _this = (UnityEngine.ParticleSystem.Particle)vc.csObj;
+        var result = _this.rotation3D;
+                JSApi.setVector3S((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.Vector3 arg0 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        UnityEngine.ParticleSystem.Particle _this = (UnityEngine.ParticleSystem.Particle)vc.csObj;
+        _this.rotation3D = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
 static void Particle_angularVelocity(JSVCall vc)
 {
     if (vc.bGet)
@@ -165,19 +197,35 @@ static void Particle_angularVelocity(JSVCall vc)
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
-static void Particle_color(JSVCall vc)
+static void Particle_angularVelocity3D(JSVCall vc)
 {
     if (vc.bGet)
     { 
         UnityEngine.ParticleSystem.Particle _this = (UnityEngine.ParticleSystem.Particle)vc.csObj;
-        var result = _this.color;
+        var result = _this.angularVelocity3D;
+                JSApi.setVector3S((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.Vector3 arg0 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        UnityEngine.ParticleSystem.Particle _this = (UnityEngine.ParticleSystem.Particle)vc.csObj;
+        _this.angularVelocity3D = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
+static void Particle_startColor(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.ParticleSystem.Particle _this = (UnityEngine.ParticleSystem.Particle)vc.csObj;
+        var result = _this.startColor;
                 JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
     }
     else
     { 
         UnityEngine.Color32 arg0 = (UnityEngine.Color32)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.ParticleSystem.Particle _this = (UnityEngine.ParticleSystem.Particle)vc.csObj;
-        _this.color = arg0;
+        _this.startColor = arg0;
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
@@ -200,6 +248,45 @@ static void Particle_randomSeed(JSVCall vc)
 
 // methods
 
+static bool Particle_GetCurrentColor__ParticleSystem(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.ParticleSystem arg0 = (UnityEngine.ParticleSystem)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+UnityEngine.ParticleSystem.Particle argThis = (UnityEngine.ParticleSystem.Particle)vc.csObj;                JSMgr.datax.setObject((int)JSApi.SetType.Rval, argThis.GetCurrentColor(arg0));
+        JSMgr.changeJSObj(vc.jsObjID, argThis);
+    }
+
+    return true;
+}
+
+static bool Particle_GetCurrentSize__ParticleSystem(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.ParticleSystem arg0 = (UnityEngine.ParticleSystem)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+UnityEngine.ParticleSystem.Particle argThis = (UnityEngine.ParticleSystem.Particle)vc.csObj;                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(argThis.GetCurrentSize(arg0)));
+        JSMgr.changeJSObj(vc.jsObjID, argThis);
+    }
+
+    return true;
+}
+
+static bool Particle_GetCurrentSize3D__ParticleSystem(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.ParticleSystem arg0 = (UnityEngine.ParticleSystem)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+UnityEngine.ParticleSystem.Particle argThis = (UnityEngine.ParticleSystem.Particle)vc.csObj;                JSApi.setVector3S((int)JSApi.SetType.Rval, argThis.GetCurrentSize3D(arg0));
+        JSMgr.changeJSObj(vc.jsObjID, argThis);
+    }
+
+    return true;
+}
+
 
 //register
 
@@ -217,11 +304,14 @@ public static void __Register()
         Particle_velocity,
         Particle_lifetime,
         Particle_startLifetime,
-        Particle_size,
+        Particle_startSize,
+        Particle_startSize3D,
         Particle_axisOfRotation,
         Particle_rotation,
+        Particle_rotation3D,
         Particle_angularVelocity,
-        Particle_color,
+        Particle_angularVelocity3D,
+        Particle_startColor,
         Particle_randomSeed,
 
     };
@@ -232,6 +322,9 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
+        new JSMgr.MethodCallBackInfo(Particle_GetCurrentColor__ParticleSystem, "GetCurrentColor"),
+        new JSMgr.MethodCallBackInfo(Particle_GetCurrentSize__ParticleSystem, "GetCurrentSize"),
+        new JSMgr.MethodCallBackInfo(Particle_GetCurrentSize3D__ParticleSystem, "GetCurrentSize3D"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

@@ -36,17 +36,17 @@ static bool Random_Random1(JSVCall vc, int argc)
 // fields
 
 // properties
-static void Random_seed(JSVCall vc)
+static void Random_state(JSVCall vc)
 {
     if (vc.bGet)
     { 
-        var result = UnityEngine.Random.seed;
-                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+        var result = UnityEngine.Random.state;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
     }
     else
     { 
-        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.Random.seed = arg0;
+        UnityEngine.Random.State arg0 = (UnityEngine.Random.State)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Random.state = arg0;
     }
 }
 static void Random_value(JSVCall vc)
@@ -82,14 +82,88 @@ static void Random_rotationUniform(JSVCall vc)
 
 // methods
 
-static bool Random_Range__Int32__Int32(JSVCall vc, int argc)
+static bool Random_ColorHSV__Single__Single__Single__Single__Single__Single__Single__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 8) 
+    {
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg3 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg4 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg5 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg6 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg7 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Random.ColorHSV(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7));
+    }
+
+    return true;
+}
+
+static bool Random_ColorHSV__Single__Single__Single__Single__Single__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 6) 
+    {
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg3 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg4 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg5 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Random.ColorHSV(arg0, arg1, arg2, arg3, arg4, arg5));
+    }
+
+    return true;
+}
+
+static bool Random_ColorHSV__Single__Single__Single__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg3 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Random.ColorHSV(arg0, arg1, arg2, arg3));
+    }
+
+    return true;
+}
+
+static bool Random_ColorHSV__Single__Single(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 2) 
     {
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Random.ColorHSV(arg0, arg1));
+    }
+
+    return true;
+}
+
+static bool Random_ColorHSV(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Random.ColorHSV());
+    }
+
+    return true;
+}
+
+static bool Random_InitState__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.Random.Range(arg0, arg1)));
+        UnityEngine.Random.InitState(arg0);
     }
 
     return true;
@@ -108,6 +182,19 @@ static bool Random_Range__Single__Single(JSVCall vc, int argc)
     return true;
 }
 
+static bool Random_Range__Int32__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.Random.Range(arg0, arg1)));
+    }
+
+    return true;
+}
+
 
 //register
 
@@ -121,7 +208,7 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
-        Random_seed,
+        Random_state,
         Random_value,
         Random_insideUnitSphere,
         Random_insideUnitCircle,
@@ -137,8 +224,14 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
-        new JSMgr.MethodCallBackInfo(Random_Range__Int32__Int32, "Range"),
+        new JSMgr.MethodCallBackInfo(Random_ColorHSV__Single__Single__Single__Single__Single__Single__Single__Single, "ColorHSV"),
+        new JSMgr.MethodCallBackInfo(Random_ColorHSV__Single__Single__Single__Single__Single__Single, "ColorHSV"),
+        new JSMgr.MethodCallBackInfo(Random_ColorHSV__Single__Single__Single__Single, "ColorHSV"),
+        new JSMgr.MethodCallBackInfo(Random_ColorHSV__Single__Single, "ColorHSV"),
+        new JSMgr.MethodCallBackInfo(Random_ColorHSV, "ColorHSV"),
+        new JSMgr.MethodCallBackInfo(Random_InitState__Int32, "InitState"),
         new JSMgr.MethodCallBackInfo(Random_Range__Single__Single, "Range"),
+        new JSMgr.MethodCallBackInfo(Random_Range__Int32__Int32, "Range"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

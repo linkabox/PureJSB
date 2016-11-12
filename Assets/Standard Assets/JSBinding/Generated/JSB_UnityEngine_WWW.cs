@@ -350,17 +350,6 @@ static bool WWW_LoadImageIntoTexture__Texture2D(JSVCall vc, int argc)
     return true;
 }
 
-static bool WWW_LoadUnityWeb(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 0) 
-    {
-        ((UnityEngine.WWW)vc.csObj).LoadUnityWeb();
-    }
-
-    return true;
-}
-
 static bool WWW_EscapeURL__String__Encoding(JSVCall vc, int argc)
 {
     int len = argc;
@@ -395,6 +384,33 @@ static bool WWW_LoadFromCacheOrDownload__String__Int32__UInt32(JSVCall vc, int a
         System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         System.UInt32 arg2 = (System.UInt32)JSApi.getUInt32((int)JSApi.GetType.Arg);
                 JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.WWW.LoadFromCacheOrDownload(arg0, arg1, arg2));
+    }
+
+    return true;
+}
+
+static bool WWW_LoadFromCacheOrDownload__String__Hash128__UInt32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        UnityEngine.Hash128 arg1 = (UnityEngine.Hash128)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.UInt32 arg2 = (System.UInt32)JSApi.getUInt32((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.WWW.LoadFromCacheOrDownload(arg0, arg1, arg2));
+    }
+
+    return true;
+}
+
+static bool WWW_LoadFromCacheOrDownload__String__Hash128(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        UnityEngine.Hash128 arg1 = (UnityEngine.Hash128)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.WWW.LoadFromCacheOrDownload(arg0, arg1));
     }
 
     return true;
@@ -487,10 +503,11 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(WWW_GetAudioClipCompressed, "GetAudioClipCompressed"),
         new JSMgr.MethodCallBackInfo(WWW_InitWWW__String__Byte_Array__String_Array, "InitWWW"),
         new JSMgr.MethodCallBackInfo(WWW_LoadImageIntoTexture__Texture2D, "LoadImageIntoTexture"),
-        new JSMgr.MethodCallBackInfo(WWW_LoadUnityWeb, "LoadUnityWeb"),
         new JSMgr.MethodCallBackInfo(WWW_EscapeURL__String__Encoding, "EscapeURL"),
         new JSMgr.MethodCallBackInfo(WWW_EscapeURL__String, "EscapeURL"),
         new JSMgr.MethodCallBackInfo(WWW_LoadFromCacheOrDownload__String__Int32__UInt32, "LoadFromCacheOrDownload"),
+        new JSMgr.MethodCallBackInfo(WWW_LoadFromCacheOrDownload__String__Hash128__UInt32, "LoadFromCacheOrDownload"),
+        new JSMgr.MethodCallBackInfo(WWW_LoadFromCacheOrDownload__String__Hash128, "LoadFromCacheOrDownload"),
         new JSMgr.MethodCallBackInfo(WWW_LoadFromCacheOrDownload__String__Int32, "LoadFromCacheOrDownload"),
         new JSMgr.MethodCallBackInfo(WWW_UnEscapeURL__String__Encoding, "UnEscapeURL"),
         new JSMgr.MethodCallBackInfo(WWW_UnEscapeURL__String, "UnEscapeURL"),

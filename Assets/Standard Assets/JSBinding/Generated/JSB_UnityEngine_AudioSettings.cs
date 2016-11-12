@@ -36,9 +36,9 @@ static bool AudioSettings_AudioSettings1(JSVCall vc, int argc)
 // fields
 
 // properties
-static void AudioSettings_driverCaps(JSVCall vc)
+static void AudioSettings_driverCapabilities(JSVCall vc)
 {
-        var result = UnityEngine.AudioSettings.driverCaps;
+        var result = UnityEngine.AudioSettings.driverCapabilities;
                 JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
 }
 static void AudioSettings_speakerMode(JSVCall vc)
@@ -74,6 +74,52 @@ static void AudioSettings_outputSampleRate(JSVCall vc)
 }
 
 // methods
+public static UnityEngine.AudioSettings.AudioConfigurationChangeHandler AudioSettings_add_OnAudioConfigurationChanged_GetDelegate_member0_arg0(CSRepresentedObject objFunction)
+{
+    if (objFunction == null || objFunction.jsObjID == 0)
+    {
+        return null;
+    }
+    var action = JSMgr.getJSFunCSDelegateRel<UnityEngine.AudioSettings.AudioConfigurationChangeHandler>(objFunction.jsObjID);
+    if (action == null)
+    {
+        action = (deviceWasChanged) => 
+        {
+            JSMgr.vCall.CallJSFunctionValue(0, objFunction.jsObjID, deviceWasChanged);
+        };
+        JSMgr.addJSFunCSDelegateRel(objFunction.jsObjID, action);
+    }
+    return action;
+}
+
+static bool AudioSettings_add_OnAudioConfigurationChanged__AudioConfigurationChangeHandler(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.AudioSettings.AudioConfigurationChangeHandler action = JSDataExchangeMgr.GetJSArg<UnityEngine.AudioSettings.AudioConfigurationChangeHandler>(()=>
+        {
+            if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
+                return AudioSettings_add_OnAudioConfigurationChanged_GetDelegate_member0_arg0(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+            else
+                return (UnityEngine.AudioSettings.AudioConfigurationChangeHandler)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        });
+        UnityEngine.AudioSettings.OnAudioConfigurationChanged += action;
+    }
+
+    return true;
+}
+
+static bool AudioSettings_GetConfiguration(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AudioSettings.GetConfiguration());
+    }
+
+    return true;
+}
 
 static bool AudioSettings_GetDSPBufferSize__Int32__Int32(JSVCall vc, int argc)
 {
@@ -93,15 +139,49 @@ static bool AudioSettings_GetDSPBufferSize__Int32__Int32(JSVCall vc, int argc)
 
     return true;
 }
+public static UnityEngine.AudioSettings.AudioConfigurationChangeHandler AudioSettings_remove_OnAudioConfigurationChanged_GetDelegate_member3_arg0(CSRepresentedObject objFunction)
+{
+    if (objFunction == null || objFunction.jsObjID == 0)
+    {
+        return null;
+    }
+    var action = JSMgr.getJSFunCSDelegateRel<UnityEngine.AudioSettings.AudioConfigurationChangeHandler>(objFunction.jsObjID);
+    if (action == null)
+    {
+        action = (deviceWasChanged) => 
+        {
+            JSMgr.vCall.CallJSFunctionValue(0, objFunction.jsObjID, deviceWasChanged);
+        };
+        JSMgr.addJSFunCSDelegateRel(objFunction.jsObjID, action);
+    }
+    return action;
+}
 
-static bool AudioSettings_SetDSPBufferSize__Int32__Int32(JSVCall vc, int argc)
+static bool AudioSettings_remove_OnAudioConfigurationChanged__AudioConfigurationChangeHandler(JSVCall vc, int argc)
 {
     int len = argc;
-    if (len == 2) 
+    if (len == 1) 
     {
-        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.AudioSettings.SetDSPBufferSize(arg0, arg1);
+        UnityEngine.AudioSettings.AudioConfigurationChangeHandler action = JSDataExchangeMgr.GetJSArg<UnityEngine.AudioSettings.AudioConfigurationChangeHandler>(()=>
+        {
+            if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
+                return AudioSettings_remove_OnAudioConfigurationChanged_GetDelegate_member3_arg0(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+            else
+                return (UnityEngine.AudioSettings.AudioConfigurationChangeHandler)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        });
+        UnityEngine.AudioSettings.OnAudioConfigurationChanged -= action;
+    }
+
+    return true;
+}
+
+static bool AudioSettings_Reset__AudioConfiguration(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.AudioConfiguration arg0 = (UnityEngine.AudioConfiguration)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.AudioSettings.Reset(arg0)));
     }
 
     return true;
@@ -120,7 +200,7 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
-        AudioSettings_driverCaps,
+        AudioSettings_driverCapabilities,
         AudioSettings_speakerMode,
         AudioSettings_dspTime,
         AudioSettings_outputSampleRate,
@@ -133,8 +213,11 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
+        new JSMgr.MethodCallBackInfo(AudioSettings_add_OnAudioConfigurationChanged__AudioConfigurationChangeHandler, "add_OnAudioConfigurationChanged"),
+        new JSMgr.MethodCallBackInfo(AudioSettings_GetConfiguration, "GetConfiguration"),
         new JSMgr.MethodCallBackInfo(AudioSettings_GetDSPBufferSize__Int32__Int32, "GetDSPBufferSize"),
-        new JSMgr.MethodCallBackInfo(AudioSettings_SetDSPBufferSize__Int32__Int32, "SetDSPBufferSize"),
+        new JSMgr.MethodCallBackInfo(AudioSettings_remove_OnAudioConfigurationChanged__AudioConfigurationChangeHandler, "remove_OnAudioConfigurationChanged"),
+        new JSMgr.MethodCallBackInfo(AudioSettings_Reset__AudioConfiguration, "Reset"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

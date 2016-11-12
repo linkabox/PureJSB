@@ -209,6 +209,22 @@ static void HumanDescription_feetSpacing(JSVCall vc)
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
+static void HumanDescription_hasTranslationDoF(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.HumanDescription _this = (UnityEngine.HumanDescription)vc.csObj;
+        var result = _this.hasTranslationDoF;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.HumanDescription _this = (UnityEngine.HumanDescription)vc.csObj;
+        _this.hasTranslationDoF = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
 
 // methods
 
@@ -234,6 +250,7 @@ public static void __Register()
         HumanDescription_armStretch,
         HumanDescription_legStretch,
         HumanDescription_feetSpacing,
+        HumanDescription_hasTranslationDoF,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

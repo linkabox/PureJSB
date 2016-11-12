@@ -78,19 +78,6 @@ static void LightmapSettings_lightmapsMode(JSVCall vc)
         UnityEngine.LightmapSettings.lightmapsMode = arg0;
     }
 }
-static void LightmapSettings_bakedColorSpace(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        var result = UnityEngine.LightmapSettings.bakedColorSpace;
-                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
-    }
-    else
-    { 
-        UnityEngine.ColorSpace arg0 = (UnityEngine.ColorSpace)JSApi.getEnum((int)JSApi.GetType.Arg);
-        UnityEngine.LightmapSettings.bakedColorSpace = arg0;
-    }
-}
 static void LightmapSettings_lightProbes(JSVCall vc)
 {
     if (vc.bGet)
@@ -122,7 +109,6 @@ public static void __Register()
     {
         LightmapSettings_lightmaps,
         LightmapSettings_lightmapsMode,
-        LightmapSettings_bakedColorSpace,
         LightmapSettings_lightProbes,
 
     };

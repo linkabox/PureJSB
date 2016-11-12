@@ -112,6 +112,18 @@ static bool HumanTrait_GetMuscleDefaultMin__Int32(JSVCall vc, int argc)
     return true;
 }
 
+static bool HumanTrait_GetParentBone__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.HumanTrait.GetParentBone(arg0)));
+    }
+
+    return true;
+}
+
 static bool HumanTrait_MuscleFromBone__Int32__Int32(JSVCall vc, int argc)
 {
     int len = argc;
@@ -167,6 +179,7 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(HumanTrait_BoneFromMuscle__Int32, "BoneFromMuscle"),
         new JSMgr.MethodCallBackInfo(HumanTrait_GetMuscleDefaultMax__Int32, "GetMuscleDefaultMax"),
         new JSMgr.MethodCallBackInfo(HumanTrait_GetMuscleDefaultMin__Int32, "GetMuscleDefaultMin"),
+        new JSMgr.MethodCallBackInfo(HumanTrait_GetParentBone__Int32, "GetParentBone"),
         new JSMgr.MethodCallBackInfo(HumanTrait_MuscleFromBone__Int32__Int32, "MuscleFromBone"),
         new JSMgr.MethodCallBackInfo(HumanTrait_RequiredBone__Int32, "RequiredBone"),
 

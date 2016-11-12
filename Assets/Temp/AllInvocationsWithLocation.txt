@@ -1249,6 +1249,8 @@
         2,./Assets/Scripts/JsbUnitTest/AssortedTest/LingQTest.cs,48
 
 [UnityEngine.Mathf]
+    Static_Epsilon
+        1,./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs,20
     Static_Abs$$Int32
         1,./Assets/Scripts/JsbUnitTest/AssortedTest/MathTest.cs,28
     Static_Abs$$Single
@@ -1537,12 +1539,11 @@
         4,./Assets/Scripts/JsbUnitTest/Samples/AwakeTest/AwakeB.cs,18
         5,./Assets/Scripts/JsbUnitTest/Samples/AwakeTest/AwakeB.cs,19
         6,./Assets/Scripts/JsbUnitTest/Samples/ComponentTest/ComponentTest.cs,27
+        7,./Assets/Scripts/JsbUnitTest/Samples/ComponentTest/ComponentTest.cs,28
     ctor$$String$$Type$Array
         1,./Assets/Scripts/JsbUnitTest/Samples/ComponentTest/ComponentTest.cs,25
     AddComponent$$Type
         1,./Assets/Scripts/JsbUnitTest/Samples/ComponentTest/ComponentTest.cs,26
-    AddComponent$$String
-        1,./Assets/Scripts/JsbUnitTest/Samples/ComponentTest/ComponentTest.cs,28
     GetComponent$1
         1,./Assets/Scripts/JsbUnitTest/Samples/Serialization/Car.cs,29
 

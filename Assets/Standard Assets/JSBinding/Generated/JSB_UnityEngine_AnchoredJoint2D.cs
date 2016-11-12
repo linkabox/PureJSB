@@ -66,6 +66,21 @@ static void AnchoredJoint2D_connectedAnchor(JSVCall vc)
         _this.connectedAnchor = arg0;
     }
 }
+static void AnchoredJoint2D_autoConfigureConnectedAnchor(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.AnchoredJoint2D _this = (UnityEngine.AnchoredJoint2D)vc.csObj;
+        var result = _this.autoConfigureConnectedAnchor;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.AnchoredJoint2D _this = (UnityEngine.AnchoredJoint2D)vc.csObj;
+        _this.autoConfigureConnectedAnchor = arg0;
+    }
+}
 
 // methods
 
@@ -84,6 +99,7 @@ public static void __Register()
     {
         AnchoredJoint2D_anchor,
         AnchoredJoint2D_connectedAnchor,
+        AnchoredJoint2D_autoConfigureConnectedAnchor,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

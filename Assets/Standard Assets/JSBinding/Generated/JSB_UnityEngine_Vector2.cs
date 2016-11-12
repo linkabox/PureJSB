@@ -137,6 +137,16 @@ static void Vector2_up(JSVCall vc)
         var result = UnityEngine.Vector2.up;
                 JSApi.setVector2S((int)JSApi.SetType.Rval, result);
 }
+static void Vector2_down(JSVCall vc)
+{
+        var result = UnityEngine.Vector2.down;
+                JSApi.setVector2S((int)JSApi.SetType.Rval, result);
+}
+static void Vector2_left(JSVCall vc)
+{
+        var result = UnityEngine.Vector2.left;
+                JSApi.setVector2S((int)JSApi.SetType.Rval, result);
+}
 static void Vector2_right(JSVCall vc)
 {
         var result = UnityEngine.Vector2.right;
@@ -306,6 +316,20 @@ static bool Vector2_Lerp__Vector2__Vector2__Single(JSVCall vc, int argc)
     return true;
 }
 
+static bool Vector2_LerpUnclamped__Vector2__Vector2__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                JSApi.setVector2S((int)JSApi.SetType.Rval, UnityEngine.Vector2.LerpUnclamped(arg0, arg1, arg2));
+    }
+
+    return true;
+}
+
 static bool Vector2_Max__Vector2__Vector2(JSVCall vc, int argc)
 {
     int len = argc;
@@ -362,17 +386,17 @@ static bool Vector2_op_Equality__Vector2__Vector2(JSVCall vc, int argc)
     return true;
 }
 
-static bool Vector2_op_Implicit__Vector2_to_Vector3(JSVCall vc, int argc)
-{
-    UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
-            JSApi.setVector3S((int)JSApi.SetType.Rval, (UnityEngine.Vector3)arg0);
-    return true;
-}
-
 static bool Vector2_op_Implicit__Vector3_to_Vector2(JSVCall vc, int argc)
 {
     UnityEngine.Vector3 arg0 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
             JSApi.setVector2S((int)JSApi.SetType.Rval, (UnityEngine.Vector2)arg0);
+    return true;
+}
+
+static bool Vector2_op_Implicit__Vector2_to_Vector3(JSVCall vc, int argc)
+{
+    UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+            JSApi.setVector3S((int)JSApi.SetType.Rval, (UnityEngine.Vector3)arg0);
     return true;
 }
 
@@ -412,6 +436,19 @@ static bool Vector2_op_UnaryNegation__Vector2(JSVCall vc, int argc)
 {
     UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
             JSApi.setVector2S((int)JSApi.SetType.Rval, -arg0);
+    return true;
+}
+
+static bool Vector2_Reflect__Vector2__Vector2(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+                JSApi.setVector2S((int)JSApi.SetType.Rval, UnityEngine.Vector2.Reflect(arg0, arg1));
+    }
+
     return true;
 }
 
@@ -520,6 +557,8 @@ public static void __Register()
         Vector2_zero,
         Vector2_one,
         Vector2_up,
+        Vector2_down,
+        Vector2_left,
         Vector2_right,
 
     };
@@ -544,19 +583,21 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Vector2_Distance__Vector2__Vector2, "Distance"),
         new JSMgr.MethodCallBackInfo(Vector2_Dot__Vector2__Vector2, "Dot"),
         new JSMgr.MethodCallBackInfo(Vector2_Lerp__Vector2__Vector2__Single, "Lerp"),
+        new JSMgr.MethodCallBackInfo(Vector2_LerpUnclamped__Vector2__Vector2__Single, "LerpUnclamped"),
         new JSMgr.MethodCallBackInfo(Vector2_Max__Vector2__Vector2, "Max"),
         new JSMgr.MethodCallBackInfo(Vector2_Min__Vector2__Vector2, "Min"),
         new JSMgr.MethodCallBackInfo(Vector2_MoveTowards__Vector2__Vector2__Single, "MoveTowards"),
         new JSMgr.MethodCallBackInfo(Vector2_op_Addition__Vector2__Vector2, "op_Addition"),
         new JSMgr.MethodCallBackInfo(Vector2_op_Division__Vector2__Single, "op_Division"),
         new JSMgr.MethodCallBackInfo(Vector2_op_Equality__Vector2__Vector2, "op_Equality"),
-        new JSMgr.MethodCallBackInfo(Vector2_op_Implicit__Vector2_to_Vector3, "op_Implicit"),
         new JSMgr.MethodCallBackInfo(Vector2_op_Implicit__Vector3_to_Vector2, "op_Implicit"),
+        new JSMgr.MethodCallBackInfo(Vector2_op_Implicit__Vector2_to_Vector3, "op_Implicit"),
         new JSMgr.MethodCallBackInfo(Vector2_op_Inequality__Vector2__Vector2, "op_Inequality"),
         new JSMgr.MethodCallBackInfo(Vector2_op_Multiply__Vector2__Single, "op_Multiply"),
         new JSMgr.MethodCallBackInfo(Vector2_op_Multiply__Single__Vector2, "op_Multiply"),
         new JSMgr.MethodCallBackInfo(Vector2_op_Subtraction__Vector2__Vector2, "op_Subtraction"),
         new JSMgr.MethodCallBackInfo(Vector2_op_UnaryNegation__Vector2, "op_UnaryNegation"),
+        new JSMgr.MethodCallBackInfo(Vector2_Reflect__Vector2__Vector2, "Reflect"),
         new JSMgr.MethodCallBackInfo(Vector2_Scale__Vector2__Vector2, "Scale"),
         new JSMgr.MethodCallBackInfo(Vector2_SmoothDamp__Vector2__Vector2__Vector2__Single__Single__Single, "SmoothDamp"),
         new JSMgr.MethodCallBackInfo(Vector2_SmoothDamp__Vector2__Vector2__Vector2__Single__Single, "SmoothDamp"),

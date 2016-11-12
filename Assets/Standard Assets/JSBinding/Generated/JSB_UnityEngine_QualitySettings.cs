@@ -99,6 +99,58 @@ static void QualitySettings_shadowDistance(JSVCall vc)
         UnityEngine.QualitySettings.shadowDistance = arg0;
     }
 }
+static void QualitySettings_shadowResolution(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.QualitySettings.shadowResolution;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
+    }
+    else
+    { 
+        UnityEngine.ShadowResolution arg0 = (UnityEngine.ShadowResolution)JSApi.getEnum((int)JSApi.GetType.Arg);
+        UnityEngine.QualitySettings.shadowResolution = arg0;
+    }
+}
+static void QualitySettings_shadowNearPlaneOffset(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.QualitySettings.shadowNearPlaneOffset;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.QualitySettings.shadowNearPlaneOffset = arg0;
+    }
+}
+static void QualitySettings_shadowCascade2Split(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.QualitySettings.shadowCascade2Split;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.QualitySettings.shadowCascade2Split = arg0;
+    }
+}
+static void QualitySettings_shadowCascade4Split(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.QualitySettings.shadowCascade4Split;
+                JSApi.setVector3S((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.Vector3 arg0 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        UnityEngine.QualitySettings.shadowCascade4Split = arg0;
+    }
+}
 static void QualitySettings_masterTextureLimit(JSVCall vc)
 {
     if (vc.bGet)
@@ -177,6 +229,32 @@ static void QualitySettings_softVegetation(JSVCall vc)
         UnityEngine.QualitySettings.softVegetation = arg0;
     }
 }
+static void QualitySettings_realtimeReflectionProbes(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.QualitySettings.realtimeReflectionProbes;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.QualitySettings.realtimeReflectionProbes = arg0;
+    }
+}
+static void QualitySettings_billboardsFaceCameraPosition(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.QualitySettings.billboardsFaceCameraPosition;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.QualitySettings.billboardsFaceCameraPosition = arg0;
+    }
+}
 static void QualitySettings_maxQueuedFrames(JSVCall vc)
 {
     if (vc.bGet)
@@ -237,6 +315,32 @@ static void QualitySettings_blendWeights(JSVCall vc)
     { 
         UnityEngine.BlendWeights arg0 = (UnityEngine.BlendWeights)JSApi.getEnum((int)JSApi.GetType.Arg);
         UnityEngine.QualitySettings.blendWeights = arg0;
+    }
+}
+static void QualitySettings_asyncUploadTimeSlice(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.QualitySettings.asyncUploadTimeSlice;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+    }
+    else
+    { 
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.QualitySettings.asyncUploadTimeSlice = arg0;
+    }
+}
+static void QualitySettings_asyncUploadBufferSize(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.QualitySettings.asyncUploadBufferSize;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+    }
+    else
+    { 
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.QualitySettings.asyncUploadBufferSize = arg0;
     }
 }
 
@@ -342,18 +446,26 @@ public static void __Register()
         QualitySettings_shadowProjection,
         QualitySettings_shadowCascades,
         QualitySettings_shadowDistance,
+        QualitySettings_shadowResolution,
+        QualitySettings_shadowNearPlaneOffset,
+        QualitySettings_shadowCascade2Split,
+        QualitySettings_shadowCascade4Split,
         QualitySettings_masterTextureLimit,
         QualitySettings_anisotropicFiltering,
         QualitySettings_lodBias,
         QualitySettings_maximumLODLevel,
         QualitySettings_particleRaycastBudget,
         QualitySettings_softVegetation,
+        QualitySettings_realtimeReflectionProbes,
+        QualitySettings_billboardsFaceCameraPosition,
         QualitySettings_maxQueuedFrames,
         QualitySettings_vSyncCount,
         QualitySettings_antiAliasing,
         QualitySettings_desiredColorSpace,
         QualitySettings_activeColorSpace,
         QualitySettings_blendWeights,
+        QualitySettings_asyncUploadTimeSlice,
+        QualitySettings_asyncUploadBufferSize,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

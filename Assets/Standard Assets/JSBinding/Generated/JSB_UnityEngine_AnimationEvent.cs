@@ -141,10 +141,34 @@ static void AnimationEvent_messageOptions(JSVCall vc)
         _this.messageOptions = arg0;
     }
 }
+static void AnimationEvent_isFiredByLegacy(JSVCall vc)
+{
+        UnityEngine.AnimationEvent _this = (UnityEngine.AnimationEvent)vc.csObj;
+        var result = _this.isFiredByLegacy;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
+static void AnimationEvent_isFiredByAnimator(JSVCall vc)
+{
+        UnityEngine.AnimationEvent _this = (UnityEngine.AnimationEvent)vc.csObj;
+        var result = _this.isFiredByAnimator;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
 static void AnimationEvent_animationState(JSVCall vc)
 {
         UnityEngine.AnimationEvent _this = (UnityEngine.AnimationEvent)vc.csObj;
         var result = _this.animationState;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void AnimationEvent_animatorStateInfo(JSVCall vc)
+{
+        UnityEngine.AnimationEvent _this = (UnityEngine.AnimationEvent)vc.csObj;
+        var result = _this.animatorStateInfo;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void AnimationEvent_animatorClipInfo(JSVCall vc)
+{
+        UnityEngine.AnimationEvent _this = (UnityEngine.AnimationEvent)vc.csObj;
+        var result = _this.animatorClipInfo;
                 JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
 }
 
@@ -170,7 +194,11 @@ public static void __Register()
         AnimationEvent_functionName,
         AnimationEvent_time,
         AnimationEvent_messageOptions,
+        AnimationEvent_isFiredByLegacy,
+        AnimationEvent_isFiredByAnimator,
         AnimationEvent_animationState,
+        AnimationEvent_animatorStateInfo,
+        AnimationEvent_animatorClipInfo,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

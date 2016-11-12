@@ -56,6 +56,19 @@ static void Texture3D_format(JSVCall vc)
 
 // methods
 
+static bool Texture3D_Apply__Boolean__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        System.Boolean arg1 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        ((UnityEngine.Texture3D)vc.csObj).Apply(arg0, arg1);
+    }
+
+    return true;
+}
+
 static bool Texture3D_Apply__Boolean(JSVCall vc, int argc)
 {
     int len = argc;
@@ -114,6 +127,41 @@ static bool Texture3D_GetPixels(JSVCall vc, int argc)
     return true;
 }
 
+static bool Texture3D_GetPixels32__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+                var arrRet = ((UnityEngine.Texture3D)vc.csObj).GetPixels32(arg0);
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+
+    return true;
+}
+
+static bool Texture3D_GetPixels32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+                var arrRet = ((UnityEngine.Texture3D)vc.csObj).GetPixels32();
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+
+    return true;
+}
+
 static bool Texture3D_SetPixels__Color_Array__Int32(JSVCall vc, int argc)
 {
     int len = argc;
@@ -159,6 +207,51 @@ static bool Texture3D_SetPixels__Color_Array(JSVCall vc, int argc)
     return true;
 }
 
+static bool Texture3D_SetPixels32__Color32_Array__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        UnityEngine.Color32[] arg0 = JSDataExchangeMgr.GetJSArg<UnityEngine.Color32[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Color32[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Color32)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        ((UnityEngine.Texture3D)vc.csObj).SetPixels32(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Texture3D_SetPixels32__Color32_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.Color32[] arg0 = JSDataExchangeMgr.GetJSArg<UnityEngine.Color32[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Color32[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Color32)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        ((UnityEngine.Texture3D)vc.csObj).SetPixels32(arg0);
+    }
+
+    return true;
+}
+
 
 //register
 
@@ -183,12 +276,17 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
+        new JSMgr.MethodCallBackInfo(Texture3D_Apply__Boolean__Boolean, "Apply"),
         new JSMgr.MethodCallBackInfo(Texture3D_Apply__Boolean, "Apply"),
         new JSMgr.MethodCallBackInfo(Texture3D_Apply, "Apply"),
         new JSMgr.MethodCallBackInfo(Texture3D_GetPixels__Int32, "GetPixels"),
         new JSMgr.MethodCallBackInfo(Texture3D_GetPixels, "GetPixels"),
+        new JSMgr.MethodCallBackInfo(Texture3D_GetPixels32__Int32, "GetPixels32"),
+        new JSMgr.MethodCallBackInfo(Texture3D_GetPixels32, "GetPixels32"),
         new JSMgr.MethodCallBackInfo(Texture3D_SetPixels__Color_Array__Int32, "SetPixels"),
         new JSMgr.MethodCallBackInfo(Texture3D_SetPixels__Color_Array, "SetPixels"),
+        new JSMgr.MethodCallBackInfo(Texture3D_SetPixels32__Color32_Array__Int32, "SetPixels32"),
+        new JSMgr.MethodCallBackInfo(Texture3D_SetPixels32__Color32_Array, "SetPixels32"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

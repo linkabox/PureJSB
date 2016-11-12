@@ -9,6 +9,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using UnityEngine.Rendering;
 
 using jsval = JSApi.jsval;
 
@@ -92,19 +93,6 @@ static bool Graphics_Blit__Texture__Material__Int32(JSVCall vc, int argc)
     return true;
 }
 
-static bool Graphics_Blit__Texture__Material(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 2) 
-    {
-        UnityEngine.Texture arg0 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.Material arg1 = (UnityEngine.Material)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.Graphics.Blit(arg0, arg1);
-    }
-
-    return true;
-}
-
 static bool Graphics_Blit__Texture__RenderTexture(JSVCall vc, int argc)
 {
     int len = argc;
@@ -112,6 +100,19 @@ static bool Graphics_Blit__Texture__RenderTexture(JSVCall vc, int argc)
     {
         UnityEngine.Texture arg0 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.RenderTexture arg1 = (UnityEngine.RenderTexture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.Blit(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Graphics_Blit__Texture__Material(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        UnityEngine.Texture arg0 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Material arg1 = (UnityEngine.Material)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.Graphics.Blit(arg0, arg1);
     }
 
@@ -154,6 +155,190 @@ static bool Graphics_ClearRandomWriteTargets(JSVCall vc, int argc)
     return true;
 }
 
+static bool Graphics_CopyTexture__Texture__Int32__Int32__Int32__Int32__Int32__Int32__Texture__Int32__Int32__Int32__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 12) 
+    {
+        UnityEngine.Texture arg0 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg4 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg5 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg6 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Texture arg7 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg8 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg9 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg10 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg11 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.CopyTexture(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
+    }
+
+    return true;
+}
+
+static bool Graphics_CopyTexture__Texture__Int32__Int32__Texture__Int32__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 6) 
+    {
+        UnityEngine.Texture arg0 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Texture arg3 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg4 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg5 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.CopyTexture(arg0, arg1, arg2, arg3, arg4, arg5);
+    }
+
+    return true;
+}
+
+static bool Graphics_CopyTexture__Texture__Texture(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        UnityEngine.Texture arg0 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Texture arg1 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.CopyTexture(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera__Int32__MaterialPropertyBlock__ShadowCastingMode__Boolean__Transform__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 12) 
+    {
+        UnityEngine.Mesh arg0 = (UnityEngine.Mesh)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Vector3 arg1 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        UnityEngine.Quaternion arg2 = (UnityEngine.Quaternion)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Material arg3 = (UnityEngine.Material)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg4 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Camera arg5 = (UnityEngine.Camera)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg6 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.MaterialPropertyBlock arg7 = (UnityEngine.MaterialPropertyBlock)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Rendering.ShadowCastingMode arg8 = (UnityEngine.Rendering.ShadowCastingMode)JSApi.getEnum((int)JSApi.GetType.Arg);
+        System.Boolean arg9 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Transform arg10 = (UnityEngine.Transform)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Boolean arg11 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.DrawMesh(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
+    }
+
+    return true;
+}
+
+static bool Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera__Int32__MaterialPropertyBlock__ShadowCastingMode__Boolean__Transform(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 11) 
+    {
+        UnityEngine.Mesh arg0 = (UnityEngine.Mesh)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Vector3 arg1 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        UnityEngine.Quaternion arg2 = (UnityEngine.Quaternion)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Material arg3 = (UnityEngine.Material)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg4 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Camera arg5 = (UnityEngine.Camera)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg6 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.MaterialPropertyBlock arg7 = (UnityEngine.MaterialPropertyBlock)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Rendering.ShadowCastingMode arg8 = (UnityEngine.Rendering.ShadowCastingMode)JSApi.getEnum((int)JSApi.GetType.Arg);
+        System.Boolean arg9 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Transform arg10 = (UnityEngine.Transform)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.DrawMesh(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+    }
+
+    return true;
+}
+
+static bool Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera__Int32__MaterialPropertyBlock__Boolean__Boolean__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 11) 
+    {
+        UnityEngine.Mesh arg0 = (UnityEngine.Mesh)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Vector3 arg1 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        UnityEngine.Quaternion arg2 = (UnityEngine.Quaternion)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Material arg3 = (UnityEngine.Material)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg4 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Camera arg5 = (UnityEngine.Camera)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg6 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.MaterialPropertyBlock arg7 = (UnityEngine.MaterialPropertyBlock)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Boolean arg8 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        System.Boolean arg9 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        System.Boolean arg10 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.DrawMesh(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+    }
+
+    return true;
+}
+
+static bool Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32__MaterialPropertyBlock__ShadowCastingMode__Boolean__Transform__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 11) 
+    {
+        UnityEngine.Mesh arg0 = (UnityEngine.Mesh)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Matrix4x4 arg1 = (UnityEngine.Matrix4x4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Material arg2 = (UnityEngine.Material)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Camera arg4 = (UnityEngine.Camera)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg5 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.MaterialPropertyBlock arg6 = (UnityEngine.MaterialPropertyBlock)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Rendering.ShadowCastingMode arg7 = (UnityEngine.Rendering.ShadowCastingMode)JSApi.getEnum((int)JSApi.GetType.Arg);
+        System.Boolean arg8 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Transform arg9 = (UnityEngine.Transform)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Boolean arg10 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.DrawMesh(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+    }
+
+    return true;
+}
+
+static bool Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32__MaterialPropertyBlock__ShadowCastingMode__Boolean__Transform(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 10) 
+    {
+        UnityEngine.Mesh arg0 = (UnityEngine.Mesh)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Matrix4x4 arg1 = (UnityEngine.Matrix4x4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Material arg2 = (UnityEngine.Material)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Camera arg4 = (UnityEngine.Camera)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg5 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.MaterialPropertyBlock arg6 = (UnityEngine.MaterialPropertyBlock)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Rendering.ShadowCastingMode arg7 = (UnityEngine.Rendering.ShadowCastingMode)JSApi.getEnum((int)JSApi.GetType.Arg);
+        System.Boolean arg8 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Transform arg9 = (UnityEngine.Transform)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.DrawMesh(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
+    }
+
+    return true;
+}
+
+static bool Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32__MaterialPropertyBlock__Boolean__Boolean__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 10) 
+    {
+        UnityEngine.Mesh arg0 = (UnityEngine.Mesh)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Matrix4x4 arg1 = (UnityEngine.Matrix4x4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Material arg2 = (UnityEngine.Material)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Camera arg4 = (UnityEngine.Camera)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg5 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.MaterialPropertyBlock arg6 = (UnityEngine.MaterialPropertyBlock)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Boolean arg7 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        System.Boolean arg8 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        System.Boolean arg9 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.DrawMesh(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
+    }
+
+    return true;
+}
+
 static bool Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera__Int32__MaterialPropertyBlock__Boolean__Boolean(JSVCall vc, int argc)
 {
     int len = argc;
@@ -170,6 +355,47 @@ static bool Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camer
         System.Boolean arg8 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
         System.Boolean arg9 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
         UnityEngine.Graphics.DrawMesh(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
+    }
+
+    return true;
+}
+
+static bool Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera__Int32__MaterialPropertyBlock__ShadowCastingMode__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 10) 
+    {
+        UnityEngine.Mesh arg0 = (UnityEngine.Mesh)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Vector3 arg1 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        UnityEngine.Quaternion arg2 = (UnityEngine.Quaternion)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Material arg3 = (UnityEngine.Material)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg4 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Camera arg5 = (UnityEngine.Camera)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg6 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.MaterialPropertyBlock arg7 = (UnityEngine.MaterialPropertyBlock)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Rendering.ShadowCastingMode arg8 = (UnityEngine.Rendering.ShadowCastingMode)JSApi.getEnum((int)JSApi.GetType.Arg);
+        System.Boolean arg9 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.DrawMesh(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
+    }
+
+    return true;
+}
+
+static bool Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32__MaterialPropertyBlock__ShadowCastingMode__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 9) 
+    {
+        UnityEngine.Mesh arg0 = (UnityEngine.Mesh)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Matrix4x4 arg1 = (UnityEngine.Matrix4x4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Material arg2 = (UnityEngine.Material)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Camera arg4 = (UnityEngine.Camera)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg5 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.MaterialPropertyBlock arg6 = (UnityEngine.MaterialPropertyBlock)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Rendering.ShadowCastingMode arg7 = (UnityEngine.Rendering.ShadowCastingMode)JSApi.getEnum((int)JSApi.GetType.Arg);
+        System.Boolean arg8 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.DrawMesh(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
     }
 
     return true;
@@ -195,6 +421,46 @@ static bool Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32__
     return true;
 }
 
+static bool Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera__Int32__MaterialPropertyBlock__ShadowCastingMode(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 9) 
+    {
+        UnityEngine.Mesh arg0 = (UnityEngine.Mesh)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Vector3 arg1 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        UnityEngine.Quaternion arg2 = (UnityEngine.Quaternion)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Material arg3 = (UnityEngine.Material)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg4 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Camera arg5 = (UnityEngine.Camera)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg6 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.MaterialPropertyBlock arg7 = (UnityEngine.MaterialPropertyBlock)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Rendering.ShadowCastingMode arg8 = (UnityEngine.Rendering.ShadowCastingMode)JSApi.getEnum((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.DrawMesh(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+    }
+
+    return true;
+}
+
+static bool Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera__Int32__MaterialPropertyBlock__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 9) 
+    {
+        UnityEngine.Mesh arg0 = (UnityEngine.Mesh)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Vector3 arg1 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        UnityEngine.Quaternion arg2 = (UnityEngine.Quaternion)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Material arg3 = (UnityEngine.Material)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg4 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Camera arg5 = (UnityEngine.Camera)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg6 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.MaterialPropertyBlock arg7 = (UnityEngine.MaterialPropertyBlock)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Boolean arg8 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.DrawMesh(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+    }
+
+    return true;
+}
+
 static bool Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera__Int32__MaterialPropertyBlock(JSVCall vc, int argc)
 {
     int len = argc;
@@ -208,6 +474,44 @@ static bool Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camer
         UnityEngine.Camera arg5 = (UnityEngine.Camera)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         System.Int32 arg6 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         UnityEngine.MaterialPropertyBlock arg7 = (UnityEngine.MaterialPropertyBlock)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.DrawMesh(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+    }
+
+    return true;
+}
+
+static bool Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32__MaterialPropertyBlock__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 8) 
+    {
+        UnityEngine.Mesh arg0 = (UnityEngine.Mesh)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Matrix4x4 arg1 = (UnityEngine.Matrix4x4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Material arg2 = (UnityEngine.Material)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Camera arg4 = (UnityEngine.Camera)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg5 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.MaterialPropertyBlock arg6 = (UnityEngine.MaterialPropertyBlock)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Boolean arg7 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.DrawMesh(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+    }
+
+    return true;
+}
+
+static bool Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32__MaterialPropertyBlock__ShadowCastingMode(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 8) 
+    {
+        UnityEngine.Mesh arg0 = (UnityEngine.Mesh)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Matrix4x4 arg1 = (UnityEngine.Matrix4x4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Material arg2 = (UnityEngine.Material)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Camera arg4 = (UnityEngine.Camera)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg5 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.MaterialPropertyBlock arg6 = (UnityEngine.MaterialPropertyBlock)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Rendering.ShadowCastingMode arg7 = (UnityEngine.Rendering.ShadowCastingMode)JSApi.getEnum((int)JSApi.GetType.Arg);
         UnityEngine.Graphics.DrawMesh(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
     }
 
@@ -250,23 +554,6 @@ static bool Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32__
     return true;
 }
 
-static bool Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 6) 
-    {
-        UnityEngine.Mesh arg0 = (UnityEngine.Mesh)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.Matrix4x4 arg1 = (UnityEngine.Matrix4x4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.Material arg2 = (UnityEngine.Material)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.Camera arg4 = (UnityEngine.Camera)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        System.Int32 arg5 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.Graphics.DrawMesh(arg0, arg1, arg2, arg3, arg4, arg5);
-    }
-
-    return true;
-}
-
 static bool Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera(JSVCall vc, int argc)
 {
     int len = argc;
@@ -278,6 +565,23 @@ static bool Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camer
         UnityEngine.Material arg3 = (UnityEngine.Material)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         System.Int32 arg4 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         UnityEngine.Camera arg5 = (UnityEngine.Camera)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.DrawMesh(arg0, arg1, arg2, arg3, arg4, arg5);
+    }
+
+    return true;
+}
+
+static bool Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 6) 
+    {
+        UnityEngine.Mesh arg0 = (UnityEngine.Mesh)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Matrix4x4 arg1 = (UnityEngine.Matrix4x4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Material arg2 = (UnityEngine.Material)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Camera arg4 = (UnityEngine.Camera)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg5 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         UnityEngine.Graphics.DrawMesh(arg0, arg1, arg2, arg3, arg4, arg5);
     }
 
@@ -346,20 +650,6 @@ static bool Graphics_DrawMeshNow__Mesh__Vector3__Quaternion__Int32(JSVCall vc, i
     return true;
 }
 
-static bool Graphics_DrawMeshNow__Mesh__Vector3__Quaternion(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 3) 
-    {
-        UnityEngine.Mesh arg0 = (UnityEngine.Mesh)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.Vector3 arg1 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
-        UnityEngine.Quaternion arg2 = (UnityEngine.Quaternion)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.Graphics.DrawMeshNow(arg0, arg1, arg2);
-    }
-
-    return true;
-}
-
 static bool Graphics_DrawMeshNow__Mesh__Matrix4x4__Int32(JSVCall vc, int argc)
 {
     int len = argc;
@@ -368,6 +658,20 @@ static bool Graphics_DrawMeshNow__Mesh__Matrix4x4__Int32(JSVCall vc, int argc)
         UnityEngine.Mesh arg0 = (UnityEngine.Mesh)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.Matrix4x4 arg1 = (UnityEngine.Matrix4x4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.DrawMeshNow(arg0, arg1, arg2);
+    }
+
+    return true;
+}
+
+static bool Graphics_DrawMeshNow__Mesh__Vector3__Quaternion(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        UnityEngine.Mesh arg0 = (UnityEngine.Mesh)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Vector3 arg1 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        UnityEngine.Quaternion arg2 = (UnityEngine.Quaternion)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.Graphics.DrawMeshNow(arg0, arg1, arg2);
     }
 
@@ -499,24 +803,6 @@ static bool Graphics_DrawTexture__Rect__Texture__Rect__Int32__Int32__Int32__Int3
     return true;
 }
 
-static bool Graphics_DrawTexture__Rect__Texture__Rect__Int32__Int32__Int32__Int32(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 7) 
-    {
-        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.Texture arg1 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.Rect arg2 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        System.Int32 arg4 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        System.Int32 arg5 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        System.Int32 arg6 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.Graphics.DrawTexture(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
-    }
-
-    return true;
-}
-
 static bool Graphics_DrawTexture__Rect__Texture__Int32__Int32__Int32__Int32__Material(JSVCall vc, int argc)
 {
     int len = argc;
@@ -529,6 +815,24 @@ static bool Graphics_DrawTexture__Rect__Texture__Int32__Int32__Int32__Int32__Mat
         System.Int32 arg4 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         System.Int32 arg5 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         UnityEngine.Material arg6 = (UnityEngine.Material)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.DrawTexture(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
+    }
+
+    return true;
+}
+
+static bool Graphics_DrawTexture__Rect__Texture__Rect__Int32__Int32__Int32__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 7) 
+    {
+        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Texture arg1 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Rect arg2 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg4 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg5 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg6 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         UnityEngine.Graphics.DrawTexture(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
     }
 
@@ -579,6 +883,32 @@ static bool Graphics_DrawTexture__Rect__Texture(JSVCall vc, int argc)
     return true;
 }
 
+static bool Graphics_ExecuteCommandBuffer__CommandBuffer(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.Rendering.CommandBuffer arg0 = (UnityEngine.Rendering.CommandBuffer)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.ExecuteCommandBuffer(arg0);
+    }
+
+    return true;
+}
+
+static bool Graphics_SetRandomWriteTarget__Int32__ComputeBuffer__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.ComputeBuffer arg1 = (UnityEngine.ComputeBuffer)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Boolean arg2 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.SetRandomWriteTarget(arg0, arg1, arg2);
+    }
+
+    return true;
+}
+
 static bool Graphics_SetRandomWriteTarget__Int32__RenderTexture(JSVCall vc, int argc)
 {
     int len = argc;
@@ -600,6 +930,66 @@ static bool Graphics_SetRandomWriteTarget__Int32__ComputeBuffer(JSVCall vc, int 
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         UnityEngine.ComputeBuffer arg1 = (UnityEngine.ComputeBuffer)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.Graphics.SetRandomWriteTarget(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Graphics_SetRenderTarget__RenderBuffer__RenderBuffer__Int32__CubemapFace__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 5) 
+    {
+        UnityEngine.RenderBuffer arg0 = (UnityEngine.RenderBuffer)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.RenderBuffer arg1 = (UnityEngine.RenderBuffer)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.CubemapFace arg3 = (UnityEngine.CubemapFace)JSApi.getEnum((int)JSApi.GetType.Arg);
+        System.Int32 arg4 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.SetRenderTarget(arg0, arg1, arg2, arg3, arg4);
+    }
+
+    return true;
+}
+
+static bool Graphics_SetRenderTarget__RenderTexture__Int32__CubemapFace__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        UnityEngine.RenderTexture arg0 = (UnityEngine.RenderTexture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.CubemapFace arg2 = (UnityEngine.CubemapFace)JSApi.getEnum((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.SetRenderTarget(arg0, arg1, arg2, arg3);
+    }
+
+    return true;
+}
+
+static bool Graphics_SetRenderTarget__RenderBuffer__RenderBuffer__Int32__CubemapFace(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        UnityEngine.RenderBuffer arg0 = (UnityEngine.RenderBuffer)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.RenderBuffer arg1 = (UnityEngine.RenderBuffer)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.CubemapFace arg3 = (UnityEngine.CubemapFace)JSApi.getEnum((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.SetRenderTarget(arg0, arg1, arg2, arg3);
+    }
+
+    return true;
+}
+
+static bool Graphics_SetRenderTarget__RenderBuffer__RenderBuffer__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        UnityEngine.RenderBuffer arg0 = (UnityEngine.RenderBuffer)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.RenderBuffer arg1 = (UnityEngine.RenderBuffer)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.SetRenderTarget(arg0, arg1, arg2);
     }
 
     return true;
@@ -668,6 +1058,18 @@ static bool Graphics_SetRenderTarget__RenderBuffer__RenderBuffer(JSVCall vc, int
     return true;
 }
 
+static bool Graphics_SetRenderTarget__RenderTargetSetup(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.RenderTargetSetup arg0 = (UnityEngine.RenderTargetSetup)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Graphics.SetRenderTarget(arg0);
+    }
+
+    return true;
+}
+
 static bool Graphics_SetRenderTarget__RenderTexture(JSVCall vc, int argc)
 {
     int len = argc;
@@ -707,23 +1109,38 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Graphics_Blit__Texture__RenderTexture__Material__Int32, "Blit"),
         new JSMgr.MethodCallBackInfo(Graphics_Blit__Texture__RenderTexture__Material, "Blit"),
         new JSMgr.MethodCallBackInfo(Graphics_Blit__Texture__Material__Int32, "Blit"),
-        new JSMgr.MethodCallBackInfo(Graphics_Blit__Texture__Material, "Blit"),
         new JSMgr.MethodCallBackInfo(Graphics_Blit__Texture__RenderTexture, "Blit"),
+        new JSMgr.MethodCallBackInfo(Graphics_Blit__Texture__Material, "Blit"),
         new JSMgr.MethodCallBackInfo(Graphics_BlitMultiTap__Texture__RenderTexture__Material__Vector2_Array, "BlitMultiTap"),
         new JSMgr.MethodCallBackInfo(Graphics_ClearRandomWriteTargets, "ClearRandomWriteTargets"),
+        new JSMgr.MethodCallBackInfo(Graphics_CopyTexture__Texture__Int32__Int32__Int32__Int32__Int32__Int32__Texture__Int32__Int32__Int32__Int32, "CopyTexture"),
+        new JSMgr.MethodCallBackInfo(Graphics_CopyTexture__Texture__Int32__Int32__Texture__Int32__Int32, "CopyTexture"),
+        new JSMgr.MethodCallBackInfo(Graphics_CopyTexture__Texture__Texture, "CopyTexture"),
+        new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera__Int32__MaterialPropertyBlock__ShadowCastingMode__Boolean__Transform__Boolean, "DrawMesh"),
+        new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera__Int32__MaterialPropertyBlock__ShadowCastingMode__Boolean__Transform, "DrawMesh"),
+        new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera__Int32__MaterialPropertyBlock__Boolean__Boolean__Boolean, "DrawMesh"),
+        new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32__MaterialPropertyBlock__ShadowCastingMode__Boolean__Transform__Boolean, "DrawMesh"),
+        new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32__MaterialPropertyBlock__ShadowCastingMode__Boolean__Transform, "DrawMesh"),
+        new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32__MaterialPropertyBlock__Boolean__Boolean__Boolean, "DrawMesh"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera__Int32__MaterialPropertyBlock__Boolean__Boolean, "DrawMesh"),
+        new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera__Int32__MaterialPropertyBlock__ShadowCastingMode__Boolean, "DrawMesh"),
+        new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32__MaterialPropertyBlock__ShadowCastingMode__Boolean, "DrawMesh"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32__MaterialPropertyBlock__Boolean__Boolean, "DrawMesh"),
+        new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera__Int32__MaterialPropertyBlock__ShadowCastingMode, "DrawMesh"),
+        new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera__Int32__MaterialPropertyBlock__Boolean, "DrawMesh"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera__Int32__MaterialPropertyBlock, "DrawMesh"),
+        new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32__MaterialPropertyBlock__Boolean, "DrawMesh"),
+        new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32__MaterialPropertyBlock__ShadowCastingMode, "DrawMesh"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera__Int32, "DrawMesh"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32__MaterialPropertyBlock, "DrawMesh"),
-        new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32, "DrawMesh"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32__Camera, "DrawMesh"),
+        new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera__Int32, "DrawMesh"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Vector3__Quaternion__Material__Int32, "DrawMesh"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32__Camera, "DrawMesh"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawMesh__Mesh__Matrix4x4__Material__Int32, "DrawMesh"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawMeshNow__Mesh__Vector3__Quaternion__Int32, "DrawMeshNow"),
-        new JSMgr.MethodCallBackInfo(Graphics_DrawMeshNow__Mesh__Vector3__Quaternion, "DrawMeshNow"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawMeshNow__Mesh__Matrix4x4__Int32, "DrawMeshNow"),
+        new JSMgr.MethodCallBackInfo(Graphics_DrawMeshNow__Mesh__Vector3__Quaternion, "DrawMeshNow"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawMeshNow__Mesh__Matrix4x4, "DrawMeshNow"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawProcedural__MeshTopology__Int32__Int32, "DrawProcedural"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawProcedural__MeshTopology__Int32, "DrawProcedural"),
@@ -732,17 +1149,24 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Graphics_DrawTexture__Rect__Texture__Rect__Int32__Int32__Int32__Int32__Color__Material, "DrawTexture"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawTexture__Rect__Texture__Rect__Int32__Int32__Int32__Int32__Material, "DrawTexture"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawTexture__Rect__Texture__Rect__Int32__Int32__Int32__Int32__Color, "DrawTexture"),
-        new JSMgr.MethodCallBackInfo(Graphics_DrawTexture__Rect__Texture__Rect__Int32__Int32__Int32__Int32, "DrawTexture"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawTexture__Rect__Texture__Int32__Int32__Int32__Int32__Material, "DrawTexture"),
+        new JSMgr.MethodCallBackInfo(Graphics_DrawTexture__Rect__Texture__Rect__Int32__Int32__Int32__Int32, "DrawTexture"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawTexture__Rect__Texture__Int32__Int32__Int32__Int32, "DrawTexture"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawTexture__Rect__Texture__Material, "DrawTexture"),
         new JSMgr.MethodCallBackInfo(Graphics_DrawTexture__Rect__Texture, "DrawTexture"),
+        new JSMgr.MethodCallBackInfo(Graphics_ExecuteCommandBuffer__CommandBuffer, "ExecuteCommandBuffer"),
+        new JSMgr.MethodCallBackInfo(Graphics_SetRandomWriteTarget__Int32__ComputeBuffer__Boolean, "SetRandomWriteTarget"),
         new JSMgr.MethodCallBackInfo(Graphics_SetRandomWriteTarget__Int32__RenderTexture, "SetRandomWriteTarget"),
         new JSMgr.MethodCallBackInfo(Graphics_SetRandomWriteTarget__Int32__ComputeBuffer, "SetRandomWriteTarget"),
+        new JSMgr.MethodCallBackInfo(Graphics_SetRenderTarget__RenderBuffer__RenderBuffer__Int32__CubemapFace__Int32, "SetRenderTarget"),
+        new JSMgr.MethodCallBackInfo(Graphics_SetRenderTarget__RenderTexture__Int32__CubemapFace__Int32, "SetRenderTarget"),
+        new JSMgr.MethodCallBackInfo(Graphics_SetRenderTarget__RenderBuffer__RenderBuffer__Int32__CubemapFace, "SetRenderTarget"),
+        new JSMgr.MethodCallBackInfo(Graphics_SetRenderTarget__RenderBuffer__RenderBuffer__Int32, "SetRenderTarget"),
         new JSMgr.MethodCallBackInfo(Graphics_SetRenderTarget__RenderTexture__Int32__CubemapFace, "SetRenderTarget"),
         new JSMgr.MethodCallBackInfo(Graphics_SetRenderTarget__RenderBuffer_Array__RenderBuffer, "SetRenderTarget"),
         new JSMgr.MethodCallBackInfo(Graphics_SetRenderTarget__RenderTexture__Int32, "SetRenderTarget"),
         new JSMgr.MethodCallBackInfo(Graphics_SetRenderTarget__RenderBuffer__RenderBuffer, "SetRenderTarget"),
+        new JSMgr.MethodCallBackInfo(Graphics_SetRenderTarget__RenderTargetSetup, "SetRenderTarget"),
         new JSMgr.MethodCallBackInfo(Graphics_SetRenderTarget__RenderTexture, "SetRenderTarget"),
 
     };

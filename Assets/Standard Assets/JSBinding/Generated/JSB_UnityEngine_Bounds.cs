@@ -137,6 +137,19 @@ static void Bounds_max(JSVCall vc)
 
 // methods
 
+static bool Bounds_ClosestPoint__Vector3(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.Vector3 arg0 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+UnityEngine.Bounds argThis = (UnityEngine.Bounds)vc.csObj;                JSApi.setVector3S((int)JSApi.SetType.Rval, argThis.ClosestPoint(arg0));
+        JSMgr.changeJSObj(vc.jsObjID, argThis);
+    }
+
+    return true;
+}
+
 static bool Bounds_Contains__Vector3(JSVCall vc, int argc)
 {
     int len = argc;
@@ -150,12 +163,12 @@ UnityEngine.Bounds argThis = (UnityEngine.Bounds)vc.csObj;                JSApi.
     return true;
 }
 
-static bool Bounds_Encapsulate__Vector3(JSVCall vc, int argc)
+static bool Bounds_Encapsulate__Bounds(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 1) 
     {
-        UnityEngine.Vector3 arg0 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        UnityEngine.Bounds arg0 = (UnityEngine.Bounds)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
 UnityEngine.Bounds argThis = (UnityEngine.Bounds)vc.csObj;        argThis.Encapsulate(arg0);
         JSMgr.changeJSObj(vc.jsObjID, argThis);
     }
@@ -163,12 +176,12 @@ UnityEngine.Bounds argThis = (UnityEngine.Bounds)vc.csObj;        argThis.Encaps
     return true;
 }
 
-static bool Bounds_Encapsulate__Bounds(JSVCall vc, int argc)
+static bool Bounds_Encapsulate__Vector3(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 1) 
     {
-        UnityEngine.Bounds arg0 = (UnityEngine.Bounds)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Vector3 arg0 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
 UnityEngine.Bounds argThis = (UnityEngine.Bounds)vc.csObj;        argThis.Encapsulate(arg0);
         JSMgr.changeJSObj(vc.jsObjID, argThis);
     }
@@ -366,9 +379,10 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
+        new JSMgr.MethodCallBackInfo(Bounds_ClosestPoint__Vector3, "ClosestPoint"),
         new JSMgr.MethodCallBackInfo(Bounds_Contains__Vector3, "Contains"),
-        new JSMgr.MethodCallBackInfo(Bounds_Encapsulate__Vector3, "Encapsulate"),
         new JSMgr.MethodCallBackInfo(Bounds_Encapsulate__Bounds, "Encapsulate"),
+        new JSMgr.MethodCallBackInfo(Bounds_Encapsulate__Vector3, "Encapsulate"),
         new JSMgr.MethodCallBackInfo(Bounds_Equals__Object, "Equals"),
         new JSMgr.MethodCallBackInfo(Bounds_Expand__Vector3, "Expand"),
         new JSMgr.MethodCallBackInfo(Bounds_Expand__Single, "Expand"),

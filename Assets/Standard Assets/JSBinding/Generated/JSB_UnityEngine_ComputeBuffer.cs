@@ -105,6 +105,18 @@ static bool ComputeBuffer_Release(JSVCall vc, int argc)
     return true;
 }
 
+static bool ComputeBuffer_SetCounterValue__UInt32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.UInt32 arg0 = (System.UInt32)JSApi.getUInt32((int)JSApi.GetType.Arg);
+        ((UnityEngine.ComputeBuffer)vc.csObj).SetCounterValue(arg0);
+    }
+
+    return true;
+}
+
 static bool ComputeBuffer_SetData__Array(JSVCall vc, int argc)
 {
     int len = argc;
@@ -159,6 +171,7 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(ComputeBuffer_Dispose, "Dispose"),
         new JSMgr.MethodCallBackInfo(ComputeBuffer_GetData__Array, "GetData"),
         new JSMgr.MethodCallBackInfo(ComputeBuffer_Release, "Release"),
+        new JSMgr.MethodCallBackInfo(ComputeBuffer_SetCounterValue__UInt32, "SetCounterValue"),
         new JSMgr.MethodCallBackInfo(ComputeBuffer_SetData__Array, "SetData"),
         new JSMgr.MethodCallBackInfo(ComputeBuffer_CopyCount__ComputeBuffer__ComputeBuffer__Int32, "CopyCount"),
 

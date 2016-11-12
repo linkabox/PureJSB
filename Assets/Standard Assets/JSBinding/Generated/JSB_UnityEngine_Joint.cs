@@ -156,6 +156,21 @@ static void Joint_enableCollision(JSVCall vc)
         _this.enableCollision = arg0;
     }
 }
+static void Joint_enablePreprocessing(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Joint _this = (UnityEngine.Joint)vc.csObj;
+        var result = _this.enablePreprocessing;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Joint _this = (UnityEngine.Joint)vc.csObj;
+        _this.enablePreprocessing = arg0;
+    }
+}
 
 // methods
 
@@ -180,6 +195,7 @@ public static void __Register()
         Joint_breakForce,
         Joint_breakTorque,
         Joint_enableCollision,
+        Joint_enablePreprocessing,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

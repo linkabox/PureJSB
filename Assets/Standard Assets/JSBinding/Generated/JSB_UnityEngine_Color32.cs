@@ -154,6 +154,20 @@ static bool Color32_Lerp__Color32__Color32__Single(JSVCall vc, int argc)
     return true;
 }
 
+static bool Color32_LerpUnclamped__Color32__Color32__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        UnityEngine.Color32 arg0 = (UnityEngine.Color32)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Color32 arg1 = (UnityEngine.Color32)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Color32.LerpUnclamped(arg0, arg1, arg2));
+    }
+
+    return true;
+}
+
 static bool Color32_op_Implicit__Color32_to_Color(JSVCall vc, int argc)
 {
     UnityEngine.Color32 arg0 = (UnityEngine.Color32)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
@@ -198,6 +212,7 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Color32_ToString__String, "ToString"),
         new JSMgr.MethodCallBackInfo(Color32_ToString, "ToString"),
         new JSMgr.MethodCallBackInfo(Color32_Lerp__Color32__Color32__Single, "Lerp"),
+        new JSMgr.MethodCallBackInfo(Color32_LerpUnclamped__Color32__Color32__Single, "LerpUnclamped"),
         new JSMgr.MethodCallBackInfo(Color32_op_Implicit__Color32_to_Color, "op_Implicit"),
         new JSMgr.MethodCallBackInfo(Color32_op_Implicit__Color_to_Color32, "op_Implicit"),
 

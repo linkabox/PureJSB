@@ -189,34 +189,19 @@ static void RenderTexture_generateMips(JSVCall vc)
         _this.generateMips = arg0;
     }
 }
-static void RenderTexture_isCubemap(JSVCall vc)
+static void RenderTexture_dimension(JSVCall vc)
 {
     if (vc.bGet)
     { 
         UnityEngine.RenderTexture _this = (UnityEngine.RenderTexture)vc.csObj;
-        var result = _this.isCubemap;
-                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+        var result = _this.dimension;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
     }
     else
     { 
-        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Rendering.TextureDimension arg0 = (UnityEngine.Rendering.TextureDimension)JSApi.getEnum((int)JSApi.GetType.Arg);
         UnityEngine.RenderTexture _this = (UnityEngine.RenderTexture)vc.csObj;
-        _this.isCubemap = arg0;
-    }
-}
-static void RenderTexture_isVolume(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.RenderTexture _this = (UnityEngine.RenderTexture)vc.csObj;
-        var result = _this.isVolume;
-                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
-    }
-    else
-    { 
-        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        UnityEngine.RenderTexture _this = (UnityEngine.RenderTexture)vc.csObj;
-        _this.isVolume = arg0;
+        _this.dimension = arg0;
     }
 }
 static void RenderTexture_volumeDepth(JSVCall vc)
@@ -322,6 +307,17 @@ static bool RenderTexture_DiscardContents(JSVCall vc, int argc)
     if (len == 0) 
     {
         ((UnityEngine.RenderTexture)vc.csObj).DiscardContents();
+    }
+
+    return true;
+}
+
+static bool RenderTexture_GetNativeDepthBufferPtr(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+                JSApi.setIntPtr((int)JSApi.SetType.Rval, (System.IntPtr)(((UnityEngine.RenderTexture)vc.csObj).GetNativeDepthBufferPtr()));
     }
 
     return true;
@@ -503,8 +499,7 @@ public static void __Register()
         RenderTexture_format,
         RenderTexture_useMipMap,
         RenderTexture_generateMips,
-        RenderTexture_isCubemap,
-        RenderTexture_isVolume,
+        RenderTexture_dimension,
         RenderTexture_volumeDepth,
         RenderTexture_antiAliasing,
         RenderTexture_enableRandomWrite,
@@ -525,6 +520,7 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(RenderTexture_Create, "Create"),
         new JSMgr.MethodCallBackInfo(RenderTexture_DiscardContents__Boolean__Boolean, "DiscardContents"),
         new JSMgr.MethodCallBackInfo(RenderTexture_DiscardContents, "DiscardContents"),
+        new JSMgr.MethodCallBackInfo(RenderTexture_GetNativeDepthBufferPtr, "GetNativeDepthBufferPtr"),
         new JSMgr.MethodCallBackInfo(RenderTexture_GetTexelOffset, "GetTexelOffset"),
         new JSMgr.MethodCallBackInfo(RenderTexture_IsCreated, "IsCreated"),
         new JSMgr.MethodCallBackInfo(RenderTexture_MarkRestoreExpected, "MarkRestoreExpected"),

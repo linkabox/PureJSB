@@ -72,6 +72,36 @@ static void LODGroup_lodCount(JSVCall vc)
         var result = _this.lodCount;
                 JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
 }
+static void LODGroup_fadeMode(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.LODGroup _this = (UnityEngine.LODGroup)vc.csObj;
+        var result = _this.fadeMode;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
+    }
+    else
+    { 
+        UnityEngine.LODFadeMode arg0 = (UnityEngine.LODFadeMode)JSApi.getEnum((int)JSApi.GetType.Arg);
+        UnityEngine.LODGroup _this = (UnityEngine.LODGroup)vc.csObj;
+        _this.fadeMode = arg0;
+    }
+}
+static void LODGroup_animateCrossFading(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.LODGroup _this = (UnityEngine.LODGroup)vc.csObj;
+        var result = _this.animateCrossFading;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.LODGroup _this = (UnityEngine.LODGroup)vc.csObj;
+        _this.animateCrossFading = arg0;
+    }
+}
 static void LODGroup_enabled(JSVCall vc)
 {
     if (vc.bGet)
@@ -85,6 +115,19 @@ static void LODGroup_enabled(JSVCall vc)
         System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
         UnityEngine.LODGroup _this = (UnityEngine.LODGroup)vc.csObj;
         _this.enabled = arg0;
+    }
+}
+static void LODGroup_crossFadeAnimationDuration(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.LODGroup.crossFadeAnimationDuration;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.LODGroup.crossFadeAnimationDuration = arg0;
     }
 }
 
@@ -102,6 +145,23 @@ static bool LODGroup_ForceLOD__Int32(JSVCall vc, int argc)
     return true;
 }
 
+static bool LODGroup_GetLODs(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+                var arrRet = ((UnityEngine.LODGroup)vc.csObj).GetLODs();
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+
+    return true;
+}
+
 static bool LODGroup_RecalculateBounds(JSVCall vc, int argc)
 {
     int len = argc;
@@ -113,7 +173,7 @@ static bool LODGroup_RecalculateBounds(JSVCall vc, int argc)
     return true;
 }
 
-static bool LODGroup_SetLODS__LOD_Array(JSVCall vc, int argc)
+static bool LODGroup_SetLODs__LOD_Array(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 1) 
@@ -129,7 +189,7 @@ static bool LODGroup_SetLODS__LOD_Array(JSVCall vc, int argc)
             }
             return ret;
         });
-        ((UnityEngine.LODGroup)vc.csObj).SetLODS(arg0);
+        ((UnityEngine.LODGroup)vc.csObj).SetLODs(arg0);
     }
 
     return true;
@@ -151,7 +211,10 @@ public static void __Register()
         LODGroup_localReferencePoint,
         LODGroup_size,
         LODGroup_lodCount,
+        LODGroup_fadeMode,
+        LODGroup_animateCrossFading,
         LODGroup_enabled,
+        LODGroup_crossFadeAnimationDuration,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]
@@ -162,8 +225,9 @@ public static void __Register()
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
         new JSMgr.MethodCallBackInfo(LODGroup_ForceLOD__Int32, "ForceLOD"),
+        new JSMgr.MethodCallBackInfo(LODGroup_GetLODs, "GetLODs"),
         new JSMgr.MethodCallBackInfo(LODGroup_RecalculateBounds, "RecalculateBounds"),
-        new JSMgr.MethodCallBackInfo(LODGroup_SetLODS__LOD_Array, "SetLODS"),
+        new JSMgr.MethodCallBackInfo(LODGroup_SetLODs__LOD_Array, "SetLODs"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

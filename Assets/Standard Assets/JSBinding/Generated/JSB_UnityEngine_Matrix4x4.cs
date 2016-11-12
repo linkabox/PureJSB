@@ -314,6 +314,12 @@ static void Matrix4x4_isIdentity(JSVCall vc)
         var result = _this.isIdentity;
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
 }
+static void Matrix4x4_determinant(JSVCall vc)
+{
+        UnityEngine.Matrix4x4 _this = (UnityEngine.Matrix4x4)vc.csObj;
+        var result = _this.determinant;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+}
 static void Matrix4x4_zero(JSVCall vc)
 {
         var result = UnityEngine.Matrix4x4.zero;
@@ -485,6 +491,18 @@ UnityEngine.Matrix4x4 argThis = (UnityEngine.Matrix4x4)vc.csObj;                
     return true;
 }
 
+static bool Matrix4x4_Determinant__Matrix4x4(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.Matrix4x4 arg0 = (UnityEngine.Matrix4x4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(UnityEngine.Matrix4x4.Determinant(arg0)));
+    }
+
+    return true;
+}
+
 static bool Matrix4x4_Inverse__Matrix4x4(JSVCall vc, int argc)
 {
     int len = argc;
@@ -633,6 +651,7 @@ public static void __Register()
         Matrix4x4_inverse,
         Matrix4x4_transpose,
         Matrix4x4_isIdentity,
+        Matrix4x4_determinant,
         Matrix4x4_zero,
         Matrix4x4_identity,
 
@@ -656,6 +675,7 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Matrix4x4_SetTRS__Vector3__Quaternion__Vector3, "SetTRS"),
         new JSMgr.MethodCallBackInfo(Matrix4x4_ToString__String, "ToString"),
         new JSMgr.MethodCallBackInfo(Matrix4x4_ToString, "ToString"),
+        new JSMgr.MethodCallBackInfo(Matrix4x4_Determinant__Matrix4x4, "Determinant"),
         new JSMgr.MethodCallBackInfo(Matrix4x4_Inverse__Matrix4x4, "Inverse"),
         new JSMgr.MethodCallBackInfo(Matrix4x4_op_Equality__Matrix4x4__Matrix4x4, "op_Equality"),
         new JSMgr.MethodCallBackInfo(Matrix4x4_op_Inequality__Matrix4x4__Matrix4x4, "op_Inequality"),

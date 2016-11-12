@@ -245,6 +245,35 @@ static bool Object_FindObjectsOfTypeT1(JSVCall vc, int argc)
     return true;
 }
 
+static bool Object_Instantiate__UEObject__Vector3__Quaternion__Transform(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        UnityEngine.Object arg0 = (UnityEngine.Object)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Vector3 arg1 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        UnityEngine.Quaternion arg2 = (UnityEngine.Quaternion)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Transform arg3 = (UnityEngine.Transform)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Object.Instantiate(arg0, arg1, arg2, arg3));
+    }
+
+    return true;
+}
+
+static bool Object_Instantiate__UEObject__Transform__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        UnityEngine.Object arg0 = (UnityEngine.Object)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Transform arg1 = (UnityEngine.Transform)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Boolean arg2 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Object.Instantiate(arg0, arg1, arg2));
+    }
+
+    return true;
+}
+
 static bool Object_Instantiate__UEObject__Vector3__Quaternion(JSVCall vc, int argc)
 {
     int len = argc;
@@ -254,6 +283,37 @@ static bool Object_Instantiate__UEObject__Vector3__Quaternion(JSVCall vc, int ar
         UnityEngine.Vector3 arg1 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
         UnityEngine.Quaternion arg2 = (UnityEngine.Quaternion)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
                 JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Object.Instantiate(arg0, arg1, arg2));
+    }
+
+    return true;
+}
+
+static bool Object_Instantiate__UEObject__Transform(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        UnityEngine.Object arg0 = (UnityEngine.Object)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Transform arg1 = (UnityEngine.Transform)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Object.Instantiate(arg0, arg1));
+    }
+
+    return true;
+}
+public static MethodID methodID19 = new MethodID("Instantiate", "T", TypeFlag.IsT, new string[]{"T"}, new TypeFlag[]{TypeFlag.IsT});
+
+static bool Object_InstantiateT1__T(JSVCall vc, int argc)
+{
+    // Get generic method by name and param count.
+    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(typeof(UnityEngine.Object), methodID19, 1); 
+    if (method == null) return true;
+
+    int len = argc - 1;
+    if (len == 1) 
+    {
+        object arg0 = (object)JSMgr.datax.getWhatever((int)JSApi.GetType.Arg);
+        object[] arr_t = new object[]{ arg0 };
+                JSMgr.datax.setWhatever((int)JSApi.SetType.Rval, method.Invoke(null, arr_t));
     }
 
     return true;
@@ -328,7 +388,11 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Object_FindObjectOfTypeT1, "FindObjectOfType"),
         new JSMgr.MethodCallBackInfo(Object_FindObjectsOfType__Type, "FindObjectsOfType"),
         new JSMgr.MethodCallBackInfo(Object_FindObjectsOfTypeT1, "FindObjectsOfType"),
+        new JSMgr.MethodCallBackInfo(Object_Instantiate__UEObject__Vector3__Quaternion__Transform, "Instantiate"),
+        new JSMgr.MethodCallBackInfo(Object_Instantiate__UEObject__Transform__Boolean, "Instantiate"),
         new JSMgr.MethodCallBackInfo(Object_Instantiate__UEObject__Vector3__Quaternion, "Instantiate"),
+        new JSMgr.MethodCallBackInfo(Object_Instantiate__UEObject__Transform, "Instantiate"),
+        new JSMgr.MethodCallBackInfo(Object_InstantiateT1__T, "Instantiate"),
         new JSMgr.MethodCallBackInfo(Object_Instantiate__UEObject, "Instantiate"),
         new JSMgr.MethodCallBackInfo(Object_op_Equality__UEObject__UEObject, "op_Equality"),
         new JSMgr.MethodCallBackInfo(Object_op_Implicit__UEObject_to_Boolean, "op_Implicit"),

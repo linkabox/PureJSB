@@ -36,6 +36,21 @@ static bool DistanceJoint2D_DistanceJoint2D1(JSVCall vc, int argc)
 // fields
 
 // properties
+static void DistanceJoint2D_autoConfigureDistance(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.DistanceJoint2D _this = (UnityEngine.DistanceJoint2D)vc.csObj;
+        var result = _this.autoConfigureDistance;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.DistanceJoint2D _this = (UnityEngine.DistanceJoint2D)vc.csObj;
+        _this.autoConfigureDistance = arg0;
+    }
+}
 static void DistanceJoint2D_distance(JSVCall vc)
 {
     if (vc.bGet)
@@ -69,30 +84,6 @@ static void DistanceJoint2D_maxDistanceOnly(JSVCall vc)
 
 // methods
 
-static bool DistanceJoint2D_GetReactionForce__Single(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-                JSApi.setVector2S((int)JSApi.SetType.Rval, ((UnityEngine.DistanceJoint2D)vc.csObj).GetReactionForce(arg0));
-    }
-
-    return true;
-}
-
-static bool DistanceJoint2D_GetReactionTorque__Single(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(((UnityEngine.DistanceJoint2D)vc.csObj).GetReactionTorque(arg0)));
-    }
-
-    return true;
-}
-
 
 //register
 
@@ -106,6 +97,7 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
+        DistanceJoint2D_autoConfigureDistance,
         DistanceJoint2D_distance,
         DistanceJoint2D_maxDistanceOnly,
 
@@ -117,8 +109,6 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
-        new JSMgr.MethodCallBackInfo(DistanceJoint2D_GetReactionForce__Single, "GetReactionForce"),
-        new JSMgr.MethodCallBackInfo(DistanceJoint2D_GetReactionTorque__Single, "GetReactionTorque"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

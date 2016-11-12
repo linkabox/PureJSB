@@ -36,6 +36,48 @@ static bool Motion_Motion1(JSVCall vc, int argc)
 // fields
 
 // properties
+static void Motion_averageDuration(JSVCall vc)
+{
+        UnityEngine.Motion _this = (UnityEngine.Motion)vc.csObj;
+        var result = _this.averageDuration;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+}
+static void Motion_averageAngularSpeed(JSVCall vc)
+{
+        UnityEngine.Motion _this = (UnityEngine.Motion)vc.csObj;
+        var result = _this.averageAngularSpeed;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+}
+static void Motion_averageSpeed(JSVCall vc)
+{
+        UnityEngine.Motion _this = (UnityEngine.Motion)vc.csObj;
+        var result = _this.averageSpeed;
+                JSApi.setVector3S((int)JSApi.SetType.Rval, result);
+}
+static void Motion_apparentSpeed(JSVCall vc)
+{
+        UnityEngine.Motion _this = (UnityEngine.Motion)vc.csObj;
+        var result = _this.apparentSpeed;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+}
+static void Motion_isLooping(JSVCall vc)
+{
+        UnityEngine.Motion _this = (UnityEngine.Motion)vc.csObj;
+        var result = _this.isLooping;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
+static void Motion_legacy(JSVCall vc)
+{
+        UnityEngine.Motion _this = (UnityEngine.Motion)vc.csObj;
+        var result = _this.legacy;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
+static void Motion_isHumanMotion(JSVCall vc)
+{
+        UnityEngine.Motion _this = (UnityEngine.Motion)vc.csObj;
+        var result = _this.isHumanMotion;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
 
 // methods
 
@@ -52,6 +94,13 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
+        Motion_averageDuration,
+        Motion_averageAngularSpeed,
+        Motion_averageSpeed,
+        Motion_apparentSpeed,
+        Motion_isLooping,
+        Motion_legacy,
+        Motion_isHumanMotion,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

@@ -60,10 +60,28 @@ static void AudioClip_frequency(JSVCall vc)
         var result = _this.frequency;
                 JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
 }
-static void AudioClip_isReadyToPlay(JSVCall vc)
+static void AudioClip_loadType(JSVCall vc)
 {
         UnityEngine.AudioClip _this = (UnityEngine.AudioClip)vc.csObj;
-        var result = _this.isReadyToPlay;
+        var result = _this.loadType;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
+}
+static void AudioClip_preloadAudioData(JSVCall vc)
+{
+        UnityEngine.AudioClip _this = (UnityEngine.AudioClip)vc.csObj;
+        var result = _this.preloadAudioData;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
+static void AudioClip_loadState(JSVCall vc)
+{
+        UnityEngine.AudioClip _this = (UnityEngine.AudioClip)vc.csObj;
+        var result = _this.loadState;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
+}
+static void AudioClip_loadInBackground(JSVCall vc)
+{
+        UnityEngine.AudioClip _this = (UnityEngine.AudioClip)vc.csObj;
+        var result = _this.loadInBackground;
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
 }
 
@@ -86,7 +104,18 @@ static bool AudioClip_GetData__Single_Array__Int32(JSVCall vc, int argc)
             return ret;
         });
         System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        ((UnityEngine.AudioClip)vc.csObj).GetData(arg0, arg1);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(((UnityEngine.AudioClip)vc.csObj).GetData(arg0, arg1)));
+    }
+
+    return true;
+}
+
+static bool AudioClip_LoadAudioData(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(((UnityEngine.AudioClip)vc.csObj).LoadAudioData()));
     }
 
     return true;
@@ -109,12 +138,23 @@ static bool AudioClip_SetData__Single_Array__Int32(JSVCall vc, int argc)
             return ret;
         });
         System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        ((UnityEngine.AudioClip)vc.csObj).SetData(arg0, arg1);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(((UnityEngine.AudioClip)vc.csObj).SetData(arg0, arg1)));
     }
 
     return true;
 }
-public static UnityEngine.AudioClip.PCMReaderCallback AudioClip_Create_GetDelegate_member2_arg6(CSRepresentedObject objFunction)
+
+static bool AudioClip_UnloadAudioData(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(((UnityEngine.AudioClip)vc.csObj).UnloadAudioData()));
+    }
+
+    return true;
+}
+public static UnityEngine.AudioClip.PCMReaderCallback AudioClip_Create_GetDelegate_member4_arg5(CSRepresentedObject objFunction)
 {
     if (objFunction == null || objFunction.jsObjID == 0)
     {
@@ -131,7 +171,7 @@ public static UnityEngine.AudioClip.PCMReaderCallback AudioClip_Create_GetDelega
     }
     return action;
 }
-public static UnityEngine.AudioClip.PCMSetPositionCallback AudioClip_Create_GetDelegate_member2_arg7(CSRepresentedObject objFunction)
+public static UnityEngine.AudioClip.PCMSetPositionCallback AudioClip_Create_GetDelegate_member4_arg6(CSRepresentedObject objFunction)
 {
     if (objFunction == null || objFunction.jsObjID == 0)
     {
@@ -149,37 +189,36 @@ public static UnityEngine.AudioClip.PCMSetPositionCallback AudioClip_Create_GetD
     return action;
 }
 
-static bool AudioClip_Create__String__Int32__Int32__Int32__Boolean__Boolean__PCMReaderCallback__PCMSetPositionCallback(JSVCall vc, int argc)
+static bool AudioClip_Create__String__Int32__Int32__Int32__Boolean__PCMReaderCallback__PCMSetPositionCallback(JSVCall vc, int argc)
 {
     int len = argc;
-    if (len == 8) 
+    if (len == 7) 
     {
         System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
         System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         System.Boolean arg4 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        System.Boolean arg5 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        UnityEngine.AudioClip.PCMReaderCallback arg6 = JSDataExchangeMgr.GetJSArg<UnityEngine.AudioClip.PCMReaderCallback>(()=>
+        UnityEngine.AudioClip.PCMReaderCallback arg5 = JSDataExchangeMgr.GetJSArg<UnityEngine.AudioClip.PCMReaderCallback>(()=>
         {
             if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return AudioClip_Create_GetDelegate_member2_arg6(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+                return AudioClip_Create_GetDelegate_member4_arg5(JSApi.getFunctionS((int)JSApi.GetType.Arg));
             else
                 return (UnityEngine.AudioClip.PCMReaderCallback)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         });
-        UnityEngine.AudioClip.PCMSetPositionCallback arg7 = JSDataExchangeMgr.GetJSArg<UnityEngine.AudioClip.PCMSetPositionCallback>(()=>
+        UnityEngine.AudioClip.PCMSetPositionCallback arg6 = JSDataExchangeMgr.GetJSArg<UnityEngine.AudioClip.PCMSetPositionCallback>(()=>
         {
             if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return AudioClip_Create_GetDelegate_member2_arg7(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+                return AudioClip_Create_GetDelegate_member4_arg6(JSApi.getFunctionS((int)JSApi.GetType.Arg));
             else
                 return (UnityEngine.AudioClip.PCMSetPositionCallback)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         });
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AudioClip.Create(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7));
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AudioClip.Create(arg0, arg1, arg2, arg3, arg4, arg5, arg6));
     }
 
     return true;
 }
-public static UnityEngine.AudioClip.PCMReaderCallback AudioClip_Create_GetDelegate_member3_arg6(CSRepresentedObject objFunction)
+public static UnityEngine.AudioClip.PCMReaderCallback AudioClip_Create_GetDelegate_member5_arg5(CSRepresentedObject objFunction)
 {
     if (objFunction == null || objFunction.jsObjID == 0)
     {
@@ -197,31 +236,7 @@ public static UnityEngine.AudioClip.PCMReaderCallback AudioClip_Create_GetDelega
     return action;
 }
 
-static bool AudioClip_Create__String__Int32__Int32__Int32__Boolean__Boolean__PCMReaderCallback(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 7) 
-    {
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        System.Boolean arg4 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        System.Boolean arg5 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        UnityEngine.AudioClip.PCMReaderCallback arg6 = JSDataExchangeMgr.GetJSArg<UnityEngine.AudioClip.PCMReaderCallback>(()=>
-        {
-            if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return AudioClip_Create_GetDelegate_member3_arg6(JSApi.getFunctionS((int)JSApi.GetType.Arg));
-            else
-                return (UnityEngine.AudioClip.PCMReaderCallback)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        });
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AudioClip.Create(arg0, arg1, arg2, arg3, arg4, arg5, arg6));
-    }
-
-    return true;
-}
-
-static bool AudioClip_Create__String__Int32__Int32__Int32__Boolean__Boolean(JSVCall vc, int argc)
+static bool AudioClip_Create__String__Int32__Int32__Int32__Boolean__PCMReaderCallback(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 6) 
@@ -231,8 +246,30 @@ static bool AudioClip_Create__String__Int32__Int32__Int32__Boolean__Boolean(JSVC
         System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         System.Boolean arg4 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        System.Boolean arg5 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.AudioClip.PCMReaderCallback arg5 = JSDataExchangeMgr.GetJSArg<UnityEngine.AudioClip.PCMReaderCallback>(()=>
+        {
+            if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
+                return AudioClip_Create_GetDelegate_member5_arg5(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+            else
+                return (UnityEngine.AudioClip.PCMReaderCallback)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        });
                 JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AudioClip.Create(arg0, arg1, arg2, arg3, arg4, arg5));
+    }
+
+    return true;
+}
+
+static bool AudioClip_Create__String__Int32__Int32__Int32__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 5) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Boolean arg4 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AudioClip.Create(arg0, arg1, arg2, arg3, arg4));
     }
 
     return true;
@@ -255,7 +292,10 @@ public static void __Register()
         AudioClip_samples,
         AudioClip_channels,
         AudioClip_frequency,
-        AudioClip_isReadyToPlay,
+        AudioClip_loadType,
+        AudioClip_preloadAudioData,
+        AudioClip_loadState,
+        AudioClip_loadInBackground,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]
@@ -266,10 +306,12 @@ public static void __Register()
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
         new JSMgr.MethodCallBackInfo(AudioClip_GetData__Single_Array__Int32, "GetData"),
+        new JSMgr.MethodCallBackInfo(AudioClip_LoadAudioData, "LoadAudioData"),
         new JSMgr.MethodCallBackInfo(AudioClip_SetData__Single_Array__Int32, "SetData"),
-        new JSMgr.MethodCallBackInfo(AudioClip_Create__String__Int32__Int32__Int32__Boolean__Boolean__PCMReaderCallback__PCMSetPositionCallback, "Create"),
-        new JSMgr.MethodCallBackInfo(AudioClip_Create__String__Int32__Int32__Int32__Boolean__Boolean__PCMReaderCallback, "Create"),
-        new JSMgr.MethodCallBackInfo(AudioClip_Create__String__Int32__Int32__Int32__Boolean__Boolean, "Create"),
+        new JSMgr.MethodCallBackInfo(AudioClip_UnloadAudioData, "UnloadAudioData"),
+        new JSMgr.MethodCallBackInfo(AudioClip_Create__String__Int32__Int32__Int32__Boolean__PCMReaderCallback__PCMSetPositionCallback, "Create"),
+        new JSMgr.MethodCallBackInfo(AudioClip_Create__String__Int32__Int32__Int32__Boolean__PCMReaderCallback, "Create"),
+        new JSMgr.MethodCallBackInfo(AudioClip_Create__String__Int32__Int32__Int32__Boolean, "Create"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

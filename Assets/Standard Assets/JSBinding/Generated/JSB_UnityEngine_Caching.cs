@@ -85,6 +85,19 @@ static void Caching_enabled(JSVCall vc)
         UnityEngine.Caching.enabled = arg0;
     }
 }
+static void Caching_compressionEnabled(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.Caching.compressionEnabled;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Caching.compressionEnabled = arg0;
+    }
+}
 static void Caching_ready(JSVCall vc)
 {
         var result = UnityEngine.Caching.ready;
@@ -135,6 +148,19 @@ static bool Caching_CleanCache(JSVCall vc, int argc)
     return true;
 }
 
+static bool Caching_IsVersionCached__String__Hash128(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        UnityEngine.Hash128 arg1 = (UnityEngine.Hash128)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.Caching.IsVersionCached(arg0, arg1)));
+    }
+
+    return true;
+}
+
 static bool Caching_IsVersionCached__String__Int32(JSVCall vc, int argc)
 {
     int len = argc;
@@ -143,6 +169,19 @@ static bool Caching_IsVersionCached__String__Int32(JSVCall vc, int argc)
         System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
         System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.Caching.IsVersionCached(arg0, arg1)));
+    }
+
+    return true;
+}
+
+static bool Caching_MarkAsUsed__String__Hash128(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        UnityEngine.Hash128 arg1 = (UnityEngine.Hash128)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.Caching.MarkAsUsed(arg0, arg1)));
     }
 
     return true;
@@ -179,6 +218,7 @@ public static void __Register()
         Caching_spaceOccupied,
         Caching_expirationDelay,
         Caching_enabled,
+        Caching_compressionEnabled,
         Caching_ready,
 
     };
@@ -192,7 +232,9 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Caching_Authorize__String__String__Int64__Int32__String, "Authorize"),
         new JSMgr.MethodCallBackInfo(Caching_Authorize__String__String__Int64__String, "Authorize"),
         new JSMgr.MethodCallBackInfo(Caching_CleanCache, "CleanCache"),
+        new JSMgr.MethodCallBackInfo(Caching_IsVersionCached__String__Hash128, "IsVersionCached"),
         new JSMgr.MethodCallBackInfo(Caching_IsVersionCached__String__Int32, "IsVersionCached"),
+        new JSMgr.MethodCallBackInfo(Caching_MarkAsUsed__String__Hash128, "MarkAsUsed"),
         new JSMgr.MethodCallBackInfo(Caching_MarkAsUsed__String__Int32, "MarkAsUsed"),
 
     };

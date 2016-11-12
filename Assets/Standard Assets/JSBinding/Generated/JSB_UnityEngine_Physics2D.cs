@@ -90,30 +90,30 @@ static void Physics2D_gravity(JSVCall vc)
         UnityEngine.Physics2D.gravity = arg0;
     }
 }
-static void Physics2D_raycastsHitTriggers(JSVCall vc)
+static void Physics2D_queriesHitTriggers(JSVCall vc)
 {
     if (vc.bGet)
     { 
-        var result = UnityEngine.Physics2D.raycastsHitTriggers;
+        var result = UnityEngine.Physics2D.queriesHitTriggers;
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
     }
     else
     { 
         System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        UnityEngine.Physics2D.raycastsHitTriggers = arg0;
+        UnityEngine.Physics2D.queriesHitTriggers = arg0;
     }
 }
-static void Physics2D_raycastsStartInColliders(JSVCall vc)
+static void Physics2D_queriesStartInColliders(JSVCall vc)
 {
     if (vc.bGet)
     { 
-        var result = UnityEngine.Physics2D.raycastsStartInColliders;
+        var result = UnityEngine.Physics2D.queriesStartInColliders;
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
     }
     else
     { 
         System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        UnityEngine.Physics2D.raycastsStartInColliders = arg0;
+        UnityEngine.Physics2D.queriesStartInColliders = arg0;
     }
 }
 static void Physics2D_changeStopsCallbacks(JSVCall vc)
@@ -270,6 +270,97 @@ static void Physics2D_angularSleepTolerance(JSVCall vc)
     { 
         System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         UnityEngine.Physics2D.angularSleepTolerance = arg0;
+    }
+}
+static void Physics2D_alwaysShowColliders(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.Physics2D.alwaysShowColliders;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Physics2D.alwaysShowColliders = arg0;
+    }
+}
+static void Physics2D_showColliderSleep(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.Physics2D.showColliderSleep;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Physics2D.showColliderSleep = arg0;
+    }
+}
+static void Physics2D_showColliderContacts(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.Physics2D.showColliderContacts;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Physics2D.showColliderContacts = arg0;
+    }
+}
+static void Physics2D_contactArrowScale(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.Physics2D.contactArrowScale;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.Physics2D.contactArrowScale = arg0;
+    }
+}
+static void Physics2D_colliderAwakeColor(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.Physics2D.colliderAwakeColor;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.Color arg0 = (UnityEngine.Color)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Physics2D.colliderAwakeColor = arg0;
+    }
+}
+static void Physics2D_colliderAsleepColor(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.Physics2D.colliderAsleepColor;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.Color arg0 = (UnityEngine.Color)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Physics2D.colliderAsleepColor = arg0;
+    }
+}
+static void Physics2D_colliderContactColor(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.Physics2D.colliderContactColor;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.Color arg0 = (UnityEngine.Color)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Physics2D.colliderContactColor = arg0;
     }
 }
 
@@ -966,6 +1057,18 @@ static bool Physics2D_GetIgnoreLayerCollision__Int32__Int32(JSVCall vc, int argc
     return true;
 }
 
+static bool Physics2D_GetLayerCollisionMask__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.Physics2D.GetLayerCollisionMask(arg0)));
+    }
+
+    return true;
+}
+
 static bool Physics2D_GetRayIntersection__Ray__Single__Int32(JSVCall vc, int argc)
 {
     int len = argc;
@@ -1183,6 +1286,44 @@ static bool Physics2D_IgnoreLayerCollision__Int32__Int32(JSVCall vc, int argc)
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         UnityEngine.Physics2D.IgnoreLayerCollision(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Physics2D_IsTouching__Collider2D__Collider2D(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        UnityEngine.Collider2D arg0 = (UnityEngine.Collider2D)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Collider2D arg1 = (UnityEngine.Collider2D)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.Physics2D.IsTouching(arg0, arg1)));
+    }
+
+    return true;
+}
+
+static bool Physics2D_IsTouchingLayers__Collider2D__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        UnityEngine.Collider2D arg0 = (UnityEngine.Collider2D)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.Physics2D.IsTouchingLayers(arg0, arg1)));
+    }
+
+    return true;
+}
+
+static bool Physics2D_IsTouchingLayers__Collider2D(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.Collider2D arg0 = (UnityEngine.Collider2D)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.Physics2D.IsTouchingLayers(arg0)));
     }
 
     return true;
@@ -1667,6 +1808,260 @@ static bool Physics2D_OverlapAreaNonAlloc__Vector2__Vector2__Collider2D_Array(JS
             return ret;
         });
                 JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.Physics2D.OverlapAreaNonAlloc(arg0, arg1, arg2)));
+    }
+
+    return true;
+}
+
+static bool Physics2D_OverlapBox__Vector2__Vector2__Single__Int32__Single__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 6) 
+    {
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Single arg4 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg5 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Physics2D.OverlapBox(arg0, arg1, arg2, arg3, arg4, arg5));
+    }
+
+    return true;
+}
+
+static bool Physics2D_OverlapBox__Vector2__Vector2__Single__Int32__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 5) 
+    {
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Single arg4 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Physics2D.OverlapBox(arg0, arg1, arg2, arg3, arg4));
+    }
+
+    return true;
+}
+
+static bool Physics2D_OverlapBox__Vector2__Vector2__Single__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Physics2D.OverlapBox(arg0, arg1, arg2, arg3));
+    }
+
+    return true;
+}
+
+static bool Physics2D_OverlapBox__Vector2__Vector2__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Physics2D.OverlapBox(arg0, arg1, arg2));
+    }
+
+    return true;
+}
+
+static bool Physics2D_OverlapBoxAll__Vector2__Vector2__Single__Int32__Single__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 6) 
+    {
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Single arg4 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg5 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                var arrRet = UnityEngine.Physics2D.OverlapBoxAll(arg0, arg1, arg2, arg3, arg4, arg5);
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+
+    return true;
+}
+
+static bool Physics2D_OverlapBoxAll__Vector2__Vector2__Single__Int32__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 5) 
+    {
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Single arg4 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                var arrRet = UnityEngine.Physics2D.OverlapBoxAll(arg0, arg1, arg2, arg3, arg4);
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+
+    return true;
+}
+
+static bool Physics2D_OverlapBoxAll__Vector2__Vector2__Single__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+                var arrRet = UnityEngine.Physics2D.OverlapBoxAll(arg0, arg1, arg2, arg3);
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+
+    return true;
+}
+
+static bool Physics2D_OverlapBoxAll__Vector2__Vector2__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                var arrRet = UnityEngine.Physics2D.OverlapBoxAll(arg0, arg1, arg2);
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+
+    return true;
+}
+
+static bool Physics2D_OverlapBoxNonAlloc__Vector2__Vector2__Single__Collider2D_Array__Int32__Single__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 7) 
+    {
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.Collider2D[] arg3 = JSDataExchangeMgr.GetJSArg<UnityEngine.Collider2D[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Collider2D[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Collider2D)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        System.Int32 arg4 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Single arg5 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg6 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.Physics2D.OverlapBoxNonAlloc(arg0, arg1, arg2, arg3, arg4, arg5, arg6)));
+    }
+
+    return true;
+}
+
+static bool Physics2D_OverlapBoxNonAlloc__Vector2__Vector2__Single__Collider2D_Array__Int32__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 6) 
+    {
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.Collider2D[] arg3 = JSDataExchangeMgr.GetJSArg<UnityEngine.Collider2D[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Collider2D[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Collider2D)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        System.Int32 arg4 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Single arg5 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.Physics2D.OverlapBoxNonAlloc(arg0, arg1, arg2, arg3, arg4, arg5)));
+    }
+
+    return true;
+}
+
+static bool Physics2D_OverlapBoxNonAlloc__Vector2__Vector2__Single__Collider2D_Array__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 5) 
+    {
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.Collider2D[] arg3 = JSDataExchangeMgr.GetJSArg<UnityEngine.Collider2D[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Collider2D[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Collider2D)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        System.Int32 arg4 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.Physics2D.OverlapBoxNonAlloc(arg0, arg1, arg2, arg3, arg4)));
+    }
+
+    return true;
+}
+
+static bool Physics2D_OverlapBoxNonAlloc__Vector2__Vector2__Single__Collider2D_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.Collider2D[] arg3 = JSDataExchangeMgr.GetJSArg<UnityEngine.Collider2D[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Collider2D[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Collider2D)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.Physics2D.OverlapBoxNonAlloc(arg0, arg1, arg2, arg3)));
     }
 
     return true;
@@ -2454,6 +2849,19 @@ static bool Physics2D_RaycastNonAlloc__Vector2__Vector2__RaycastHit2D_Array(JSVC
     return true;
 }
 
+static bool Physics2D_SetLayerCollisionMask__Int32__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Physics2D.SetLayerCollisionMask(arg0, arg1);
+    }
+
+    return true;
+}
+
 
 //register
 
@@ -2473,8 +2881,8 @@ public static void __Register()
         Physics2D_velocityIterations,
         Physics2D_positionIterations,
         Physics2D_gravity,
-        Physics2D_raycastsHitTriggers,
-        Physics2D_raycastsStartInColliders,
+        Physics2D_queriesHitTriggers,
+        Physics2D_queriesStartInColliders,
         Physics2D_changeStopsCallbacks,
         Physics2D_velocityThreshold,
         Physics2D_maxLinearCorrection,
@@ -2487,6 +2895,13 @@ public static void __Register()
         Physics2D_timeToSleep,
         Physics2D_linearSleepTolerance,
         Physics2D_angularSleepTolerance,
+        Physics2D_alwaysShowColliders,
+        Physics2D_showColliderSleep,
+        Physics2D_showColliderContacts,
+        Physics2D_contactArrowScale,
+        Physics2D_colliderAwakeColor,
+        Physics2D_colliderAsleepColor,
+        Physics2D_colliderContactColor,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]
@@ -2528,6 +2943,7 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Physics2D_CircleCastNonAlloc__Vector2__Single__Vector2__RaycastHit2D_Array, "CircleCastNonAlloc"),
         new JSMgr.MethodCallBackInfo(Physics2D_GetIgnoreCollision__Collider2D__Collider2D, "GetIgnoreCollision"),
         new JSMgr.MethodCallBackInfo(Physics2D_GetIgnoreLayerCollision__Int32__Int32, "GetIgnoreLayerCollision"),
+        new JSMgr.MethodCallBackInfo(Physics2D_GetLayerCollisionMask__Int32, "GetLayerCollisionMask"),
         new JSMgr.MethodCallBackInfo(Physics2D_GetRayIntersection__Ray__Single__Int32, "GetRayIntersection"),
         new JSMgr.MethodCallBackInfo(Physics2D_GetRayIntersection__Ray__Single, "GetRayIntersection"),
         new JSMgr.MethodCallBackInfo(Physics2D_GetRayIntersection__Ray, "GetRayIntersection"),
@@ -2541,6 +2957,9 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Physics2D_IgnoreCollision__Collider2D__Collider2D, "IgnoreCollision"),
         new JSMgr.MethodCallBackInfo(Physics2D_IgnoreLayerCollision__Int32__Int32__Boolean, "IgnoreLayerCollision"),
         new JSMgr.MethodCallBackInfo(Physics2D_IgnoreLayerCollision__Int32__Int32, "IgnoreLayerCollision"),
+        new JSMgr.MethodCallBackInfo(Physics2D_IsTouching__Collider2D__Collider2D, "IsTouching"),
+        new JSMgr.MethodCallBackInfo(Physics2D_IsTouchingLayers__Collider2D__Int32, "IsTouchingLayers"),
+        new JSMgr.MethodCallBackInfo(Physics2D_IsTouchingLayers__Collider2D, "IsTouchingLayers"),
         new JSMgr.MethodCallBackInfo(Physics2D_Linecast__Vector2__Vector2__Int32__Single__Single, "Linecast"),
         new JSMgr.MethodCallBackInfo(Physics2D_Linecast__Vector2__Vector2__Int32__Single, "Linecast"),
         new JSMgr.MethodCallBackInfo(Physics2D_Linecast__Vector2__Vector2__Int32, "Linecast"),
@@ -2565,6 +2984,18 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Physics2D_OverlapAreaNonAlloc__Vector2__Vector2__Collider2D_Array__Int32__Single, "OverlapAreaNonAlloc"),
         new JSMgr.MethodCallBackInfo(Physics2D_OverlapAreaNonAlloc__Vector2__Vector2__Collider2D_Array__Int32, "OverlapAreaNonAlloc"),
         new JSMgr.MethodCallBackInfo(Physics2D_OverlapAreaNonAlloc__Vector2__Vector2__Collider2D_Array, "OverlapAreaNonAlloc"),
+        new JSMgr.MethodCallBackInfo(Physics2D_OverlapBox__Vector2__Vector2__Single__Int32__Single__Single, "OverlapBox"),
+        new JSMgr.MethodCallBackInfo(Physics2D_OverlapBox__Vector2__Vector2__Single__Int32__Single, "OverlapBox"),
+        new JSMgr.MethodCallBackInfo(Physics2D_OverlapBox__Vector2__Vector2__Single__Int32, "OverlapBox"),
+        new JSMgr.MethodCallBackInfo(Physics2D_OverlapBox__Vector2__Vector2__Single, "OverlapBox"),
+        new JSMgr.MethodCallBackInfo(Physics2D_OverlapBoxAll__Vector2__Vector2__Single__Int32__Single__Single, "OverlapBoxAll"),
+        new JSMgr.MethodCallBackInfo(Physics2D_OverlapBoxAll__Vector2__Vector2__Single__Int32__Single, "OverlapBoxAll"),
+        new JSMgr.MethodCallBackInfo(Physics2D_OverlapBoxAll__Vector2__Vector2__Single__Int32, "OverlapBoxAll"),
+        new JSMgr.MethodCallBackInfo(Physics2D_OverlapBoxAll__Vector2__Vector2__Single, "OverlapBoxAll"),
+        new JSMgr.MethodCallBackInfo(Physics2D_OverlapBoxNonAlloc__Vector2__Vector2__Single__Collider2D_Array__Int32__Single__Single, "OverlapBoxNonAlloc"),
+        new JSMgr.MethodCallBackInfo(Physics2D_OverlapBoxNonAlloc__Vector2__Vector2__Single__Collider2D_Array__Int32__Single, "OverlapBoxNonAlloc"),
+        new JSMgr.MethodCallBackInfo(Physics2D_OverlapBoxNonAlloc__Vector2__Vector2__Single__Collider2D_Array__Int32, "OverlapBoxNonAlloc"),
+        new JSMgr.MethodCallBackInfo(Physics2D_OverlapBoxNonAlloc__Vector2__Vector2__Single__Collider2D_Array, "OverlapBoxNonAlloc"),
         new JSMgr.MethodCallBackInfo(Physics2D_OverlapCircle__Vector2__Single__Int32__Single__Single, "OverlapCircle"),
         new JSMgr.MethodCallBackInfo(Physics2D_OverlapCircle__Vector2__Single__Int32__Single, "OverlapCircle"),
         new JSMgr.MethodCallBackInfo(Physics2D_OverlapCircle__Vector2__Single__Int32, "OverlapCircle"),
@@ -2604,6 +3035,7 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Physics2D_RaycastNonAlloc__Vector2__Vector2__RaycastHit2D_Array__Single__Int32, "RaycastNonAlloc"),
         new JSMgr.MethodCallBackInfo(Physics2D_RaycastNonAlloc__Vector2__Vector2__RaycastHit2D_Array__Single, "RaycastNonAlloc"),
         new JSMgr.MethodCallBackInfo(Physics2D_RaycastNonAlloc__Vector2__Vector2__RaycastHit2D_Array, "RaycastNonAlloc"),
+        new JSMgr.MethodCallBackInfo(Physics2D_SetLayerCollisionMask__Int32__Int32, "SetLayerCollisionMask"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

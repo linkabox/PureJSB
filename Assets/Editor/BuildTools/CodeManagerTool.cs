@@ -78,7 +78,7 @@ public class CodeManagerTool
             return;
         }
 
-        string metaFile = AssetDatabase.GetTextMetaDataPathFromAssetPath(filePath);
+        string metaFile = AssetDatabase.GetTextMetaFilePathFromAssetPath(filePath);
         if (!string.IsNullOrEmpty(metaFile))
         {
             FileUtil.DeleteFileOrDirectory(metaFile);
@@ -101,7 +101,7 @@ public class CodeManagerTool
 
         JSBFileHelper.CreateDirectory(Path.GetDirectoryName(newPath));
 
-        string metaFile = AssetDatabase.GetTextMetaDataPathFromAssetPath(oldPath);
+        string metaFile = AssetDatabase.GetTextMetaFilePathFromAssetPath(oldPath);
         if (!string.IsNullOrEmpty(metaFile))
         {
             string newMetaFile;

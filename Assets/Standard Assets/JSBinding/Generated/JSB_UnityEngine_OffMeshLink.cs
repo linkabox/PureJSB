@@ -87,19 +87,19 @@ static void OffMeshLink_biDirectional(JSVCall vc)
         _this.biDirectional = arg0;
     }
 }
-static void OffMeshLink_navMeshLayer(JSVCall vc)
+static void OffMeshLink_area(JSVCall vc)
 {
     if (vc.bGet)
     { 
         UnityEngine.OffMeshLink _this = (UnityEngine.OffMeshLink)vc.csObj;
-        var result = _this.navMeshLayer;
+        var result = _this.area;
                 JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
     }
     else
     { 
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         UnityEngine.OffMeshLink _this = (UnityEngine.OffMeshLink)vc.csObj;
-        _this.navMeshLayer = arg0;
+        _this.area = arg0;
     }
 }
 static void OffMeshLink_autoUpdatePositions(JSVCall vc)
@@ -178,7 +178,7 @@ public static void __Register()
         OffMeshLink_occupied,
         OffMeshLink_costOverride,
         OffMeshLink_biDirectional,
-        OffMeshLink_navMeshLayer,
+        OffMeshLink_area,
         OffMeshLink_autoUpdatePositions,
         OffMeshLink_startTransform,
         OffMeshLink_endTransform,

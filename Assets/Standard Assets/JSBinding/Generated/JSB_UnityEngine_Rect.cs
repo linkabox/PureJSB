@@ -60,6 +60,23 @@ static bool Rect_Rect3(JSVCall vc, int argc)
     --argc;
 
     int len = argc;
+    if (len == 2)
+    {
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        JSMgr.addJSCSRel(_this, new UnityEngine.Rect(arg0, arg1));
+    }
+
+    return true;
+}
+
+static bool Rect_Rect4(JSVCall vc, int argc)
+{
+    int _this = JSApi.getObject((int)JSApi.GetType.Arg);
+    JSApi.attachFinalizerObject(_this);
+    --argc;
+
+    int len = argc;
     if (len == 1)
     {
         UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
@@ -506,6 +523,7 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Rect_Rect1, ".ctor"),
         new JSMgr.MethodCallBackInfo(Rect_Rect2, ".ctor"),
         new JSMgr.MethodCallBackInfo(Rect_Rect3, ".ctor"),
+        new JSMgr.MethodCallBackInfo(Rect_Rect4, ".ctor"),
 
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]

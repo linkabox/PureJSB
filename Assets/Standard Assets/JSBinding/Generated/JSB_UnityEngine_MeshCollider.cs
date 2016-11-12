@@ -66,21 +66,6 @@ static void MeshCollider_convex(JSVCall vc)
         _this.convex = arg0;
     }
 }
-static void MeshCollider_smoothSphereCollisions(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.MeshCollider _this = (UnityEngine.MeshCollider)vc.csObj;
-        var result = _this.smoothSphereCollisions;
-                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
-    }
-    else
-    { 
-        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        UnityEngine.MeshCollider _this = (UnityEngine.MeshCollider)vc.csObj;
-        _this.smoothSphereCollisions = arg0;
-    }
-}
 
 // methods
 
@@ -99,7 +84,6 @@ public static void __Register()
     {
         MeshCollider_sharedMesh,
         MeshCollider_convex,
-        MeshCollider_smoothSphereCollisions,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

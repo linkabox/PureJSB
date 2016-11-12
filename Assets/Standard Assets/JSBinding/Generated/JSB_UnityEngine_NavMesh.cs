@@ -34,21 +34,41 @@ static bool NavMesh_NavMesh1(JSVCall vc, int argc)
 }
 
 // fields
+static void NavMesh_AllAreas(JSVCall vc)
+{
+        var result = UnityEngine.NavMesh.AllAreas;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+}
 
 // properties
+static void NavMesh_avoidancePredictionTime(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.NavMesh.avoidancePredictionTime;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.NavMesh.avoidancePredictionTime = arg0;
+    }
+}
+static void NavMesh_pathfindingIterationsPerFrame(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.NavMesh.pathfindingIterationsPerFrame;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+    }
+    else
+    { 
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.NavMesh.pathfindingIterationsPerFrame = arg0;
+    }
+}
 
 // methods
-
-static bool NavMesh_AddOffMeshLinks(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 0) 
-    {
-        UnityEngine.NavMesh.AddOffMeshLinks();
-    }
-
-    return true;
-}
 
 static bool NavMesh_CalculatePath__Vector3__Vector3__Int32__NavMeshPath(JSVCall vc, int argc)
 {
@@ -93,25 +113,25 @@ static bool NavMesh_FindClosestEdge__Vector3__NavMeshHit__Int32(JSVCall vc, int 
     return true;
 }
 
-static bool NavMesh_GetLayerCost__Int32(JSVCall vc, int argc)
+static bool NavMesh_GetAreaCost__Int32(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 1) 
     {
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(UnityEngine.NavMesh.GetLayerCost(arg0)));
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(UnityEngine.NavMesh.GetAreaCost(arg0)));
     }
 
     return true;
 }
 
-static bool NavMesh_GetNavMeshLayerFromName__String(JSVCall vc, int argc)
+static bool NavMesh_GetAreaFromName__String(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 1) 
     {
         System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.NavMesh.GetNavMeshLayerFromName(arg0)));
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.NavMesh.GetAreaFromName(arg0)));
     }
 
     return true;
@@ -135,17 +155,6 @@ static bool NavMesh_Raycast__Vector3__Vector3__NavMeshHit__Int32(JSVCall vc, int
     return true;
 }
 
-static bool NavMesh_RestoreNavMesh(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 0) 
-    {
-        UnityEngine.NavMesh.RestoreNavMesh();
-    }
-
-    return true;
-}
-
 static bool NavMesh_SamplePosition__Vector3__NavMeshHit__Single__Int32(JSVCall vc, int argc)
 {
     int len = argc;
@@ -164,14 +173,14 @@ static bool NavMesh_SamplePosition__Vector3__NavMeshHit__Single__Int32(JSVCall v
     return true;
 }
 
-static bool NavMesh_SetLayerCost__Int32__Single(JSVCall vc, int argc)
+static bool NavMesh_SetAreaCost__Int32__Single(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 2) 
     {
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        UnityEngine.NavMesh.SetLayerCost(arg0, arg1);
+        UnityEngine.NavMesh.SetAreaCost(arg0, arg1);
     }
 
     return true;
@@ -186,10 +195,13 @@ public static void __Register()
     ci.type = typeof(UnityEngine.NavMesh);
     ci.fields = new JSMgr.CSCallbackField[]
     {
+        NavMesh_AllAreas,
 
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
+        NavMesh_avoidancePredictionTime,
+        NavMesh_pathfindingIterationsPerFrame,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]
@@ -199,16 +211,14 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
-        new JSMgr.MethodCallBackInfo(NavMesh_AddOffMeshLinks, "AddOffMeshLinks"),
         new JSMgr.MethodCallBackInfo(NavMesh_CalculatePath__Vector3__Vector3__Int32__NavMeshPath, "CalculatePath"),
         new JSMgr.MethodCallBackInfo(NavMesh_CalculateTriangulation, "CalculateTriangulation"),
         new JSMgr.MethodCallBackInfo(NavMesh_FindClosestEdge__Vector3__NavMeshHit__Int32, "FindClosestEdge"),
-        new JSMgr.MethodCallBackInfo(NavMesh_GetLayerCost__Int32, "GetLayerCost"),
-        new JSMgr.MethodCallBackInfo(NavMesh_GetNavMeshLayerFromName__String, "GetNavMeshLayerFromName"),
+        new JSMgr.MethodCallBackInfo(NavMesh_GetAreaCost__Int32, "GetAreaCost"),
+        new JSMgr.MethodCallBackInfo(NavMesh_GetAreaFromName__String, "GetAreaFromName"),
         new JSMgr.MethodCallBackInfo(NavMesh_Raycast__Vector3__Vector3__NavMeshHit__Int32, "Raycast"),
-        new JSMgr.MethodCallBackInfo(NavMesh_RestoreNavMesh, "RestoreNavMesh"),
         new JSMgr.MethodCallBackInfo(NavMesh_SamplePosition__Vector3__NavMeshHit__Single__Int32, "SamplePosition"),
-        new JSMgr.MethodCallBackInfo(NavMesh_SetLayerCost__Int32__Single, "SetLayerCost"),
+        new JSMgr.MethodCallBackInfo(NavMesh_SetAreaCost__Int32__Single, "SetAreaCost"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

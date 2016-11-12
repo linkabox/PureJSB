@@ -51,19 +51,34 @@ static void AudioLowPassFilter_cutoffFrequency(JSVCall vc)
         _this.cutoffFrequency = arg0;
     }
 }
-static void AudioLowPassFilter_lowpassResonaceQ(JSVCall vc)
+static void AudioLowPassFilter_customCutoffCurve(JSVCall vc)
 {
     if (vc.bGet)
     { 
         UnityEngine.AudioLowPassFilter _this = (UnityEngine.AudioLowPassFilter)vc.csObj;
-        var result = _this.lowpassResonaceQ;
+        var result = _this.customCutoffCurve;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.AnimationCurve arg0 = (UnityEngine.AnimationCurve)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.AudioLowPassFilter _this = (UnityEngine.AudioLowPassFilter)vc.csObj;
+        _this.customCutoffCurve = arg0;
+    }
+}
+static void AudioLowPassFilter_lowpassResonanceQ(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.AudioLowPassFilter _this = (UnityEngine.AudioLowPassFilter)vc.csObj;
+        var result = _this.lowpassResonanceQ;
                 JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
     }
     else
     { 
         System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         UnityEngine.AudioLowPassFilter _this = (UnityEngine.AudioLowPassFilter)vc.csObj;
-        _this.lowpassResonaceQ = arg0;
+        _this.lowpassResonanceQ = arg0;
     }
 }
 
@@ -83,7 +98,8 @@ public static void __Register()
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
         AudioLowPassFilter_cutoffFrequency,
-        AudioLowPassFilter_lowpassResonaceQ,
+        AudioLowPassFilter_customCutoffCurve,
+        AudioLowPassFilter_lowpassResonanceQ,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

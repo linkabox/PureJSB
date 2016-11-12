@@ -9,6 +9,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using UnityEngine.Rendering;
 
 using jsval = JSApi.jsval;
 
@@ -48,35 +49,35 @@ static void LightProbes_positions(JSVCall vc)
         }
         JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
 }
-static void LightProbes_coefficients(JSVCall vc)
+static void LightProbes_bakedProbes(JSVCall vc)
 {
     if (vc.bGet)
     { 
         UnityEngine.LightProbes _this = (UnityEngine.LightProbes)vc.csObj;
-        var result = _this.coefficients;
+        var result = _this.bakedProbes;
                 var arrRet = result;
         for (int i = 0; arrRet != null && i < arrRet.Length; i++)
         {
-            JSApi.setSingle((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
             JSApi.moveSaveID2Arr(i);
         }
         JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
     }
     else
     { 
-        System.Single[] arg0 = JSDataExchangeMgr.GetJSArg<System.Single[]>(() =>
+        UnityEngine.Rendering.SphericalHarmonicsL2[] arg0 = JSDataExchangeMgr.GetJSArg<UnityEngine.Rendering.SphericalHarmonicsL2[]>(() =>
         {
             int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
             int length = JSApi.getArrayLength(jsObjID);
-            var ret = new System.Single[length];
+            var ret = new UnityEngine.Rendering.SphericalHarmonicsL2[length];
             for (var i = 0; i < length; i++) {
                 JSApi.getElement(jsObjID, i);
-                ret[i] = (System.Single)JSApi.getSingle((int)JSApi.GetType.SaveAndRemove);
+                ret[i] = (UnityEngine.Rendering.SphericalHarmonicsL2)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
             }
             return ret;
         });
         UnityEngine.LightProbes _this = (UnityEngine.LightProbes)vc.csObj;
-        _this.coefficients = arg0;
+        _this.bakedProbes = arg0;
     }
 }
 static void LightProbes_count(JSVCall vc)
@@ -94,25 +95,18 @@ static void LightProbes_cellCount(JSVCall vc)
 
 // methods
 
-static bool LightProbes_GetInterpolatedLightProbe__Vector3__Renderer__Single_Array(JSVCall vc, int argc)
+static bool LightProbes_GetInterpolatedProbe__Vector3__Renderer__SphericalHarmonicsL2(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 3) 
     {
         UnityEngine.Vector3 arg0 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
         UnityEngine.Renderer arg1 = (UnityEngine.Renderer)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        System.Single[] arg2 = JSDataExchangeMgr.GetJSArg<System.Single[]>(() =>
-        {
-            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
-            int length = JSApi.getArrayLength(jsObjID);
-            var ret = new System.Single[length];
-            for (var i = 0; i < length; i++) {
-                JSApi.getElement(jsObjID, i);
-                ret[i] = (System.Single)JSApi.getSingle((int)JSApi.GetType.SaveAndRemove);
-            }
-            return ret;
-        });
-        ((UnityEngine.LightProbes)vc.csObj).GetInterpolatedLightProbe(arg0, arg1, arg2);
+        int r_arg2 = JSApi.incArgIndex();
+        UnityEngine.Rendering.SphericalHarmonicsL2 arg2;
+        UnityEngine.LightProbes.GetInterpolatedProbe(arg0, arg1, out arg2);
+        JSApi.setArgIndex(r_arg2);
+        JSMgr.datax.setObject((int)JSApi.SetType.ArgRef, arg2);
     }
 
     return true;
@@ -132,7 +126,7 @@ public static void __Register()
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
         LightProbes_positions,
-        LightProbes_coefficients,
+        LightProbes_bakedProbes,
         LightProbes_count,
         LightProbes_cellCount,
 
@@ -144,7 +138,7 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
-        new JSMgr.MethodCallBackInfo(LightProbes_GetInterpolatedLightProbe__Vector3__Renderer__Single_Array, "GetInterpolatedLightProbe"),
+        new JSMgr.MethodCallBackInfo(LightProbes_GetInterpolatedProbe__Vector3__Renderer__SphericalHarmonicsL2, "GetInterpolatedProbe"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

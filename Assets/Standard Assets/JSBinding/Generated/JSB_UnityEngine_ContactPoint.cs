@@ -61,6 +61,12 @@ static void ContactPoint_otherCollider(JSVCall vc)
         var result = _this.otherCollider;
                 JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
 }
+static void ContactPoint_separation(JSVCall vc)
+{
+        UnityEngine.ContactPoint _this = (UnityEngine.ContactPoint)vc.csObj;
+        var result = _this.separation;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+}
 
 // methods
 
@@ -81,6 +87,7 @@ public static void __Register()
         ContactPoint_normal,
         ContactPoint_thisCollider,
         ContactPoint_otherCollider,
+        ContactPoint_separation,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

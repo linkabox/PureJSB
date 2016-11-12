@@ -79,6 +79,48 @@ static void Touch_phase(JSVCall vc)
         var result = _this.phase;
                 JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
 }
+static void Touch_pressure(JSVCall vc)
+{
+        UnityEngine.Touch _this = (UnityEngine.Touch)vc.csObj;
+        var result = _this.pressure;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+}
+static void Touch_maximumPossiblePressure(JSVCall vc)
+{
+        UnityEngine.Touch _this = (UnityEngine.Touch)vc.csObj;
+        var result = _this.maximumPossiblePressure;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+}
+static void Touch_type(JSVCall vc)
+{
+        UnityEngine.Touch _this = (UnityEngine.Touch)vc.csObj;
+        var result = _this.type;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
+}
+static void Touch_altitudeAngle(JSVCall vc)
+{
+        UnityEngine.Touch _this = (UnityEngine.Touch)vc.csObj;
+        var result = _this.altitudeAngle;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+}
+static void Touch_azimuthAngle(JSVCall vc)
+{
+        UnityEngine.Touch _this = (UnityEngine.Touch)vc.csObj;
+        var result = _this.azimuthAngle;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+}
+static void Touch_radius(JSVCall vc)
+{
+        UnityEngine.Touch _this = (UnityEngine.Touch)vc.csObj;
+        var result = _this.radius;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+}
+static void Touch_radiusVariance(JSVCall vc)
+{
+        UnityEngine.Touch _this = (UnityEngine.Touch)vc.csObj;
+        var result = _this.radiusVariance;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+}
 
 // methods
 
@@ -102,6 +144,13 @@ public static void __Register()
         Touch_deltaTime,
         Touch_tapCount,
         Touch_phase,
+        Touch_pressure,
+        Touch_maximumPossiblePressure,
+        Touch_type,
+        Touch_altitudeAngle,
+        Touch_azimuthAngle,
+        Touch_radius,
+        Touch_radiusVariance,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

@@ -36,6 +36,21 @@ static bool Cloth_Cloth1(JSVCall vc, int argc)
 // fields
 
 // properties
+static void Cloth_sleepThreshold(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        var result = _this.sleepThreshold;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        _this.sleepThreshold = arg0;
+    }
+}
 static void Cloth_bendingStiffness(JSVCall vc)
 {
     if (vc.bGet)
@@ -79,21 +94,6 @@ static void Cloth_damping(JSVCall vc)
         System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
         _this.damping = arg0;
-    }
-}
-static void Cloth_thickness(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
-        var result = _this.thickness;
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
-    }
-    else
-    { 
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
-        _this.thickness = arg0;
     }
 }
 static void Cloth_externalAcceleration(JSVCall vc)
@@ -141,21 +141,6 @@ static void Cloth_useGravity(JSVCall vc)
         _this.useGravity = arg0;
     }
 }
-static void Cloth_selfCollision(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
-        var result = _this.selfCollision;
-                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
-    }
-    else
-    { 
-        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
-        _this.selfCollision = arg0;
-    }
-}
 static void Cloth_enabled(JSVCall vc)
 {
     if (vc.bGet)
@@ -195,8 +180,257 @@ static void Cloth_normals(JSVCall vc)
         }
         JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
 }
+static void Cloth_friction(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        var result = _this.friction;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        _this.friction = arg0;
+    }
+}
+static void Cloth_collisionMassScale(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        var result = _this.collisionMassScale;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        _this.collisionMassScale = arg0;
+    }
+}
+static void Cloth_enableContinuousCollision(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        var result = _this.enableContinuousCollision;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        _this.enableContinuousCollision = arg0;
+    }
+}
+static void Cloth_useVirtualParticles(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        var result = _this.useVirtualParticles;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        _this.useVirtualParticles = arg0;
+    }
+}
+static void Cloth_enableTethers(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        var result = _this.enableTethers;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        _this.enableTethers = arg0;
+    }
+}
+static void Cloth_coefficients(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        var result = _this.coefficients;
+                var arrRet = result;
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+    else
+    { 
+        UnityEngine.ClothSkinningCoefficient[] arg0 = JSDataExchangeMgr.GetJSArg<UnityEngine.ClothSkinningCoefficient[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.ClothSkinningCoefficient[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.ClothSkinningCoefficient)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        _this.coefficients = arg0;
+    }
+}
+static void Cloth_worldVelocityScale(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        var result = _this.worldVelocityScale;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        _this.worldVelocityScale = arg0;
+    }
+}
+static void Cloth_worldAccelerationScale(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        var result = _this.worldAccelerationScale;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        _this.worldAccelerationScale = arg0;
+    }
+}
+static void Cloth_clothSolverFrequency(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        var result = _this.clothSolverFrequency;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        _this.clothSolverFrequency = arg0;
+    }
+}
+static void Cloth_capsuleColliders(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        var result = _this.capsuleColliders;
+                var arrRet = result;
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+    else
+    { 
+        UnityEngine.CapsuleCollider[] arg0 = JSDataExchangeMgr.GetJSArg<UnityEngine.CapsuleCollider[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.CapsuleCollider[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.CapsuleCollider)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        _this.capsuleColliders = arg0;
+    }
+}
+static void Cloth_sphereColliders(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        var result = _this.sphereColliders;
+                var arrRet = result;
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+    else
+    { 
+        UnityEngine.ClothSphereColliderPair[] arg0 = JSDataExchangeMgr.GetJSArg<UnityEngine.ClothSphereColliderPair[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.ClothSphereColliderPair[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.ClothSphereColliderPair)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Cloth _this = (UnityEngine.Cloth)vc.csObj;
+        _this.sphereColliders = arg0;
+    }
+}
 
 // methods
+
+static bool Cloth_ClearTransformMotion(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+        ((UnityEngine.Cloth)vc.csObj).ClearTransformMotion();
+    }
+
+    return true;
+}
+
+static bool Cloth_SetEnabledFading__Boolean__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        ((UnityEngine.Cloth)vc.csObj).SetEnabledFading(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Cloth_SetEnabledFading__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        ((UnityEngine.Cloth)vc.csObj).SetEnabledFading(arg0);
+    }
+
+    return true;
+}
 
 
 //register
@@ -211,17 +445,27 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
+        Cloth_sleepThreshold,
         Cloth_bendingStiffness,
         Cloth_stretchingStiffness,
         Cloth_damping,
-        Cloth_thickness,
         Cloth_externalAcceleration,
         Cloth_randomAcceleration,
         Cloth_useGravity,
-        Cloth_selfCollision,
         Cloth_enabled,
         Cloth_vertices,
         Cloth_normals,
+        Cloth_friction,
+        Cloth_collisionMassScale,
+        Cloth_enableContinuousCollision,
+        Cloth_useVirtualParticles,
+        Cloth_enableTethers,
+        Cloth_coefficients,
+        Cloth_worldVelocityScale,
+        Cloth_worldAccelerationScale,
+        Cloth_clothSolverFrequency,
+        Cloth_capsuleColliders,
+        Cloth_sphereColliders,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]
@@ -231,6 +475,9 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
+        new JSMgr.MethodCallBackInfo(Cloth_ClearTransformMotion, "ClearTransformMotion"),
+        new JSMgr.MethodCallBackInfo(Cloth_SetEnabledFading__Boolean__Single, "SetEnabledFading"),
+        new JSMgr.MethodCallBackInfo(Cloth_SetEnabledFading__Boolean, "SetEnabledFading"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

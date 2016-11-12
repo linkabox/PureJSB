@@ -36,6 +36,18 @@ static bool RuntimeAnimatorController_RuntimeAnimatorController1(JSVCall vc, int
 // fields
 
 // properties
+static void RuntimeAnimatorController_animationClips(JSVCall vc)
+{
+        UnityEngine.RuntimeAnimatorController _this = (UnityEngine.RuntimeAnimatorController)vc.csObj;
+        var result = _this.animationClips;
+                var arrRet = result;
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+}
 
 // methods
 
@@ -52,6 +64,7 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
+        RuntimeAnimatorController_animationClips,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

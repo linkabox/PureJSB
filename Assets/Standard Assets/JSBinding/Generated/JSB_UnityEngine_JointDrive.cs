@@ -37,22 +37,6 @@ static bool JointDrive_JointDrive1(JSVCall vc, int argc)
 // fields
 
 // properties
-static void JointDrive_mode(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.JointDrive _this = (UnityEngine.JointDrive)vc.csObj;
-        var result = _this.mode;
-                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
-    }
-    else
-    { 
-        UnityEngine.JointDriveMode arg0 = (UnityEngine.JointDriveMode)JSApi.getEnum((int)JSApi.GetType.Arg);
-        UnityEngine.JointDrive _this = (UnityEngine.JointDrive)vc.csObj;
-        _this.mode = arg0;
-        JSMgr.changeJSObj(vc.jsObjID, _this);
-    }
-}
 static void JointDrive_positionSpring(JSVCall vc)
 {
     if (vc.bGet)
@@ -117,7 +101,6 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
-        JointDrive_mode,
         JointDrive_positionSpring,
         JointDrive_positionDamper,
         JointDrive_maximumForce,

@@ -135,30 +135,6 @@ static bool HingeJoint2D_GetMotorTorque__Single(JSVCall vc, int argc)
     return true;
 }
 
-static bool HingeJoint2D_GetReactionForce__Single(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-                JSApi.setVector2S((int)JSApi.SetType.Rval, ((UnityEngine.HingeJoint2D)vc.csObj).GetReactionForce(arg0));
-    }
-
-    return true;
-}
-
-static bool HingeJoint2D_GetReactionTorque__Single(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(((UnityEngine.HingeJoint2D)vc.csObj).GetReactionTorque(arg0)));
-    }
-
-    return true;
-}
-
 
 //register
 
@@ -190,8 +166,6 @@ public static void __Register()
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
         new JSMgr.MethodCallBackInfo(HingeJoint2D_GetMotorTorque__Single, "GetMotorTorque"),
-        new JSMgr.MethodCallBackInfo(HingeJoint2D_GetReactionForce__Single, "GetReactionForce"),
-        new JSMgr.MethodCallBackInfo(HingeJoint2D_GetReactionTorque__Single, "GetReactionTorque"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

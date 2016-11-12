@@ -172,12 +172,30 @@ static bool Resources_LoadAll__String__Type(JSVCall vc, int argc)
 
     return true;
 }
-public static MethodID methodID8 = new MethodID("LoadAll", "T[]", TypeFlag.None, new string[]{"String"}, new TypeFlag[]{TypeFlag.None});
+
+static bool Resources_LoadAll__String(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+                var arrRet = UnityEngine.Resources.LoadAll(arg0);
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+
+    return true;
+}
+public static MethodID methodID9 = new MethodID("LoadAll", "T[]", TypeFlag.None, new string[]{"String"}, new TypeFlag[]{TypeFlag.None});
 
 static bool Resources_LoadAllT1__String(JSVCall vc, int argc)
 {
     // Get generic method by name and param count.
-    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(typeof(UnityEngine.Resources), methodID8, 1); 
+    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(typeof(UnityEngine.Resources), methodID9, 1); 
     if (method == null) return true;
 
     int len = argc - 1;
@@ -197,55 +215,6 @@ static bool Resources_LoadAllT1__String(JSVCall vc, int argc)
     return true;
 }
 
-static bool Resources_LoadAll__String(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-                var arrRet = UnityEngine.Resources.LoadAll(arg0);
-        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
-        {
-            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
-            JSApi.moveSaveID2Arr(i);
-        }
-        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
-    }
-
-    return true;
-}
-
-static bool Resources_LoadAssetAtPath__String__Type(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 2) 
-    {
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        System.Type arg1 = (System.Type)JSDataExchangeMgr.GetTypeByJsParam((int)JSApi.GetType.Arg);
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Resources.LoadAssetAtPath(arg0, arg1));
-    }
-
-    return true;
-}
-public static MethodID methodID11 = new MethodID("LoadAssetAtPath", "T", TypeFlag.IsT, new string[]{"String"}, new TypeFlag[]{TypeFlag.None});
-
-static bool Resources_LoadAssetAtPathT1__String(JSVCall vc, int argc)
-{
-    // Get generic method by name and param count.
-    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(typeof(UnityEngine.Resources), methodID11, 1); 
-    if (method == null) return true;
-
-    int len = argc - 1;
-    if (len == 1) 
-    {
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        object[] arr_t = new object[]{ arg0 };
-                JSMgr.datax.setWhatever((int)JSApi.SetType.Rval, method.Invoke(null, arr_t));
-    }
-
-    return true;
-}
-
 static bool Resources_LoadAsync__String__Type(JSVCall vc, int argc)
 {
     int len = argc;
@@ -258,24 +227,6 @@ static bool Resources_LoadAsync__String__Type(JSVCall vc, int argc)
 
     return true;
 }
-public static MethodID methodID13 = new MethodID("LoadAsync", "ResourceRequest", TypeFlag.None, new string[]{"String"}, new TypeFlag[]{TypeFlag.None});
-
-static bool Resources_LoadAsyncT1__String(JSVCall vc, int argc)
-{
-    // Get generic method by name and param count.
-    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(typeof(UnityEngine.Resources), methodID13, 1); 
-    if (method == null) return true;
-
-    int len = argc - 1;
-    if (len == 1) 
-    {
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        object[] arr_t = new object[]{ arg0 };
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, method.Invoke(null, arr_t));
-    }
-
-    return true;
-}
 
 static bool Resources_LoadAsync__String(JSVCall vc, int argc)
 {
@@ -284,6 +235,24 @@ static bool Resources_LoadAsync__String(JSVCall vc, int argc)
     {
         System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
                 JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Resources.LoadAsync(arg0));
+    }
+
+    return true;
+}
+public static MethodID methodID12 = new MethodID("LoadAsync", "ResourceRequest", TypeFlag.None, new string[]{"String"}, new TypeFlag[]{TypeFlag.None});
+
+static bool Resources_LoadAsyncT1__String(JSVCall vc, int argc)
+{
+    // Get generic method by name and param count.
+    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(typeof(UnityEngine.Resources), methodID12, 1); 
+    if (method == null) return true;
+
+    int len = argc - 1;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        object[] arr_t = new object[]{ arg0 };
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, method.Invoke(null, arr_t));
     }
 
     return true;
@@ -342,13 +311,11 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Resources_Load__String, "Load"),
         new JSMgr.MethodCallBackInfo(Resources_LoadT1__String, "Load"),
         new JSMgr.MethodCallBackInfo(Resources_LoadAll__String__Type, "LoadAll"),
-        new JSMgr.MethodCallBackInfo(Resources_LoadAllT1__String, "LoadAll"),
         new JSMgr.MethodCallBackInfo(Resources_LoadAll__String, "LoadAll"),
-        new JSMgr.MethodCallBackInfo(Resources_LoadAssetAtPath__String__Type, "LoadAssetAtPath"),
-        new JSMgr.MethodCallBackInfo(Resources_LoadAssetAtPathT1__String, "LoadAssetAtPath"),
+        new JSMgr.MethodCallBackInfo(Resources_LoadAllT1__String, "LoadAll"),
         new JSMgr.MethodCallBackInfo(Resources_LoadAsync__String__Type, "LoadAsync"),
-        new JSMgr.MethodCallBackInfo(Resources_LoadAsyncT1__String, "LoadAsync"),
         new JSMgr.MethodCallBackInfo(Resources_LoadAsync__String, "LoadAsync"),
+        new JSMgr.MethodCallBackInfo(Resources_LoadAsyncT1__String, "LoadAsync"),
         new JSMgr.MethodCallBackInfo(Resources_UnloadAsset__UEObject, "UnloadAsset"),
         new JSMgr.MethodCallBackInfo(Resources_UnloadUnusedAssets, "UnloadUnusedAssets"),
 

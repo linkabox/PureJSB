@@ -42,6 +42,18 @@ static void AssetBundleRequest_asset(JSVCall vc)
         var result = _this.asset;
                 JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
 }
+static void AssetBundleRequest_allAssets(JSVCall vc)
+{
+        UnityEngine.AssetBundleRequest _this = (UnityEngine.AssetBundleRequest)vc.csObj;
+        var result = _this.allAssets;
+                var arrRet = result;
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+}
 
 // methods
 
@@ -59,6 +71,7 @@ public static void __Register()
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
         AssetBundleRequest_asset,
+        AssetBundleRequest_allAssets,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

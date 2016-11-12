@@ -36,6 +36,21 @@ static bool SpringJoint2D_SpringJoint2D1(JSVCall vc, int argc)
 // fields
 
 // properties
+static void SpringJoint2D_autoConfigureDistance(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.SpringJoint2D _this = (UnityEngine.SpringJoint2D)vc.csObj;
+        var result = _this.autoConfigureDistance;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.SpringJoint2D _this = (UnityEngine.SpringJoint2D)vc.csObj;
+        _this.autoConfigureDistance = arg0;
+    }
+}
 static void SpringJoint2D_distance(JSVCall vc)
 {
     if (vc.bGet)
@@ -84,30 +99,6 @@ static void SpringJoint2D_frequency(JSVCall vc)
 
 // methods
 
-static bool SpringJoint2D_GetReactionForce__Single(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-                JSApi.setVector2S((int)JSApi.SetType.Rval, ((UnityEngine.SpringJoint2D)vc.csObj).GetReactionForce(arg0));
-    }
-
-    return true;
-}
-
-static bool SpringJoint2D_GetReactionTorque__Single(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(((UnityEngine.SpringJoint2D)vc.csObj).GetReactionTorque(arg0)));
-    }
-
-    return true;
-}
-
 
 //register
 
@@ -121,6 +112,7 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
+        SpringJoint2D_autoConfigureDistance,
         SpringJoint2D_distance,
         SpringJoint2D_dampingRatio,
         SpringJoint2D_frequency,
@@ -133,8 +125,6 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
-        new JSMgr.MethodCallBackInfo(SpringJoint2D_GetReactionForce__Single, "GetReactionForce"),
-        new JSMgr.MethodCallBackInfo(SpringJoint2D_GetReactionTorque__Single, "GetReactionTorque"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

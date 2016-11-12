@@ -51,23 +51,89 @@ static void Joint2D_connectedBody(JSVCall vc)
         _this.connectedBody = arg0;
     }
 }
-static void Joint2D_collideConnected(JSVCall vc)
+static void Joint2D_enableCollision(JSVCall vc)
 {
     if (vc.bGet)
     { 
         UnityEngine.Joint2D _this = (UnityEngine.Joint2D)vc.csObj;
-        var result = _this.collideConnected;
+        var result = _this.enableCollision;
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
     }
     else
     { 
         System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
         UnityEngine.Joint2D _this = (UnityEngine.Joint2D)vc.csObj;
-        _this.collideConnected = arg0;
+        _this.enableCollision = arg0;
     }
+}
+static void Joint2D_breakForce(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Joint2D _this = (UnityEngine.Joint2D)vc.csObj;
+        var result = _this.breakForce;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.Joint2D _this = (UnityEngine.Joint2D)vc.csObj;
+        _this.breakForce = arg0;
+    }
+}
+static void Joint2D_breakTorque(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Joint2D _this = (UnityEngine.Joint2D)vc.csObj;
+        var result = _this.breakTorque;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.Joint2D _this = (UnityEngine.Joint2D)vc.csObj;
+        _this.breakTorque = arg0;
+    }
+}
+static void Joint2D_reactionForce(JSVCall vc)
+{
+        UnityEngine.Joint2D _this = (UnityEngine.Joint2D)vc.csObj;
+        var result = _this.reactionForce;
+                JSApi.setVector2S((int)JSApi.SetType.Rval, result);
+}
+static void Joint2D_reactionTorque(JSVCall vc)
+{
+        UnityEngine.Joint2D _this = (UnityEngine.Joint2D)vc.csObj;
+        var result = _this.reactionTorque;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
 }
 
 // methods
+
+static bool Joint2D_GetReactionForce__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                JSApi.setVector2S((int)JSApi.SetType.Rval, ((UnityEngine.Joint2D)vc.csObj).GetReactionForce(arg0));
+    }
+
+    return true;
+}
+
+static bool Joint2D_GetReactionTorque__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(((UnityEngine.Joint2D)vc.csObj).GetReactionTorque(arg0)));
+    }
+
+    return true;
+}
 
 
 //register
@@ -83,7 +149,11 @@ public static void __Register()
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
         Joint2D_connectedBody,
-        Joint2D_collideConnected,
+        Joint2D_enableCollision,
+        Joint2D_breakForce,
+        Joint2D_breakTorque,
+        Joint2D_reactionForce,
+        Joint2D_reactionTorque,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]
@@ -93,6 +163,8 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
+        new JSMgr.MethodCallBackInfo(Joint2D_GetReactionForce__Single, "GetReactionForce"),
+        new JSMgr.MethodCallBackInfo(Joint2D_GetReactionTorque__Single, "GetReactionTorque"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

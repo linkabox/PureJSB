@@ -53,38 +53,6 @@ static void SoftJointLimit_limit(JSVCall vc)
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
-static void SoftJointLimit_spring(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.SoftJointLimit _this = (UnityEngine.SoftJointLimit)vc.csObj;
-        var result = _this.spring;
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
-    }
-    else
-    { 
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        UnityEngine.SoftJointLimit _this = (UnityEngine.SoftJointLimit)vc.csObj;
-        _this.spring = arg0;
-        JSMgr.changeJSObj(vc.jsObjID, _this);
-    }
-}
-static void SoftJointLimit_damper(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.SoftJointLimit _this = (UnityEngine.SoftJointLimit)vc.csObj;
-        var result = _this.damper;
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
-    }
-    else
-    { 
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        UnityEngine.SoftJointLimit _this = (UnityEngine.SoftJointLimit)vc.csObj;
-        _this.damper = arg0;
-        JSMgr.changeJSObj(vc.jsObjID, _this);
-    }
-}
 static void SoftJointLimit_bounciness(JSVCall vc)
 {
     if (vc.bGet)
@@ -98,6 +66,22 @@ static void SoftJointLimit_bounciness(JSVCall vc)
         System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         UnityEngine.SoftJointLimit _this = (UnityEngine.SoftJointLimit)vc.csObj;
         _this.bounciness = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
+static void SoftJointLimit_contactDistance(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.SoftJointLimit _this = (UnityEngine.SoftJointLimit)vc.csObj;
+        var result = _this.contactDistance;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.SoftJointLimit _this = (UnityEngine.SoftJointLimit)vc.csObj;
+        _this.contactDistance = arg0;
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
@@ -118,9 +102,8 @@ public static void __Register()
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
         SoftJointLimit_limit,
-        SoftJointLimit_spring,
-        SoftJointLimit_damper,
         SoftJointLimit_bounciness,
+        SoftJointLimit_contactDistance,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

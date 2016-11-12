@@ -37,10 +37,16 @@ static bool AnimatorStateInfo_AnimatorStateInfo1(JSVCall vc, int argc)
 // fields
 
 // properties
-static void AnimatorStateInfo_nameHash(JSVCall vc)
+static void AnimatorStateInfo_fullPathHash(JSVCall vc)
 {
         UnityEngine.AnimatorStateInfo _this = (UnityEngine.AnimatorStateInfo)vc.csObj;
-        var result = _this.nameHash;
+        var result = _this.fullPathHash;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+}
+static void AnimatorStateInfo_shortNameHash(JSVCall vc)
+{
+        UnityEngine.AnimatorStateInfo _this = (UnityEngine.AnimatorStateInfo)vc.csObj;
+        var result = _this.shortNameHash;
                 JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
 }
 static void AnimatorStateInfo_normalizedTime(JSVCall vc)
@@ -53,6 +59,18 @@ static void AnimatorStateInfo_length(JSVCall vc)
 {
         UnityEngine.AnimatorStateInfo _this = (UnityEngine.AnimatorStateInfo)vc.csObj;
         var result = _this.length;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+}
+static void AnimatorStateInfo_speed(JSVCall vc)
+{
+        UnityEngine.AnimatorStateInfo _this = (UnityEngine.AnimatorStateInfo)vc.csObj;
+        var result = _this.speed;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+}
+static void AnimatorStateInfo_speedMultiplier(JSVCall vc)
+{
+        UnityEngine.AnimatorStateInfo _this = (UnityEngine.AnimatorStateInfo)vc.csObj;
+        var result = _this.speedMultiplier;
                 JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
 }
 static void AnimatorStateInfo_tagHash(JSVCall vc)
@@ -109,9 +127,12 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
-        AnimatorStateInfo_nameHash,
+        AnimatorStateInfo_fullPathHash,
+        AnimatorStateInfo_shortNameHash,
         AnimatorStateInfo_normalizedTime,
         AnimatorStateInfo_length,
+        AnimatorStateInfo_speed,
+        AnimatorStateInfo_speedMultiplier,
         AnimatorStateInfo_tagHash,
         AnimatorStateInfo_loop,
 

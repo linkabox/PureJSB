@@ -42,6 +42,110 @@ static void Mesh_isReadable(JSVCall vc)
         var result = _this.isReadable;
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
 }
+static void Mesh_blendShapeCount(JSVCall vc)
+{
+        UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
+        var result = _this.blendShapeCount;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+}
+static void Mesh_bounds(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
+        var result = _this.bounds;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.Bounds arg0 = (UnityEngine.Bounds)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
+        _this.bounds = arg0;
+    }
+}
+static void Mesh_vertexCount(JSVCall vc)
+{
+        UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
+        var result = _this.vertexCount;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+}
+static void Mesh_subMeshCount(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
+        var result = _this.subMeshCount;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+    }
+    else
+    { 
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
+        _this.subMeshCount = arg0;
+    }
+}
+static void Mesh_boneWeights(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
+        var result = _this.boneWeights;
+                var arrRet = result;
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+    else
+    { 
+        UnityEngine.BoneWeight[] arg0 = JSDataExchangeMgr.GetJSArg<UnityEngine.BoneWeight[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.BoneWeight[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.BoneWeight)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
+        _this.boneWeights = arg0;
+    }
+}
+static void Mesh_bindposes(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
+        var result = _this.bindposes;
+                var arrRet = result;
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+    else
+    { 
+        UnityEngine.Matrix4x4[] arg0 = JSDataExchangeMgr.GetJSArg<UnityEngine.Matrix4x4[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Matrix4x4[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Matrix4x4)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
+        _this.bindposes = arg0;
+    }
+}
 static void Mesh_vertices(JSVCall vc)
 {
     if (vc.bGet)
@@ -197,12 +301,12 @@ static void Mesh_uv2(JSVCall vc)
         _this.uv2 = arg0;
     }
 }
-static void Mesh_uv1(JSVCall vc)
+static void Mesh_uv3(JSVCall vc)
 {
     if (vc.bGet)
     { 
         UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
-        var result = _this.uv1;
+        var result = _this.uv3;
                 var arrRet = result;
         for (int i = 0; arrRet != null && i < arrRet.Length; i++)
         {
@@ -225,22 +329,38 @@ static void Mesh_uv1(JSVCall vc)
             return ret;
         });
         UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
-        _this.uv1 = arg0;
+        _this.uv3 = arg0;
     }
 }
-static void Mesh_bounds(JSVCall vc)
+static void Mesh_uv4(JSVCall vc)
 {
     if (vc.bGet)
     { 
         UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
-        var result = _this.bounds;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+        var result = _this.uv4;
+                var arrRet = result;
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSApi.setVector2S((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
     }
     else
     { 
-        UnityEngine.Bounds arg0 = (UnityEngine.Bounds)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2[] arg0 = JSDataExchangeMgr.GetJSArg<UnityEngine.Vector2[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Vector2[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
         UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
-        _this.bounds = arg0;
+        _this.uv4 = arg0;
     }
 }
 static void Mesh_colors(JSVCall vc)
@@ -336,97 +456,54 @@ static void Mesh_triangles(JSVCall vc)
         _this.triangles = arg0;
     }
 }
-static void Mesh_vertexCount(JSVCall vc)
-{
-        UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
-        var result = _this.vertexCount;
-                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
-}
-static void Mesh_subMeshCount(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
-        var result = _this.subMeshCount;
-                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
-    }
-    else
-    { 
-        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
-        _this.subMeshCount = arg0;
-    }
-}
-static void Mesh_boneWeights(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
-        var result = _this.boneWeights;
-                var arrRet = result;
-        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
-        {
-            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
-            JSApi.moveSaveID2Arr(i);
-        }
-        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
-    }
-    else
-    { 
-        UnityEngine.BoneWeight[] arg0 = JSDataExchangeMgr.GetJSArg<UnityEngine.BoneWeight[]>(() =>
-        {
-            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
-            int length = JSApi.getArrayLength(jsObjID);
-            var ret = new UnityEngine.BoneWeight[length];
-            for (var i = 0; i < length; i++) {
-                JSApi.getElement(jsObjID, i);
-                ret[i] = (UnityEngine.BoneWeight)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
-            }
-            return ret;
-        });
-        UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
-        _this.boneWeights = arg0;
-    }
-}
-static void Mesh_bindposes(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
-        var result = _this.bindposes;
-                var arrRet = result;
-        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
-        {
-            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
-            JSApi.moveSaveID2Arr(i);
-        }
-        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
-    }
-    else
-    { 
-        UnityEngine.Matrix4x4[] arg0 = JSDataExchangeMgr.GetJSArg<UnityEngine.Matrix4x4[]>(() =>
-        {
-            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
-            int length = JSApi.getArrayLength(jsObjID);
-            var ret = new UnityEngine.Matrix4x4[length];
-            for (var i = 0; i < length; i++) {
-                JSApi.getElement(jsObjID, i);
-                ret[i] = (UnityEngine.Matrix4x4)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
-            }
-            return ret;
-        });
-        UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
-        _this.bindposes = arg0;
-    }
-}
-static void Mesh_blendShapeCount(JSVCall vc)
-{
-        UnityEngine.Mesh _this = (UnityEngine.Mesh)vc.csObj;
-        var result = _this.blendShapeCount;
-                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
-}
 
 // methods
+
+static bool Mesh_AddBlendShapeFrame__String__Single__Vector3_Array__Vector3_Array__Vector3_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 5) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.Vector3[] arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.Vector3[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Vector3[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Vector3[] arg3 = JSDataExchangeMgr.GetJSArg<UnityEngine.Vector3[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Vector3[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Vector3[] arg4 = JSDataExchangeMgr.GetJSArg<UnityEngine.Vector3[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Vector3[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        ((UnityEngine.Mesh)vc.csObj).AddBlendShapeFrame(arg0, arg1, arg2, arg3, arg4);
+    }
+
+    return true;
+}
 
 static bool Mesh_Clear__Boolean(JSVCall vc, int argc)
 {
@@ -446,6 +523,17 @@ static bool Mesh_Clear(JSVCall vc, int argc)
     if (len == 0) 
     {
         ((UnityEngine.Mesh)vc.csObj).Clear();
+    }
+
+    return true;
+}
+
+static bool Mesh_ClearBlendShapes(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+        ((UnityEngine.Mesh)vc.csObj).ClearBlendShapes();
     }
 
     return true;
@@ -515,6 +603,77 @@ static bool Mesh_CombineMeshes__CombineInstance_Array(JSVCall vc, int argc)
             return ret;
         });
         ((UnityEngine.Mesh)vc.csObj).CombineMeshes(arg0);
+    }
+
+    return true;
+}
+
+static bool Mesh_GetBlendShapeFrameCount__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(((UnityEngine.Mesh)vc.csObj).GetBlendShapeFrameCount(arg0)));
+    }
+
+    return true;
+}
+
+static bool Mesh_GetBlendShapeFrameVertices__Int32__Int32__Vector3_Array__Vector3_Array__Vector3_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 5) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Vector3[] arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.Vector3[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Vector3[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Vector3[] arg3 = JSDataExchangeMgr.GetJSArg<UnityEngine.Vector3[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Vector3[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Vector3[] arg4 = JSDataExchangeMgr.GetJSArg<UnityEngine.Vector3[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Vector3[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        ((UnityEngine.Mesh)vc.csObj).GetBlendShapeFrameVertices(arg0, arg1, arg2, arg3, arg4);
+    }
+
+    return true;
+}
+
+static bool Mesh_GetBlendShapeFrameWeight__Int32__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(((UnityEngine.Mesh)vc.csObj).GetBlendShapeFrameWeight(arg0, arg1)));
     }
 
     return true;
@@ -592,6 +751,45 @@ static bool Mesh_GetTriangles__Int32(JSVCall vc, int argc)
     return true;
 }
 
+static bool Mesh_GetUVs__Int32__ListT1_Vector2(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        List<UnityEngine.Vector2> arg1 = (List<UnityEngine.Vector2>)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        ((UnityEngine.Mesh)vc.csObj).GetUVs(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Mesh_GetUVs__Int32__ListT1_Vector4(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        List<UnityEngine.Vector4> arg1 = (List<UnityEngine.Vector4>)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        ((UnityEngine.Mesh)vc.csObj).GetUVs(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Mesh_GetUVs__Int32__ListT1_Vector3(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        List<UnityEngine.Vector3> arg1 = (List<UnityEngine.Vector3>)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        ((UnityEngine.Mesh)vc.csObj).GetUVs(arg0, arg1);
+    }
+
+    return true;
+}
+
 static bool Mesh_MarkDynamic(JSVCall vc, int argc)
 {
     int len = argc;
@@ -636,6 +834,55 @@ static bool Mesh_RecalculateNormals(JSVCall vc, int argc)
     return true;
 }
 
+static bool Mesh_SetColors__ListT1_Color(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        List<UnityEngine.Color> arg0 = (List<UnityEngine.Color>)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        ((UnityEngine.Mesh)vc.csObj).SetColors(arg0);
+    }
+
+    return true;
+}
+
+static bool Mesh_SetColors__ListT1_Color32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        List<UnityEngine.Color32> arg0 = (List<UnityEngine.Color32>)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        ((UnityEngine.Mesh)vc.csObj).SetColors(arg0);
+    }
+
+    return true;
+}
+
+static bool Mesh_SetIndices__Int32_Array__MeshTopology__Int32__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        System.Int32[] arg0 = JSDataExchangeMgr.GetJSArg<System.Int32[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.Int32[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.Int32)JSApi.getInt32((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.MeshTopology arg1 = (UnityEngine.MeshTopology)JSApi.getEnum((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Boolean arg3 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        ((UnityEngine.Mesh)vc.csObj).SetIndices(arg0, arg1, arg2, arg3);
+    }
+
+    return true;
+}
+
 static bool Mesh_SetIndices__Int32_Array__MeshTopology__Int32(JSVCall vc, int argc)
 {
     int len = argc;
@@ -660,6 +907,81 @@ static bool Mesh_SetIndices__Int32_Array__MeshTopology__Int32(JSVCall vc, int ar
     return true;
 }
 
+static bool Mesh_SetNormals__ListT1_Vector3(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        List<UnityEngine.Vector3> arg0 = (List<UnityEngine.Vector3>)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        ((UnityEngine.Mesh)vc.csObj).SetNormals(arg0);
+    }
+
+    return true;
+}
+
+static bool Mesh_SetTangents__ListT1_Vector4(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        List<UnityEngine.Vector4> arg0 = (List<UnityEngine.Vector4>)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        ((UnityEngine.Mesh)vc.csObj).SetTangents(arg0);
+    }
+
+    return true;
+}
+
+static bool Mesh_SetTriangles__Int32_Array__Int32__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        System.Int32[] arg0 = JSDataExchangeMgr.GetJSArg<System.Int32[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.Int32[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.Int32)JSApi.getInt32((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Boolean arg2 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        ((UnityEngine.Mesh)vc.csObj).SetTriangles(arg0, arg1, arg2);
+    }
+
+    return true;
+}
+
+static bool Mesh_SetTriangles__ListT1_Int32__Int32__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        List<System.Int32> arg0 = (List<System.Int32>)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Boolean arg2 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        ((UnityEngine.Mesh)vc.csObj).SetTriangles(arg0, arg1, arg2);
+    }
+
+    return true;
+}
+
+static bool Mesh_SetTriangles__ListT1_Int32__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        List<System.Int32> arg0 = (List<System.Int32>)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        ((UnityEngine.Mesh)vc.csObj).SetTriangles(arg0, arg1);
+    }
+
+    return true;
+}
+
 static bool Mesh_SetTriangles__Int32_Array__Int32(JSVCall vc, int argc)
 {
     int len = argc;
@@ -678,6 +1000,57 @@ static bool Mesh_SetTriangles__Int32_Array__Int32(JSVCall vc, int argc)
         });
         System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         ((UnityEngine.Mesh)vc.csObj).SetTriangles(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Mesh_SetUVs__Int32__ListT1_Vector2(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        List<UnityEngine.Vector2> arg1 = (List<UnityEngine.Vector2>)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        ((UnityEngine.Mesh)vc.csObj).SetUVs(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Mesh_SetUVs__Int32__ListT1_Vector3(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        List<UnityEngine.Vector3> arg1 = (List<UnityEngine.Vector3>)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        ((UnityEngine.Mesh)vc.csObj).SetUVs(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Mesh_SetUVs__Int32__ListT1_Vector4(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        List<UnityEngine.Vector4> arg1 = (List<UnityEngine.Vector4>)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        ((UnityEngine.Mesh)vc.csObj).SetUVs(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Mesh_SetVertices__ListT1_Vector3(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        List<UnityEngine.Vector3> arg0 = (List<UnityEngine.Vector3>)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        ((UnityEngine.Mesh)vc.csObj).SetVertices(arg0);
     }
 
     return true;
@@ -709,21 +1082,22 @@ public static void __Register()
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
         Mesh_isReadable,
+        Mesh_blendShapeCount,
+        Mesh_bounds,
+        Mesh_vertexCount,
+        Mesh_subMeshCount,
+        Mesh_boneWeights,
+        Mesh_bindposes,
         Mesh_vertices,
         Mesh_normals,
         Mesh_tangents,
         Mesh_uv,
         Mesh_uv2,
-        Mesh_uv1,
-        Mesh_bounds,
+        Mesh_uv3,
+        Mesh_uv4,
         Mesh_colors,
         Mesh_colors32,
         Mesh_triangles,
-        Mesh_vertexCount,
-        Mesh_subMeshCount,
-        Mesh_boneWeights,
-        Mesh_bindposes,
-        Mesh_blendShapeCount,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]
@@ -733,22 +1107,42 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
+        new JSMgr.MethodCallBackInfo(Mesh_AddBlendShapeFrame__String__Single__Vector3_Array__Vector3_Array__Vector3_Array, "AddBlendShapeFrame"),
         new JSMgr.MethodCallBackInfo(Mesh_Clear__Boolean, "Clear"),
         new JSMgr.MethodCallBackInfo(Mesh_Clear, "Clear"),
+        new JSMgr.MethodCallBackInfo(Mesh_ClearBlendShapes, "ClearBlendShapes"),
         new JSMgr.MethodCallBackInfo(Mesh_CombineMeshes__CombineInstance_Array__Boolean__Boolean, "CombineMeshes"),
         new JSMgr.MethodCallBackInfo(Mesh_CombineMeshes__CombineInstance_Array__Boolean, "CombineMeshes"),
         new JSMgr.MethodCallBackInfo(Mesh_CombineMeshes__CombineInstance_Array, "CombineMeshes"),
+        new JSMgr.MethodCallBackInfo(Mesh_GetBlendShapeFrameCount__Int32, "GetBlendShapeFrameCount"),
+        new JSMgr.MethodCallBackInfo(Mesh_GetBlendShapeFrameVertices__Int32__Int32__Vector3_Array__Vector3_Array__Vector3_Array, "GetBlendShapeFrameVertices"),
+        new JSMgr.MethodCallBackInfo(Mesh_GetBlendShapeFrameWeight__Int32__Int32, "GetBlendShapeFrameWeight"),
         new JSMgr.MethodCallBackInfo(Mesh_GetBlendShapeIndex__String, "GetBlendShapeIndex"),
         new JSMgr.MethodCallBackInfo(Mesh_GetBlendShapeName__Int32, "GetBlendShapeName"),
         new JSMgr.MethodCallBackInfo(Mesh_GetIndices__Int32, "GetIndices"),
         new JSMgr.MethodCallBackInfo(Mesh_GetTopology__Int32, "GetTopology"),
         new JSMgr.MethodCallBackInfo(Mesh_GetTriangles__Int32, "GetTriangles"),
+        new JSMgr.MethodCallBackInfo(Mesh_GetUVs__Int32__ListT1_Vector2, "GetUVs"),
+        new JSMgr.MethodCallBackInfo(Mesh_GetUVs__Int32__ListT1_Vector4, "GetUVs"),
+        new JSMgr.MethodCallBackInfo(Mesh_GetUVs__Int32__ListT1_Vector3, "GetUVs"),
         new JSMgr.MethodCallBackInfo(Mesh_MarkDynamic, "MarkDynamic"),
         new JSMgr.MethodCallBackInfo(Mesh_Optimize, "Optimize"),
         new JSMgr.MethodCallBackInfo(Mesh_RecalculateBounds, "RecalculateBounds"),
         new JSMgr.MethodCallBackInfo(Mesh_RecalculateNormals, "RecalculateNormals"),
+        new JSMgr.MethodCallBackInfo(Mesh_SetColors__ListT1_Color, "SetColors"),
+        new JSMgr.MethodCallBackInfo(Mesh_SetColors__ListT1_Color32, "SetColors"),
+        new JSMgr.MethodCallBackInfo(Mesh_SetIndices__Int32_Array__MeshTopology__Int32__Boolean, "SetIndices"),
         new JSMgr.MethodCallBackInfo(Mesh_SetIndices__Int32_Array__MeshTopology__Int32, "SetIndices"),
+        new JSMgr.MethodCallBackInfo(Mesh_SetNormals__ListT1_Vector3, "SetNormals"),
+        new JSMgr.MethodCallBackInfo(Mesh_SetTangents__ListT1_Vector4, "SetTangents"),
+        new JSMgr.MethodCallBackInfo(Mesh_SetTriangles__Int32_Array__Int32__Boolean, "SetTriangles"),
+        new JSMgr.MethodCallBackInfo(Mesh_SetTriangles__ListT1_Int32__Int32__Boolean, "SetTriangles"),
+        new JSMgr.MethodCallBackInfo(Mesh_SetTriangles__ListT1_Int32__Int32, "SetTriangles"),
         new JSMgr.MethodCallBackInfo(Mesh_SetTriangles__Int32_Array__Int32, "SetTriangles"),
+        new JSMgr.MethodCallBackInfo(Mesh_SetUVs__Int32__ListT1_Vector2, "SetUVs"),
+        new JSMgr.MethodCallBackInfo(Mesh_SetUVs__Int32__ListT1_Vector3, "SetUVs"),
+        new JSMgr.MethodCallBackInfo(Mesh_SetUVs__Int32__ListT1_Vector4, "SetUVs"),
+        new JSMgr.MethodCallBackInfo(Mesh_SetVertices__ListT1_Vector3, "SetVertices"),
         new JSMgr.MethodCallBackInfo(Mesh_UploadMeshData__Boolean, "UploadMeshData"),
 
     };

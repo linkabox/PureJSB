@@ -76,6 +76,20 @@ static void LOD_screenRelativeTransitionHeight(JSVCall vc)
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
+static void LOD_fadeTransitionWidth(JSVCall vc)
+{
+    if (vc.bGet) {
+        UnityEngine.LOD _this = (UnityEngine.LOD)vc.csObj;
+        var result = _this.fadeTransitionWidth;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else {
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.LOD _this = (UnityEngine.LOD)vc.csObj;
+        _this.fadeTransitionWidth = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
 static void LOD_renderers(JSVCall vc)
 {
     if (vc.bGet) {
@@ -121,6 +135,7 @@ public static void __Register()
     ci.fields = new JSMgr.CSCallbackField[]
     {
         LOD_screenRelativeTransitionHeight,
+        LOD_fadeTransitionWidth,
         LOD_renderers,
 
     };

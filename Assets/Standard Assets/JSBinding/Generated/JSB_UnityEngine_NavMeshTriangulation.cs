@@ -95,11 +95,11 @@ static void NavMeshTriangulation_indices(JSVCall vc)
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
-static void NavMeshTriangulation_layers(JSVCall vc)
+static void NavMeshTriangulation_areas(JSVCall vc)
 {
     if (vc.bGet) {
         UnityEngine.NavMeshTriangulation _this = (UnityEngine.NavMeshTriangulation)vc.csObj;
-        var result = _this.layers;
+        var result = _this.areas;
                 var arrRet = result;
         for (int i = 0; arrRet != null && i < arrRet.Length; i++)
         {
@@ -121,7 +121,7 @@ static void NavMeshTriangulation_layers(JSVCall vc)
             return ret;
         });
         UnityEngine.NavMeshTriangulation _this = (UnityEngine.NavMeshTriangulation)vc.csObj;
-        _this.layers = arg0;
+        _this.areas = arg0;
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
@@ -141,7 +141,7 @@ public static void __Register()
     {
         NavMeshTriangulation_vertices,
         NavMeshTriangulation_indices,
-        NavMeshTriangulation_layers,
+        NavMeshTriangulation_areas,
 
     };
     ci.properties = new JSMgr.CSCallbackProperty[]

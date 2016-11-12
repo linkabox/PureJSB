@@ -97,51 +97,6 @@ static void PhysicMaterial_bounciness(JSVCall vc)
         _this.bounciness = arg0;
     }
 }
-static void PhysicMaterial_frictionDirection2(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.PhysicMaterial _this = (UnityEngine.PhysicMaterial)vc.csObj;
-        var result = _this.frictionDirection2;
-                JSApi.setVector3S((int)JSApi.SetType.Rval, result);
-    }
-    else
-    { 
-        UnityEngine.Vector3 arg0 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
-        UnityEngine.PhysicMaterial _this = (UnityEngine.PhysicMaterial)vc.csObj;
-        _this.frictionDirection2 = arg0;
-    }
-}
-static void PhysicMaterial_dynamicFriction2(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.PhysicMaterial _this = (UnityEngine.PhysicMaterial)vc.csObj;
-        var result = _this.dynamicFriction2;
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
-    }
-    else
-    { 
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        UnityEngine.PhysicMaterial _this = (UnityEngine.PhysicMaterial)vc.csObj;
-        _this.dynamicFriction2 = arg0;
-    }
-}
-static void PhysicMaterial_staticFriction2(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.PhysicMaterial _this = (UnityEngine.PhysicMaterial)vc.csObj;
-        var result = _this.staticFriction2;
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
-    }
-    else
-    { 
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        UnityEngine.PhysicMaterial _this = (UnityEngine.PhysicMaterial)vc.csObj;
-        _this.staticFriction2 = arg0;
-    }
-}
 static void PhysicMaterial_frictionCombine(JSVCall vc)
 {
     if (vc.bGet)
@@ -191,9 +146,6 @@ public static void __Register()
         PhysicMaterial_dynamicFriction,
         PhysicMaterial_staticFriction,
         PhysicMaterial_bounciness,
-        PhysicMaterial_frictionDirection2,
-        PhysicMaterial_dynamicFriction2,
-        PhysicMaterial_staticFriction2,
         PhysicMaterial_frictionCombine,
         PhysicMaterial_bounceCombine,
 

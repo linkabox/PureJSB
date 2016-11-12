@@ -78,6 +78,12 @@ static void Collision_contacts(JSVCall vc)
         }
         JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
 }
+static void Collision_impulse(JSVCall vc)
+{
+        UnityEngine.Collision _this = (UnityEngine.Collision)vc.csObj;
+        var result = _this.impulse;
+                JSApi.setVector3S((int)JSApi.SetType.Rval, result);
+}
 
 // methods
 
@@ -111,6 +117,7 @@ public static void __Register()
         Collision_transform,
         Collision_gameObject,
         Collision_contacts,
+        Collision_impulse,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

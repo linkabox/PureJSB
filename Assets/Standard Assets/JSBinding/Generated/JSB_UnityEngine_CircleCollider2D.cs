@@ -36,21 +36,6 @@ static bool CircleCollider2D_CircleCollider2D1(JSVCall vc, int argc)
 // fields
 
 // properties
-static void CircleCollider2D_center(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.CircleCollider2D _this = (UnityEngine.CircleCollider2D)vc.csObj;
-        var result = _this.center;
-                JSApi.setVector2S((int)JSApi.SetType.Rval, result);
-    }
-    else
-    { 
-        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
-        UnityEngine.CircleCollider2D _this = (UnityEngine.CircleCollider2D)vc.csObj;
-        _this.center = arg0;
-    }
-}
 static void CircleCollider2D_radius(JSVCall vc)
 {
     if (vc.bGet)
@@ -82,7 +67,6 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
-        CircleCollider2D_center,
         CircleCollider2D_radius,
 
     };

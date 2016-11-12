@@ -72,6 +72,21 @@ static void Collider_isTrigger(JSVCall vc)
         _this.isTrigger = arg0;
     }
 }
+static void Collider_contactOffset(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Collider _this = (UnityEngine.Collider)vc.csObj;
+        var result = _this.contactOffset;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.Collider _this = (UnityEngine.Collider)vc.csObj;
+        _this.contactOffset = arg0;
+    }
+}
 static void Collider_material(JSVCall vc)
 {
     if (vc.bGet)
@@ -156,6 +171,7 @@ public static void __Register()
         Collider_enabled,
         Collider_attachedRigidbody,
         Collider_isTrigger,
+        Collider_contactOffset,
         Collider_material,
         Collider_sharedMaterial,
         Collider_bounds,

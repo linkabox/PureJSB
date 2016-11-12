@@ -36,6 +36,12 @@ static bool Collision2D_Collision2D1(JSVCall vc, int argc)
 // fields
 
 // properties
+static void Collision2D_enabled(JSVCall vc)
+{
+        UnityEngine.Collision2D _this = (UnityEngine.Collision2D)vc.csObj;
+        var result = _this.enabled;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
 static void Collision2D_rigidbody(JSVCall vc)
 {
         UnityEngine.Collision2D _this = (UnityEngine.Collision2D)vc.csObj;
@@ -94,6 +100,7 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
+        Collision2D_enabled,
         Collision2D_rigidbody,
         Collision2D_collider,
         Collision2D_transform,

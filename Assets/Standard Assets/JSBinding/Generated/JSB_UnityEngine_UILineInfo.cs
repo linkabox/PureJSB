@@ -63,6 +63,20 @@ static void UILineInfo_height(JSVCall vc)
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
+static void UILineInfo_topY(JSVCall vc)
+{
+    if (vc.bGet) {
+        UnityEngine.UILineInfo _this = (UnityEngine.UILineInfo)vc.csObj;
+        var result = _this.topY;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else {
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.UILineInfo _this = (UnityEngine.UILineInfo)vc.csObj;
+        _this.topY = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
 
 // properties
 
@@ -79,6 +93,7 @@ public static void __Register()
     {
         UILineInfo_startCharIdx,
         UILineInfo_height,
+        UILineInfo_topY,
 
     };
     ci.properties = new JSMgr.CSCallbackProperty[]

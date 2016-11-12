@@ -341,6 +341,46 @@ static bool Texture2D_GetPixels32(JSVCall vc, int argc)
     return true;
 }
 
+static bool Texture2D_GetRawTextureData(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+                var arrRet = ((UnityEngine.Texture2D)vc.csObj).GetRawTextureData();
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSApi.setByte((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+
+    return true;
+}
+
+static bool Texture2D_LoadImage__Byte_Array__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Byte[] arg0 = JSDataExchangeMgr.GetJSArg<System.Byte[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.Byte[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.Byte)JSApi.getByte((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        System.Boolean arg1 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(((UnityEngine.Texture2D)vc.csObj).LoadImage(arg0, arg1)));
+    }
+
+    return true;
+}
+
 static bool Texture2D_LoadImage__Byte_Array(JSVCall vc, int argc)
 {
     int len = argc;
@@ -358,6 +398,19 @@ static bool Texture2D_LoadImage__Byte_Array(JSVCall vc, int argc)
             return ret;
         });
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(((UnityEngine.Texture2D)vc.csObj).LoadImage(arg0)));
+    }
+
+    return true;
+}
+
+static bool Texture2D_LoadRawTextureData__IntPtr__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.IntPtr arg0 = (System.IntPtr)JSApi.getIntPtr((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        ((UnityEngine.Texture2D)vc.csObj).LoadRawTextureData(arg0, arg1);
     }
 
     return true;
@@ -644,6 +697,59 @@ static bool Texture2D_SetPixels__Color_Array(JSVCall vc, int argc)
     return true;
 }
 
+static bool Texture2D_SetPixels32__Int32__Int32__Int32__Int32__Color32_Array__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 6) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Color32[] arg4 = JSDataExchangeMgr.GetJSArg<UnityEngine.Color32[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Color32[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Color32)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        System.Int32 arg5 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        ((UnityEngine.Texture2D)vc.csObj).SetPixels32(arg0, arg1, arg2, arg3, arg4, arg5);
+    }
+
+    return true;
+}
+
+static bool Texture2D_SetPixels32__Int32__Int32__Int32__Int32__Color32_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 5) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Color32[] arg4 = JSDataExchangeMgr.GetJSArg<UnityEngine.Color32[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Color32[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Color32)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        ((UnityEngine.Texture2D)vc.csObj).SetPixels32(arg0, arg1, arg2, arg3, arg4);
+    }
+
+    return true;
+}
+
 static bool Texture2D_SetPixels32__Color32_Array__Int32(JSVCall vc, int argc)
 {
     int len = argc;
@@ -761,7 +867,10 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Texture2D_GetPixels, "GetPixels"),
         new JSMgr.MethodCallBackInfo(Texture2D_GetPixels32__Int32, "GetPixels32"),
         new JSMgr.MethodCallBackInfo(Texture2D_GetPixels32, "GetPixels32"),
+        new JSMgr.MethodCallBackInfo(Texture2D_GetRawTextureData, "GetRawTextureData"),
+        new JSMgr.MethodCallBackInfo(Texture2D_LoadImage__Byte_Array__Boolean, "LoadImage"),
         new JSMgr.MethodCallBackInfo(Texture2D_LoadImage__Byte_Array, "LoadImage"),
+        new JSMgr.MethodCallBackInfo(Texture2D_LoadRawTextureData__IntPtr__Int32, "LoadRawTextureData"),
         new JSMgr.MethodCallBackInfo(Texture2D_LoadRawTextureData__Byte_Array, "LoadRawTextureData"),
         new JSMgr.MethodCallBackInfo(Texture2D_PackTextures__Texture2D_Array__Int32__Int32__Boolean, "PackTextures"),
         new JSMgr.MethodCallBackInfo(Texture2D_PackTextures__Texture2D_Array__Int32__Int32, "PackTextures"),
@@ -775,6 +884,8 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Texture2D_SetPixels__Int32__Int32__Int32__Int32__Color_Array, "SetPixels"),
         new JSMgr.MethodCallBackInfo(Texture2D_SetPixels__Color_Array__Int32, "SetPixels"),
         new JSMgr.MethodCallBackInfo(Texture2D_SetPixels__Color_Array, "SetPixels"),
+        new JSMgr.MethodCallBackInfo(Texture2D_SetPixels32__Int32__Int32__Int32__Int32__Color32_Array__Int32, "SetPixels32"),
+        new JSMgr.MethodCallBackInfo(Texture2D_SetPixels32__Int32__Int32__Int32__Int32__Color32_Array, "SetPixels32"),
         new JSMgr.MethodCallBackInfo(Texture2D_SetPixels32__Color32_Array__Int32, "SetPixels32"),
         new JSMgr.MethodCallBackInfo(Texture2D_SetPixels32__Color32_Array, "SetPixels32"),
         new JSMgr.MethodCallBackInfo(Texture2D_UpdateExternalTexture__IntPtr, "UpdateExternalTexture"),

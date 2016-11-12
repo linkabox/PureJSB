@@ -62,7 +62,7 @@ static void Input_mousePosition(JSVCall vc)
 static void Input_mouseScrollDelta(JSVCall vc)
 {
         var result = UnityEngine.Input.mouseScrollDelta;
-                JSApi.setVector3S((int)JSApi.SetType.Rval, result);
+                JSApi.setVector2S((int)JSApi.SetType.Rval, result);
 }
 static void Input_mousePresent(JSVCall vc)
 {
@@ -134,6 +134,16 @@ static void Input_touchCount(JSVCall vc)
         var result = UnityEngine.Input.touchCount;
                 JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
 }
+static void Input_touchPressureSupported(JSVCall vc)
+{
+        var result = UnityEngine.Input.touchPressureSupported;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
+static void Input_stylusTouchSupported(JSVCall vc)
+{
+        var result = UnityEngine.Input.stylusTouchSupported;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
 static void Input_touchSupported(JSVCall vc)
 {
         var result = UnityEngine.Input.touchSupported;
@@ -201,6 +211,19 @@ static void Input_compositionCursorPos(JSVCall vc)
     { 
         UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
         UnityEngine.Input.compositionCursorPos = arg0;
+    }
+}
+static void Input_backButtonLeavesApp(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.Input.backButtonLeavesApp;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Input.backButtonLeavesApp = arg0;
     }
 }
 
@@ -453,6 +476,8 @@ public static void __Register()
         Input_accelerationEventCount,
         Input_touches,
         Input_touchCount,
+        Input_touchPressureSupported,
+        Input_stylusTouchSupported,
         Input_touchSupported,
         Input_multiTouchEnabled,
         Input_location,
@@ -462,6 +487,7 @@ public static void __Register()
         Input_compositionString,
         Input_imeIsSelected,
         Input_compositionCursorPos,
+        Input_backButtonLeavesApp,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

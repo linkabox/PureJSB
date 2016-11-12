@@ -66,6 +66,36 @@ static void SpriteRenderer_color(JSVCall vc)
         _this.color = arg0;
     }
 }
+static void SpriteRenderer_flipX(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.SpriteRenderer _this = (UnityEngine.SpriteRenderer)vc.csObj;
+        var result = _this.flipX;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.SpriteRenderer _this = (UnityEngine.SpriteRenderer)vc.csObj;
+        _this.flipX = arg0;
+    }
+}
+static void SpriteRenderer_flipY(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.SpriteRenderer _this = (UnityEngine.SpriteRenderer)vc.csObj;
+        var result = _this.flipY;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.SpriteRenderer _this = (UnityEngine.SpriteRenderer)vc.csObj;
+        _this.flipY = arg0;
+    }
+}
 
 // methods
 
@@ -84,6 +114,8 @@ public static void __Register()
     {
         SpriteRenderer_sprite,
         SpriteRenderer_color,
+        SpriteRenderer_flipX,
+        SpriteRenderer_flipY,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

@@ -42,6 +42,22 @@ static bool Event_Event2(JSVCall vc, int argc)
     int len = argc;
     if (len == 1)
     {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        JSMgr.addJSCSRel(_this, new UnityEngine.Event(arg0));
+    }
+
+    return true;
+}
+
+static bool Event_Event3(JSVCall vc, int argc)
+{
+    int _this = JSApi.getObject((int)JSApi.GetType.Arg);
+    JSApi.attachFinalizerObject(_this);
+    --argc;
+
+    int len = argc;
+    if (len == 1)
+    {
         UnityEngine.Event arg0 = (UnityEngine.Event)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         JSMgr.addJSCSRel(_this, new UnityEngine.Event(arg0));
     }
@@ -52,27 +68,6 @@ static bool Event_Event2(JSVCall vc, int argc)
 // fields
 
 // properties
-static void Event_rawType(JSVCall vc)
-{
-        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
-        var result = _this.rawType;
-                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
-}
-static void Event_type(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
-        var result = _this.type;
-                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
-    }
-    else
-    { 
-        UnityEngine.EventType arg0 = (UnityEngine.EventType)JSApi.getEnum((int)JSApi.GetType.Arg);
-        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
-        _this.type = arg0;
-    }
-}
 static void Event_mousePosition(JSVCall vc)
 {
     if (vc.bGet)
@@ -101,111 +96,6 @@ static void Event_delta(JSVCall vc)
         UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
         UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
         _this.delta = arg0;
-    }
-}
-static void Event_button(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
-        var result = _this.button;
-                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
-    }
-    else
-    { 
-        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
-        _this.button = arg0;
-    }
-}
-static void Event_modifiers(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
-        var result = _this.modifiers;
-                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
-    }
-    else
-    { 
-        UnityEngine.EventModifiers arg0 = (UnityEngine.EventModifiers)JSApi.getEnum((int)JSApi.GetType.Arg);
-        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
-        _this.modifiers = arg0;
-    }
-}
-static void Event_pressure(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
-        var result = _this.pressure;
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
-    }
-    else
-    { 
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
-        _this.pressure = arg0;
-    }
-}
-static void Event_clickCount(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
-        var result = _this.clickCount;
-                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
-    }
-    else
-    { 
-        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
-        _this.clickCount = arg0;
-    }
-}
-static void Event_character(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
-        var result = _this.character;
-                JSApi.setChar((int)JSApi.SetType.Rval, (System.Char)(result));
-    }
-    else
-    { 
-        System.Char arg0 = (System.Char)JSApi.getChar((int)JSApi.GetType.Arg);
-        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
-        _this.character = arg0;
-    }
-}
-static void Event_commandName(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
-        var result = _this.commandName;
-                JSApi.setStringS((int)JSApi.SetType.Rval, result);
-    }
-    else
-    { 
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
-        _this.commandName = arg0;
-    }
-}
-static void Event_keyCode(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
-        var result = _this.keyCode;
-                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
-    }
-    else
-    { 
-        UnityEngine.KeyCode arg0 = (UnityEngine.KeyCode)JSApi.getEnum((int)JSApi.GetType.Arg);
-        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
-        _this.keyCode = arg0;
     }
 }
 static void Event_shift(JSVCall vc)
@@ -329,6 +219,147 @@ static void Event_isMouse(JSVCall vc)
         var result = _this.isMouse;
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
 }
+static void Event_rawType(JSVCall vc)
+{
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        var result = _this.rawType;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
+}
+static void Event_type(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        var result = _this.type;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
+    }
+    else
+    { 
+        UnityEngine.EventType arg0 = (UnityEngine.EventType)JSApi.getEnum((int)JSApi.GetType.Arg);
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        _this.type = arg0;
+    }
+}
+static void Event_button(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        var result = _this.button;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+    }
+    else
+    { 
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        _this.button = arg0;
+    }
+}
+static void Event_modifiers(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        var result = _this.modifiers;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
+    }
+    else
+    { 
+        UnityEngine.EventModifiers arg0 = (UnityEngine.EventModifiers)JSApi.getEnum((int)JSApi.GetType.Arg);
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        _this.modifiers = arg0;
+    }
+}
+static void Event_pressure(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        var result = _this.pressure;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        _this.pressure = arg0;
+    }
+}
+static void Event_clickCount(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        var result = _this.clickCount;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+    }
+    else
+    { 
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        _this.clickCount = arg0;
+    }
+}
+static void Event_character(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        var result = _this.character;
+                JSApi.setChar((int)JSApi.SetType.Rval, (System.Char)(result));
+    }
+    else
+    { 
+        System.Char arg0 = (System.Char)JSApi.getChar((int)JSApi.GetType.Arg);
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        _this.character = arg0;
+    }
+}
+static void Event_commandName(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        var result = _this.commandName;
+                JSApi.setStringS((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        _this.commandName = arg0;
+    }
+}
+static void Event_keyCode(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        var result = _this.keyCode;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
+    }
+    else
+    { 
+        UnityEngine.KeyCode arg0 = (UnityEngine.KeyCode)JSApi.getEnum((int)JSApi.GetType.Arg);
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        _this.keyCode = arg0;
+    }
+}
+static void Event_displayIndex(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        var result = _this.displayIndex;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+    }
+    else
+    { 
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Event _this = (UnityEngine.Event)vc.csObj;
+        _this.displayIndex = arg0;
+    }
+}
 
 // methods
 
@@ -437,17 +468,8 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
-        Event_rawType,
-        Event_type,
         Event_mousePosition,
         Event_delta,
-        Event_button,
-        Event_modifiers,
-        Event_pressure,
-        Event_clickCount,
-        Event_character,
-        Event_commandName,
-        Event_keyCode,
         Event_shift,
         Event_control,
         Event_alt,
@@ -458,12 +480,23 @@ public static void __Register()
         Event_current,
         Event_isKey,
         Event_isMouse,
+        Event_rawType,
+        Event_type,
+        Event_button,
+        Event_modifiers,
+        Event_pressure,
+        Event_clickCount,
+        Event_character,
+        Event_commandName,
+        Event_keyCode,
+        Event_displayIndex,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]
     {
         new JSMgr.MethodCallBackInfo(Event_Event1, ".ctor"),
         new JSMgr.MethodCallBackInfo(Event_Event2, ".ctor"),
+        new JSMgr.MethodCallBackInfo(Event_Event3, ".ctor"),
 
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]

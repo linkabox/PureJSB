@@ -42,6 +42,12 @@ static void AssetBundle_mainAsset(JSVCall vc)
         var result = _this.mainAsset;
                 JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
 }
+static void AssetBundle_isStreamedSceneAssetBundle(JSVCall vc)
+{
+        UnityEngine.AssetBundle _this = (UnityEngine.AssetBundle)vc.csObj;
+        var result = _this.isStreamedSceneAssetBundle;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
 
 // methods
 
@@ -57,38 +63,47 @@ static bool AssetBundle_Contains__String(JSVCall vc, int argc)
     return true;
 }
 
-static bool AssetBundle_Load__String__Type(JSVCall vc, int argc)
+static bool AssetBundle_GetAllAssetNames(JSVCall vc, int argc)
 {
     int len = argc;
-    if (len == 2) 
+    if (len == 0) 
     {
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        System.Type arg1 = (System.Type)JSDataExchangeMgr.GetTypeByJsParam((int)JSApi.GetType.Arg);
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, ((UnityEngine.AssetBundle)vc.csObj).Load(arg0, arg1));
+                var arrRet = ((UnityEngine.AssetBundle)vc.csObj).GetAllAssetNames();
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSApi.setStringS((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
     }
 
     return true;
 }
 
-static bool AssetBundle_Load__String(JSVCall vc, int argc)
+static bool AssetBundle_GetAllScenePaths(JSVCall vc, int argc)
 {
     int len = argc;
-    if (len == 1) 
+    if (len == 0) 
     {
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, ((UnityEngine.AssetBundle)vc.csObj).Load(arg0));
+                var arrRet = ((UnityEngine.AssetBundle)vc.csObj).GetAllScenePaths();
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSApi.setStringS((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
     }
 
     return true;
 }
 
-static bool AssetBundle_LoadAll__Type(JSVCall vc, int argc)
+static bool AssetBundle_LoadAllAssets__Type(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 1) 
     {
         System.Type arg0 = (System.Type)JSDataExchangeMgr.GetTypeByJsParam((int)JSApi.GetType.Arg);
-                var arrRet = ((UnityEngine.AssetBundle)vc.csObj).LoadAll(arg0);
+                var arrRet = ((UnityEngine.AssetBundle)vc.csObj).LoadAllAssets(arg0);
         for (int i = 0; arrRet != null && i < arrRet.Length; i++)
         {
             JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
@@ -99,13 +114,36 @@ static bool AssetBundle_LoadAll__Type(JSVCall vc, int argc)
 
     return true;
 }
+public static MethodID methodID4 = new MethodID("LoadAllAssets", "T[]", TypeFlag.None, null, null);
 
-static bool AssetBundle_LoadAll(JSVCall vc, int argc)
+static bool AssetBundle_LoadAllAssetsT1(JSVCall vc, int argc)
+{
+    // Get generic method by name and param count.
+    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(vc.csObj.GetType(), methodID4, 1); 
+    if (method == null) return true;
+
+    int len = argc - 1;
+    if (len == 0) 
+    {
+        object[] arr_t = null;
+                var arrRet = (Array)method.Invoke(vc.csObj, arr_t);
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setWhatever((int)JSApi.SetType.SaveAndTempTrace, arrRet.GetValue(i));
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+
+    return true;
+}
+
+static bool AssetBundle_LoadAllAssets(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 0) 
     {
-                var arrRet = ((UnityEngine.AssetBundle)vc.csObj).LoadAll();
+                var arrRet = ((UnityEngine.AssetBundle)vc.csObj).LoadAllAssets();
         for (int i = 0; arrRet != null && i < arrRet.Length; i++)
         {
             JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
@@ -117,14 +155,231 @@ static bool AssetBundle_LoadAll(JSVCall vc, int argc)
     return true;
 }
 
-static bool AssetBundle_LoadAsync__String__Type(JSVCall vc, int argc)
+static bool AssetBundle_LoadAllAssetsAsync__Type(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.Type arg0 = (System.Type)JSDataExchangeMgr.GetTypeByJsParam((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, ((UnityEngine.AssetBundle)vc.csObj).LoadAllAssetsAsync(arg0));
+    }
+
+    return true;
+}
+public static MethodID methodID7 = new MethodID("LoadAllAssetsAsync", "AssetBundleRequest", TypeFlag.None, null, null);
+
+static bool AssetBundle_LoadAllAssetsAsyncT1(JSVCall vc, int argc)
+{
+    // Get generic method by name and param count.
+    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(vc.csObj.GetType(), methodID7, 1); 
+    if (method == null) return true;
+
+    int len = argc - 1;
+    if (len == 0) 
+    {
+        object[] arr_t = null;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, method.Invoke(vc.csObj, arr_t));
+    }
+
+    return true;
+}
+
+static bool AssetBundle_LoadAllAssetsAsync(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, ((UnityEngine.AssetBundle)vc.csObj).LoadAllAssetsAsync());
+    }
+
+    return true;
+}
+
+static bool AssetBundle_LoadAsset__String__Type(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 2) 
     {
         System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
         System.Type arg1 = (System.Type)JSDataExchangeMgr.GetTypeByJsParam((int)JSApi.GetType.Arg);
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, ((UnityEngine.AssetBundle)vc.csObj).LoadAsync(arg0, arg1));
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, ((UnityEngine.AssetBundle)vc.csObj).LoadAsset(arg0, arg1));
+    }
+
+    return true;
+}
+public static MethodID methodID10 = new MethodID("LoadAsset", "T", TypeFlag.IsT, new string[]{"String"}, new TypeFlag[]{TypeFlag.None});
+
+static bool AssetBundle_LoadAssetT1__String(JSVCall vc, int argc)
+{
+    // Get generic method by name and param count.
+    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(vc.csObj.GetType(), methodID10, 1); 
+    if (method == null) return true;
+
+    int len = argc - 1;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        object[] arr_t = new object[]{ arg0 };
+                JSMgr.datax.setWhatever((int)JSApi.SetType.Rval, method.Invoke(vc.csObj, arr_t));
+    }
+
+    return true;
+}
+
+static bool AssetBundle_LoadAsset__String(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, ((UnityEngine.AssetBundle)vc.csObj).LoadAsset(arg0));
+    }
+
+    return true;
+}
+
+static bool AssetBundle_LoadAssetAsync__String__Type(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Type arg1 = (System.Type)JSDataExchangeMgr.GetTypeByJsParam((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, ((UnityEngine.AssetBundle)vc.csObj).LoadAssetAsync(arg0, arg1));
+    }
+
+    return true;
+}
+public static MethodID methodID13 = new MethodID("LoadAssetAsync", "AssetBundleRequest", TypeFlag.None, new string[]{"String"}, new TypeFlag[]{TypeFlag.None});
+
+static bool AssetBundle_LoadAssetAsyncT1__String(JSVCall vc, int argc)
+{
+    // Get generic method by name and param count.
+    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(vc.csObj.GetType(), methodID13, 1); 
+    if (method == null) return true;
+
+    int len = argc - 1;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        object[] arr_t = new object[]{ arg0 };
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, method.Invoke(vc.csObj, arr_t));
+    }
+
+    return true;
+}
+
+static bool AssetBundle_LoadAssetAsync__String(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, ((UnityEngine.AssetBundle)vc.csObj).LoadAssetAsync(arg0));
+    }
+
+    return true;
+}
+
+static bool AssetBundle_LoadAssetWithSubAssets__String__Type(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Type arg1 = (System.Type)JSDataExchangeMgr.GetTypeByJsParam((int)JSApi.GetType.Arg);
+                var arrRet = ((UnityEngine.AssetBundle)vc.csObj).LoadAssetWithSubAssets(arg0, arg1);
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+
+    return true;
+}
+public static MethodID methodID16 = new MethodID("LoadAssetWithSubAssets", "T[]", TypeFlag.None, new string[]{"String"}, new TypeFlag[]{TypeFlag.None});
+
+static bool AssetBundle_LoadAssetWithSubAssetsT1__String(JSVCall vc, int argc)
+{
+    // Get generic method by name and param count.
+    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(vc.csObj.GetType(), methodID16, 1); 
+    if (method == null) return true;
+
+    int len = argc - 1;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        object[] arr_t = new object[]{ arg0 };
+                var arrRet = (Array)method.Invoke(vc.csObj, arr_t);
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setWhatever((int)JSApi.SetType.SaveAndTempTrace, arrRet.GetValue(i));
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+
+    return true;
+}
+
+static bool AssetBundle_LoadAssetWithSubAssets__String(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+                var arrRet = ((UnityEngine.AssetBundle)vc.csObj).LoadAssetWithSubAssets(arg0);
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+
+    return true;
+}
+
+static bool AssetBundle_LoadAssetWithSubAssetsAsync__String__Type(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Type arg1 = (System.Type)JSDataExchangeMgr.GetTypeByJsParam((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, ((UnityEngine.AssetBundle)vc.csObj).LoadAssetWithSubAssetsAsync(arg0, arg1));
+    }
+
+    return true;
+}
+public static MethodID methodID19 = new MethodID("LoadAssetWithSubAssetsAsync", "AssetBundleRequest", TypeFlag.None, new string[]{"String"}, new TypeFlag[]{TypeFlag.None});
+
+static bool AssetBundle_LoadAssetWithSubAssetsAsyncT1__String(JSVCall vc, int argc)
+{
+    // Get generic method by name and param count.
+    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(vc.csObj.GetType(), methodID19, 1); 
+    if (method == null) return true;
+
+    int len = argc - 1;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        object[] arr_t = new object[]{ arg0 };
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, method.Invoke(vc.csObj, arr_t));
+    }
+
+    return true;
+}
+
+static bool AssetBundle_LoadAssetWithSubAssetsAsync__String(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, ((UnityEngine.AssetBundle)vc.csObj).LoadAssetWithSubAssetsAsync(arg0));
     }
 
     return true;
@@ -142,32 +397,108 @@ static bool AssetBundle_Unload__Boolean(JSVCall vc, int argc)
     return true;
 }
 
-static bool AssetBundle_CreateFromFile__String__Int32(JSVCall vc, int argc)
+static bool AssetBundle_LoadFromFile__String__UInt32__UInt64(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.UInt32 arg1 = (System.UInt32)JSApi.getUInt32((int)JSApi.GetType.Arg);
+        System.UInt64 arg2 = (System.UInt64)JSApi.getUInt64((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AssetBundle.LoadFromFile(arg0, arg1, arg2));
+    }
+
+    return true;
+}
+
+static bool AssetBundle_LoadFromFile__String__UInt32(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 2) 
     {
         System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AssetBundle.CreateFromFile(arg0, arg1));
+        System.UInt32 arg1 = (System.UInt32)JSApi.getUInt32((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AssetBundle.LoadFromFile(arg0, arg1));
     }
 
     return true;
 }
 
-static bool AssetBundle_CreateFromFile__String(JSVCall vc, int argc)
+static bool AssetBundle_LoadFromFile__String(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 1) 
     {
         System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AssetBundle.CreateFromFile(arg0));
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AssetBundle.LoadFromFile(arg0));
     }
 
     return true;
 }
 
-static bool AssetBundle_CreateFromMemory__Byte_Array(JSVCall vc, int argc)
+static bool AssetBundle_LoadFromFileAsync__String__UInt32__UInt64(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.UInt32 arg1 = (System.UInt32)JSApi.getUInt32((int)JSApi.GetType.Arg);
+        System.UInt64 arg2 = (System.UInt64)JSApi.getUInt64((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AssetBundle.LoadFromFileAsync(arg0, arg1, arg2));
+    }
+
+    return true;
+}
+
+static bool AssetBundle_LoadFromFileAsync__String__UInt32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.UInt32 arg1 = (System.UInt32)JSApi.getUInt32((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AssetBundle.LoadFromFileAsync(arg0, arg1));
+    }
+
+    return true;
+}
+
+static bool AssetBundle_LoadFromFileAsync__String(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AssetBundle.LoadFromFileAsync(arg0));
+    }
+
+    return true;
+}
+
+static bool AssetBundle_LoadFromMemory__Byte_Array__UInt32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Byte[] arg0 = JSDataExchangeMgr.GetJSArg<System.Byte[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.Byte[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.Byte)JSApi.getByte((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        System.UInt32 arg1 = (System.UInt32)JSApi.getUInt32((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AssetBundle.LoadFromMemory(arg0, arg1));
+    }
+
+    return true;
+}
+
+static bool AssetBundle_LoadFromMemory__Byte_Array(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 1) 
@@ -183,13 +514,36 @@ static bool AssetBundle_CreateFromMemory__Byte_Array(JSVCall vc, int argc)
             }
             return ret;
         });
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AssetBundle.CreateFromMemory(arg0));
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AssetBundle.LoadFromMemory(arg0));
     }
 
     return true;
 }
 
-static bool AssetBundle_CreateFromMemoryImmediate__Byte_Array(JSVCall vc, int argc)
+static bool AssetBundle_LoadFromMemoryAsync__Byte_Array__UInt32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Byte[] arg0 = JSDataExchangeMgr.GetJSArg<System.Byte[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.Byte[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.Byte)JSApi.getByte((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        System.UInt32 arg1 = (System.UInt32)JSApi.getUInt32((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AssetBundle.LoadFromMemoryAsync(arg0, arg1));
+    }
+
+    return true;
+}
+
+static bool AssetBundle_LoadFromMemoryAsync__Byte_Array(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 1) 
@@ -205,7 +559,7 @@ static bool AssetBundle_CreateFromMemoryImmediate__Byte_Array(JSVCall vc, int ar
             }
             return ret;
         });
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AssetBundle.CreateFromMemoryImmediate(arg0));
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.AssetBundle.LoadFromMemoryAsync(arg0));
     }
 
     return true;
@@ -225,6 +579,7 @@ public static void __Register()
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
         AssetBundle_mainAsset,
+        AssetBundle_isStreamedSceneAssetBundle,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]
@@ -235,16 +590,37 @@ public static void __Register()
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
         new JSMgr.MethodCallBackInfo(AssetBundle_Contains__String, "Contains"),
-        new JSMgr.MethodCallBackInfo(AssetBundle_Load__String__Type, "Load"),
-        new JSMgr.MethodCallBackInfo(AssetBundle_Load__String, "Load"),
-        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAll__Type, "LoadAll"),
-        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAll, "LoadAll"),
-        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAsync__String__Type, "LoadAsync"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_GetAllAssetNames, "GetAllAssetNames"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_GetAllScenePaths, "GetAllScenePaths"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAllAssets__Type, "LoadAllAssets"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAllAssetsT1, "LoadAllAssets"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAllAssets, "LoadAllAssets"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAllAssetsAsync__Type, "LoadAllAssetsAsync"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAllAssetsAsyncT1, "LoadAllAssetsAsync"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAllAssetsAsync, "LoadAllAssetsAsync"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAsset__String__Type, "LoadAsset"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAssetT1__String, "LoadAsset"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAsset__String, "LoadAsset"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAssetAsync__String__Type, "LoadAssetAsync"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAssetAsyncT1__String, "LoadAssetAsync"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAssetAsync__String, "LoadAssetAsync"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAssetWithSubAssets__String__Type, "LoadAssetWithSubAssets"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAssetWithSubAssetsT1__String, "LoadAssetWithSubAssets"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAssetWithSubAssets__String, "LoadAssetWithSubAssets"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAssetWithSubAssetsAsync__String__Type, "LoadAssetWithSubAssetsAsync"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAssetWithSubAssetsAsyncT1__String, "LoadAssetWithSubAssetsAsync"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadAssetWithSubAssetsAsync__String, "LoadAssetWithSubAssetsAsync"),
         new JSMgr.MethodCallBackInfo(AssetBundle_Unload__Boolean, "Unload"),
-        new JSMgr.MethodCallBackInfo(AssetBundle_CreateFromFile__String__Int32, "CreateFromFile"),
-        new JSMgr.MethodCallBackInfo(AssetBundle_CreateFromFile__String, "CreateFromFile"),
-        new JSMgr.MethodCallBackInfo(AssetBundle_CreateFromMemory__Byte_Array, "CreateFromMemory"),
-        new JSMgr.MethodCallBackInfo(AssetBundle_CreateFromMemoryImmediate__Byte_Array, "CreateFromMemoryImmediate"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadFromFile__String__UInt32__UInt64, "LoadFromFile"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadFromFile__String__UInt32, "LoadFromFile"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadFromFile__String, "LoadFromFile"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadFromFileAsync__String__UInt32__UInt64, "LoadFromFileAsync"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadFromFileAsync__String__UInt32, "LoadFromFileAsync"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadFromFileAsync__String, "LoadFromFileAsync"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadFromMemory__Byte_Array__UInt32, "LoadFromMemory"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadFromMemory__Byte_Array, "LoadFromMemory"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadFromMemoryAsync__Byte_Array__UInt32, "LoadFromMemoryAsync"),
+        new JSMgr.MethodCallBackInfo(AssetBundle_LoadFromMemoryAsync__Byte_Array, "LoadFromMemoryAsync"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

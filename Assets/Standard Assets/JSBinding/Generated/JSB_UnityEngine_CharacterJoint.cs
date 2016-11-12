@@ -51,6 +51,36 @@ static void CharacterJoint_swingAxis(JSVCall vc)
         _this.swingAxis = arg0;
     }
 }
+static void CharacterJoint_twistLimitSpring(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.CharacterJoint _this = (UnityEngine.CharacterJoint)vc.csObj;
+        var result = _this.twistLimitSpring;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.SoftJointLimitSpring arg0 = (UnityEngine.SoftJointLimitSpring)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.CharacterJoint _this = (UnityEngine.CharacterJoint)vc.csObj;
+        _this.twistLimitSpring = arg0;
+    }
+}
+static void CharacterJoint_swingLimitSpring(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.CharacterJoint _this = (UnityEngine.CharacterJoint)vc.csObj;
+        var result = _this.swingLimitSpring;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.SoftJointLimitSpring arg0 = (UnityEngine.SoftJointLimitSpring)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.CharacterJoint _this = (UnityEngine.CharacterJoint)vc.csObj;
+        _this.swingLimitSpring = arg0;
+    }
+}
 static void CharacterJoint_lowTwistLimit(JSVCall vc)
 {
     if (vc.bGet)
@@ -111,49 +141,49 @@ static void CharacterJoint_swing2Limit(JSVCall vc)
         _this.swing2Limit = arg0;
     }
 }
-static void CharacterJoint_targetRotation(JSVCall vc)
+static void CharacterJoint_enableProjection(JSVCall vc)
 {
     if (vc.bGet)
     { 
         UnityEngine.CharacterJoint _this = (UnityEngine.CharacterJoint)vc.csObj;
-        var result = _this.targetRotation;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+        var result = _this.enableProjection;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
     }
     else
     { 
-        UnityEngine.Quaternion arg0 = (UnityEngine.Quaternion)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
         UnityEngine.CharacterJoint _this = (UnityEngine.CharacterJoint)vc.csObj;
-        _this.targetRotation = arg0;
+        _this.enableProjection = arg0;
     }
 }
-static void CharacterJoint_targetAngularVelocity(JSVCall vc)
+static void CharacterJoint_projectionDistance(JSVCall vc)
 {
     if (vc.bGet)
     { 
         UnityEngine.CharacterJoint _this = (UnityEngine.CharacterJoint)vc.csObj;
-        var result = _this.targetAngularVelocity;
-                JSApi.setVector3S((int)JSApi.SetType.Rval, result);
+        var result = _this.projectionDistance;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
     }
     else
     { 
-        UnityEngine.Vector3 arg0 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         UnityEngine.CharacterJoint _this = (UnityEngine.CharacterJoint)vc.csObj;
-        _this.targetAngularVelocity = arg0;
+        _this.projectionDistance = arg0;
     }
 }
-static void CharacterJoint_rotationDrive(JSVCall vc)
+static void CharacterJoint_projectionAngle(JSVCall vc)
 {
     if (vc.bGet)
     { 
         UnityEngine.CharacterJoint _this = (UnityEngine.CharacterJoint)vc.csObj;
-        var result = _this.rotationDrive;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+        var result = _this.projectionAngle;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
     }
     else
     { 
-        UnityEngine.JointDrive arg0 = (UnityEngine.JointDrive)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         UnityEngine.CharacterJoint _this = (UnityEngine.CharacterJoint)vc.csObj;
-        _this.rotationDrive = arg0;
+        _this.projectionAngle = arg0;
     }
 }
 
@@ -173,13 +203,15 @@ public static void __Register()
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
         CharacterJoint_swingAxis,
+        CharacterJoint_twistLimitSpring,
+        CharacterJoint_swingLimitSpring,
         CharacterJoint_lowTwistLimit,
         CharacterJoint_highTwistLimit,
         CharacterJoint_swing1Limit,
         CharacterJoint_swing2Limit,
-        CharacterJoint_targetRotation,
-        CharacterJoint_targetAngularVelocity,
-        CharacterJoint_rotationDrive,
+        CharacterJoint_enableProjection,
+        CharacterJoint_projectionDistance,
+        CharacterJoint_projectionAngle,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

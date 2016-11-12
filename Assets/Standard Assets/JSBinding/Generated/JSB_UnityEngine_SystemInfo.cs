@@ -34,6 +34,11 @@ static bool SystemInfo_SystemInfo1(JSVCall vc, int argc)
 }
 
 // fields
+static void SystemInfo_unsupportedIdentifier(JSVCall vc)
+{
+        var result = UnityEngine.SystemInfo.unsupportedIdentifier;
+                JSApi.setStringS((int)JSApi.SetType.Rval, result);
+}
 
 // properties
 static void SystemInfo_operatingSystem(JSVCall vc)
@@ -45,6 +50,11 @@ static void SystemInfo_processorType(JSVCall vc)
 {
         var result = UnityEngine.SystemInfo.processorType;
                 JSApi.setStringS((int)JSApi.SetType.Rval, result);
+}
+static void SystemInfo_processorFrequency(JSVCall vc)
+{
+        var result = UnityEngine.SystemInfo.processorFrequency;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
 }
 static void SystemInfo_processorCount(JSVCall vc)
 {
@@ -81,6 +91,11 @@ static void SystemInfo_graphicsDeviceVendorID(JSVCall vc)
         var result = UnityEngine.SystemInfo.graphicsDeviceVendorID;
                 JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
 }
+static void SystemInfo_graphicsDeviceType(JSVCall vc)
+{
+        var result = UnityEngine.SystemInfo.graphicsDeviceType;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
+}
 static void SystemInfo_graphicsDeviceVersion(JSVCall vc)
 {
         var result = UnityEngine.SystemInfo.graphicsDeviceVersion;
@@ -91,19 +106,29 @@ static void SystemInfo_graphicsShaderLevel(JSVCall vc)
         var result = UnityEngine.SystemInfo.graphicsShaderLevel;
                 JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
 }
-static void SystemInfo_graphicsPixelFillrate(JSVCall vc)
+static void SystemInfo_graphicsMultiThreaded(JSVCall vc)
 {
-        var result = UnityEngine.SystemInfo.graphicsPixelFillrate;
-                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+        var result = UnityEngine.SystemInfo.graphicsMultiThreaded;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
 }
 static void SystemInfo_supportsShadows(JSVCall vc)
 {
         var result = UnityEngine.SystemInfo.supportsShadows;
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
 }
+static void SystemInfo_supportsRawShadowDepthSampling(JSVCall vc)
+{
+        var result = UnityEngine.SystemInfo.supportsRawShadowDepthSampling;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
 static void SystemInfo_supportsRenderTextures(JSVCall vc)
 {
         var result = UnityEngine.SystemInfo.supportsRenderTextures;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
+static void SystemInfo_supportsMotionVectors(JSVCall vc)
+{
+        var result = UnityEngine.SystemInfo.supportsMotionVectors;
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
 }
 static void SystemInfo_supportsRenderToCubemap(JSVCall vc)
@@ -120,6 +145,16 @@ static void SystemInfo_supports3DTextures(JSVCall vc)
 {
         var result = UnityEngine.SystemInfo.supports3DTextures;
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
+static void SystemInfo_supports2DArrayTextures(JSVCall vc)
+{
+        var result = UnityEngine.SystemInfo.supports2DArrayTextures;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
+static void SystemInfo_copyTextureSupport(JSVCall vc)
+{
+        var result = UnityEngine.SystemInfo.copyTextureSupport;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
 }
 static void SystemInfo_supportsComputeShaders(JSVCall vc)
 {
@@ -145,11 +180,6 @@ static void SystemInfo_supportsStencil(JSVCall vc)
 {
         var result = UnityEngine.SystemInfo.supportsStencil;
                 JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
-}
-static void SystemInfo_supportsVertexPrograms(JSVCall vc)
-{
-        var result = UnityEngine.SystemInfo.supportsVertexPrograms;
-                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
 }
 static void SystemInfo_npotSupport(JSVCall vc)
 {
@@ -191,6 +221,11 @@ static void SystemInfo_supportsVibration(JSVCall vc)
         var result = UnityEngine.SystemInfo.supportsVibration;
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
 }
+static void SystemInfo_supportsAudio(JSVCall vc)
+{
+        var result = UnityEngine.SystemInfo.supportsAudio;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
 static void SystemInfo_deviceType(JSVCall vc)
 {
         var result = UnityEngine.SystemInfo.deviceType;
@@ -216,6 +251,18 @@ static bool SystemInfo_SupportsRenderTextureFormat__RenderTextureFormat(JSVCall 
     return true;
 }
 
+static bool SystemInfo_SupportsTextureFormat__TextureFormat(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.TextureFormat arg0 = (UnityEngine.TextureFormat)JSApi.getEnum((int)JSApi.GetType.Arg);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.SystemInfo.SupportsTextureFormat(arg0)));
+    }
+
+    return true;
+}
+
 
 //register
 
@@ -225,12 +272,14 @@ public static void __Register()
     ci.type = typeof(UnityEngine.SystemInfo);
     ci.fields = new JSMgr.CSCallbackField[]
     {
+        SystemInfo_unsupportedIdentifier,
 
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
         SystemInfo_operatingSystem,
         SystemInfo_processorType,
+        SystemInfo_processorFrequency,
         SystemInfo_processorCount,
         SystemInfo_systemMemorySize,
         SystemInfo_graphicsMemorySize,
@@ -238,20 +287,24 @@ public static void __Register()
         SystemInfo_graphicsDeviceVendor,
         SystemInfo_graphicsDeviceID,
         SystemInfo_graphicsDeviceVendorID,
+        SystemInfo_graphicsDeviceType,
         SystemInfo_graphicsDeviceVersion,
         SystemInfo_graphicsShaderLevel,
-        SystemInfo_graphicsPixelFillrate,
+        SystemInfo_graphicsMultiThreaded,
         SystemInfo_supportsShadows,
+        SystemInfo_supportsRawShadowDepthSampling,
         SystemInfo_supportsRenderTextures,
+        SystemInfo_supportsMotionVectors,
         SystemInfo_supportsRenderToCubemap,
         SystemInfo_supportsImageEffects,
         SystemInfo_supports3DTextures,
+        SystemInfo_supports2DArrayTextures,
+        SystemInfo_copyTextureSupport,
         SystemInfo_supportsComputeShaders,
         SystemInfo_supportsInstancing,
         SystemInfo_supportsSparseTextures,
         SystemInfo_supportedRenderTargetCount,
         SystemInfo_supportsStencil,
-        SystemInfo_supportsVertexPrograms,
         SystemInfo_npotSupport,
         SystemInfo_deviceUniqueIdentifier,
         SystemInfo_deviceName,
@@ -260,6 +313,7 @@ public static void __Register()
         SystemInfo_supportsGyroscope,
         SystemInfo_supportsLocationService,
         SystemInfo_supportsVibration,
+        SystemInfo_supportsAudio,
         SystemInfo_deviceType,
         SystemInfo_maxTextureSize,
 
@@ -272,6 +326,7 @@ public static void __Register()
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
         new JSMgr.MethodCallBackInfo(SystemInfo_SupportsRenderTextureFormat__RenderTextureFormat, "SupportsRenderTextureFormat"),
+        new JSMgr.MethodCallBackInfo(SystemInfo_SupportsTextureFormat__TextureFormat, "SupportsTextureFormat"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

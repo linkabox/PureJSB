@@ -123,7 +123,7 @@ public class JsExternalTools
         Debug.LogError(outputLog);
 
         string relPath = logFile.Replace("\\", "/").Substring(logFile.IndexOf("Assets/"));
-        var context = Resources.LoadAssetAtPath<Object>(relPath);
+        var context = AssetDatabase.LoadAssetAtPath<Object>(relPath);
         Debug.Log("生成了文件 " + relPath + "，请检查（点击此条可定位文件）", context);
 #endif
         AssetDatabase.Refresh();
@@ -703,7 +703,7 @@ public class JsExternalTools
             File.WriteAllText(fullpath, sbError.ToString());
 
             string relPath = fullpath.Replace("\\", "/").Substring(fullpath.IndexOf("Assets/"));
-            var context = Resources.LoadAssetAtPath<Object>(relPath);
+            var context = AssetDatabase.LoadAssetAtPath<Object>(relPath);
             Debug.LogError("Check invocation error result: (" + errCount + " errors) （点击此条可定位文件）", context);
             Debug.LogError(sbError);
         }
@@ -817,7 +817,7 @@ public class JsExternalTools
         // 提示生成 yield 结果
         string relPath =
             YieldReturnTypeOutputPath.Replace("\\", "/").Substring(YieldReturnTypeOutputPath.IndexOf("Assets/"));
-        var context = Resources.LoadAssetAtPath<Object>(relPath);
+        var context = AssetDatabase.LoadAssetAtPath<Object>(relPath);
         Debug.Log("生成了文件 " + relPath + "，请检查（点击此条可定位文件）", context);
     }
 

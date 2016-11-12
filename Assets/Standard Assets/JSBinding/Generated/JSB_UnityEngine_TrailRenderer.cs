@@ -99,6 +99,17 @@ static void TrailRenderer_autodestruct(JSVCall vc)
 
 // methods
 
+static bool TrailRenderer_Clear(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+        ((UnityEngine.TrailRenderer)vc.csObj).Clear();
+    }
+
+    return true;
+}
+
 
 //register
 
@@ -125,6 +136,7 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
+        new JSMgr.MethodCallBackInfo(TrailRenderer_Clear, "Clear"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

@@ -147,6 +147,20 @@ static void TextGenerationSettings_textAnchor(JSVCall vc)
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
+static void TextGenerationSettings_alignByGeometry(JSVCall vc)
+{
+    if (vc.bGet) {
+        UnityEngine.TextGenerationSettings _this = (UnityEngine.TextGenerationSettings)vc.csObj;
+        var result = _this.alignByGeometry;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else {
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.TextGenerationSettings _this = (UnityEngine.TextGenerationSettings)vc.csObj;
+        _this.alignByGeometry = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
 static void TextGenerationSettings_resizeTextForBestFit(JSVCall vc)
 {
     if (vc.bGet) {
@@ -308,6 +322,7 @@ public static void __Register()
         TextGenerationSettings_scaleFactor,
         TextGenerationSettings_fontStyle,
         TextGenerationSettings_textAnchor,
+        TextGenerationSettings_alignByGeometry,
         TextGenerationSettings_resizeTextForBestFit,
         TextGenerationSettings_resizeTextMinSize,
         TextGenerationSettings_resizeTextMaxSize,

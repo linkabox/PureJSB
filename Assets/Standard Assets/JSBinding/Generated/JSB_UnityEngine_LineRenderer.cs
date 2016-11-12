@@ -80,6 +80,28 @@ static bool LineRenderer_SetPosition__Int32__Vector3(JSVCall vc, int argc)
     return true;
 }
 
+static bool LineRenderer_SetPositions__Vector3_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.Vector3[] arg0 = JSDataExchangeMgr.GetJSArg<UnityEngine.Vector3[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Vector3[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        ((UnityEngine.LineRenderer)vc.csObj).SetPositions(arg0);
+    }
+
+    return true;
+}
+
 static bool LineRenderer_SetVertexCount__Int32(JSVCall vc, int argc)
 {
     int len = argc;
@@ -130,6 +152,7 @@ public static void __Register()
     {
         new JSMgr.MethodCallBackInfo(LineRenderer_SetColors__Color__Color, "SetColors"),
         new JSMgr.MethodCallBackInfo(LineRenderer_SetPosition__Int32__Vector3, "SetPosition"),
+        new JSMgr.MethodCallBackInfo(LineRenderer_SetPositions__Vector3_Array, "SetPositions"),
         new JSMgr.MethodCallBackInfo(LineRenderer_SetVertexCount__Int32, "SetVertexCount"),
         new JSMgr.MethodCallBackInfo(LineRenderer_SetWidth__Single__Single, "SetWidth"),
 

@@ -92,12 +92,41 @@ static void Display_main(JSVCall vc)
 
 // methods
 
+static bool Display_Activate__Int32__Int32__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        ((UnityEngine.Display)vc.csObj).Activate(arg0, arg1, arg2);
+    }
+
+    return true;
+}
+
 static bool Display_Activate(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 0) 
     {
         ((UnityEngine.Display)vc.csObj).Activate();
+    }
+
+    return true;
+}
+
+static bool Display_SetParams__Int32__Int32__Int32__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        ((UnityEngine.Display)vc.csObj).SetParams(arg0, arg1, arg2, arg3);
     }
 
     return true;
@@ -115,7 +144,7 @@ static bool Display_SetRenderingResolution__Int32__Int32(JSVCall vc, int argc)
 
     return true;
 }
-public static UnityEngine.Display.DisplaysUpdatedDelegate Display_add_onDisplaysUpdated_GetDelegate_member2_arg0(CSRepresentedObject objFunction)
+public static UnityEngine.Display.DisplaysUpdatedDelegate Display_add_onDisplaysUpdated_GetDelegate_member4_arg0(CSRepresentedObject objFunction)
 {
     if (objFunction == null || objFunction.jsObjID == 0)
     {
@@ -141,7 +170,7 @@ static bool Display_add_onDisplaysUpdated__DisplaysUpdatedDelegate(JSVCall vc, i
         UnityEngine.Display.DisplaysUpdatedDelegate action = JSDataExchangeMgr.GetJSArg<UnityEngine.Display.DisplaysUpdatedDelegate>(()=>
         {
             if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return Display_add_onDisplaysUpdated_GetDelegate_member2_arg0(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+                return Display_add_onDisplaysUpdated_GetDelegate_member4_arg0(JSApi.getFunctionS((int)JSApi.GetType.Arg));
             else
                 return (UnityEngine.Display.DisplaysUpdatedDelegate)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         });
@@ -150,7 +179,19 @@ static bool Display_add_onDisplaysUpdated__DisplaysUpdatedDelegate(JSVCall vc, i
 
     return true;
 }
-public static UnityEngine.Display.DisplaysUpdatedDelegate Display_remove_onDisplaysUpdated_GetDelegate_member3_arg0(CSRepresentedObject objFunction)
+
+static bool Display_RelativeMouseAt__Vector3(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.Vector3 arg0 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+                JSApi.setVector3S((int)JSApi.SetType.Rval, UnityEngine.Display.RelativeMouseAt(arg0));
+    }
+
+    return true;
+}
+public static UnityEngine.Display.DisplaysUpdatedDelegate Display_remove_onDisplaysUpdated_GetDelegate_member6_arg0(CSRepresentedObject objFunction)
 {
     if (objFunction == null || objFunction.jsObjID == 0)
     {
@@ -176,7 +217,7 @@ static bool Display_remove_onDisplaysUpdated__DisplaysUpdatedDelegate(JSVCall vc
         UnityEngine.Display.DisplaysUpdatedDelegate action = JSDataExchangeMgr.GetJSArg<UnityEngine.Display.DisplaysUpdatedDelegate>(()=>
         {
             if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return Display_remove_onDisplaysUpdated_GetDelegate_member3_arg0(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+                return Display_remove_onDisplaysUpdated_GetDelegate_member6_arg0(JSApi.getFunctionS((int)JSApi.GetType.Arg));
             else
                 return (UnityEngine.Display.DisplaysUpdatedDelegate)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         });
@@ -215,9 +256,12 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
+        new JSMgr.MethodCallBackInfo(Display_Activate__Int32__Int32__Int32, "Activate"),
         new JSMgr.MethodCallBackInfo(Display_Activate, "Activate"),
+        new JSMgr.MethodCallBackInfo(Display_SetParams__Int32__Int32__Int32__Int32, "SetParams"),
         new JSMgr.MethodCallBackInfo(Display_SetRenderingResolution__Int32__Int32, "SetRenderingResolution"),
         new JSMgr.MethodCallBackInfo(Display_add_onDisplaysUpdated__DisplaysUpdatedDelegate, "add_onDisplaysUpdated"),
+        new JSMgr.MethodCallBackInfo(Display_RelativeMouseAt__Vector3, "RelativeMouseAt"),
         new JSMgr.MethodCallBackInfo(Display_remove_onDisplaysUpdated__DisplaysUpdatedDelegate, "remove_onDisplaysUpdated"),
 
     };

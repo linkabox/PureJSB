@@ -95,6 +95,19 @@ static void GL_sRGBWrite(JSVCall vc)
         UnityEngine.GL.sRGBWrite = arg0;
     }
 }
+static void GL_invertCulling(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.GL.invertCulling;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.GL.invertCulling = arg0;
+    }
+}
 
 // methods
 
@@ -175,6 +188,17 @@ static bool GL_End(JSVCall vc, int argc)
     return true;
 }
 
+static bool GL_Flush(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+        UnityEngine.GL.Flush();
+    }
+
+    return true;
+}
+
 static bool GL_GetGPUProjectionMatrix__Matrix4x4__Boolean(JSVCall vc, int argc)
 {
     int len = argc;
@@ -199,13 +223,14 @@ static bool GL_InvalidateState(JSVCall vc, int argc)
     return true;
 }
 
-static bool GL_IssuePluginEvent__Int32(JSVCall vc, int argc)
+static bool GL_IssuePluginEvent__IntPtr__Int32(JSVCall vc, int argc)
 {
     int len = argc;
-    if (len == 1) 
+    if (len == 2) 
     {
-        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.GL.IssuePluginEvent(arg0);
+        System.IntPtr arg0 = (System.IntPtr)JSApi.getIntPtr((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.GL.IssuePluginEvent(arg0, arg1);
     }
 
     return true;
@@ -347,13 +372,12 @@ static bool GL_PushMatrix(JSVCall vc, int argc)
     return true;
 }
 
-static bool GL_SetRevertBackfacing__Boolean(JSVCall vc, int argc)
+static bool GL_RenderTargetBarrier(JSVCall vc, int argc)
 {
     int len = argc;
-    if (len == 1) 
+    if (len == 0) 
     {
-        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        UnityEngine.GL.SetRevertBackfacing(arg0);
+        UnityEngine.GL.RenderTargetBarrier();
     }
 
     return true;
@@ -456,6 +480,7 @@ public static void __Register()
         GL_modelview,
         GL_wireframe,
         GL_sRGBWrite,
+        GL_invertCulling,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]
@@ -471,9 +496,10 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(GL_ClearWithSkybox__Boolean__Camera, "ClearWithSkybox"),
         new JSMgr.MethodCallBackInfo(GL_Color__Color, "Color"),
         new JSMgr.MethodCallBackInfo(GL_End, "End"),
+        new JSMgr.MethodCallBackInfo(GL_Flush, "Flush"),
         new JSMgr.MethodCallBackInfo(GL_GetGPUProjectionMatrix__Matrix4x4__Boolean, "GetGPUProjectionMatrix"),
         new JSMgr.MethodCallBackInfo(GL_InvalidateState, "InvalidateState"),
-        new JSMgr.MethodCallBackInfo(GL_IssuePluginEvent__Int32, "IssuePluginEvent"),
+        new JSMgr.MethodCallBackInfo(GL_IssuePluginEvent__IntPtr__Int32, "IssuePluginEvent"),
         new JSMgr.MethodCallBackInfo(GL_LoadIdentity, "LoadIdentity"),
         new JSMgr.MethodCallBackInfo(GL_LoadOrtho, "LoadOrtho"),
         new JSMgr.MethodCallBackInfo(GL_LoadPixelMatrix__Single__Single__Single__Single, "LoadPixelMatrix"),
@@ -485,7 +511,7 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(GL_MultMatrix__Matrix4x4, "MultMatrix"),
         new JSMgr.MethodCallBackInfo(GL_PopMatrix, "PopMatrix"),
         new JSMgr.MethodCallBackInfo(GL_PushMatrix, "PushMatrix"),
-        new JSMgr.MethodCallBackInfo(GL_SetRevertBackfacing__Boolean, "SetRevertBackfacing"),
+        new JSMgr.MethodCallBackInfo(GL_RenderTargetBarrier, "RenderTargetBarrier"),
         new JSMgr.MethodCallBackInfo(GL_TexCoord__Vector3, "TexCoord"),
         new JSMgr.MethodCallBackInfo(GL_TexCoord2__Single__Single, "TexCoord2"),
         new JSMgr.MethodCallBackInfo(GL_TexCoord3__Single__Single__Single, "TexCoord3"),

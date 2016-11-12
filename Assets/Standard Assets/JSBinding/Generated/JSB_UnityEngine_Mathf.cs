@@ -70,18 +70,6 @@ static void Mathf_Epsilon(JSVCall vc)
 
 // methods
 
-static bool Mathf_Abs__Single(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(UnityEngine.Mathf.Abs(arg0)));
-    }
-
-    return true;
-}
-
 static bool Mathf_Abs__Int32(JSVCall vc, int argc)
 {
     int len = argc;
@@ -89,6 +77,18 @@ static bool Mathf_Abs__Int32(JSVCall vc, int argc)
     {
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
                 JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.Mathf.Abs(arg0)));
+    }
+
+    return true;
+}
+
+static bool Mathf_Abs__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(UnityEngine.Mathf.Abs(arg0)));
     }
 
     return true;
@@ -269,6 +269,18 @@ static bool Mathf_Exp__Single(JSVCall vc, int argc)
     return true;
 }
 
+static bool Mathf_FloatToHalf__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                JSApi.setUInt16((int)JSApi.SetType.Rval, (System.UInt16)(UnityEngine.Mathf.FloatToHalf(arg0)));
+    }
+
+    return true;
+}
+
 static bool Mathf_Floor__Single(JSVCall vc, int argc)
 {
     int len = argc;
@@ -314,6 +326,18 @@ static bool Mathf_GammaToLinearSpace__Single(JSVCall vc, int argc)
     {
         System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
                 JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(UnityEngine.Mathf.GammaToLinearSpace(arg0)));
+    }
+
+    return true;
+}
+
+static bool Mathf_HalfToFloat__UInt16(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.UInt16 arg0 = (System.UInt16)JSApi.getUInt16((int)JSApi.GetType.Arg);
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(UnityEngine.Mathf.HalfToFloat(arg0)));
     }
 
     return true;
@@ -368,6 +392,20 @@ static bool Mathf_LerpAngle__Single__Single__Single(JSVCall vc, int argc)
         System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
                 JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(UnityEngine.Mathf.LerpAngle(arg0, arg1, arg2)));
+    }
+
+    return true;
+}
+
+static bool Mathf_LerpUnclamped__Single__Single__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(UnityEngine.Mathf.LerpUnclamped(arg0, arg1, arg2)));
     }
 
     return true;
@@ -492,19 +530,6 @@ static bool Mathf_Max__Int32_Array(JSVCall vc, int argc)
     return true;
 }
 
-static bool Mathf_Min__Single__Single(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 2) 
-    {
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(UnityEngine.Mathf.Min(arg0, arg1)));
-    }
-
-    return true;
-}
-
 static bool Mathf_Min__Int32__Int32(JSVCall vc, int argc)
 {
     int len = argc;
@@ -513,6 +538,19 @@ static bool Mathf_Min__Int32__Int32(JSVCall vc, int argc)
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
                 JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.Mathf.Min(arg0, arg1)));
+    }
+
+    return true;
+}
+
+static bool Mathf_Min__Single__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(UnityEngine.Mathf.Min(arg0, arg1)));
     }
 
     return true;
@@ -882,8 +920,8 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
-        new JSMgr.MethodCallBackInfo(Mathf_Abs__Single, "Abs"),
         new JSMgr.MethodCallBackInfo(Mathf_Abs__Int32, "Abs"),
+        new JSMgr.MethodCallBackInfo(Mathf_Abs__Single, "Abs"),
         new JSMgr.MethodCallBackInfo(Mathf_Acos__Single, "Acos"),
         new JSMgr.MethodCallBackInfo(Mathf_Approximately__Single__Single, "Approximately"),
         new JSMgr.MethodCallBackInfo(Mathf_Asin__Single, "Asin"),
@@ -898,14 +936,17 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Mathf_Cos__Single, "Cos"),
         new JSMgr.MethodCallBackInfo(Mathf_DeltaAngle__Single__Single, "DeltaAngle"),
         new JSMgr.MethodCallBackInfo(Mathf_Exp__Single, "Exp"),
+        new JSMgr.MethodCallBackInfo(Mathf_FloatToHalf__Single, "FloatToHalf"),
         new JSMgr.MethodCallBackInfo(Mathf_Floor__Single, "Floor"),
         new JSMgr.MethodCallBackInfo(Mathf_FloorToInt__Single, "FloorToInt"),
         new JSMgr.MethodCallBackInfo(Mathf_Gamma__Single__Single__Single, "Gamma"),
         new JSMgr.MethodCallBackInfo(Mathf_GammaToLinearSpace__Single, "GammaToLinearSpace"),
+        new JSMgr.MethodCallBackInfo(Mathf_HalfToFloat__UInt16, "HalfToFloat"),
         new JSMgr.MethodCallBackInfo(Mathf_InverseLerp__Single__Single__Single, "InverseLerp"),
         new JSMgr.MethodCallBackInfo(Mathf_IsPowerOfTwo__Int32, "IsPowerOfTwo"),
         new JSMgr.MethodCallBackInfo(Mathf_Lerp__Single__Single__Single, "Lerp"),
         new JSMgr.MethodCallBackInfo(Mathf_LerpAngle__Single__Single__Single, "LerpAngle"),
+        new JSMgr.MethodCallBackInfo(Mathf_LerpUnclamped__Single__Single__Single, "LerpUnclamped"),
         new JSMgr.MethodCallBackInfo(Mathf_LinearToGammaSpace__Single, "LinearToGammaSpace"),
         new JSMgr.MethodCallBackInfo(Mathf_Log__Single__Single, "Log"),
         new JSMgr.MethodCallBackInfo(Mathf_Log__Single, "Log"),
@@ -914,8 +955,8 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Mathf_Max__Int32__Int32, "Max"),
         new JSMgr.MethodCallBackInfo(Mathf_Max__Single_Array, "Max"),
         new JSMgr.MethodCallBackInfo(Mathf_Max__Int32_Array, "Max"),
-        new JSMgr.MethodCallBackInfo(Mathf_Min__Single__Single, "Min"),
         new JSMgr.MethodCallBackInfo(Mathf_Min__Int32__Int32, "Min"),
+        new JSMgr.MethodCallBackInfo(Mathf_Min__Single__Single, "Min"),
         new JSMgr.MethodCallBackInfo(Mathf_Min__Int32_Array, "Min"),
         new JSMgr.MethodCallBackInfo(Mathf_Min__Single_Array, "Min"),
         new JSMgr.MethodCallBackInfo(Mathf_MoveTowards__Single__Single__Single, "MoveTowards"),

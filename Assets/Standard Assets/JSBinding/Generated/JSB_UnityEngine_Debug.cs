@@ -36,6 +36,11 @@ static bool Debug_Debug1(JSVCall vc, int argc)
 // fields
 
 // properties
+static void Debug_logger(JSVCall vc)
+{
+        var result = UnityEngine.Debug.logger;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
 static void Debug_developerConsoleVisible(JSVCall vc)
 {
     if (vc.bGet)
@@ -56,6 +61,134 @@ static void Debug_isDebugBuild(JSVCall vc)
 }
 
 // methods
+
+static bool Debug_Assert__Boolean__String__UEObject(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        UnityEngine.Object arg2 = (UnityEngine.Object)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Debug.Assert(arg0, arg1, arg2);
+    }
+
+    return true;
+}
+
+static bool Debug_Assert__Boolean__Object__UEObject(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        System.Object arg1 = (System.Object)JSMgr.datax.getWhatever((int)JSApi.GetType.Arg);
+        UnityEngine.Object arg2 = (UnityEngine.Object)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Debug.Assert(arg0, arg1, arg2);
+    }
+
+    return true;
+}
+
+static bool Debug_Assert__Boolean__UEObject(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Object arg1 = (UnityEngine.Object)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Debug.Assert(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Debug_Assert__Boolean__Object(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        System.Object arg1 = (System.Object)JSMgr.datax.getWhatever((int)JSApi.GetType.Arg);
+        UnityEngine.Debug.Assert(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Debug_Assert__Boolean__String(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        UnityEngine.Debug.Assert(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Debug_Assert__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Debug.Assert(arg0);
+    }
+
+    return true;
+}
+
+static bool Debug_AssertFormat__Boolean__UEObject__String__Object_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.Object arg1 = (UnityEngine.Object)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.String arg2 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Object[] arg3 = JSDataExchangeMgr.GetJSArg<System.Object[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.Object[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.Object)JSMgr.datax.getWhatever((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Debug.AssertFormat(arg0, arg1, arg2, arg3);
+    }
+
+    return true;
+}
+
+static bool Debug_AssertFormat__Boolean__String__Object_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Object[] arg2 = JSDataExchangeMgr.GetJSArg<System.Object[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.Object[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.Object)JSMgr.datax.getWhatever((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Debug.AssertFormat(arg0, arg1, arg2);
+    }
+
+    return true;
+}
 
 static bool Debug_Break(JSVCall vc, int argc)
 {
@@ -231,6 +364,78 @@ static bool Debug_Log__Object(JSVCall vc, int argc)
     return true;
 }
 
+static bool Debug_LogAssertion__Object__UEObject(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Object arg0 = (System.Object)JSMgr.datax.getWhatever((int)JSApi.GetType.Arg);
+        UnityEngine.Object arg1 = (UnityEngine.Object)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Debug.LogAssertion(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Debug_LogAssertion__Object(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.Object arg0 = (System.Object)JSMgr.datax.getWhatever((int)JSApi.GetType.Arg);
+        UnityEngine.Debug.LogAssertion(arg0);
+    }
+
+    return true;
+}
+
+static bool Debug_LogAssertionFormat__UEObject__String__Object_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        UnityEngine.Object arg0 = (UnityEngine.Object)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Object[] arg2 = JSDataExchangeMgr.GetJSArg<System.Object[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.Object[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.Object)JSMgr.datax.getWhatever((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Debug.LogAssertionFormat(arg0, arg1, arg2);
+    }
+
+    return true;
+}
+
+static bool Debug_LogAssertionFormat__String__Object_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Object[] arg1 = JSDataExchangeMgr.GetJSArg<System.Object[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.Object[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.Object)JSMgr.datax.getWhatever((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Debug.LogAssertionFormat(arg0, arg1);
+    }
+
+    return true;
+}
+
 static bool Debug_LogError__Object__UEObject(JSVCall vc, int argc)
 {
     int len = argc;
@@ -251,6 +456,53 @@ static bool Debug_LogError__Object(JSVCall vc, int argc)
     {
         System.Object arg0 = (System.Object)JSMgr.datax.getWhatever((int)JSApi.GetType.Arg);
         UnityEngine.Debug.LogError(arg0);
+    }
+
+    return true;
+}
+
+static bool Debug_LogErrorFormat__UEObject__String__Object_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        UnityEngine.Object arg0 = (UnityEngine.Object)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Object[] arg2 = JSDataExchangeMgr.GetJSArg<System.Object[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.Object[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.Object)JSMgr.datax.getWhatever((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Debug.LogErrorFormat(arg0, arg1, arg2);
+    }
+
+    return true;
+}
+
+static bool Debug_LogErrorFormat__String__Object_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Object[] arg1 = JSDataExchangeMgr.GetJSArg<System.Object[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.Object[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.Object)JSMgr.datax.getWhatever((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Debug.LogErrorFormat(arg0, arg1);
     }
 
     return true;
@@ -281,6 +533,53 @@ static bool Debug_LogException__Exception(JSVCall vc, int argc)
     return true;
 }
 
+static bool Debug_LogFormat__UEObject__String__Object_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        UnityEngine.Object arg0 = (UnityEngine.Object)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Object[] arg2 = JSDataExchangeMgr.GetJSArg<System.Object[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.Object[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.Object)JSMgr.datax.getWhatever((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Debug.LogFormat(arg0, arg1, arg2);
+    }
+
+    return true;
+}
+
+static bool Debug_LogFormat__String__Object_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Object[] arg1 = JSDataExchangeMgr.GetJSArg<System.Object[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.Object[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.Object)JSMgr.datax.getWhatever((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Debug.LogFormat(arg0, arg1);
+    }
+
+    return true;
+}
+
 static bool Debug_LogWarning__Object__UEObject(JSVCall vc, int argc)
 {
     int len = argc;
@@ -306,6 +605,53 @@ static bool Debug_LogWarning__Object(JSVCall vc, int argc)
     return true;
 }
 
+static bool Debug_LogWarningFormat__UEObject__String__Object_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        UnityEngine.Object arg0 = (UnityEngine.Object)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Object[] arg2 = JSDataExchangeMgr.GetJSArg<System.Object[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.Object[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.Object)JSMgr.datax.getWhatever((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Debug.LogWarningFormat(arg0, arg1, arg2);
+    }
+
+    return true;
+}
+
+static bool Debug_LogWarningFormat__String__Object_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Object[] arg1 = JSDataExchangeMgr.GetJSArg<System.Object[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.Object[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.Object)JSMgr.datax.getWhatever((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Debug.LogWarningFormat(arg0, arg1);
+    }
+
+    return true;
+}
+
 
 //register
 
@@ -319,6 +665,7 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
+        Debug_logger,
         Debug_developerConsoleVisible,
         Debug_isDebugBuild,
 
@@ -330,6 +677,14 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
+        new JSMgr.MethodCallBackInfo(Debug_Assert__Boolean__String__UEObject, "Assert"),
+        new JSMgr.MethodCallBackInfo(Debug_Assert__Boolean__Object__UEObject, "Assert"),
+        new JSMgr.MethodCallBackInfo(Debug_Assert__Boolean__UEObject, "Assert"),
+        new JSMgr.MethodCallBackInfo(Debug_Assert__Boolean__Object, "Assert"),
+        new JSMgr.MethodCallBackInfo(Debug_Assert__Boolean__String, "Assert"),
+        new JSMgr.MethodCallBackInfo(Debug_Assert__Boolean, "Assert"),
+        new JSMgr.MethodCallBackInfo(Debug_AssertFormat__Boolean__UEObject__String__Object_Array, "AssertFormat"),
+        new JSMgr.MethodCallBackInfo(Debug_AssertFormat__Boolean__String__Object_Array, "AssertFormat"),
         new JSMgr.MethodCallBackInfo(Debug_Break, "Break"),
         new JSMgr.MethodCallBackInfo(Debug_ClearDeveloperConsole, "ClearDeveloperConsole"),
         new JSMgr.MethodCallBackInfo(Debug_DebugBreak, "DebugBreak"),
@@ -343,12 +698,22 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Debug_DrawRay__Vector3__Vector3, "DrawRay"),
         new JSMgr.MethodCallBackInfo(Debug_Log__Object__UEObject, "Log"),
         new JSMgr.MethodCallBackInfo(Debug_Log__Object, "Log"),
+        new JSMgr.MethodCallBackInfo(Debug_LogAssertion__Object__UEObject, "LogAssertion"),
+        new JSMgr.MethodCallBackInfo(Debug_LogAssertion__Object, "LogAssertion"),
+        new JSMgr.MethodCallBackInfo(Debug_LogAssertionFormat__UEObject__String__Object_Array, "LogAssertionFormat"),
+        new JSMgr.MethodCallBackInfo(Debug_LogAssertionFormat__String__Object_Array, "LogAssertionFormat"),
         new JSMgr.MethodCallBackInfo(Debug_LogError__Object__UEObject, "LogError"),
         new JSMgr.MethodCallBackInfo(Debug_LogError__Object, "LogError"),
+        new JSMgr.MethodCallBackInfo(Debug_LogErrorFormat__UEObject__String__Object_Array, "LogErrorFormat"),
+        new JSMgr.MethodCallBackInfo(Debug_LogErrorFormat__String__Object_Array, "LogErrorFormat"),
         new JSMgr.MethodCallBackInfo(Debug_LogException__Exception__UEObject, "LogException"),
         new JSMgr.MethodCallBackInfo(Debug_LogException__Exception, "LogException"),
+        new JSMgr.MethodCallBackInfo(Debug_LogFormat__UEObject__String__Object_Array, "LogFormat"),
+        new JSMgr.MethodCallBackInfo(Debug_LogFormat__String__Object_Array, "LogFormat"),
         new JSMgr.MethodCallBackInfo(Debug_LogWarning__Object__UEObject, "LogWarning"),
         new JSMgr.MethodCallBackInfo(Debug_LogWarning__Object, "LogWarning"),
+        new JSMgr.MethodCallBackInfo(Debug_LogWarningFormat__UEObject__String__Object_Array, "LogWarningFormat"),
+        new JSMgr.MethodCallBackInfo(Debug_LogWarningFormat__String__Object_Array, "LogWarningFormat"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

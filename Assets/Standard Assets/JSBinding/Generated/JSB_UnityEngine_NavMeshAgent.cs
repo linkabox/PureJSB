@@ -237,19 +237,19 @@ static void NavMeshAgent_path(JSVCall vc)
         _this.path = arg0;
     }
 }
-static void NavMeshAgent_walkableMask(JSVCall vc)
+static void NavMeshAgent_areaMask(JSVCall vc)
 {
     if (vc.bGet)
     { 
         UnityEngine.NavMeshAgent _this = (UnityEngine.NavMeshAgent)vc.csObj;
-        var result = _this.walkableMask;
+        var result = _this.areaMask;
                 JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
     }
     else
     { 
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         UnityEngine.NavMeshAgent _this = (UnityEngine.NavMeshAgent)vc.csObj;
-        _this.walkableMask = arg0;
+        _this.areaMask = arg0;
     }
 }
 static void NavMeshAgent_speed(JSVCall vc)
@@ -387,6 +387,12 @@ static void NavMeshAgent_avoidancePriority(JSVCall vc)
         _this.avoidancePriority = arg0;
     }
 }
+static void NavMeshAgent_isOnNavMesh(JSVCall vc)
+{
+        UnityEngine.NavMeshAgent _this = (UnityEngine.NavMeshAgent)vc.csObj;
+        var result = _this.isOnNavMesh;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
 
 // methods
 
@@ -441,13 +447,13 @@ static bool NavMeshAgent_FindClosestEdge__NavMeshHit(JSVCall vc, int argc)
     return true;
 }
 
-static bool NavMeshAgent_GetLayerCost__Int32(JSVCall vc, int argc)
+static bool NavMeshAgent_GetAreaCost__Int32(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 1) 
     {
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(((UnityEngine.NavMeshAgent)vc.csObj).GetLayerCost(arg0)));
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(((UnityEngine.NavMeshAgent)vc.csObj).GetAreaCost(arg0)));
     }
 
     return true;
@@ -520,6 +526,19 @@ static bool NavMeshAgent_SamplePathPosition__Int32__Single__NavMeshHit(JSVCall v
     return true;
 }
 
+static bool NavMeshAgent_SetAreaCost__Int32__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        ((UnityEngine.NavMeshAgent)vc.csObj).SetAreaCost(arg0, arg1);
+    }
+
+    return true;
+}
+
 static bool NavMeshAgent_SetDestination__Vector3(JSVCall vc, int argc)
 {
     int len = argc;
@@ -532,19 +551,6 @@ static bool NavMeshAgent_SetDestination__Vector3(JSVCall vc, int argc)
     return true;
 }
 
-static bool NavMeshAgent_SetLayerCost__Int32__Single(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 2) 
-    {
-        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        ((UnityEngine.NavMeshAgent)vc.csObj).SetLayerCost(arg0, arg1);
-    }
-
-    return true;
-}
-
 static bool NavMeshAgent_SetPath__NavMeshPath(JSVCall vc, int argc)
 {
     int len = argc;
@@ -552,18 +558,6 @@ static bool NavMeshAgent_SetPath__NavMeshPath(JSVCall vc, int argc)
     {
         UnityEngine.NavMeshPath arg0 = (UnityEngine.NavMeshPath)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(((UnityEngine.NavMeshAgent)vc.csObj).SetPath(arg0)));
-    }
-
-    return true;
-}
-
-static bool NavMeshAgent_Stop__Boolean(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        ((UnityEngine.NavMeshAgent)vc.csObj).Stop(arg0);
     }
 
     return true;
@@ -625,7 +619,7 @@ public static void __Register()
         NavMeshAgent_pathStatus,
         NavMeshAgent_pathEndPosition,
         NavMeshAgent_path,
-        NavMeshAgent_walkableMask,
+        NavMeshAgent_areaMask,
         NavMeshAgent_speed,
         NavMeshAgent_angularSpeed,
         NavMeshAgent_acceleration,
@@ -635,6 +629,7 @@ public static void __Register()
         NavMeshAgent_height,
         NavMeshAgent_obstacleAvoidanceType,
         NavMeshAgent_avoidancePriority,
+        NavMeshAgent_isOnNavMesh,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]
@@ -648,16 +643,15 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(NavMeshAgent_CalculatePath__Vector3__NavMeshPath, "CalculatePath"),
         new JSMgr.MethodCallBackInfo(NavMeshAgent_CompleteOffMeshLink, "CompleteOffMeshLink"),
         new JSMgr.MethodCallBackInfo(NavMeshAgent_FindClosestEdge__NavMeshHit, "FindClosestEdge"),
-        new JSMgr.MethodCallBackInfo(NavMeshAgent_GetLayerCost__Int32, "GetLayerCost"),
+        new JSMgr.MethodCallBackInfo(NavMeshAgent_GetAreaCost__Int32, "GetAreaCost"),
         new JSMgr.MethodCallBackInfo(NavMeshAgent_Move__Vector3, "Move"),
         new JSMgr.MethodCallBackInfo(NavMeshAgent_Raycast__Vector3__NavMeshHit, "Raycast"),
         new JSMgr.MethodCallBackInfo(NavMeshAgent_ResetPath, "ResetPath"),
         new JSMgr.MethodCallBackInfo(NavMeshAgent_Resume, "Resume"),
         new JSMgr.MethodCallBackInfo(NavMeshAgent_SamplePathPosition__Int32__Single__NavMeshHit, "SamplePathPosition"),
+        new JSMgr.MethodCallBackInfo(NavMeshAgent_SetAreaCost__Int32__Single, "SetAreaCost"),
         new JSMgr.MethodCallBackInfo(NavMeshAgent_SetDestination__Vector3, "SetDestination"),
-        new JSMgr.MethodCallBackInfo(NavMeshAgent_SetLayerCost__Int32__Single, "SetLayerCost"),
         new JSMgr.MethodCallBackInfo(NavMeshAgent_SetPath__NavMeshPath, "SetPath"),
-        new JSMgr.MethodCallBackInfo(NavMeshAgent_Stop__Boolean, "Stop"),
         new JSMgr.MethodCallBackInfo(NavMeshAgent_Stop, "Stop"),
         new JSMgr.MethodCallBackInfo(NavMeshAgent_Warp__Vector3, "Warp"),
 

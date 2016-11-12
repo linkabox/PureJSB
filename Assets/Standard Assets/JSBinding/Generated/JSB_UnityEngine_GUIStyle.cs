@@ -52,21 +52,6 @@ static bool GUIStyle_GUIStyle2(JSVCall vc, int argc)
 // fields
 
 // properties
-static void GUIStyle_name(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.GUIStyle _this = (UnityEngine.GUIStyle)vc.csObj;
-        var result = _this.name;
-                JSApi.setStringS((int)JSApi.SetType.Rval, result);
-    }
-    else
-    { 
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        UnityEngine.GUIStyle _this = (UnityEngine.GUIStyle)vc.csObj;
-        _this.name = arg0;
-    }
-}
 static void GUIStyle_normal(JSVCall vc)
 {
     if (vc.bGet)
@@ -247,6 +232,53 @@ static void GUIStyle_overflow(JSVCall vc)
         _this.overflow = arg0;
     }
 }
+static void GUIStyle_font(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.GUIStyle _this = (UnityEngine.GUIStyle)vc.csObj;
+        var result = _this.font;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.Font arg0 = (UnityEngine.Font)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.GUIStyle _this = (UnityEngine.GUIStyle)vc.csObj;
+        _this.font = arg0;
+    }
+}
+static void GUIStyle_lineHeight(JSVCall vc)
+{
+        UnityEngine.GUIStyle _this = (UnityEngine.GUIStyle)vc.csObj;
+        var result = _this.lineHeight;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+}
+static void GUIStyle_none(JSVCall vc)
+{
+        var result = UnityEngine.GUIStyle.none;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void GUIStyle_isHeightDependantOnWidth(JSVCall vc)
+{
+        UnityEngine.GUIStyle _this = (UnityEngine.GUIStyle)vc.csObj;
+        var result = _this.isHeightDependantOnWidth;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
+static void GUIStyle_name(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.GUIStyle _this = (UnityEngine.GUIStyle)vc.csObj;
+        var result = _this.name;
+                JSApi.setStringS((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        UnityEngine.GUIStyle _this = (UnityEngine.GUIStyle)vc.csObj;
+        _this.name = arg0;
+    }
+}
 static void GUIStyle_imagePosition(JSVCall vc)
 {
     if (vc.bGet)
@@ -382,21 +414,6 @@ static void GUIStyle_stretchHeight(JSVCall vc)
         _this.stretchHeight = arg0;
     }
 }
-static void GUIStyle_font(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.GUIStyle _this = (UnityEngine.GUIStyle)vc.csObj;
-        var result = _this.font;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-    }
-    else
-    { 
-        UnityEngine.Font arg0 = (UnityEngine.Font)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.GUIStyle _this = (UnityEngine.GUIStyle)vc.csObj;
-        _this.font = arg0;
-    }
-}
 static void GUIStyle_fontSize(JSVCall vc)
 {
     if (vc.bGet)
@@ -441,23 +458,6 @@ static void GUIStyle_richText(JSVCall vc)
         UnityEngine.GUIStyle _this = (UnityEngine.GUIStyle)vc.csObj;
         _this.richText = arg0;
     }
-}
-static void GUIStyle_lineHeight(JSVCall vc)
-{
-        UnityEngine.GUIStyle _this = (UnityEngine.GUIStyle)vc.csObj;
-        var result = _this.lineHeight;
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
-}
-static void GUIStyle_none(JSVCall vc)
-{
-        var result = UnityEngine.GUIStyle.none;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-}
-static void GUIStyle_isHeightDependantOnWidth(JSVCall vc)
-{
-        UnityEngine.GUIStyle _this = (UnityEngine.GUIStyle)vc.csObj;
-        var result = _this.isHeightDependantOnWidth;
-                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
 }
 
 // methods
@@ -705,7 +705,6 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
-        GUIStyle_name,
         GUIStyle_normal,
         GUIStyle_hover,
         GUIStyle_active,
@@ -718,6 +717,11 @@ public static void __Register()
         GUIStyle_margin,
         GUIStyle_padding,
         GUIStyle_overflow,
+        GUIStyle_font,
+        GUIStyle_lineHeight,
+        GUIStyle_none,
+        GUIStyle_isHeightDependantOnWidth,
+        GUIStyle_name,
         GUIStyle_imagePosition,
         GUIStyle_alignment,
         GUIStyle_wordWrap,
@@ -727,13 +731,9 @@ public static void __Register()
         GUIStyle_fixedHeight,
         GUIStyle_stretchWidth,
         GUIStyle_stretchHeight,
-        GUIStyle_font,
         GUIStyle_fontSize,
         GUIStyle_fontStyle,
         GUIStyle_richText,
-        GUIStyle_lineHeight,
-        GUIStyle_none,
-        GUIStyle_isHeightDependantOnWidth,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

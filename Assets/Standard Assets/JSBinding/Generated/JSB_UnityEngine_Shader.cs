@@ -42,6 +42,19 @@ static void Shader_isSupported(JSVCall vc)
         var result = _this.isSupported;
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
 }
+static void Shader_globalShaderHardwareTier(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.Shader.globalShaderHardwareTier;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
+    }
+    else
+    { 
+        UnityEngine.Rendering.ShaderHardwareTier arg0 = (UnityEngine.Rendering.ShaderHardwareTier)JSApi.getEnum((int)JSApi.GetType.Arg);
+        UnityEngine.Shader.globalShaderHardwareTier = arg0;
+    }
+}
 static void Shader_maximumLOD(JSVCall vc)
 {
     if (vc.bGet)
@@ -110,6 +123,18 @@ static bool Shader_Find__String(JSVCall vc, int argc)
     {
         System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
                 JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Shader.Find(arg0));
+    }
+
+    return true;
+}
+
+static bool Shader_IsKeywordEnabled__String(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.Shader.IsKeywordEnabled(arg0)));
     }
 
     return true;
@@ -192,14 +217,47 @@ static bool Shader_SetGlobalFloat__String__Single(JSVCall vc, int argc)
     return true;
 }
 
-static bool Shader_SetGlobalInt__Int32__Int32(JSVCall vc, int argc)
+static bool Shader_SetGlobalFloatArray__Int32__Single_Array(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 2) 
     {
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.Shader.SetGlobalInt(arg0, arg1);
+        System.Single[] arg1 = JSDataExchangeMgr.GetJSArg<System.Single[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.Single[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.Single)JSApi.getSingle((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Shader.SetGlobalFloatArray(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Shader_SetGlobalFloatArray__String__Single_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Single[] arg1 = JSDataExchangeMgr.GetJSArg<System.Single[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.Single[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.Single)JSApi.getSingle((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Shader.SetGlobalFloatArray(arg0, arg1);
     }
 
     return true;
@@ -218,14 +276,14 @@ static bool Shader_SetGlobalInt__String__Int32(JSVCall vc, int argc)
     return true;
 }
 
-static bool Shader_SetGlobalMatrix__String__Matrix4x4(JSVCall vc, int argc)
+static bool Shader_SetGlobalInt__Int32__Int32(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 2) 
     {
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        UnityEngine.Matrix4x4 arg1 = (UnityEngine.Matrix4x4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.Shader.SetGlobalMatrix(arg0, arg1);
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Shader.SetGlobalInt(arg0, arg1);
     }
 
     return true;
@@ -244,27 +302,60 @@ static bool Shader_SetGlobalMatrix__Int32__Matrix4x4(JSVCall vc, int argc)
     return true;
 }
 
-static bool Shader_SetGlobalTexGenMode__String__TexGenMode(JSVCall vc, int argc)
+static bool Shader_SetGlobalMatrix__String__Matrix4x4(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 2) 
     {
         System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        UnityEngine.TexGenMode arg1 = (UnityEngine.TexGenMode)JSApi.getEnum((int)JSApi.GetType.Arg);
-        UnityEngine.Shader.SetGlobalTexGenMode(arg0, arg1);
+        UnityEngine.Matrix4x4 arg1 = (UnityEngine.Matrix4x4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Shader.SetGlobalMatrix(arg0, arg1);
     }
 
     return true;
 }
 
-static bool Shader_SetGlobalTexture__String__Texture(JSVCall vc, int argc)
+static bool Shader_SetGlobalMatrixArray__Int32__Matrix4x4_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Matrix4x4[] arg1 = JSDataExchangeMgr.GetJSArg<UnityEngine.Matrix4x4[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Matrix4x4[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Matrix4x4)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Shader.SetGlobalMatrixArray(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Shader_SetGlobalMatrixArray__String__Matrix4x4_Array(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 2) 
     {
         System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        UnityEngine.Texture arg1 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.Shader.SetGlobalTexture(arg0, arg1);
+        UnityEngine.Matrix4x4[] arg1 = JSDataExchangeMgr.GetJSArg<UnityEngine.Matrix4x4[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Matrix4x4[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Matrix4x4)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Shader.SetGlobalMatrixArray(arg0, arg1);
     }
 
     return true;
@@ -283,14 +374,27 @@ static bool Shader_SetGlobalTexture__Int32__Texture(JSVCall vc, int argc)
     return true;
 }
 
-static bool Shader_SetGlobalTextureMatrixName__String__String(JSVCall vc, int argc)
+static bool Shader_SetGlobalTexture__String__Texture(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 2) 
     {
         System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        UnityEngine.Shader.SetGlobalTextureMatrixName(arg0, arg1);
+        UnityEngine.Texture arg1 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Shader.SetGlobalTexture(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Shader_SetGlobalVector__Int32__Vector4(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Vector4 arg1 = (UnityEngine.Vector4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Shader.SetGlobalVector(arg0, arg1);
     }
 
     return true;
@@ -309,14 +413,47 @@ static bool Shader_SetGlobalVector__String__Vector4(JSVCall vc, int argc)
     return true;
 }
 
-static bool Shader_SetGlobalVector__Int32__Vector4(JSVCall vc, int argc)
+static bool Shader_SetGlobalVectorArray__Int32__Vector4_Array(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 2) 
     {
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.Vector4 arg1 = (UnityEngine.Vector4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.Shader.SetGlobalVector(arg0, arg1);
+        UnityEngine.Vector4[] arg1 = JSDataExchangeMgr.GetJSArg<UnityEngine.Vector4[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Vector4[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Vector4)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Shader.SetGlobalVectorArray(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool Shader_SetGlobalVectorArray__String__Vector4_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        UnityEngine.Vector4[] arg1 = JSDataExchangeMgr.GetJSArg<UnityEngine.Vector4[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Vector4[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Vector4)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.Shader.SetGlobalVectorArray(arg0, arg1);
     }
 
     return true;
@@ -347,6 +484,7 @@ public static void __Register()
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
         Shader_isSupported,
+        Shader_globalShaderHardwareTier,
         Shader_maximumLOD,
         Shader_globalMaximumLOD,
         Shader_renderQueue,
@@ -362,22 +500,27 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Shader_DisableKeyword__String, "DisableKeyword"),
         new JSMgr.MethodCallBackInfo(Shader_EnableKeyword__String, "EnableKeyword"),
         new JSMgr.MethodCallBackInfo(Shader_Find__String, "Find"),
+        new JSMgr.MethodCallBackInfo(Shader_IsKeywordEnabled__String, "IsKeywordEnabled"),
         new JSMgr.MethodCallBackInfo(Shader_PropertyToID__String, "PropertyToID"),
         new JSMgr.MethodCallBackInfo(Shader_SetGlobalBuffer__String__ComputeBuffer, "SetGlobalBuffer"),
         new JSMgr.MethodCallBackInfo(Shader_SetGlobalColor__String__Color, "SetGlobalColor"),
         new JSMgr.MethodCallBackInfo(Shader_SetGlobalColor__Int32__Color, "SetGlobalColor"),
         new JSMgr.MethodCallBackInfo(Shader_SetGlobalFloat__Int32__Single, "SetGlobalFloat"),
         new JSMgr.MethodCallBackInfo(Shader_SetGlobalFloat__String__Single, "SetGlobalFloat"),
-        new JSMgr.MethodCallBackInfo(Shader_SetGlobalInt__Int32__Int32, "SetGlobalInt"),
+        new JSMgr.MethodCallBackInfo(Shader_SetGlobalFloatArray__Int32__Single_Array, "SetGlobalFloatArray"),
+        new JSMgr.MethodCallBackInfo(Shader_SetGlobalFloatArray__String__Single_Array, "SetGlobalFloatArray"),
         new JSMgr.MethodCallBackInfo(Shader_SetGlobalInt__String__Int32, "SetGlobalInt"),
-        new JSMgr.MethodCallBackInfo(Shader_SetGlobalMatrix__String__Matrix4x4, "SetGlobalMatrix"),
+        new JSMgr.MethodCallBackInfo(Shader_SetGlobalInt__Int32__Int32, "SetGlobalInt"),
         new JSMgr.MethodCallBackInfo(Shader_SetGlobalMatrix__Int32__Matrix4x4, "SetGlobalMatrix"),
-        new JSMgr.MethodCallBackInfo(Shader_SetGlobalTexGenMode__String__TexGenMode, "SetGlobalTexGenMode"),
-        new JSMgr.MethodCallBackInfo(Shader_SetGlobalTexture__String__Texture, "SetGlobalTexture"),
+        new JSMgr.MethodCallBackInfo(Shader_SetGlobalMatrix__String__Matrix4x4, "SetGlobalMatrix"),
+        new JSMgr.MethodCallBackInfo(Shader_SetGlobalMatrixArray__Int32__Matrix4x4_Array, "SetGlobalMatrixArray"),
+        new JSMgr.MethodCallBackInfo(Shader_SetGlobalMatrixArray__String__Matrix4x4_Array, "SetGlobalMatrixArray"),
         new JSMgr.MethodCallBackInfo(Shader_SetGlobalTexture__Int32__Texture, "SetGlobalTexture"),
-        new JSMgr.MethodCallBackInfo(Shader_SetGlobalTextureMatrixName__String__String, "SetGlobalTextureMatrixName"),
-        new JSMgr.MethodCallBackInfo(Shader_SetGlobalVector__String__Vector4, "SetGlobalVector"),
+        new JSMgr.MethodCallBackInfo(Shader_SetGlobalTexture__String__Texture, "SetGlobalTexture"),
         new JSMgr.MethodCallBackInfo(Shader_SetGlobalVector__Int32__Vector4, "SetGlobalVector"),
+        new JSMgr.MethodCallBackInfo(Shader_SetGlobalVector__String__Vector4, "SetGlobalVector"),
+        new JSMgr.MethodCallBackInfo(Shader_SetGlobalVectorArray__Int32__Vector4_Array, "SetGlobalVectorArray"),
+        new JSMgr.MethodCallBackInfo(Shader_SetGlobalVectorArray__String__Vector4_Array, "SetGlobalVectorArray"),
         new JSMgr.MethodCallBackInfo(Shader_WarmupAllShaders, "WarmupAllShaders"),
 
     };

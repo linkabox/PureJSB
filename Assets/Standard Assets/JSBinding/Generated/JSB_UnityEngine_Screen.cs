@@ -47,47 +47,10 @@ static void Screen_resolutions(JSVCall vc)
         }
         JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
 }
-static void Screen_GetResolution(JSVCall vc)
-{
-        var result = UnityEngine.Screen.GetResolution;
-                var arrRet = result;
-        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
-        {
-            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
-            JSApi.moveSaveID2Arr(i);
-        }
-        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
-}
 static void Screen_currentResolution(JSVCall vc)
 {
         var result = UnityEngine.Screen.currentResolution;
                 JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-}
-static void Screen_showCursor(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        var result = UnityEngine.Screen.showCursor;
-                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
-    }
-    else
-    { 
-        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        UnityEngine.Screen.showCursor = arg0;
-    }
-}
-static void Screen_lockCursor(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        var result = UnityEngine.Screen.lockCursor;
-                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
-    }
-    else
-    { 
-        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        UnityEngine.Screen.lockCursor = arg0;
-    }
 }
 static void Screen_width(JSVCall vc)
 {
@@ -241,10 +204,7 @@ public static void __Register()
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
         Screen_resolutions,
-        Screen_GetResolution,
         Screen_currentResolution,
-        Screen_showCursor,
-        Screen_lockCursor,
         Screen_width,
         Screen_height,
         Screen_dpi,

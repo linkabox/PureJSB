@@ -88,6 +88,18 @@ static void Resolution_refreshRate(JSVCall vc)
 
 // methods
 
+static bool Resolution_ToString(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+UnityEngine.Resolution argThis = (UnityEngine.Resolution)vc.csObj;                JSApi.setStringS((int)JSApi.SetType.Rval, argThis.ToString());
+        JSMgr.changeJSObj(vc.jsObjID, argThis);
+    }
+
+    return true;
+}
+
 
 //register
 
@@ -113,6 +125,7 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
+        new JSMgr.MethodCallBackInfo(Resolution_ToString, "ToString"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

@@ -54,6 +54,33 @@ static bool ComputeShader_Dispatch__Int32__Int32__Int32__Int32(JSVCall vc, int a
     return true;
 }
 
+static bool ComputeShader_DispatchIndirect__Int32__ComputeBuffer__UInt32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.ComputeBuffer arg1 = (UnityEngine.ComputeBuffer)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.UInt32 arg2 = (System.UInt32)JSApi.getUInt32((int)JSApi.GetType.Arg);
+        ((UnityEngine.ComputeShader)vc.csObj).DispatchIndirect(arg0, arg1, arg2);
+    }
+
+    return true;
+}
+
+static bool ComputeShader_DispatchIndirect__Int32__ComputeBuffer(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.ComputeBuffer arg1 = (UnityEngine.ComputeBuffer)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        ((UnityEngine.ComputeShader)vc.csObj).DispatchIndirect(arg0, arg1);
+    }
+
+    return true;
+}
+
 static bool ComputeShader_FindKernel__String(JSVCall vc, int argc)
 {
     int len = argc;
@@ -61,6 +88,42 @@ static bool ComputeShader_FindKernel__String(JSVCall vc, int argc)
     {
         System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
                 JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(((UnityEngine.ComputeShader)vc.csObj).FindKernel(arg0)));
+    }
+
+    return true;
+}
+
+static bool ComputeShader_GetKernelThreadGroupSizes__Int32__UInt32__UInt32__UInt32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        int r_arg1 = JSApi.incArgIndex();
+        System.UInt32 arg1;
+        int r_arg2 = JSApi.incArgIndex();
+        System.UInt32 arg2;
+        int r_arg3 = JSApi.incArgIndex();
+        System.UInt32 arg3;
+        ((UnityEngine.ComputeShader)vc.csObj).GetKernelThreadGroupSizes(arg0, out arg1, out arg2, out arg3);
+        JSApi.setArgIndex(r_arg1);
+        JSApi.setUInt32((int)JSApi.SetType.ArgRef, arg1);
+        JSApi.setArgIndex(r_arg2);
+        JSApi.setUInt32((int)JSApi.SetType.ArgRef, arg2);
+        JSApi.setArgIndex(r_arg3);
+        JSApi.setUInt32((int)JSApi.SetType.ArgRef, arg3);
+    }
+
+    return true;
+}
+
+static bool ComputeShader_HasKernel__String(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(((UnityEngine.ComputeShader)vc.csObj).HasKernel(arg0)));
     }
 
     return true;
@@ -166,6 +229,20 @@ static bool ComputeShader_SetTexture__Int32__String__Texture(JSVCall vc, int arg
     return true;
 }
 
+static bool ComputeShader_SetTextureFromGlobal__Int32__String__String(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.String arg2 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        ((UnityEngine.ComputeShader)vc.csObj).SetTextureFromGlobal(arg0, arg1, arg2);
+    }
+
+    return true;
+}
+
 static bool ComputeShader_SetVector__String__Vector4(JSVCall vc, int argc)
 {
     int len = argc;
@@ -202,13 +279,18 @@ public static void __Register()
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
         new JSMgr.MethodCallBackInfo(ComputeShader_Dispatch__Int32__Int32__Int32__Int32, "Dispatch"),
+        new JSMgr.MethodCallBackInfo(ComputeShader_DispatchIndirect__Int32__ComputeBuffer__UInt32, "DispatchIndirect"),
+        new JSMgr.MethodCallBackInfo(ComputeShader_DispatchIndirect__Int32__ComputeBuffer, "DispatchIndirect"),
         new JSMgr.MethodCallBackInfo(ComputeShader_FindKernel__String, "FindKernel"),
+        new JSMgr.MethodCallBackInfo(ComputeShader_GetKernelThreadGroupSizes__Int32__UInt32__UInt32__UInt32, "GetKernelThreadGroupSizes"),
+        new JSMgr.MethodCallBackInfo(ComputeShader_HasKernel__String, "HasKernel"),
         new JSMgr.MethodCallBackInfo(ComputeShader_SetBuffer__Int32__String__ComputeBuffer, "SetBuffer"),
         new JSMgr.MethodCallBackInfo(ComputeShader_SetFloat__String__Single, "SetFloat"),
         new JSMgr.MethodCallBackInfo(ComputeShader_SetFloats__String__Single_Array, "SetFloats"),
         new JSMgr.MethodCallBackInfo(ComputeShader_SetInt__String__Int32, "SetInt"),
         new JSMgr.MethodCallBackInfo(ComputeShader_SetInts__String__Int32_Array, "SetInts"),
         new JSMgr.MethodCallBackInfo(ComputeShader_SetTexture__Int32__String__Texture, "SetTexture"),
+        new JSMgr.MethodCallBackInfo(ComputeShader_SetTextureFromGlobal__Int32__String__String, "SetTextureFromGlobal"),
         new JSMgr.MethodCallBackInfo(ComputeShader_SetVector__String__Vector4, "SetVector"),
 
     };

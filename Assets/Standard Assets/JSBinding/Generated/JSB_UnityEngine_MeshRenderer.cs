@@ -36,6 +36,21 @@ static bool MeshRenderer_MeshRenderer1(JSVCall vc, int argc)
 // fields
 
 // properties
+static void MeshRenderer_additionalVertexStreams(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.MeshRenderer _this = (UnityEngine.MeshRenderer)vc.csObj;
+        var result = _this.additionalVertexStreams;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.Mesh arg0 = (UnityEngine.Mesh)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.MeshRenderer _this = (UnityEngine.MeshRenderer)vc.csObj;
+        _this.additionalVertexStreams = arg0;
+    }
+}
 
 // methods
 
@@ -52,6 +67,7 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
+        MeshRenderer_additionalVertexStreams,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

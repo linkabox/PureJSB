@@ -49,48 +49,6 @@ static void CharacterInfo_index(JSVCall vc)
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
-static void CharacterInfo_uv(JSVCall vc)
-{
-    if (vc.bGet) {
-        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
-        var result = _this.uv;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-    }
-    else {
-        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
-        _this.uv = arg0;
-        JSMgr.changeJSObj(vc.jsObjID, _this);
-    }
-}
-static void CharacterInfo_vert(JSVCall vc)
-{
-    if (vc.bGet) {
-        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
-        var result = _this.vert;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-    }
-    else {
-        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
-        _this.vert = arg0;
-        JSMgr.changeJSObj(vc.jsObjID, _this);
-    }
-}
-static void CharacterInfo_width(JSVCall vc)
-{
-    if (vc.bGet) {
-        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
-        var result = _this.width;
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
-    }
-    else {
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
-        _this.width = arg0;
-        JSMgr.changeJSObj(vc.jsObjID, _this);
-    }
-}
 static void CharacterInfo_size(JSVCall vc)
 {
     if (vc.bGet) {
@@ -119,22 +77,200 @@ static void CharacterInfo_style(JSVCall vc)
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
-static void CharacterInfo_flipped(JSVCall vc)
+
+// properties
+static void CharacterInfo_advance(JSVCall vc)
 {
-    if (vc.bGet) {
+    if (vc.bGet)
+    { 
         UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
-        var result = _this.flipped;
-                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+        var result = _this.advance;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
     }
-    else {
-        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+    else
+    { 
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
-        _this.flipped = arg0;
+        _this.advance = arg0;
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
-
-// properties
+static void CharacterInfo_glyphWidth(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        var result = _this.glyphWidth;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+    }
+    else
+    { 
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        _this.glyphWidth = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
+static void CharacterInfo_glyphHeight(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        var result = _this.glyphHeight;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+    }
+    else
+    { 
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        _this.glyphHeight = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
+static void CharacterInfo_bearing(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        var result = _this.bearing;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+    }
+    else
+    { 
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        _this.bearing = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
+static void CharacterInfo_minY(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        var result = _this.minY;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+    }
+    else
+    { 
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        _this.minY = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
+static void CharacterInfo_maxY(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        var result = _this.maxY;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+    }
+    else
+    { 
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        _this.maxY = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
+static void CharacterInfo_minX(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        var result = _this.minX;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+    }
+    else
+    { 
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        _this.minX = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
+static void CharacterInfo_maxX(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        var result = _this.maxX;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+    }
+    else
+    { 
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        _this.maxX = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
+static void CharacterInfo_uvBottomLeft(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        var result = _this.uvBottomLeft;
+                JSApi.setVector2S((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        _this.uvBottomLeft = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
+static void CharacterInfo_uvBottomRight(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        var result = _this.uvBottomRight;
+                JSApi.setVector2S((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        _this.uvBottomRight = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
+static void CharacterInfo_uvTopRight(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        var result = _this.uvTopRight;
+                JSApi.setVector2S((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        _this.uvTopRight = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
+static void CharacterInfo_uvTopLeft(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        var result = _this.uvTopLeft;
+                JSApi.setVector2S((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.Vector2 arg0 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.CharacterInfo _this = (UnityEngine.CharacterInfo)vc.csObj;
+        _this.uvTopLeft = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
 
 // methods
 
@@ -148,16 +284,24 @@ public static void __Register()
     ci.fields = new JSMgr.CSCallbackField[]
     {
         CharacterInfo_index,
-        CharacterInfo_uv,
-        CharacterInfo_vert,
-        CharacterInfo_width,
         CharacterInfo_size,
         CharacterInfo_style,
-        CharacterInfo_flipped,
 
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
+        CharacterInfo_advance,
+        CharacterInfo_glyphWidth,
+        CharacterInfo_glyphHeight,
+        CharacterInfo_bearing,
+        CharacterInfo_minY,
+        CharacterInfo_maxY,
+        CharacterInfo_minX,
+        CharacterInfo_maxX,
+        CharacterInfo_uvBottomLeft,
+        CharacterInfo_uvBottomRight,
+        CharacterInfo_uvTopRight,
+        CharacterInfo_uvTopLeft,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

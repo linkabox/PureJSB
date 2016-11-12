@@ -25,7 +25,7 @@ public class ComponentTest : MonoBehaviour {
         GameObject go = new GameObject("NewGo",new Type[] {typeof(SphereCollider),typeof(BoxCollider),typeof(Animation)});
         this.gameObject.AddComponent(typeof(SphereCollider));
         this.gameObject.AddComponent<BoxCollider>();
-        this.gameObject.AddComponent("Animation");
+        this.gameObject.AddComponent<Animation>();
 
         //this.gameObject.GetOrAddComponent<BoxCollider>();
         //this.gameObject.GetOrAddComponent<Animation>();

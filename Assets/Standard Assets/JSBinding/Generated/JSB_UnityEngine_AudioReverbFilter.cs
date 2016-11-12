@@ -261,19 +261,19 @@ static void AudioReverbFilter_roomLF(JSVCall vc)
         _this.roomLF = arg0;
     }
 }
-static void AudioReverbFilter_lFReference(JSVCall vc)
+static void AudioReverbFilter_lfReference(JSVCall vc)
 {
     if (vc.bGet)
     { 
         UnityEngine.AudioReverbFilter _this = (UnityEngine.AudioReverbFilter)vc.csObj;
-        var result = _this.lFReference;
+        var result = _this.lfReference;
                 JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
     }
     else
     { 
         System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         UnityEngine.AudioReverbFilter _this = (UnityEngine.AudioReverbFilter)vc.csObj;
-        _this.lFReference = arg0;
+        _this.lfReference = arg0;
     }
 }
 
@@ -307,7 +307,7 @@ public static void __Register()
         AudioReverbFilter_density,
         AudioReverbFilter_hfReference,
         AudioReverbFilter_roomLF,
-        AudioReverbFilter_lFReference,
+        AudioReverbFilter_lfReference,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

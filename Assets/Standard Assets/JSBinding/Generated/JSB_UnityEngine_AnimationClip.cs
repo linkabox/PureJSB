@@ -87,6 +87,58 @@ static void AnimationClip_localBounds(JSVCall vc)
         _this.localBounds = arg0;
     }
 }
+static void AnimationClip_legacy(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.AnimationClip _this = (UnityEngine.AnimationClip)vc.csObj;
+        var result = _this.legacy;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.AnimationClip _this = (UnityEngine.AnimationClip)vc.csObj;
+        _this.legacy = arg0;
+    }
+}
+static void AnimationClip_humanMotion(JSVCall vc)
+{
+        UnityEngine.AnimationClip _this = (UnityEngine.AnimationClip)vc.csObj;
+        var result = _this.humanMotion;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
+static void AnimationClip_events(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.AnimationClip _this = (UnityEngine.AnimationClip)vc.csObj;
+        var result = _this.events;
+                var arrRet = result;
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+    else
+    { 
+        UnityEngine.AnimationEvent[] arg0 = JSDataExchangeMgr.GetJSArg<UnityEngine.AnimationEvent[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.AnimationEvent[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.AnimationEvent)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        UnityEngine.AnimationClip _this = (UnityEngine.AnimationClip)vc.csObj;
+        _this.events = arg0;
+    }
+}
 
 // methods
 
@@ -124,6 +176,19 @@ static bool AnimationClip_EnsureQuaternionContinuity(JSVCall vc, int argc)
     return true;
 }
 
+static bool AnimationClip_SampleAnimation__GameObject__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        UnityEngine.GameObject arg0 = (UnityEngine.GameObject)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        ((UnityEngine.AnimationClip)vc.csObj).SampleAnimation(arg0, arg1);
+    }
+
+    return true;
+}
+
 static bool AnimationClip_SetCurve__String__Type__String__AnimationCurve(JSVCall vc, int argc)
 {
     int len = argc;
@@ -156,6 +221,9 @@ public static void __Register()
         AnimationClip_frameRate,
         AnimationClip_wrapMode,
         AnimationClip_localBounds,
+        AnimationClip_legacy,
+        AnimationClip_humanMotion,
+        AnimationClip_events,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]
@@ -168,6 +236,7 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(AnimationClip_AddEvent__AnimationEvent, "AddEvent"),
         new JSMgr.MethodCallBackInfo(AnimationClip_ClearCurves, "ClearCurves"),
         new JSMgr.MethodCallBackInfo(AnimationClip_EnsureQuaternionContinuity, "EnsureQuaternionContinuity"),
+        new JSMgr.MethodCallBackInfo(AnimationClip_SampleAnimation__GameObject__Single, "SampleAnimation"),
         new JSMgr.MethodCallBackInfo(AnimationClip_SetCurve__String__Type__String__AnimationCurve, "SetCurve"),
 
     };

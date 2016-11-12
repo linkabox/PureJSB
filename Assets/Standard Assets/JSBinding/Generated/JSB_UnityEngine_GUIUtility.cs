@@ -62,6 +62,19 @@ static void GUIUtility_keyboardControl(JSVCall vc)
         UnityEngine.GUIUtility.keyboardControl = arg0;
     }
 }
+static void GUIUtility_systemCopyBuffer(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.GUIUtility.systemCopyBuffer;
+                JSApi.setStringS((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        UnityEngine.GUIUtility.systemCopyBuffer = arg0;
+    }
+}
 static void GUIUtility_hasModalWindow(JSVCall vc)
 {
         var result = UnityEngine.GUIUtility.hasModalWindow;
@@ -109,19 +122,6 @@ static bool GUIUtility_GetControlID__GUIContent__FocusType__Rect(JSVCall vc, int
     return true;
 }
 
-static bool GUIUtility_GetControlID__FocusType__Rect(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 2) 
-    {
-        UnityEngine.FocusType arg0 = (UnityEngine.FocusType)JSApi.getEnum((int)JSApi.GetType.Arg);
-        UnityEngine.Rect arg1 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.GUIUtility.GetControlID(arg0, arg1)));
-    }
-
-    return true;
-}
-
 static bool GUIUtility_GetControlID__Int32__FocusType(JSVCall vc, int argc)
 {
     int len = argc;
@@ -142,6 +142,19 @@ static bool GUIUtility_GetControlID__GUIContent__FocusType(JSVCall vc, int argc)
     {
         UnityEngine.GUIContent arg0 = (UnityEngine.GUIContent)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.FocusType arg1 = (UnityEngine.FocusType)JSApi.getEnum((int)JSApi.GetType.Arg);
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.GUIUtility.GetControlID(arg0, arg1)));
+    }
+
+    return true;
+}
+
+static bool GUIUtility_GetControlID__FocusType__Rect(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        UnityEngine.FocusType arg0 = (UnityEngine.FocusType)JSApi.getEnum((int)JSApi.GetType.Arg);
+        UnityEngine.Rect arg1 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
                 JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.GUIUtility.GetControlID(arg0, arg1)));
     }
 
@@ -263,6 +276,7 @@ public static void __Register()
     {
         GUIUtility_hotControl,
         GUIUtility_keyboardControl,
+        GUIUtility_systemCopyBuffer,
         GUIUtility_hasModalWindow,
 
     };
@@ -276,9 +290,9 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(GUIUtility_ExitGUI, "ExitGUI"),
         new JSMgr.MethodCallBackInfo(GUIUtility_GetControlID__Int32__FocusType__Rect, "GetControlID"),
         new JSMgr.MethodCallBackInfo(GUIUtility_GetControlID__GUIContent__FocusType__Rect, "GetControlID"),
-        new JSMgr.MethodCallBackInfo(GUIUtility_GetControlID__FocusType__Rect, "GetControlID"),
         new JSMgr.MethodCallBackInfo(GUIUtility_GetControlID__Int32__FocusType, "GetControlID"),
         new JSMgr.MethodCallBackInfo(GUIUtility_GetControlID__GUIContent__FocusType, "GetControlID"),
+        new JSMgr.MethodCallBackInfo(GUIUtility_GetControlID__FocusType__Rect, "GetControlID"),
         new JSMgr.MethodCallBackInfo(GUIUtility_GetControlID__FocusType, "GetControlID"),
         new JSMgr.MethodCallBackInfo(GUIUtility_GetStateObject__Type__Int32, "GetStateObject"),
         new JSMgr.MethodCallBackInfo(GUIUtility_GUIToScreenPoint__Vector2, "GUIToScreenPoint"),

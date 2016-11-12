@@ -18,21 +18,6 @@ public class JSB_UnityEngine_ProceduralMaterial
 ////////////////////// ProceduralMaterial ///////////////////////////////////////
 // constructors
 
-static bool ProceduralMaterial_ProceduralMaterial1(JSVCall vc, int argc)
-{
-    int _this = JSApi.getObject((int)JSApi.GetType.Arg);
-    JSApi.attachFinalizerObject(_this);
-    --argc;
-
-    int len = argc;
-    if (len == 0)
-    {
-        JSMgr.addJSCSRel(_this, new UnityEngine.ProceduralMaterial());
-    }
-
-    return true;
-}
-
 // fields
 
 // properties
@@ -147,6 +132,12 @@ static void ProceduralMaterial_isReadable(JSVCall vc)
         _this.isReadable = arg0;
     }
 }
+static void ProceduralMaterial_isFrozen(JSVCall vc)
+{
+        UnityEngine.ProceduralMaterial _this = (UnityEngine.ProceduralMaterial)vc.csObj;
+        var result = _this.isFrozen;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
 
 // methods
 
@@ -169,6 +160,17 @@ static bool ProceduralMaterial_ClearCache(JSVCall vc, int argc)
     if (len == 0) 
     {
         ((UnityEngine.ProceduralMaterial)vc.csObj).ClearCache();
+    }
+
+    return true;
+}
+
+static bool ProceduralMaterial_FreezeAndReleaseSourceData(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+        ((UnityEngine.ProceduralMaterial)vc.csObj).FreezeAndReleaseSourceData();
     }
 
     return true;
@@ -316,6 +318,18 @@ static bool ProceduralMaterial_IsProceduralPropertyCached__String(JSVCall vc, in
     return true;
 }
 
+static bool ProceduralMaterial_IsProceduralPropertyVisible__String(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(((UnityEngine.ProceduralMaterial)vc.csObj).IsProceduralPropertyVisible(arg0)));
+    }
+
+    return true;
+}
+
 static bool ProceduralMaterial_RebuildTextures(JSVCall vc, int argc)
 {
     int len = argc;
@@ -450,17 +464,18 @@ public static void __Register()
         ProceduralMaterial_substanceProcessorUsage,
         ProceduralMaterial_preset,
         ProceduralMaterial_isReadable,
+        ProceduralMaterial_isFrozen,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]
     {
-        new JSMgr.MethodCallBackInfo(ProceduralMaterial_ProceduralMaterial1, ".ctor"),
 
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
         new JSMgr.MethodCallBackInfo(ProceduralMaterial_CacheProceduralProperty__String__Boolean, "CacheProceduralProperty"),
         new JSMgr.MethodCallBackInfo(ProceduralMaterial_ClearCache, "ClearCache"),
+        new JSMgr.MethodCallBackInfo(ProceduralMaterial_FreezeAndReleaseSourceData, "FreezeAndReleaseSourceData"),
         new JSMgr.MethodCallBackInfo(ProceduralMaterial_GetGeneratedTexture__String, "GetGeneratedTexture"),
         new JSMgr.MethodCallBackInfo(ProceduralMaterial_GetGeneratedTextures, "GetGeneratedTextures"),
         new JSMgr.MethodCallBackInfo(ProceduralMaterial_GetProceduralBoolean__String, "GetProceduralBoolean"),
@@ -472,6 +487,7 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(ProceduralMaterial_GetProceduralVector__String, "GetProceduralVector"),
         new JSMgr.MethodCallBackInfo(ProceduralMaterial_HasProceduralProperty__String, "HasProceduralProperty"),
         new JSMgr.MethodCallBackInfo(ProceduralMaterial_IsProceduralPropertyCached__String, "IsProceduralPropertyCached"),
+        new JSMgr.MethodCallBackInfo(ProceduralMaterial_IsProceduralPropertyVisible__String, "IsProceduralPropertyVisible"),
         new JSMgr.MethodCallBackInfo(ProceduralMaterial_RebuildTextures, "RebuildTextures"),
         new JSMgr.MethodCallBackInfo(ProceduralMaterial_RebuildTexturesImmediately, "RebuildTexturesImmediately"),
         new JSMgr.MethodCallBackInfo(ProceduralMaterial_SetProceduralBoolean__String__Boolean, "SetProceduralBoolean"),

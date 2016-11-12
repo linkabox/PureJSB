@@ -129,6 +129,21 @@ static void CharacterController_stepOffset(JSVCall vc)
         _this.stepOffset = arg0;
     }
 }
+static void CharacterController_skinWidth(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.CharacterController _this = (UnityEngine.CharacterController)vc.csObj;
+        var result = _this.skinWidth;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.CharacterController _this = (UnityEngine.CharacterController)vc.csObj;
+        _this.skinWidth = arg0;
+    }
+}
 static void CharacterController_detectCollisions(JSVCall vc)
 {
     if (vc.bGet)
@@ -142,6 +157,21 @@ static void CharacterController_detectCollisions(JSVCall vc)
         System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
         UnityEngine.CharacterController _this = (UnityEngine.CharacterController)vc.csObj;
         _this.detectCollisions = arg0;
+    }
+}
+static void CharacterController_enableOverlapRecovery(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.CharacterController _this = (UnityEngine.CharacterController)vc.csObj;
+        var result = _this.enableOverlapRecovery;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.CharacterController _this = (UnityEngine.CharacterController)vc.csObj;
+        _this.enableOverlapRecovery = arg0;
     }
 }
 
@@ -192,7 +222,9 @@ public static void __Register()
         CharacterController_center,
         CharacterController_slopeLimit,
         CharacterController_stepOffset,
+        CharacterController_skinWidth,
         CharacterController_detectCollisions,
+        CharacterController_enableOverlapRecovery,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

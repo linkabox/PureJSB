@@ -39,6 +39,12 @@ static bool Cubemap_Cubemap1(JSVCall vc, int argc)
 // fields
 
 // properties
+static void Cubemap_mipmapCount(JSVCall vc)
+{
+        UnityEngine.Cubemap _this = (UnityEngine.Cubemap)vc.csObj;
+        var result = _this.mipmapCount;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+}
 static void Cubemap_format(JSVCall vc)
 {
         UnityEngine.Cubemap _this = (UnityEngine.Cubemap)vc.csObj;
@@ -233,6 +239,7 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
+        Cubemap_mipmapCount,
         Cubemap_format,
 
     };

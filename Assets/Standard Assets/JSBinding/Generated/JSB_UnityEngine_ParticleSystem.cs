@@ -141,42 +141,6 @@ static void ParticleSystem_particleCount(JSVCall vc)
         var result = _this.particleCount;
                 JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
 }
-static void ParticleSystem_safeCollisionEventSize(JSVCall vc)
-{
-        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
-        var result = _this.safeCollisionEventSize;
-                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
-}
-static void ParticleSystem_enableEmission(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
-        var result = _this.enableEmission;
-                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
-    }
-    else
-    { 
-        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
-        _this.enableEmission = arg0;
-    }
-}
-static void ParticleSystem_emissionRate(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
-        var result = _this.emissionRate;
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
-    }
-    else
-    { 
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
-        _this.emissionRate = arg0;
-    }
-}
 static void ParticleSystem_startSpeed(JSVCall vc)
 {
     if (vc.bGet)
@@ -235,6 +199,21 @@ static void ParticleSystem_startRotation(JSVCall vc)
         System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
         _this.startRotation = arg0;
+    }
+}
+static void ParticleSystem_startRotation3D(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.startRotation3D;
+                JSApi.setVector3S((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.Vector3 arg0 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        _this.startRotation3D = arg0;
     }
 }
 static void ParticleSystem_startLifetime(JSVCall vc)
@@ -297,6 +276,21 @@ static void ParticleSystem_simulationSpace(JSVCall vc)
         _this.simulationSpace = arg0;
     }
 }
+static void ParticleSystem_scalingMode(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.scalingMode;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
+    }
+    else
+    { 
+        UnityEngine.ParticleSystemScalingMode arg0 = (UnityEngine.ParticleSystemScalingMode)JSApi.getEnum((int)JSApi.GetType.Arg);
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        _this.scalingMode = arg0;
+    }
+}
 static void ParticleSystem_randomSeed(JSVCall vc)
 {
     if (vc.bGet)
@@ -311,6 +305,123 @@ static void ParticleSystem_randomSeed(JSVCall vc)
         UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
         _this.randomSeed = arg0;
     }
+}
+static void ParticleSystem_useAutoRandomSeed(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.useAutoRandomSeed;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        _this.useAutoRandomSeed = arg0;
+    }
+}
+static void ParticleSystem_emission(JSVCall vc)
+{
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.emission;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void ParticleSystem_shape(JSVCall vc)
+{
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.shape;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void ParticleSystem_velocityOverLifetime(JSVCall vc)
+{
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.velocityOverLifetime;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void ParticleSystem_limitVelocityOverLifetime(JSVCall vc)
+{
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.limitVelocityOverLifetime;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void ParticleSystem_inheritVelocity(JSVCall vc)
+{
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.inheritVelocity;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void ParticleSystem_forceOverLifetime(JSVCall vc)
+{
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.forceOverLifetime;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void ParticleSystem_colorOverLifetime(JSVCall vc)
+{
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.colorOverLifetime;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void ParticleSystem_colorBySpeed(JSVCall vc)
+{
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.colorBySpeed;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void ParticleSystem_sizeOverLifetime(JSVCall vc)
+{
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.sizeOverLifetime;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void ParticleSystem_sizeBySpeed(JSVCall vc)
+{
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.sizeBySpeed;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void ParticleSystem_rotationOverLifetime(JSVCall vc)
+{
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.rotationOverLifetime;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void ParticleSystem_rotationBySpeed(JSVCall vc)
+{
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.rotationBySpeed;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void ParticleSystem_externalForces(JSVCall vc)
+{
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.externalForces;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void ParticleSystem_collision(JSVCall vc)
+{
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.collision;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void ParticleSystem_trigger(JSVCall vc)
+{
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.trigger;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void ParticleSystem_subEmitters(JSVCall vc)
+{
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.subEmitters;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+}
+static void ParticleSystem_textureSheetAnimation(JSVCall vc)
+{
+        UnityEngine.ParticleSystem _this = (UnityEngine.ParticleSystem)vc.csObj;
+        var result = _this.textureSheetAnimation;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
 }
 
 // methods
@@ -338,29 +449,14 @@ static bool ParticleSystem_Clear(JSVCall vc, int argc)
     return true;
 }
 
-static bool ParticleSystem_Emit__Vector3__Vector3__Single__Single__Color32(JSVCall vc, int argc)
+static bool ParticleSystem_Emit__EmitParams__Int32(JSVCall vc, int argc)
 {
     int len = argc;
-    if (len == 5) 
+    if (len == 2) 
     {
-        UnityEngine.Vector3 arg0 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
-        UnityEngine.Vector3 arg1 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
-        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        System.Single arg3 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        UnityEngine.Color32 arg4 = (UnityEngine.Color32)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        ((UnityEngine.ParticleSystem)vc.csObj).Emit(arg0, arg1, arg2, arg3, arg4);
-    }
-
-    return true;
-}
-
-static bool ParticleSystem_Emit__Particle(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        UnityEngine.ParticleSystem.Particle arg0 = (UnityEngine.ParticleSystem.Particle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        ((UnityEngine.ParticleSystem)vc.csObj).Emit(arg0);
+        UnityEngine.ParticleSystem.EmitParams arg0 = (UnityEngine.ParticleSystem.EmitParams)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        ((UnityEngine.ParticleSystem)vc.csObj).Emit(arg0, arg1);
     }
 
     return true;
@@ -373,29 +469,6 @@ static bool ParticleSystem_Emit__Int32(JSVCall vc, int argc)
     {
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         ((UnityEngine.ParticleSystem)vc.csObj).Emit(arg0);
-    }
-
-    return true;
-}
-
-static bool ParticleSystem_GetCollisionEvents__GameObject__CollisionEvent_Array(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 2) 
-    {
-        UnityEngine.GameObject arg0 = (UnityEngine.GameObject)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.ParticleSystem.CollisionEvent[] arg1 = JSDataExchangeMgr.GetJSArg<UnityEngine.ParticleSystem.CollisionEvent[]>(() =>
-        {
-            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
-            int length = JSApi.getArrayLength(jsObjID);
-            var ret = new UnityEngine.ParticleSystem.CollisionEvent[length];
-            for (var i = 0; i < length; i++) {
-                JSApi.getElement(jsObjID, i);
-                ret[i] = (UnityEngine.ParticleSystem.CollisionEvent)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
-            }
-            return ret;
-        });
-                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(((UnityEngine.ParticleSystem)vc.csObj).GetCollisionEvents(arg0, arg1)));
     }
 
     return true;
@@ -515,6 +588,21 @@ static bool ParticleSystem_SetParticles__Particle_Array__Int32(JSVCall vc, int a
     return true;
 }
 
+static bool ParticleSystem_Simulate__Single__Boolean__Boolean__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Boolean arg1 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        System.Boolean arg2 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        System.Boolean arg3 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        ((UnityEngine.ParticleSystem)vc.csObj).Simulate(arg0, arg1, arg2, arg3);
+    }
+
+    return true;
+}
+
 static bool ParticleSystem_Simulate__Single__Boolean__Boolean(JSVCall vc, int argc)
 {
     int len = argc;
@@ -600,18 +688,35 @@ public static void __Register()
         ParticleSystem_duration,
         ParticleSystem_playbackSpeed,
         ParticleSystem_particleCount,
-        ParticleSystem_safeCollisionEventSize,
-        ParticleSystem_enableEmission,
-        ParticleSystem_emissionRate,
         ParticleSystem_startSpeed,
         ParticleSystem_startSize,
         ParticleSystem_startColor,
         ParticleSystem_startRotation,
+        ParticleSystem_startRotation3D,
         ParticleSystem_startLifetime,
         ParticleSystem_gravityModifier,
         ParticleSystem_maxParticles,
         ParticleSystem_simulationSpace,
+        ParticleSystem_scalingMode,
         ParticleSystem_randomSeed,
+        ParticleSystem_useAutoRandomSeed,
+        ParticleSystem_emission,
+        ParticleSystem_shape,
+        ParticleSystem_velocityOverLifetime,
+        ParticleSystem_limitVelocityOverLifetime,
+        ParticleSystem_inheritVelocity,
+        ParticleSystem_forceOverLifetime,
+        ParticleSystem_colorOverLifetime,
+        ParticleSystem_colorBySpeed,
+        ParticleSystem_sizeOverLifetime,
+        ParticleSystem_sizeBySpeed,
+        ParticleSystem_rotationOverLifetime,
+        ParticleSystem_rotationBySpeed,
+        ParticleSystem_externalForces,
+        ParticleSystem_collision,
+        ParticleSystem_trigger,
+        ParticleSystem_subEmitters,
+        ParticleSystem_textureSheetAnimation,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]
@@ -623,10 +728,8 @@ public static void __Register()
     {
         new JSMgr.MethodCallBackInfo(ParticleSystem_Clear__Boolean, "Clear"),
         new JSMgr.MethodCallBackInfo(ParticleSystem_Clear, "Clear"),
-        new JSMgr.MethodCallBackInfo(ParticleSystem_Emit__Vector3__Vector3__Single__Single__Color32, "Emit"),
-        new JSMgr.MethodCallBackInfo(ParticleSystem_Emit__Particle, "Emit"),
+        new JSMgr.MethodCallBackInfo(ParticleSystem_Emit__EmitParams__Int32, "Emit"),
         new JSMgr.MethodCallBackInfo(ParticleSystem_Emit__Int32, "Emit"),
-        new JSMgr.MethodCallBackInfo(ParticleSystem_GetCollisionEvents__GameObject__CollisionEvent_Array, "GetCollisionEvents"),
         new JSMgr.MethodCallBackInfo(ParticleSystem_GetParticles__Particle_Array, "GetParticles"),
         new JSMgr.MethodCallBackInfo(ParticleSystem_IsAlive__Boolean, "IsAlive"),
         new JSMgr.MethodCallBackInfo(ParticleSystem_IsAlive, "IsAlive"),
@@ -635,6 +738,7 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(ParticleSystem_Play__Boolean, "Play"),
         new JSMgr.MethodCallBackInfo(ParticleSystem_Play, "Play"),
         new JSMgr.MethodCallBackInfo(ParticleSystem_SetParticles__Particle_Array__Int32, "SetParticles"),
+        new JSMgr.MethodCallBackInfo(ParticleSystem_Simulate__Single__Boolean__Boolean__Boolean, "Simulate"),
         new JSMgr.MethodCallBackInfo(ParticleSystem_Simulate__Single__Boolean__Boolean, "Simulate"),
         new JSMgr.MethodCallBackInfo(ParticleSystem_Simulate__Single__Boolean, "Simulate"),
         new JSMgr.MethodCallBackInfo(ParticleSystem_Simulate__Single, "Simulate"),

@@ -92,6 +92,21 @@ static void Texture_height(JSVCall vc)
         _this.height = arg0;
     }
 }
+static void Texture_dimension(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Texture _this = (UnityEngine.Texture)vc.csObj;
+        var result = _this.dimension;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
+    }
+    else
+    { 
+        UnityEngine.Rendering.TextureDimension arg0 = (UnityEngine.Rendering.TextureDimension)JSApi.getEnum((int)JSApi.GetType.Arg);
+        UnityEngine.Texture _this = (UnityEngine.Texture)vc.csObj;
+        _this.dimension = arg0;
+    }
+}
 static void Texture_filterMode(JSVCall vc)
 {
     if (vc.bGet)
@@ -161,17 +176,6 @@ static void Texture_texelSize(JSVCall vc)
 
 // methods
 
-static bool Texture_GetNativeTextureID(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 0) 
-    {
-                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(((UnityEngine.Texture)vc.csObj).GetNativeTextureID()));
-    }
-
-    return true;
-}
-
 static bool Texture_GetNativeTexturePtr(JSVCall vc, int argc)
 {
     int len = argc;
@@ -213,6 +217,7 @@ public static void __Register()
         Texture_anisotropicFiltering,
         Texture_width,
         Texture_height,
+        Texture_dimension,
         Texture_filterMode,
         Texture_anisoLevel,
         Texture_wrapMode,
@@ -227,7 +232,6 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
-        new JSMgr.MethodCallBackInfo(Texture_GetNativeTextureID, "GetNativeTextureID"),
         new JSMgr.MethodCallBackInfo(Texture_GetNativeTexturePtr, "GetNativeTexturePtr"),
         new JSMgr.MethodCallBackInfo(Texture_SetGlobalAnisotropicFilteringLimits__Int32__Int32, "SetGlobalAnisotropicFilteringLimits"),
 

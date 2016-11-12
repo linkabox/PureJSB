@@ -135,6 +135,18 @@ static void Font_dynamic(JSVCall vc)
         var result = _this.dynamic;
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
 }
+static void Font_ascent(JSVCall vc)
+{
+        UnityEngine.Font _this = (UnityEngine.Font)vc.csObj;
+        var result = _this.ascent;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+}
+static void Font_lineHeight(JSVCall vc)
+{
+        UnityEngine.Font _this = (UnityEngine.Font)vc.csObj;
+        var result = _this.lineHeight;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+}
 static void Font_fontSize(JSVCall vc)
 {
         UnityEngine.Font _this = (UnityEngine.Font)vc.csObj;
@@ -281,6 +293,42 @@ static bool Font_add_textureRebuilt__ActionT1_Font(JSVCall vc, int argc)
     return true;
 }
 
+static bool Font_CreateDynamicFontFromOSFont__String_Array__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.String[] arg0 = JSDataExchangeMgr.GetJSArg<System.String[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.String[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.String)JSApi.getStringS((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Font.CreateDynamicFontFromOSFont(arg0, arg1));
+    }
+
+    return true;
+}
+
+static bool Font_CreateDynamicFontFromOSFont__String__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Font.CreateDynamicFontFromOSFont(arg0, arg1));
+    }
+
+    return true;
+}
+
 static bool Font_GetMaxVertsForString__String(JSVCall vc, int argc)
 {
     int len = argc;
@@ -292,7 +340,24 @@ static bool Font_GetMaxVertsForString__String(JSVCall vc, int argc)
 
     return true;
 }
-public static Action<UnityEngine.Font> Font_remove_textureRebuilt_GetDelegate_member9_arg0(CSRepresentedObject objFunction)
+
+static bool Font_GetOSInstalledFontNames(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+                var arrRet = UnityEngine.Font.GetOSInstalledFontNames();
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSApi.setStringS((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+
+    return true;
+}
+public static Action<UnityEngine.Font> Font_remove_textureRebuilt_GetDelegate_member12_arg0(CSRepresentedObject objFunction)
 {
     if (objFunction == null || objFunction.jsObjID == 0)
     {
@@ -318,7 +383,7 @@ static bool Font_remove_textureRebuilt__ActionT1_Font(JSVCall vc, int argc)
         Action<UnityEngine.Font> action = JSDataExchangeMgr.GetJSArg<Action<UnityEngine.Font>>(()=>
         {
             if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return Font_remove_textureRebuilt_GetDelegate_member9_arg0(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+                return Font_remove_textureRebuilt_GetDelegate_member12_arg0(JSApi.getFunctionS((int)JSApi.GetType.Arg));
             else
                 return (Action<UnityEngine.Font>)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         });
@@ -345,6 +410,8 @@ public static void __Register()
         Font_fontNames,
         Font_characterInfo,
         Font_dynamic,
+        Font_ascent,
+        Font_lineHeight,
         Font_fontSize,
 
     };
@@ -364,7 +431,10 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Font_RequestCharactersInTexture__String__Int32, "RequestCharactersInTexture"),
         new JSMgr.MethodCallBackInfo(Font_RequestCharactersInTexture__String, "RequestCharactersInTexture"),
         new JSMgr.MethodCallBackInfo(Font_add_textureRebuilt__ActionT1_Font, "add_textureRebuilt"),
+        new JSMgr.MethodCallBackInfo(Font_CreateDynamicFontFromOSFont__String_Array__Int32, "CreateDynamicFontFromOSFont"),
+        new JSMgr.MethodCallBackInfo(Font_CreateDynamicFontFromOSFont__String__Int32, "CreateDynamicFontFromOSFont"),
         new JSMgr.MethodCallBackInfo(Font_GetMaxVertsForString__String, "GetMaxVertsForString"),
+        new JSMgr.MethodCallBackInfo(Font_GetOSInstalledFontNames, "GetOSInstalledFontNames"),
         new JSMgr.MethodCallBackInfo(Font_remove_textureRebuilt__ActionT1_Font, "remove_textureRebuilt"),
 
     };

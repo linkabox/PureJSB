@@ -51,19 +51,19 @@ static void AudioHighPassFilter_cutoffFrequency(JSVCall vc)
         _this.cutoffFrequency = arg0;
     }
 }
-static void AudioHighPassFilter_highpassResonaceQ(JSVCall vc)
+static void AudioHighPassFilter_highpassResonanceQ(JSVCall vc)
 {
     if (vc.bGet)
     { 
         UnityEngine.AudioHighPassFilter _this = (UnityEngine.AudioHighPassFilter)vc.csObj;
-        var result = _this.highpassResonaceQ;
+        var result = _this.highpassResonanceQ;
                 JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
     }
     else
     { 
         System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         UnityEngine.AudioHighPassFilter _this = (UnityEngine.AudioHighPassFilter)vc.csObj;
-        _this.highpassResonaceQ = arg0;
+        _this.highpassResonanceQ = arg0;
     }
 }
 
@@ -83,7 +83,7 @@ public static void __Register()
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
         AudioHighPassFilter_cutoffFrequency,
-        AudioHighPassFilter_highpassResonaceQ,
+        AudioHighPassFilter_highpassResonanceQ,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

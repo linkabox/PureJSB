@@ -126,6 +126,21 @@ static void Rigidbody_useGravity(JSVCall vc)
         _this.useGravity = arg0;
     }
 }
+static void Rigidbody_maxDepenetrationVelocity(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Rigidbody _this = (UnityEngine.Rigidbody)vc.csObj;
+        var result = _this.maxDepenetrationVelocity;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.Rigidbody _this = (UnityEngine.Rigidbody)vc.csObj;
+        _this.maxDepenetrationVelocity = arg0;
+    }
+}
 static void Rigidbody_isKinematic(JSVCall vc)
 {
     if (vc.bGet)
@@ -312,49 +327,49 @@ static void Rigidbody_interpolation(JSVCall vc)
         _this.interpolation = arg0;
     }
 }
-static void Rigidbody_solverIterationCount(JSVCall vc)
+static void Rigidbody_solverIterations(JSVCall vc)
 {
     if (vc.bGet)
     { 
         UnityEngine.Rigidbody _this = (UnityEngine.Rigidbody)vc.csObj;
-        var result = _this.solverIterationCount;
+        var result = _this.solverIterations;
                 JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
     }
     else
     { 
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         UnityEngine.Rigidbody _this = (UnityEngine.Rigidbody)vc.csObj;
-        _this.solverIterationCount = arg0;
+        _this.solverIterations = arg0;
     }
 }
-static void Rigidbody_sleepVelocity(JSVCall vc)
+static void Rigidbody_solverVelocityIterations(JSVCall vc)
 {
     if (vc.bGet)
     { 
         UnityEngine.Rigidbody _this = (UnityEngine.Rigidbody)vc.csObj;
-        var result = _this.sleepVelocity;
+        var result = _this.solverVelocityIterations;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+    }
+    else
+    { 
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Rigidbody _this = (UnityEngine.Rigidbody)vc.csObj;
+        _this.solverVelocityIterations = arg0;
+    }
+}
+static void Rigidbody_sleepThreshold(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Rigidbody _this = (UnityEngine.Rigidbody)vc.csObj;
+        var result = _this.sleepThreshold;
                 JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
     }
     else
     { 
         System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         UnityEngine.Rigidbody _this = (UnityEngine.Rigidbody)vc.csObj;
-        _this.sleepVelocity = arg0;
-    }
-}
-static void Rigidbody_sleepAngularVelocity(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.Rigidbody _this = (UnityEngine.Rigidbody)vc.csObj;
-        var result = _this.sleepAngularVelocity;
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
-    }
-    else
-    { 
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        UnityEngine.Rigidbody _this = (UnityEngine.Rigidbody)vc.csObj;
-        _this.sleepAngularVelocity = arg0;
+        _this.sleepThreshold = arg0;
     }
 }
 static void Rigidbody_maxAngularVelocity(JSVCall vc)
@@ -734,6 +749,28 @@ static bool Rigidbody_MoveRotation__Quaternion(JSVCall vc, int argc)
     return true;
 }
 
+static bool Rigidbody_ResetCenterOfMass(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+        ((UnityEngine.Rigidbody)vc.csObj).ResetCenterOfMass();
+    }
+
+    return true;
+}
+
+static bool Rigidbody_ResetInertiaTensor(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+        ((UnityEngine.Rigidbody)vc.csObj).ResetInertiaTensor();
+    }
+
+    return true;
+}
+
 static bool Rigidbody_SetDensity__Single(JSVCall vc, int argc)
 {
     int len = argc;
@@ -752,6 +789,24 @@ static bool Rigidbody_Sleep(JSVCall vc, int argc)
     if (len == 0) 
     {
         ((UnityEngine.Rigidbody)vc.csObj).Sleep();
+    }
+
+    return true;
+}
+
+static bool Rigidbody_SweepTest__Vector3__RaycastHit__Single__QueryTriggerInteraction(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        UnityEngine.Vector3 arg0 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        int r_arg1 = JSApi.incArgIndex();
+        UnityEngine.RaycastHit arg1;
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.QueryTriggerInteraction arg3 = (UnityEngine.QueryTriggerInteraction)JSApi.getEnum((int)JSApi.GetType.Arg);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(((UnityEngine.Rigidbody)vc.csObj).SweepTest(arg0, out arg1, arg2, arg3)));
+        JSApi.setArgIndex(r_arg1);
+        JSMgr.datax.setObject((int)JSApi.SetType.ArgRef, arg1);
     }
 
     return true;
@@ -785,6 +840,26 @@ static bool Rigidbody_SweepTest__Vector3__RaycastHit(JSVCall vc, int argc)
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(((UnityEngine.Rigidbody)vc.csObj).SweepTest(arg0, out arg1)));
         JSApi.setArgIndex(r_arg1);
         JSMgr.datax.setObject((int)JSApi.SetType.ArgRef, arg1);
+    }
+
+    return true;
+}
+
+static bool Rigidbody_SweepTestAll__Vector3__Single__QueryTriggerInteraction(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        UnityEngine.Vector3 arg0 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        System.Single arg1 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.QueryTriggerInteraction arg2 = (UnityEngine.QueryTriggerInteraction)JSApi.getEnum((int)JSApi.GetType.Arg);
+                var arrRet = ((UnityEngine.Rigidbody)vc.csObj).SweepTestAll(arg0, arg1, arg2);
+        for (int i = 0; arrRet != null && i < arrRet.Length; i++)
+        {
+            JSMgr.datax.setObject((int)JSApi.SetType.SaveAndTempTrace, arrRet[i]);
+            JSApi.moveSaveID2Arr(i);
+        }
+        JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
     }
 
     return true;
@@ -857,6 +932,7 @@ public static void __Register()
         Rigidbody_angularDrag,
         Rigidbody_mass,
         Rigidbody_useGravity,
+        Rigidbody_maxDepenetrationVelocity,
         Rigidbody_isKinematic,
         Rigidbody_freezeRotation,
         Rigidbody_constraints,
@@ -870,9 +946,9 @@ public static void __Register()
         Rigidbody_position,
         Rigidbody_rotation,
         Rigidbody_interpolation,
-        Rigidbody_solverIterationCount,
-        Rigidbody_sleepVelocity,
-        Rigidbody_sleepAngularVelocity,
+        Rigidbody_solverIterations,
+        Rigidbody_solverVelocityIterations,
+        Rigidbody_sleepThreshold,
         Rigidbody_maxAngularVelocity,
 
     };
@@ -910,10 +986,14 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Rigidbody_IsSleeping, "IsSleeping"),
         new JSMgr.MethodCallBackInfo(Rigidbody_MovePosition__Vector3, "MovePosition"),
         new JSMgr.MethodCallBackInfo(Rigidbody_MoveRotation__Quaternion, "MoveRotation"),
+        new JSMgr.MethodCallBackInfo(Rigidbody_ResetCenterOfMass, "ResetCenterOfMass"),
+        new JSMgr.MethodCallBackInfo(Rigidbody_ResetInertiaTensor, "ResetInertiaTensor"),
         new JSMgr.MethodCallBackInfo(Rigidbody_SetDensity__Single, "SetDensity"),
         new JSMgr.MethodCallBackInfo(Rigidbody_Sleep, "Sleep"),
+        new JSMgr.MethodCallBackInfo(Rigidbody_SweepTest__Vector3__RaycastHit__Single__QueryTriggerInteraction, "SweepTest"),
         new JSMgr.MethodCallBackInfo(Rigidbody_SweepTest__Vector3__RaycastHit__Single, "SweepTest"),
         new JSMgr.MethodCallBackInfo(Rigidbody_SweepTest__Vector3__RaycastHit, "SweepTest"),
+        new JSMgr.MethodCallBackInfo(Rigidbody_SweepTestAll__Vector3__Single__QueryTriggerInteraction, "SweepTestAll"),
         new JSMgr.MethodCallBackInfo(Rigidbody_SweepTestAll__Vector3__Single, "SweepTestAll"),
         new JSMgr.MethodCallBackInfo(Rigidbody_SweepTestAll__Vector3, "SweepTestAll"),
         new JSMgr.MethodCallBackInfo(Rigidbody_WakeUp, "WakeUp"),

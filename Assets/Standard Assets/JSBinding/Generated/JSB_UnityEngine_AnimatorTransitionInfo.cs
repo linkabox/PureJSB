@@ -37,6 +37,12 @@ static bool AnimatorTransitionInfo_AnimatorTransitionInfo1(JSVCall vc, int argc)
 // fields
 
 // properties
+static void AnimatorTransitionInfo_fullPathHash(JSVCall vc)
+{
+        UnityEngine.AnimatorTransitionInfo _this = (UnityEngine.AnimatorTransitionInfo)vc.csObj;
+        var result = _this.fullPathHash;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+}
 static void AnimatorTransitionInfo_nameHash(JSVCall vc)
 {
         UnityEngine.AnimatorTransitionInfo _this = (UnityEngine.AnimatorTransitionInfo)vc.csObj;
@@ -54,6 +60,12 @@ static void AnimatorTransitionInfo_normalizedTime(JSVCall vc)
         UnityEngine.AnimatorTransitionInfo _this = (UnityEngine.AnimatorTransitionInfo)vc.csObj;
         var result = _this.normalizedTime;
                 JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+}
+static void AnimatorTransitionInfo_anyState(JSVCall vc)
+{
+        UnityEngine.AnimatorTransitionInfo _this = (UnityEngine.AnimatorTransitionInfo)vc.csObj;
+        var result = _this.anyState;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
 }
 
 // methods
@@ -97,9 +109,11 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
+        AnimatorTransitionInfo_fullPathHash,
         AnimatorTransitionInfo_nameHash,
         AnimatorTransitionInfo_userNameHash,
         AnimatorTransitionInfo_normalizedTime,
+        AnimatorTransitionInfo_anyState,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

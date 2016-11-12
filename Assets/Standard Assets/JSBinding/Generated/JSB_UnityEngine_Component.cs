@@ -42,96 +42,6 @@ static void Component_transform(JSVCall vc)
         var result = _this.transform;
                 JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
 }
-static void Component_rigidbody(JSVCall vc)
-{
-        UnityEngine.Component _this = (UnityEngine.Component)vc.csObj;
-        var result = _this.rigidbody;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-}
-static void Component_rigidbody2D(JSVCall vc)
-{
-        UnityEngine.Component _this = (UnityEngine.Component)vc.csObj;
-        var result = _this.rigidbody2D;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-}
-static void Component_camera(JSVCall vc)
-{
-        UnityEngine.Component _this = (UnityEngine.Component)vc.csObj;
-        var result = _this.camera;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-}
-static void Component_light(JSVCall vc)
-{
-        UnityEngine.Component _this = (UnityEngine.Component)vc.csObj;
-        var result = _this.light;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-}
-static void Component_animation(JSVCall vc)
-{
-        UnityEngine.Component _this = (UnityEngine.Component)vc.csObj;
-        var result = _this.animation;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-}
-static void Component_constantForce(JSVCall vc)
-{
-        UnityEngine.Component _this = (UnityEngine.Component)vc.csObj;
-        var result = _this.constantForce;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-}
-static void Component_renderer(JSVCall vc)
-{
-        UnityEngine.Component _this = (UnityEngine.Component)vc.csObj;
-        var result = _this.renderer;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-}
-static void Component_audio(JSVCall vc)
-{
-        UnityEngine.Component _this = (UnityEngine.Component)vc.csObj;
-        var result = _this.audio;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-}
-static void Component_guiText(JSVCall vc)
-{
-        UnityEngine.Component _this = (UnityEngine.Component)vc.csObj;
-        var result = _this.guiText;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-}
-static void Component_guiTexture(JSVCall vc)
-{
-        UnityEngine.Component _this = (UnityEngine.Component)vc.csObj;
-        var result = _this.guiTexture;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-}
-static void Component_collider(JSVCall vc)
-{
-        UnityEngine.Component _this = (UnityEngine.Component)vc.csObj;
-        var result = _this.collider;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-}
-static void Component_collider2D(JSVCall vc)
-{
-        UnityEngine.Component _this = (UnityEngine.Component)vc.csObj;
-        var result = _this.collider2D;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-}
-static void Component_hingeJoint(JSVCall vc)
-{
-        UnityEngine.Component _this = (UnityEngine.Component)vc.csObj;
-        var result = _this.hingeJoint;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-}
-static void Component_particleEmitter(JSVCall vc)
-{
-        UnityEngine.Component _this = (UnityEngine.Component)vc.csObj;
-        var result = _this.particleEmitter;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-}
-static void Component_particleSystem(JSVCall vc)
-{
-        UnityEngine.Component _this = (UnityEngine.Component)vc.csObj;
-        var result = _this.particleSystem;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-}
 static void Component_gameObject(JSVCall vc)
 {
         UnityEngine.Component _this = (UnityEngine.Component)vc.csObj;
@@ -220,18 +130,6 @@ static bool Component_CompareTag__String(JSVCall vc, int argc)
     return true;
 }
 
-static bool Component_GetComponent__String(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, ((UnityEngine.Component)vc.csObj).GetComponent(arg0));
-    }
-
-    return true;
-}
-
 static bool Component_GetComponent__Type(JSVCall vc, int argc)
 {
     int len = argc;
@@ -243,11 +141,54 @@ static bool Component_GetComponent__Type(JSVCall vc, int argc)
 
     return true;
 }
+
+static bool Component_GetComponent__String(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, ((UnityEngine.Component)vc.csObj).GetComponent(arg0));
+    }
+
+    return true;
+}
 public static MethodID methodID7 = new MethodID("GetComponent", "T", TypeFlag.IsT, null, null);
 
 static bool Component_GetComponentT1(JSVCall vc, int argc)
 {
     UnityEngineManual.Component_GetComponentT1(vc, argc);
+    return true;
+}
+
+static bool Component_GetComponentInChildren__Type__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        System.Type arg0 = (System.Type)JSDataExchangeMgr.GetTypeByJsParam((int)JSApi.GetType.Arg);
+        System.Boolean arg1 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, ((UnityEngine.Component)vc.csObj).GetComponentInChildren(arg0, arg1));
+    }
+
+    return true;
+}
+public static MethodID methodID9 = new MethodID("GetComponentInChildren", "T", TypeFlag.IsT, new string[]{"Boolean"}, new TypeFlag[]{TypeFlag.None});
+
+static bool Component_GetComponentInChildrenT1__Boolean(JSVCall vc, int argc)
+{
+    // Get generic method by name and param count.
+    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(vc.csObj.GetType(), methodID9, 1); 
+    if (method == null) return true;
+
+    int len = argc - 1;
+    if (len == 1) 
+    {
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        object[] arr_t = new object[]{ arg0 };
+                JSMgr.datax.setWhatever((int)JSApi.SetType.Rval, method.Invoke(vc.csObj, arr_t));
+    }
+
     return true;
 }
 
@@ -262,7 +203,7 @@ static bool Component_GetComponentInChildren__Type(JSVCall vc, int argc)
 
     return true;
 }
-public static MethodID methodID9 = new MethodID("GetComponentInChildren", "T", TypeFlag.IsT, null, null);
+public static MethodID methodID11 = new MethodID("GetComponentInChildren", "T", TypeFlag.IsT, null, null);
 
 static bool Component_GetComponentInChildrenT1(JSVCall vc, int argc)
 {
@@ -281,7 +222,7 @@ static bool Component_GetComponentInParent__Type(JSVCall vc, int argc)
 
     return true;
 }
-public static MethodID methodID11 = new MethodID("GetComponentInParent", "T", TypeFlag.IsT, null, null);
+public static MethodID methodID13 = new MethodID("GetComponentInParent", "T", TypeFlag.IsT, null, null);
 
 static bool Component_GetComponentInParentT1(JSVCall vc, int argc)
 {
@@ -297,6 +238,24 @@ static bool Component_GetComponents__Type__ListT1_Component(JSVCall vc, int argc
         System.Type arg0 = (System.Type)JSDataExchangeMgr.GetTypeByJsParam((int)JSApi.GetType.Arg);
         List<UnityEngine.Component> arg1 = (List<UnityEngine.Component>)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         ((UnityEngine.Component)vc.csObj).GetComponents(arg0, arg1);
+    }
+
+    return true;
+}
+public static MethodID methodID15 = new MethodID("GetComponents", "Void", TypeFlag.None, new string[]{"List`1"}, new TypeFlag[]{TypeFlag.IsGenericType});
+
+static bool Component_GetComponentsT1__ListT1_T(JSVCall vc, int argc)
+{
+    // Get generic method by name and param count.
+    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(vc.csObj.GetType(), methodID15, 1); 
+    if (method == null) return true;
+
+    int len = argc - 1;
+    if (len == 1) 
+    {
+        object arg0 = (object)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        object[] arr_t = new object[]{ arg0 };
+        method.Invoke(vc.csObj, arr_t);
     }
 
     return true;
@@ -319,48 +278,11 @@ static bool Component_GetComponents__Type(JSVCall vc, int argc)
 
     return true;
 }
-public static MethodID methodID14 = new MethodID("GetComponents", "Void", TypeFlag.None, new string[]{"List`1"}, new TypeFlag[]{TypeFlag.IsGenericType});
-
-static bool Component_GetComponentsT1__ListT1_T(JSVCall vc, int argc)
-{
-    // Get generic method by name and param count.
-    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(vc.csObj.GetType(), methodID14, 1); 
-    if (method == null) return true;
-
-    int len = argc - 1;
-    if (len == 1) 
-    {
-        object arg0 = (object)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        object[] arr_t = new object[]{ arg0 };
-        method.Invoke(vc.csObj, arr_t);
-    }
-
-    return true;
-}
-public static MethodID methodID15 = new MethodID("GetComponents", "T[]", TypeFlag.None, null, null);
+public static MethodID methodID17 = new MethodID("GetComponents", "T[]", TypeFlag.None, null, null);
 
 static bool Component_GetComponentsT1(JSVCall vc, int argc)
 {
     UnityEngineManual.Component_GetComponentsT1(vc, argc);
-    return true;
-}
-public static MethodID methodID16 = new MethodID("GetComponentsInChildren", "Void", TypeFlag.None, new string[]{"Boolean", "List`1"}, new TypeFlag[]{TypeFlag.None, TypeFlag.IsGenericType});
-
-static bool Component_GetComponentsInChildrenT1__Boolean__ListT1_T(JSVCall vc, int argc)
-{
-    // Get generic method by name and param count.
-    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(vc.csObj.GetType(), methodID16, 1); 
-    if (method == null) return true;
-
-    int len = argc - 1;
-    if (len == 2) 
-    {
-        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        object arg1 = (object)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        object[] arr_t = new object[]{ arg0, arg1 };
-        method.Invoke(vc.csObj, arr_t);
-    }
-
     return true;
 }
 
@@ -378,6 +300,25 @@ static bool Component_GetComponentsInChildren__Type__Boolean(JSVCall vc, int arg
             JSApi.moveSaveID2Arr(i);
         }
         JSApi.setArrayS((int)JSApi.SetType.Rval, (arrRet != null ? arrRet.Length : 0), true);
+    }
+
+    return true;
+}
+public static MethodID methodID19 = new MethodID("GetComponentsInChildren", "Void", TypeFlag.None, new string[]{"Boolean", "List`1"}, new TypeFlag[]{TypeFlag.None, TypeFlag.IsGenericType});
+
+static bool Component_GetComponentsInChildrenT1__Boolean__ListT1_T(JSVCall vc, int argc)
+{
+    // Get generic method by name and param count.
+    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(vc.csObj.GetType(), methodID19, 1); 
+    if (method == null) return true;
+
+    int len = argc - 1;
+    if (len == 2) 
+    {
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        object arg1 = (object)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        object[] arr_t = new object[]{ arg0, arg1 };
+        method.Invoke(vc.csObj, arr_t);
     }
 
     return true;
@@ -400,19 +341,12 @@ static bool Component_GetComponentsInChildren__Type(JSVCall vc, int argc)
 
     return true;
 }
-public static MethodID methodID19 = new MethodID("GetComponentsInChildren", "T[]", TypeFlag.None, new string[]{"Boolean"}, new TypeFlag[]{TypeFlag.None});
-
-static bool Component_GetComponentsInChildrenT1__Boolean(JSVCall vc, int argc)
-{
-    UnityEngineManual.Component_GetComponentsInChildrenT1__Boolean(vc, argc);
-    return true;
-}
-public static MethodID methodID20 = new MethodID("GetComponentsInChildren", "Void", TypeFlag.None, new string[]{"List`1"}, new TypeFlag[]{TypeFlag.IsGenericType});
+public static MethodID methodID21 = new MethodID("GetComponentsInChildren", "Void", TypeFlag.None, new string[]{"List`1"}, new TypeFlag[]{TypeFlag.IsGenericType});
 
 static bool Component_GetComponentsInChildrenT1__ListT1_T(JSVCall vc, int argc)
 {
     // Get generic method by name and param count.
-    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(vc.csObj.GetType(), methodID20, 1); 
+    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(vc.csObj.GetType(), methodID21, 1); 
     if (method == null) return true;
 
     int len = argc - 1;
@@ -425,7 +359,14 @@ static bool Component_GetComponentsInChildrenT1__ListT1_T(JSVCall vc, int argc)
 
     return true;
 }
-public static MethodID methodID21 = new MethodID("GetComponentsInChildren", "T[]", TypeFlag.None, null, null);
+public static MethodID methodID22 = new MethodID("GetComponentsInChildren", "T[]", TypeFlag.None, new string[]{"Boolean"}, new TypeFlag[]{TypeFlag.None});
+
+static bool Component_GetComponentsInChildrenT1__Boolean(JSVCall vc, int argc)
+{
+    UnityEngineManual.Component_GetComponentsInChildrenT1__Boolean(vc, argc);
+    return true;
+}
+public static MethodID methodID23 = new MethodID("GetComponentsInChildren", "T[]", TypeFlag.None, null, null);
 
 static bool Component_GetComponentsInChildrenT1(JSVCall vc, int argc)
 {
@@ -451,6 +392,32 @@ static bool Component_GetComponentsInParent__Type__Boolean(JSVCall vc, int argc)
 
     return true;
 }
+public static MethodID methodID25 = new MethodID("GetComponentsInParent", "Void", TypeFlag.None, new string[]{"Boolean", "List`1"}, new TypeFlag[]{TypeFlag.None, TypeFlag.IsGenericType});
+
+static bool Component_GetComponentsInParentT1__Boolean__ListT1_T(JSVCall vc, int argc)
+{
+    // Get generic method by name and param count.
+    MethodInfo method = JSDataExchangeMgr.makeGenericMethod(vc.csObj.GetType(), methodID25, 1); 
+    if (method == null) return true;
+
+    int len = argc - 1;
+    if (len == 2) 
+    {
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        object arg1 = (object)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        object[] arr_t = new object[]{ arg0, arg1 };
+        method.Invoke(vc.csObj, arr_t);
+    }
+
+    return true;
+}
+public static MethodID methodID26 = new MethodID("GetComponentsInParent", "T[]", TypeFlag.None, new string[]{"Boolean"}, new TypeFlag[]{TypeFlag.None});
+
+static bool Component_GetComponentsInParentT1__Boolean(JSVCall vc, int argc)
+{
+    UnityEngineManual.Component_GetComponentsInParentT1__Boolean(vc, argc);
+    return true;
+}
 
 static bool Component_GetComponentsInParent__Type(JSVCall vc, int argc)
 {
@@ -469,14 +436,7 @@ static bool Component_GetComponentsInParent__Type(JSVCall vc, int argc)
 
     return true;
 }
-public static MethodID methodID24 = new MethodID("GetComponentsInParent", "T[]", TypeFlag.None, new string[]{"Boolean"}, new TypeFlag[]{TypeFlag.None});
-
-static bool Component_GetComponentsInParentT1__Boolean(JSVCall vc, int argc)
-{
-    UnityEngineManual.Component_GetComponentsInParentT1__Boolean(vc, argc);
-    return true;
-}
-public static MethodID methodID25 = new MethodID("GetComponentsInParent", "T[]", TypeFlag.None, null, null);
+public static MethodID methodID28 = new MethodID("GetComponentsInParent", "T[]", TypeFlag.None, null, null);
 
 static bool Component_GetComponentsInParentT1(JSVCall vc, int argc)
 {
@@ -602,21 +562,6 @@ public static void __Register()
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
         Component_transform,
-        Component_rigidbody,
-        Component_rigidbody2D,
-        Component_camera,
-        Component_light,
-        Component_animation,
-        Component_constantForce,
-        Component_renderer,
-        Component_audio,
-        Component_guiText,
-        Component_guiTexture,
-        Component_collider,
-        Component_collider2D,
-        Component_hingeJoint,
-        Component_particleEmitter,
-        Component_particleSystem,
         Component_gameObject,
         Component_tag,
 
@@ -633,26 +578,29 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Component_BroadcastMessage__String__SendMessageOptions, "BroadcastMessage"),
         new JSMgr.MethodCallBackInfo(Component_BroadcastMessage__String, "BroadcastMessage"),
         new JSMgr.MethodCallBackInfo(Component_CompareTag__String, "CompareTag"),
-        new JSMgr.MethodCallBackInfo(Component_GetComponent__String, "GetComponent"),
         new JSMgr.MethodCallBackInfo(Component_GetComponent__Type, "GetComponent"),
+        new JSMgr.MethodCallBackInfo(Component_GetComponent__String, "GetComponent"),
         new JSMgr.MethodCallBackInfo(Component_GetComponentT1, "GetComponent"),
+        new JSMgr.MethodCallBackInfo(Component_GetComponentInChildren__Type__Boolean, "GetComponentInChildren"),
+        new JSMgr.MethodCallBackInfo(Component_GetComponentInChildrenT1__Boolean, "GetComponentInChildren"),
         new JSMgr.MethodCallBackInfo(Component_GetComponentInChildren__Type, "GetComponentInChildren"),
         new JSMgr.MethodCallBackInfo(Component_GetComponentInChildrenT1, "GetComponentInChildren"),
         new JSMgr.MethodCallBackInfo(Component_GetComponentInParent__Type, "GetComponentInParent"),
         new JSMgr.MethodCallBackInfo(Component_GetComponentInParentT1, "GetComponentInParent"),
         new JSMgr.MethodCallBackInfo(Component_GetComponents__Type__ListT1_Component, "GetComponents"),
-        new JSMgr.MethodCallBackInfo(Component_GetComponents__Type, "GetComponents"),
         new JSMgr.MethodCallBackInfo(Component_GetComponentsT1__ListT1_T, "GetComponents"),
+        new JSMgr.MethodCallBackInfo(Component_GetComponents__Type, "GetComponents"),
         new JSMgr.MethodCallBackInfo(Component_GetComponentsT1, "GetComponents"),
-        new JSMgr.MethodCallBackInfo(Component_GetComponentsInChildrenT1__Boolean__ListT1_T, "GetComponentsInChildren"),
         new JSMgr.MethodCallBackInfo(Component_GetComponentsInChildren__Type__Boolean, "GetComponentsInChildren"),
+        new JSMgr.MethodCallBackInfo(Component_GetComponentsInChildrenT1__Boolean__ListT1_T, "GetComponentsInChildren"),
         new JSMgr.MethodCallBackInfo(Component_GetComponentsInChildren__Type, "GetComponentsInChildren"),
-        new JSMgr.MethodCallBackInfo(Component_GetComponentsInChildrenT1__Boolean, "GetComponentsInChildren"),
         new JSMgr.MethodCallBackInfo(Component_GetComponentsInChildrenT1__ListT1_T, "GetComponentsInChildren"),
+        new JSMgr.MethodCallBackInfo(Component_GetComponentsInChildrenT1__Boolean, "GetComponentsInChildren"),
         new JSMgr.MethodCallBackInfo(Component_GetComponentsInChildrenT1, "GetComponentsInChildren"),
         new JSMgr.MethodCallBackInfo(Component_GetComponentsInParent__Type__Boolean, "GetComponentsInParent"),
-        new JSMgr.MethodCallBackInfo(Component_GetComponentsInParent__Type, "GetComponentsInParent"),
+        new JSMgr.MethodCallBackInfo(Component_GetComponentsInParentT1__Boolean__ListT1_T, "GetComponentsInParent"),
         new JSMgr.MethodCallBackInfo(Component_GetComponentsInParentT1__Boolean, "GetComponentsInParent"),
+        new JSMgr.MethodCallBackInfo(Component_GetComponentsInParent__Type, "GetComponentsInParent"),
         new JSMgr.MethodCallBackInfo(Component_GetComponentsInParentT1, "GetComponentsInParent"),
         new JSMgr.MethodCallBackInfo(Component_SendMessage__String__Object__SendMessageOptions, "SendMessage"),
         new JSMgr.MethodCallBackInfo(Component_SendMessage__String__SendMessageOptions, "SendMessage"),

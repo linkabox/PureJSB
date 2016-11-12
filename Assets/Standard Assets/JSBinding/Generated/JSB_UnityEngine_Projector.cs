@@ -96,21 +96,6 @@ static void Projector_aspectRatio(JSVCall vc)
         _this.aspectRatio = arg0;
     }
 }
-static void Projector_isOrthoGraphic(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.Projector _this = (UnityEngine.Projector)vc.csObj;
-        var result = _this.isOrthoGraphic;
-                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
-    }
-    else
-    { 
-        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        UnityEngine.Projector _this = (UnityEngine.Projector)vc.csObj;
-        _this.isOrthoGraphic = arg0;
-    }
-}
 static void Projector_orthographic(JSVCall vc)
 {
     if (vc.bGet)
@@ -139,21 +124,6 @@ static void Projector_orthographicSize(JSVCall vc)
         System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         UnityEngine.Projector _this = (UnityEngine.Projector)vc.csObj;
         _this.orthographicSize = arg0;
-    }
-}
-static void Projector_orthoGraphicSize(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.Projector _this = (UnityEngine.Projector)vc.csObj;
-        var result = _this.orthoGraphicSize;
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
-    }
-    else
-    { 
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        UnityEngine.Projector _this = (UnityEngine.Projector)vc.csObj;
-        _this.orthoGraphicSize = arg0;
     }
 }
 static void Projector_ignoreLayers(JSVCall vc)
@@ -206,10 +176,8 @@ public static void __Register()
         Projector_farClipPlane,
         Projector_fieldOfView,
         Projector_aspectRatio,
-        Projector_isOrthoGraphic,
         Projector_orthographic,
         Projector_orthographicSize,
-        Projector_orthoGraphicSize,
         Projector_ignoreLayers,
         Projector_material,
 

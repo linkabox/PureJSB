@@ -53,22 +53,6 @@ static void JointLimits_min(JSVCall vc)
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
-static void JointLimits_minBounce(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        UnityEngine.JointLimits _this = (UnityEngine.JointLimits)vc.csObj;
-        var result = _this.minBounce;
-                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
-    }
-    else
-    { 
-        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
-        UnityEngine.JointLimits _this = (UnityEngine.JointLimits)vc.csObj;
-        _this.minBounce = arg0;
-        JSMgr.changeJSObj(vc.jsObjID, _this);
-    }
-}
 static void JointLimits_max(JSVCall vc)
 {
     if (vc.bGet)
@@ -85,19 +69,51 @@ static void JointLimits_max(JSVCall vc)
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
-static void JointLimits_maxBounce(JSVCall vc)
+static void JointLimits_bounciness(JSVCall vc)
 {
     if (vc.bGet)
     { 
         UnityEngine.JointLimits _this = (UnityEngine.JointLimits)vc.csObj;
-        var result = _this.maxBounce;
+        var result = _this.bounciness;
                 JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
     }
     else
     { 
         System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         UnityEngine.JointLimits _this = (UnityEngine.JointLimits)vc.csObj;
-        _this.maxBounce = arg0;
+        _this.bounciness = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
+static void JointLimits_bounceMinVelocity(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.JointLimits _this = (UnityEngine.JointLimits)vc.csObj;
+        var result = _this.bounceMinVelocity;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.JointLimits _this = (UnityEngine.JointLimits)vc.csObj;
+        _this.bounceMinVelocity = arg0;
+        JSMgr.changeJSObj(vc.jsObjID, _this);
+    }
+}
+static void JointLimits_contactDistance(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.JointLimits _this = (UnityEngine.JointLimits)vc.csObj;
+        var result = _this.contactDistance;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.JointLimits _this = (UnityEngine.JointLimits)vc.csObj;
+        _this.contactDistance = arg0;
         JSMgr.changeJSObj(vc.jsObjID, _this);
     }
 }
@@ -118,9 +134,10 @@ public static void __Register()
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
         JointLimits_min,
-        JointLimits_minBounce,
         JointLimits_max,
-        JointLimits_maxBounce,
+        JointLimits_bounciness,
+        JointLimits_bounceMinVelocity,
+        JointLimits_contactDistance,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

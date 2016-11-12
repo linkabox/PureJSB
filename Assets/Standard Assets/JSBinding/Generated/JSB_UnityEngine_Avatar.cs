@@ -18,21 +18,6 @@ public class JSB_UnityEngine_Avatar
 ////////////////////// Avatar ///////////////////////////////////////
 // constructors
 
-static bool Avatar_Avatar1(JSVCall vc, int argc)
-{
-    int _this = JSApi.getObject((int)JSApi.GetType.Arg);
-    JSApi.attachFinalizerObject(_this);
-    --argc;
-
-    int len = argc;
-    if (len == 0)
-    {
-        JSMgr.addJSCSRel(_this, new UnityEngine.Avatar());
-    }
-
-    return true;
-}
-
 // fields
 
 // properties
@@ -70,7 +55,6 @@ public static void __Register()
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]
     {
-        new JSMgr.MethodCallBackInfo(Avatar_Avatar1, ".ctor"),
 
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]

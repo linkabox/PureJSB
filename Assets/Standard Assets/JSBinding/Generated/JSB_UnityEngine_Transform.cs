@@ -231,6 +231,27 @@ static void Transform_hasChanged(JSVCall vc)
         _this.hasChanged = arg0;
     }
 }
+static void Transform_hierarchyCapacity(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.Transform _this = (UnityEngine.Transform)vc.csObj;
+        var result = _this.hierarchyCapacity;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+    }
+    else
+    { 
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Transform _this = (UnityEngine.Transform)vc.csObj;
+        _this.hierarchyCapacity = arg0;
+    }
+}
+static void Transform_hierarchyCount(JSVCall vc)
+{
+        UnityEngine.Transform _this = (UnityEngine.Transform)vc.csObj;
+        var result = _this.hierarchyCount;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+}
 
 // methods
 
@@ -787,6 +808,8 @@ public static void __Register()
         Transform_childCount,
         Transform_lossyScale,
         Transform_hasChanged,
+        Transform_hierarchyCapacity,
+        Transform_hierarchyCount,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

@@ -36,26 +36,6 @@ static bool Application_Application1(JSVCall vc, int argc)
 // fields
 
 // properties
-static void Application_loadedLevel(JSVCall vc)
-{
-        var result = UnityEngine.Application.loadedLevel;
-                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
-}
-static void Application_loadedLevelName(JSVCall vc)
-{
-        var result = UnityEngine.Application.loadedLevelName;
-                JSApi.setStringS((int)JSApi.SetType.Rval, result);
-}
-static void Application_isLoadingLevel(JSVCall vc)
-{
-        var result = UnityEngine.Application.isLoadingLevel;
-                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
-}
-static void Application_levelCount(JSVCall vc)
-{
-        var result = UnityEngine.Application.levelCount;
-                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
-}
 static void Application_streamedBytes(JSVCall vc)
 {
         var result = UnityEngine.Application.streamedBytes;
@@ -139,6 +119,41 @@ static void Application_unityVersion(JSVCall vc)
         var result = UnityEngine.Application.unityVersion;
                 JSApi.setStringS((int)JSApi.SetType.Rval, result);
 }
+static void Application_version(JSVCall vc)
+{
+        var result = UnityEngine.Application.version;
+                JSApi.setStringS((int)JSApi.SetType.Rval, result);
+}
+static void Application_bundleIdentifier(JSVCall vc)
+{
+        var result = UnityEngine.Application.bundleIdentifier;
+                JSApi.setStringS((int)JSApi.SetType.Rval, result);
+}
+static void Application_installMode(JSVCall vc)
+{
+        var result = UnityEngine.Application.installMode;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
+}
+static void Application_sandboxType(JSVCall vc)
+{
+        var result = UnityEngine.Application.sandboxType;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
+}
+static void Application_productName(JSVCall vc)
+{
+        var result = UnityEngine.Application.productName;
+                JSApi.setStringS((int)JSApi.SetType.Rval, result);
+}
+static void Application_companyName(JSVCall vc)
+{
+        var result = UnityEngine.Application.companyName;
+                JSApi.setStringS((int)JSApi.SetType.Rval, result);
+}
+static void Application_cloudProjectId(JSVCall vc)
+{
+        var result = UnityEngine.Application.cloudProjectId;
+                JSApi.setStringS((int)JSApi.SetType.Rval, result);
+}
 static void Application_webSecurityEnabled(JSVCall vc)
 {
         var result = UnityEngine.Application.webSecurityEnabled;
@@ -195,8 +210,83 @@ static void Application_genuineCheckAvailable(JSVCall vc)
         var result = UnityEngine.Application.genuineCheckAvailable;
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
 }
+static void Application_isShowingSplashScreen(JSVCall vc)
+{
+        var result = UnityEngine.Application.isShowingSplashScreen;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+}
 
 // methods
+public static UnityEngine.Application.LogCallback Application_add_logMessageReceived_GetDelegate_member0_arg0(CSRepresentedObject objFunction)
+{
+    if (objFunction == null || objFunction.jsObjID == 0)
+    {
+        return null;
+    }
+    var action = JSMgr.getJSFunCSDelegateRel<UnityEngine.Application.LogCallback>(objFunction.jsObjID);
+    if (action == null)
+    {
+        action = (condition, stackTrace, type) => 
+        {
+            JSMgr.vCall.CallJSFunctionValue(0, objFunction.jsObjID, condition, stackTrace, type);
+        };
+        JSMgr.addJSFunCSDelegateRel(objFunction.jsObjID, action);
+    }
+    return action;
+}
+
+static bool Application_add_logMessageReceived__LogCallback(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.Application.LogCallback action = JSDataExchangeMgr.GetJSArg<UnityEngine.Application.LogCallback>(()=>
+        {
+            if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
+                return Application_add_logMessageReceived_GetDelegate_member0_arg0(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+            else
+                return (UnityEngine.Application.LogCallback)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        });
+        UnityEngine.Application.logMessageReceived += action;
+    }
+
+    return true;
+}
+public static UnityEngine.Application.LogCallback Application_add_logMessageReceivedThreaded_GetDelegate_member1_arg0(CSRepresentedObject objFunction)
+{
+    if (objFunction == null || objFunction.jsObjID == 0)
+    {
+        return null;
+    }
+    var action = JSMgr.getJSFunCSDelegateRel<UnityEngine.Application.LogCallback>(objFunction.jsObjID);
+    if (action == null)
+    {
+        action = (condition, stackTrace, type) => 
+        {
+            JSMgr.vCall.CallJSFunctionValue(0, objFunction.jsObjID, condition, stackTrace, type);
+        };
+        JSMgr.addJSFunCSDelegateRel(objFunction.jsObjID, action);
+    }
+    return action;
+}
+
+static bool Application_add_logMessageReceivedThreaded__LogCallback(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.Application.LogCallback action = JSDataExchangeMgr.GetJSArg<UnityEngine.Application.LogCallback>(()=>
+        {
+            if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
+                return Application_add_logMessageReceivedThreaded_GetDelegate_member1_arg0(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+            else
+                return (UnityEngine.Application.LogCallback)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        });
+        UnityEngine.Application.logMessageReceivedThreaded += action;
+    }
+
+    return true;
+}
 
 static bool Application_CancelQuit(JSVCall vc, int argc)
 {
@@ -209,24 +299,24 @@ static bool Application_CancelQuit(JSVCall vc, int argc)
     return true;
 }
 
-static bool Application_CanStreamedLevelBeLoaded__String(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.Application.CanStreamedLevelBeLoaded(arg0)));
-    }
-
-    return true;
-}
-
 static bool Application_CanStreamedLevelBeLoaded__Int32(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 1) 
     {
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.Application.CanStreamedLevelBeLoaded(arg0)));
+    }
+
+    return true;
+}
+
+static bool Application_CanStreamedLevelBeLoaded__String(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.Application.CanStreamedLevelBeLoaded(arg0)));
     }
 
@@ -281,6 +371,18 @@ static bool Application_ExternalCall__String__Object_Array(JSVCall vc, int argc)
     return true;
 }
 
+static bool Application_GetStackTraceLogType__LogType(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.LogType arg0 = (UnityEngine.LogType)JSApi.getEnum((int)JSApi.GetType.Arg);
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)UnityEngine.Application.GetStackTraceLogType(arg0));
+    }
+
+    return true;
+}
+
 static bool Application_GetStreamProgressForLevel__Int32(JSVCall vc, int argc)
 {
     int len = argc;
@@ -328,102 +430,6 @@ static bool Application_HasUserAuthorization__UserAuthorization(JSVCall vc, int 
     return true;
 }
 
-static bool Application_LoadLevel__String(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        UnityEngine.Application.LoadLevel(arg0);
-    }
-
-    return true;
-}
-
-static bool Application_LoadLevel__Int32(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.Application.LoadLevel(arg0);
-    }
-
-    return true;
-}
-
-static bool Application_LoadLevelAdditive__String(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        UnityEngine.Application.LoadLevelAdditive(arg0);
-    }
-
-    return true;
-}
-
-static bool Application_LoadLevelAdditive__Int32(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.Application.LoadLevelAdditive(arg0);
-    }
-
-    return true;
-}
-
-static bool Application_LoadLevelAdditiveAsync__String(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Application.LoadLevelAdditiveAsync(arg0));
-    }
-
-    return true;
-}
-
-static bool Application_LoadLevelAdditiveAsync__Int32(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Application.LoadLevelAdditiveAsync(arg0));
-    }
-
-    return true;
-}
-
-static bool Application_LoadLevelAsync__String(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Application.LoadLevelAsync(arg0));
-    }
-
-    return true;
-}
-
-static bool Application_LoadLevelAsync__Int32(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 1) 
-    {
-        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Application.LoadLevelAsync(arg0));
-    }
-
-    return true;
-}
-
 static bool Application_OpenURL__String(JSVCall vc, int argc)
 {
     int len = argc;
@@ -446,7 +452,7 @@ static bool Application_Quit(JSVCall vc, int argc)
 
     return true;
 }
-public static UnityEngine.Application.LogCallback Application_RegisterLogCallback_GetDelegate_member20_arg0(CSRepresentedObject objFunction)
+public static UnityEngine.Application.LogCallback Application_remove_logMessageReceived_GetDelegate_member15_arg0(CSRepresentedObject objFunction)
 {
     if (objFunction == null || objFunction.jsObjID == 0)
     {
@@ -464,24 +470,24 @@ public static UnityEngine.Application.LogCallback Application_RegisterLogCallbac
     return action;
 }
 
-static bool Application_RegisterLogCallback__LogCallback(JSVCall vc, int argc)
+static bool Application_remove_logMessageReceived__LogCallback(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 1) 
     {
-        UnityEngine.Application.LogCallback arg0 = JSDataExchangeMgr.GetJSArg<UnityEngine.Application.LogCallback>(()=>
+        UnityEngine.Application.LogCallback action = JSDataExchangeMgr.GetJSArg<UnityEngine.Application.LogCallback>(()=>
         {
             if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return Application_RegisterLogCallback_GetDelegate_member20_arg0(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+                return Application_remove_logMessageReceived_GetDelegate_member15_arg0(JSApi.getFunctionS((int)JSApi.GetType.Arg));
             else
                 return (UnityEngine.Application.LogCallback)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         });
-        UnityEngine.Application.RegisterLogCallback(arg0);
+        UnityEngine.Application.logMessageReceived -= action;
     }
 
     return true;
 }
-public static UnityEngine.Application.LogCallback Application_RegisterLogCallbackThreaded_GetDelegate_member21_arg0(CSRepresentedObject objFunction)
+public static UnityEngine.Application.LogCallback Application_remove_logMessageReceivedThreaded_GetDelegate_member16_arg0(CSRepresentedObject objFunction)
 {
     if (objFunction == null || objFunction.jsObjID == 0)
     {
@@ -499,19 +505,54 @@ public static UnityEngine.Application.LogCallback Application_RegisterLogCallbac
     return action;
 }
 
-static bool Application_RegisterLogCallbackThreaded__LogCallback(JSVCall vc, int argc)
+static bool Application_remove_logMessageReceivedThreaded__LogCallback(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 1) 
     {
-        UnityEngine.Application.LogCallback arg0 = JSDataExchangeMgr.GetJSArg<UnityEngine.Application.LogCallback>(()=>
+        UnityEngine.Application.LogCallback action = JSDataExchangeMgr.GetJSArg<UnityEngine.Application.LogCallback>(()=>
         {
             if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return Application_RegisterLogCallbackThreaded_GetDelegate_member21_arg0(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+                return Application_remove_logMessageReceivedThreaded_GetDelegate_member16_arg0(JSApi.getFunctionS((int)JSApi.GetType.Arg));
             else
                 return (UnityEngine.Application.LogCallback)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         });
-        UnityEngine.Application.RegisterLogCallbackThreaded(arg0);
+        UnityEngine.Application.logMessageReceivedThreaded -= action;
+    }
+
+    return true;
+}
+public static UnityEngine.Application.AdvertisingIdentifierCallback Application_RequestAdvertisingIdentifierAsync_GetDelegate_member17_arg0(CSRepresentedObject objFunction)
+{
+    if (objFunction == null || objFunction.jsObjID == 0)
+    {
+        return null;
+    }
+    var action = JSMgr.getJSFunCSDelegateRel<UnityEngine.Application.AdvertisingIdentifierCallback>(objFunction.jsObjID);
+    if (action == null)
+    {
+        action = (advertisingId, trackingEnabled, errorMsg) => 
+        {
+            JSMgr.vCall.CallJSFunctionValue(0, objFunction.jsObjID, advertisingId, trackingEnabled, errorMsg);
+        };
+        JSMgr.addJSFunCSDelegateRel(objFunction.jsObjID, action);
+    }
+    return action;
+}
+
+static bool Application_RequestAdvertisingIdentifierAsync__AdvertisingIdentifierCallback(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.Application.AdvertisingIdentifierCallback arg0 = JSDataExchangeMgr.GetJSArg<UnityEngine.Application.AdvertisingIdentifierCallback>(()=>
+        {
+            if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
+                return Application_RequestAdvertisingIdentifierAsync_GetDelegate_member17_arg0(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+            else
+                return (UnityEngine.Application.AdvertisingIdentifierCallback)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        });
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.Application.RequestAdvertisingIdentifierAsync(arg0)));
     }
 
     return true;
@@ -524,6 +565,19 @@ static bool Application_RequestUserAuthorization__UserAuthorization(JSVCall vc, 
     {
         UnityEngine.UserAuthorization arg0 = (UnityEngine.UserAuthorization)JSApi.getEnum((int)JSApi.GetType.Arg);
                 JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Application.RequestUserAuthorization(arg0));
+    }
+
+    return true;
+}
+
+static bool Application_SetStackTraceLogType__LogType__StackTraceLogType(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        UnityEngine.LogType arg0 = (UnityEngine.LogType)JSApi.getEnum((int)JSApi.GetType.Arg);
+        UnityEngine.StackTraceLogType arg1 = (UnityEngine.StackTraceLogType)JSApi.getEnum((int)JSApi.GetType.Arg);
+        UnityEngine.Application.SetStackTraceLogType(arg0, arg1);
     }
 
     return true;
@@ -542,10 +596,6 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
-        Application_loadedLevel,
-        Application_loadedLevelName,
-        Application_isLoadingLevel,
-        Application_levelCount,
         Application_streamedBytes,
         Application_isPlaying,
         Application_isEditor,
@@ -561,6 +611,13 @@ public static void __Register()
         Application_srcValue,
         Application_absoluteURL,
         Application_unityVersion,
+        Application_version,
+        Application_bundleIdentifier,
+        Application_installMode,
+        Application_sandboxType,
+        Application_productName,
+        Application_companyName,
+        Application_cloudProjectId,
         Application_webSecurityEnabled,
         Application_webSecurityHostUrl,
         Application_targetFrameRate,
@@ -569,6 +626,7 @@ public static void __Register()
         Application_internetReachability,
         Application_genuine,
         Application_genuineCheckAvailable,
+        Application_isShowingSplashScreen,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]
@@ -578,29 +636,26 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
+        new JSMgr.MethodCallBackInfo(Application_add_logMessageReceived__LogCallback, "add_logMessageReceived"),
+        new JSMgr.MethodCallBackInfo(Application_add_logMessageReceivedThreaded__LogCallback, "add_logMessageReceivedThreaded"),
         new JSMgr.MethodCallBackInfo(Application_CancelQuit, "CancelQuit"),
-        new JSMgr.MethodCallBackInfo(Application_CanStreamedLevelBeLoaded__String, "CanStreamedLevelBeLoaded"),
         new JSMgr.MethodCallBackInfo(Application_CanStreamedLevelBeLoaded__Int32, "CanStreamedLevelBeLoaded"),
+        new JSMgr.MethodCallBackInfo(Application_CanStreamedLevelBeLoaded__String, "CanStreamedLevelBeLoaded"),
         new JSMgr.MethodCallBackInfo(Application_CaptureScreenshot__String__Int32, "CaptureScreenshot"),
         new JSMgr.MethodCallBackInfo(Application_CaptureScreenshot__String, "CaptureScreenshot"),
         new JSMgr.MethodCallBackInfo(Application_ExternalCall__String__Object_Array, "ExternalCall"),
+        new JSMgr.MethodCallBackInfo(Application_GetStackTraceLogType__LogType, "GetStackTraceLogType"),
         new JSMgr.MethodCallBackInfo(Application_GetStreamProgressForLevel__Int32, "GetStreamProgressForLevel"),
         new JSMgr.MethodCallBackInfo(Application_GetStreamProgressForLevel__String, "GetStreamProgressForLevel"),
         new JSMgr.MethodCallBackInfo(Application_HasProLicense, "HasProLicense"),
         new JSMgr.MethodCallBackInfo(Application_HasUserAuthorization__UserAuthorization, "HasUserAuthorization"),
-        new JSMgr.MethodCallBackInfo(Application_LoadLevel__String, "LoadLevel"),
-        new JSMgr.MethodCallBackInfo(Application_LoadLevel__Int32, "LoadLevel"),
-        new JSMgr.MethodCallBackInfo(Application_LoadLevelAdditive__String, "LoadLevelAdditive"),
-        new JSMgr.MethodCallBackInfo(Application_LoadLevelAdditive__Int32, "LoadLevelAdditive"),
-        new JSMgr.MethodCallBackInfo(Application_LoadLevelAdditiveAsync__String, "LoadLevelAdditiveAsync"),
-        new JSMgr.MethodCallBackInfo(Application_LoadLevelAdditiveAsync__Int32, "LoadLevelAdditiveAsync"),
-        new JSMgr.MethodCallBackInfo(Application_LoadLevelAsync__String, "LoadLevelAsync"),
-        new JSMgr.MethodCallBackInfo(Application_LoadLevelAsync__Int32, "LoadLevelAsync"),
         new JSMgr.MethodCallBackInfo(Application_OpenURL__String, "OpenURL"),
         new JSMgr.MethodCallBackInfo(Application_Quit, "Quit"),
-        new JSMgr.MethodCallBackInfo(Application_RegisterLogCallback__LogCallback, "RegisterLogCallback"),
-        new JSMgr.MethodCallBackInfo(Application_RegisterLogCallbackThreaded__LogCallback, "RegisterLogCallbackThreaded"),
+        new JSMgr.MethodCallBackInfo(Application_remove_logMessageReceived__LogCallback, "remove_logMessageReceived"),
+        new JSMgr.MethodCallBackInfo(Application_remove_logMessageReceivedThreaded__LogCallback, "remove_logMessageReceivedThreaded"),
+        new JSMgr.MethodCallBackInfo(Application_RequestAdvertisingIdentifierAsync__AdvertisingIdentifierCallback, "RequestAdvertisingIdentifierAsync"),
         new JSMgr.MethodCallBackInfo(Application_RequestUserAuthorization__UserAuthorization, "RequestUserAuthorization"),
+        new JSMgr.MethodCallBackInfo(Application_SetStackTraceLogType__LogType__StackTraceLogType, "SetStackTraceLogType"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

@@ -36,6 +36,21 @@ static bool SliderJoint2D_SliderJoint2D1(JSVCall vc, int argc)
 // fields
 
 // properties
+static void SliderJoint2D_autoConfigureAngle(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.SliderJoint2D _this = (UnityEngine.SliderJoint2D)vc.csObj;
+        var result = _this.autoConfigureAngle;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.SliderJoint2D _this = (UnityEngine.SliderJoint2D)vc.csObj;
+        _this.autoConfigureAngle = arg0;
+    }
+}
 static void SliderJoint2D_angle(JSVCall vc)
 {
     if (vc.bGet)
@@ -163,6 +178,7 @@ public static void __Register()
     };
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
+        SliderJoint2D_autoConfigureAngle,
         SliderJoint2D_angle,
         SliderJoint2D_useMotor,
         SliderJoint2D_useLimits,

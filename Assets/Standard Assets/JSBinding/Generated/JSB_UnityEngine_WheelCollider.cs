@@ -96,6 +96,21 @@ static void WheelCollider_suspensionSpring(JSVCall vc)
         _this.suspensionSpring = arg0;
     }
 }
+static void WheelCollider_forceAppPointDistance(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.WheelCollider _this = (UnityEngine.WheelCollider)vc.csObj;
+        var result = _this.forceAppPointDistance;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.WheelCollider _this = (UnityEngine.WheelCollider)vc.csObj;
+        _this.forceAppPointDistance = arg0;
+    }
+}
 static void WheelCollider_mass(JSVCall vc)
 {
     if (vc.bGet)
@@ -109,6 +124,21 @@ static void WheelCollider_mass(JSVCall vc)
         System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         UnityEngine.WheelCollider _this = (UnityEngine.WheelCollider)vc.csObj;
         _this.mass = arg0;
+    }
+}
+static void WheelCollider_wheelDampingRate(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.WheelCollider _this = (UnityEngine.WheelCollider)vc.csObj;
+        var result = _this.wheelDampingRate;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.WheelCollider _this = (UnityEngine.WheelCollider)vc.csObj;
+        _this.wheelDampingRate = arg0;
     }
 }
 static void WheelCollider_forwardFriction(JSVCall vc)
@@ -192,6 +222,12 @@ static void WheelCollider_isGrounded(JSVCall vc)
         var result = _this.isGrounded;
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
 }
+static void WheelCollider_sprungMass(JSVCall vc)
+{
+        UnityEngine.WheelCollider _this = (UnityEngine.WheelCollider)vc.csObj;
+        var result = _this.sprungMass;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+}
 static void WheelCollider_rpm(JSVCall vc)
 {
         UnityEngine.WheelCollider _this = (UnityEngine.WheelCollider)vc.csObj;
@@ -200,6 +236,20 @@ static void WheelCollider_rpm(JSVCall vc)
 }
 
 // methods
+
+static bool WheelCollider_ConfigureVehicleSubsteps__Single__Int32__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        ((UnityEngine.WheelCollider)vc.csObj).ConfigureVehicleSubsteps(arg0, arg1, arg2);
+    }
+
+    return true;
+}
 
 static bool WheelCollider_GetGroundHit__WheelHit(JSVCall vc, int argc)
 {
@@ -211,6 +261,25 @@ static bool WheelCollider_GetGroundHit__WheelHit(JSVCall vc, int argc)
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(((UnityEngine.WheelCollider)vc.csObj).GetGroundHit(out arg0)));
         JSApi.setArgIndex(r_arg0);
         JSMgr.datax.setObject((int)JSApi.SetType.ArgRef, arg0);
+    }
+
+    return true;
+}
+
+static bool WheelCollider_GetWorldPose__Vector3__Quaternion(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        int r_arg0 = JSApi.incArgIndex();
+        UnityEngine.Vector3 arg0;
+        int r_arg1 = JSApi.incArgIndex();
+        UnityEngine.Quaternion arg1;
+        ((UnityEngine.WheelCollider)vc.csObj).GetWorldPose(out arg0, out arg1);
+        JSApi.setArgIndex(r_arg0);
+        JSApi.setVector3S((int)JSApi.SetType.ArgRef, arg0);
+        JSApi.setArgIndex(r_arg1);
+        JSMgr.datax.setObject((int)JSApi.SetType.ArgRef, arg1);
     }
 
     return true;
@@ -233,13 +302,16 @@ public static void __Register()
         WheelCollider_radius,
         WheelCollider_suspensionDistance,
         WheelCollider_suspensionSpring,
+        WheelCollider_forceAppPointDistance,
         WheelCollider_mass,
+        WheelCollider_wheelDampingRate,
         WheelCollider_forwardFriction,
         WheelCollider_sidewaysFriction,
         WheelCollider_motorTorque,
         WheelCollider_brakeTorque,
         WheelCollider_steerAngle,
         WheelCollider_isGrounded,
+        WheelCollider_sprungMass,
         WheelCollider_rpm,
 
     };
@@ -250,7 +322,9 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
+        new JSMgr.MethodCallBackInfo(WheelCollider_ConfigureVehicleSubsteps__Single__Int32__Int32, "ConfigureVehicleSubsteps"),
         new JSMgr.MethodCallBackInfo(WheelCollider_GetGroundHit__WheelHit, "GetGroundHit"),
+        new JSMgr.MethodCallBackInfo(WheelCollider_GetWorldPose__Vector3__Quaternion, "GetWorldPose"),
 
     };
     JSMgr.allCallbackInfo.Add(ci);

@@ -96,6 +96,21 @@ static void SpringJoint_maxDistance(JSVCall vc)
         _this.maxDistance = arg0;
     }
 }
+static void SpringJoint_tolerance(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.SpringJoint _this = (UnityEngine.SpringJoint)vc.csObj;
+        var result = _this.tolerance;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.SpringJoint _this = (UnityEngine.SpringJoint)vc.csObj;
+        _this.tolerance = arg0;
+    }
+}
 
 // methods
 
@@ -116,6 +131,7 @@ public static void __Register()
         SpringJoint_damper,
         SpringJoint_minDistance,
         SpringJoint_maxDistance,
+        SpringJoint_tolerance,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

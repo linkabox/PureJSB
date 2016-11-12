@@ -96,6 +96,21 @@ static void NavMeshObstacle_carving(JSVCall vc)
         _this.carving = arg0;
     }
 }
+static void NavMeshObstacle_carveOnlyStationary(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.NavMeshObstacle _this = (UnityEngine.NavMeshObstacle)vc.csObj;
+        var result = _this.carveOnlyStationary;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.NavMeshObstacle _this = (UnityEngine.NavMeshObstacle)vc.csObj;
+        _this.carveOnlyStationary = arg0;
+    }
+}
 static void NavMeshObstacle_carvingMoveThreshold(JSVCall vc)
 {
     if (vc.bGet)
@@ -109,6 +124,66 @@ static void NavMeshObstacle_carvingMoveThreshold(JSVCall vc)
         System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
         UnityEngine.NavMeshObstacle _this = (UnityEngine.NavMeshObstacle)vc.csObj;
         _this.carvingMoveThreshold = arg0;
+    }
+}
+static void NavMeshObstacle_carvingTimeToStationary(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.NavMeshObstacle _this = (UnityEngine.NavMeshObstacle)vc.csObj;
+        var result = _this.carvingTimeToStationary;
+                JSApi.setSingle((int)JSApi.SetType.Rval, (System.Single)(result));
+    }
+    else
+    { 
+        System.Single arg0 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+        UnityEngine.NavMeshObstacle _this = (UnityEngine.NavMeshObstacle)vc.csObj;
+        _this.carvingTimeToStationary = arg0;
+    }
+}
+static void NavMeshObstacle_shape(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.NavMeshObstacle _this = (UnityEngine.NavMeshObstacle)vc.csObj;
+        var result = _this.shape;
+                JSApi.setEnum((int)JSApi.SetType.Rval, (int)result);
+    }
+    else
+    { 
+        UnityEngine.NavMeshObstacleShape arg0 = (UnityEngine.NavMeshObstacleShape)JSApi.getEnum((int)JSApi.GetType.Arg);
+        UnityEngine.NavMeshObstacle _this = (UnityEngine.NavMeshObstacle)vc.csObj;
+        _this.shape = arg0;
+    }
+}
+static void NavMeshObstacle_center(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.NavMeshObstacle _this = (UnityEngine.NavMeshObstacle)vc.csObj;
+        var result = _this.center;
+                JSApi.setVector3S((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.Vector3 arg0 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        UnityEngine.NavMeshObstacle _this = (UnityEngine.NavMeshObstacle)vc.csObj;
+        _this.center = arg0;
+    }
+}
+static void NavMeshObstacle_size(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.NavMeshObstacle _this = (UnityEngine.NavMeshObstacle)vc.csObj;
+        var result = _this.size;
+                JSApi.setVector3S((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.Vector3 arg0 = (UnityEngine.Vector3)JSApi.getVector3S((int)JSApi.GetType.Arg);
+        UnityEngine.NavMeshObstacle _this = (UnityEngine.NavMeshObstacle)vc.csObj;
+        _this.size = arg0;
     }
 }
 
@@ -131,7 +206,12 @@ public static void __Register()
         NavMeshObstacle_radius,
         NavMeshObstacle_velocity,
         NavMeshObstacle_carving,
+        NavMeshObstacle_carveOnlyStationary,
         NavMeshObstacle_carvingMoveThreshold,
+        NavMeshObstacle_carvingTimeToStationary,
+        NavMeshObstacle_shape,
+        NavMeshObstacle_center,
+        NavMeshObstacle_size,
 
     };
     ci.constructors = new JSMgr.MethodCallBackInfo[]

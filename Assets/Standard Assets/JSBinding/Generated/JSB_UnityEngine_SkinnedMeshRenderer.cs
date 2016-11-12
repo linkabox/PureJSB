@@ -127,6 +127,21 @@ static void SkinnedMeshRenderer_updateWhenOffscreen(JSVCall vc)
         _this.updateWhenOffscreen = arg0;
     }
 }
+static void SkinnedMeshRenderer_skinnedMotionVectors(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        UnityEngine.SkinnedMeshRenderer _this = (UnityEngine.SkinnedMeshRenderer)vc.csObj;
+        var result = _this.skinnedMotionVectors;
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(result));
+    }
+    else
+    { 
+        System.Boolean arg0 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.SkinnedMeshRenderer _this = (UnityEngine.SkinnedMeshRenderer)vc.csObj;
+        _this.skinnedMotionVectors = arg0;
+    }
+}
 static void SkinnedMeshRenderer_localBounds(JSVCall vc)
 {
     if (vc.bGet)
@@ -200,6 +215,7 @@ public static void __Register()
         SkinnedMeshRenderer_quality,
         SkinnedMeshRenderer_sharedMesh,
         SkinnedMeshRenderer_updateWhenOffscreen,
+        SkinnedMeshRenderer_skinnedMotionVectors,
         SkinnedMeshRenderer_localBounds,
 
     };

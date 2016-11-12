@@ -343,6 +343,20 @@ static bool Vector4_Lerp__Vector4__Vector4__Single(JSVCall vc, int argc)
     return true;
 }
 
+static bool Vector4_LerpUnclamped__Vector4__Vector4__Single(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        UnityEngine.Vector4 arg0 = (UnityEngine.Vector4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Vector4 arg1 = (UnityEngine.Vector4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Single arg2 = (System.Single)JSApi.getSingle((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.Vector4.LerpUnclamped(arg0, arg1, arg2));
+    }
+
+    return true;
+}
+
 static bool Vector4_Magnitude__Vector4(JSVCall vc, int argc)
 {
     int len = argc;
@@ -438,10 +452,10 @@ static bool Vector4_op_Implicit__Vector3_to_Vector4(JSVCall vc, int argc)
     return true;
 }
 
-static bool Vector4_op_Implicit__Vector4_to_Vector2(JSVCall vc, int argc)
+static bool Vector4_op_Implicit__Vector4_to_Vector3(JSVCall vc, int argc)
 {
     UnityEngine.Vector4 arg0 = (UnityEngine.Vector4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-            JSApi.setVector2S((int)JSApi.SetType.Rval, (UnityEngine.Vector2)arg0);
+            JSApi.setVector3S((int)JSApi.SetType.Rval, (UnityEngine.Vector3)arg0);
     return true;
 }
 
@@ -452,10 +466,10 @@ static bool Vector4_op_Implicit__Vector2_to_Vector4(JSVCall vc, int argc)
     return true;
 }
 
-static bool Vector4_op_Implicit__Vector4_to_Vector3(JSVCall vc, int argc)
+static bool Vector4_op_Implicit__Vector4_to_Vector2(JSVCall vc, int argc)
 {
     UnityEngine.Vector4 arg0 = (UnityEngine.Vector4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-            JSApi.setVector3S((int)JSApi.SetType.Rval, (UnityEngine.Vector3)arg0);
+            JSApi.setVector2S((int)JSApi.SetType.Rval, (UnityEngine.Vector2)arg0);
     return true;
 }
 
@@ -583,6 +597,7 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Vector4_Distance__Vector4__Vector4, "Distance"),
         new JSMgr.MethodCallBackInfo(Vector4_Dot__Vector4__Vector4, "Dot"),
         new JSMgr.MethodCallBackInfo(Vector4_Lerp__Vector4__Vector4__Single, "Lerp"),
+        new JSMgr.MethodCallBackInfo(Vector4_LerpUnclamped__Vector4__Vector4__Single, "LerpUnclamped"),
         new JSMgr.MethodCallBackInfo(Vector4_Magnitude__Vector4, "Magnitude"),
         new JSMgr.MethodCallBackInfo(Vector4_Max__Vector4__Vector4, "Max"),
         new JSMgr.MethodCallBackInfo(Vector4_Min__Vector4__Vector4, "Min"),
@@ -592,9 +607,9 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(Vector4_op_Division__Vector4__Single, "op_Division"),
         new JSMgr.MethodCallBackInfo(Vector4_op_Equality__Vector4__Vector4, "op_Equality"),
         new JSMgr.MethodCallBackInfo(Vector4_op_Implicit__Vector3_to_Vector4, "op_Implicit"),
-        new JSMgr.MethodCallBackInfo(Vector4_op_Implicit__Vector4_to_Vector2, "op_Implicit"),
-        new JSMgr.MethodCallBackInfo(Vector4_op_Implicit__Vector2_to_Vector4, "op_Implicit"),
         new JSMgr.MethodCallBackInfo(Vector4_op_Implicit__Vector4_to_Vector3, "op_Implicit"),
+        new JSMgr.MethodCallBackInfo(Vector4_op_Implicit__Vector2_to_Vector4, "op_Implicit"),
+        new JSMgr.MethodCallBackInfo(Vector4_op_Implicit__Vector4_to_Vector2, "op_Implicit"),
         new JSMgr.MethodCallBackInfo(Vector4_op_Inequality__Vector4__Vector4, "op_Inequality"),
         new JSMgr.MethodCallBackInfo(Vector4_op_Multiply__Vector4__Single, "op_Multiply"),
         new JSMgr.MethodCallBackInfo(Vector4_op_Multiply__Single__Vector4, "op_Multiply"),

@@ -49,6 +49,32 @@ static void GUI_skin(JSVCall vc)
         UnityEngine.GUI.skin = arg0;
     }
 }
+static void GUI_matrix(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.GUI.matrix;
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        UnityEngine.Matrix4x4 arg0 = (UnityEngine.Matrix4x4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.GUI.matrix = arg0;
+    }
+}
+static void GUI_tooltip(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.GUI.tooltip;
+                JSApi.setStringS((int)JSApi.SetType.Rval, result);
+    }
+    else
+    { 
+        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        UnityEngine.GUI.tooltip = arg0;
+    }
+}
 static void GUI_color(JSVCall vc)
 {
     if (vc.bGet)
@@ -114,32 +140,6 @@ static void GUI_enabled(JSVCall vc)
         UnityEngine.GUI.enabled = arg0;
     }
 }
-static void GUI_matrix(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        var result = UnityEngine.GUI.matrix;
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, result);
-    }
-    else
-    { 
-        UnityEngine.Matrix4x4 arg0 = (UnityEngine.Matrix4x4)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.GUI.matrix = arg0;
-    }
-}
-static void GUI_tooltip(JSVCall vc)
-{
-    if (vc.bGet)
-    { 
-        var result = UnityEngine.GUI.tooltip;
-                JSApi.setStringS((int)JSApi.SetType.Rval, result);
-    }
-    else
-    { 
-        System.String arg0 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        UnityEngine.GUI.tooltip = arg0;
-    }
-}
 static void GUI_depth(JSVCall vc)
 {
     if (vc.bGet)
@@ -156,6 +156,33 @@ static void GUI_depth(JSVCall vc)
 
 // methods
 
+static bool GUI_BeginClip__Rect__Vector2__Vector2__Boolean(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2 arg2 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        System.Boolean arg3 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
+        UnityEngine.GUI.BeginClip(arg0, arg1, arg2, arg3);
+    }
+
+    return true;
+}
+
+static bool GUI_BeginClip__Rect(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 1) 
+    {
+        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.GUI.BeginClip(arg0);
+    }
+
+    return true;
+}
+
 static bool GUI_BeginGroup__Rect__String__GUIStyle(JSVCall vc, int argc)
 {
     int len = argc;
@@ -163,20 +190,6 @@ static bool GUI_BeginGroup__Rect__String__GUIStyle(JSVCall vc, int argc)
     {
         UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        UnityEngine.GUIStyle arg2 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.GUI.BeginGroup(arg0, arg1, arg2);
-    }
-
-    return true;
-}
-
-static bool GUI_BeginGroup__Rect__Texture__GUIStyle(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 3) 
-    {
-        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.Texture arg1 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.GUIStyle arg2 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.GUI.BeginGroup(arg0, arg1, arg2);
     }
@@ -198,14 +211,15 @@ static bool GUI_BeginGroup__Rect__GUIContent__GUIStyle(JSVCall vc, int argc)
     return true;
 }
 
-static bool GUI_BeginGroup__Rect__Texture(JSVCall vc, int argc)
+static bool GUI_BeginGroup__Rect__Texture__GUIStyle(JSVCall vc, int argc)
 {
     int len = argc;
-    if (len == 2) 
+    if (len == 3) 
     {
         UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.Texture arg1 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.GUI.BeginGroup(arg0, arg1);
+        UnityEngine.GUIStyle arg2 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.GUI.BeginGroup(arg0, arg1, arg2);
     }
 
     return true;
@@ -218,6 +232,19 @@ static bool GUI_BeginGroup__Rect__String(JSVCall vc, int argc)
     {
         UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        UnityEngine.GUI.BeginGroup(arg0, arg1);
+    }
+
+    return true;
+}
+
+static bool GUI_BeginGroup__Rect__Texture(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Texture arg1 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.GUI.BeginGroup(arg0, arg1);
     }
 
@@ -280,22 +307,6 @@ static bool GUI_BeginScrollView__Rect__Vector2__Rect__Boolean__Boolean__GUIStyle
     return true;
 }
 
-static bool GUI_BeginScrollView__Rect__Vector2__Rect__GUIStyle__GUIStyle(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 5) 
-    {
-        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
-        UnityEngine.Rect arg2 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.GUIStyle arg3 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.GUIStyle arg4 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-                JSApi.setVector2S((int)JSApi.SetType.Rval, UnityEngine.GUI.BeginScrollView(arg0, arg1, arg2, arg3, arg4));
-    }
-
-    return true;
-}
-
 static bool GUI_BeginScrollView__Rect__Vector2__Rect__Boolean__Boolean(JSVCall vc, int argc)
 {
     int len = argc;
@@ -312,6 +323,22 @@ static bool GUI_BeginScrollView__Rect__Vector2__Rect__Boolean__Boolean(JSVCall v
     return true;
 }
 
+static bool GUI_BeginScrollView__Rect__Vector2__Rect__GUIStyle__GUIStyle(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 5) 
+    {
+        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
+        UnityEngine.Rect arg2 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.GUIStyle arg3 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.GUIStyle arg4 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+                JSApi.setVector2S((int)JSApi.SetType.Rval, UnityEngine.GUI.BeginScrollView(arg0, arg1, arg2, arg3, arg4));
+    }
+
+    return true;
+}
+
 static bool GUI_BeginScrollView__Rect__Vector2__Rect(JSVCall vc, int argc)
 {
     int len = argc;
@@ -321,20 +348,6 @@ static bool GUI_BeginScrollView__Rect__Vector2__Rect(JSVCall vc, int argc)
         UnityEngine.Vector2 arg1 = (UnityEngine.Vector2)JSApi.getVector2S((int)JSApi.GetType.Arg);
         UnityEngine.Rect arg2 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
                 JSApi.setVector2S((int)JSApi.SetType.Rval, UnityEngine.GUI.BeginScrollView(arg0, arg1, arg2));
-    }
-
-    return true;
-}
-
-static bool GUI_Box__Rect__String__GUIStyle(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 3) 
-    {
-        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        UnityEngine.GUIStyle arg2 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.GUI.Box(arg0, arg1, arg2);
     }
 
     return true;
@@ -361,6 +374,20 @@ static bool GUI_Box__Rect__GUIContent__GUIStyle(JSVCall vc, int argc)
     {
         UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.GUIContent arg1 = (UnityEngine.GUIContent)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.GUIStyle arg2 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.GUI.Box(arg0, arg1, arg2);
+    }
+
+    return true;
+}
+
+static bool GUI_Box__Rect__String__GUIStyle(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
         UnityEngine.GUIStyle arg2 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.GUI.Box(arg0, arg1, arg2);
     }
@@ -431,13 +458,13 @@ static bool GUI_BringWindowToFront__Int32(JSVCall vc, int argc)
     return true;
 }
 
-static bool GUI_Button__Rect__Texture__GUIStyle(JSVCall vc, int argc)
+static bool GUI_Button__Rect__GUIContent__GUIStyle(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 3) 
     {
         UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.Texture arg1 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.GUIContent arg1 = (UnityEngine.GUIContent)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.GUIStyle arg2 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.GUI.Button(arg0, arg1, arg2)));
     }
@@ -459,13 +486,13 @@ static bool GUI_Button__Rect__String__GUIStyle(JSVCall vc, int argc)
     return true;
 }
 
-static bool GUI_Button__Rect__GUIContent__GUIStyle(JSVCall vc, int argc)
+static bool GUI_Button__Rect__Texture__GUIStyle(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 3) 
     {
         UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.GUIContent arg1 = (UnityEngine.GUIContent)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Texture arg1 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.GUIStyle arg2 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.GUI.Button(arg0, arg1, arg2)));
     }
@@ -622,6 +649,17 @@ static bool GUI_DrawTextureWithTexCoords__Rect__Texture__Rect(JSVCall vc, int ar
     return true;
 }
 
+static bool GUI_EndClip(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 0) 
+    {
+        UnityEngine.GUI.EndClip();
+    }
+
+    return true;
+}
+
 static bool GUI_EndGroup(JSVCall vc, int argc)
 {
     int len = argc;
@@ -770,20 +808,6 @@ static bool GUI_Label__Rect__GUIContent__GUIStyle(JSVCall vc, int argc)
     return true;
 }
 
-static bool GUI_Label__Rect__Texture__GUIStyle(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 3) 
-    {
-        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.Texture arg1 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.GUIStyle arg2 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.GUI.Label(arg0, arg1, arg2);
-    }
-
-    return true;
-}
-
 static bool GUI_Label__Rect__String__GUIStyle(JSVCall vc, int argc)
 {
     int len = argc;
@@ -798,14 +822,15 @@ static bool GUI_Label__Rect__String__GUIStyle(JSVCall vc, int argc)
     return true;
 }
 
-static bool GUI_Label__Rect__GUIContent(JSVCall vc, int argc)
+static bool GUI_Label__Rect__Texture__GUIStyle(JSVCall vc, int argc)
 {
     int len = argc;
-    if (len == 2) 
+    if (len == 3) 
     {
         UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.GUIContent arg1 = (UnityEngine.GUIContent)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.GUI.Label(arg0, arg1);
+        UnityEngine.Texture arg1 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.GUIStyle arg2 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.GUI.Label(arg0, arg1, arg2);
     }
 
     return true;
@@ -824,6 +849,19 @@ static bool GUI_Label__Rect__String(JSVCall vc, int argc)
     return true;
 }
 
+static bool GUI_Label__Rect__GUIContent(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.GUIContent arg1 = (UnityEngine.GUIContent)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.GUI.Label(arg0, arg1);
+    }
+
+    return true;
+}
+
 static bool GUI_Label__Rect__Texture(JSVCall vc, int argc)
 {
     int len = argc;
@@ -836,46 +874,7 @@ static bool GUI_Label__Rect__Texture(JSVCall vc, int argc)
 
     return true;
 }
-public static UnityEngine.GUI.WindowFunction GUI_ModalWindow_GetDelegate_member50_arg2(CSRepresentedObject objFunction)
-{
-    if (objFunction == null || objFunction.jsObjID == 0)
-    {
-        return null;
-    }
-    var action = JSMgr.getJSFunCSDelegateRel<UnityEngine.GUI.WindowFunction>(objFunction.jsObjID);
-    if (action == null)
-    {
-        action = (id) => 
-        {
-            JSMgr.vCall.CallJSFunctionValue(0, objFunction.jsObjID, id);
-        };
-        JSMgr.addJSFunCSDelegateRel(objFunction.jsObjID, action);
-    }
-    return action;
-}
-
-static bool GUI_ModalWindow__Int32__Rect__WindowFunction__GUIContent__GUIStyle(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 5) 
-    {
-        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.Rect arg1 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.GUI.WindowFunction arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.GUI.WindowFunction>(()=>
-        {
-            if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return GUI_ModalWindow_GetDelegate_member50_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
-            else
-                return (UnityEngine.GUI.WindowFunction)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        });
-        UnityEngine.GUIContent arg3 = (UnityEngine.GUIContent)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.GUIStyle arg4 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.GUI.ModalWindow(arg0, arg1, arg2, arg3, arg4));
-    }
-
-    return true;
-}
-public static UnityEngine.GUI.WindowFunction GUI_ModalWindow_GetDelegate_member51_arg2(CSRepresentedObject objFunction)
+public static UnityEngine.GUI.WindowFunction GUI_ModalWindow_GetDelegate_member53_arg2(CSRepresentedObject objFunction)
 {
     if (objFunction == null || objFunction.jsObjID == 0)
     {
@@ -903,7 +902,7 @@ static bool GUI_ModalWindow__Int32__Rect__WindowFunction__String__GUIStyle(JSVCa
         UnityEngine.GUI.WindowFunction arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.GUI.WindowFunction>(()=>
         {
             if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return GUI_ModalWindow_GetDelegate_member51_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+                return GUI_ModalWindow_GetDelegate_member53_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
             else
                 return (UnityEngine.GUI.WindowFunction)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         });
@@ -914,7 +913,7 @@ static bool GUI_ModalWindow__Int32__Rect__WindowFunction__String__GUIStyle(JSVCa
 
     return true;
 }
-public static UnityEngine.GUI.WindowFunction GUI_ModalWindow_GetDelegate_member52_arg2(CSRepresentedObject objFunction)
+public static UnityEngine.GUI.WindowFunction GUI_ModalWindow_GetDelegate_member54_arg2(CSRepresentedObject objFunction)
 {
     if (objFunction == null || objFunction.jsObjID == 0)
     {
@@ -942,7 +941,7 @@ static bool GUI_ModalWindow__Int32__Rect__WindowFunction__Texture__GUIStyle(JSVC
         UnityEngine.GUI.WindowFunction arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.GUI.WindowFunction>(()=>
         {
             if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return GUI_ModalWindow_GetDelegate_member52_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+                return GUI_ModalWindow_GetDelegate_member54_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
             else
                 return (UnityEngine.GUI.WindowFunction)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         });
@@ -953,7 +952,7 @@ static bool GUI_ModalWindow__Int32__Rect__WindowFunction__Texture__GUIStyle(JSVC
 
     return true;
 }
-public static UnityEngine.GUI.WindowFunction GUI_ModalWindow_GetDelegate_member53_arg2(CSRepresentedObject objFunction)
+public static UnityEngine.GUI.WindowFunction GUI_ModalWindow_GetDelegate_member55_arg2(CSRepresentedObject objFunction)
 {
     if (objFunction == null || objFunction.jsObjID == 0)
     {
@@ -971,27 +970,28 @@ public static UnityEngine.GUI.WindowFunction GUI_ModalWindow_GetDelegate_member5
     return action;
 }
 
-static bool GUI_ModalWindow__Int32__Rect__WindowFunction__String(JSVCall vc, int argc)
+static bool GUI_ModalWindow__Int32__Rect__WindowFunction__GUIContent__GUIStyle(JSVCall vc, int argc)
 {
     int len = argc;
-    if (len == 4) 
+    if (len == 5) 
     {
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         UnityEngine.Rect arg1 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.GUI.WindowFunction arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.GUI.WindowFunction>(()=>
         {
             if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return GUI_ModalWindow_GetDelegate_member53_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+                return GUI_ModalWindow_GetDelegate_member55_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
             else
                 return (UnityEngine.GUI.WindowFunction)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         });
-        System.String arg3 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.GUI.ModalWindow(arg0, arg1, arg2, arg3));
+        UnityEngine.GUIContent arg3 = (UnityEngine.GUIContent)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.GUIStyle arg4 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.GUI.ModalWindow(arg0, arg1, arg2, arg3, arg4));
     }
 
     return true;
 }
-public static UnityEngine.GUI.WindowFunction GUI_ModalWindow_GetDelegate_member54_arg2(CSRepresentedObject objFunction)
+public static UnityEngine.GUI.WindowFunction GUI_ModalWindow_GetDelegate_member56_arg2(CSRepresentedObject objFunction)
 {
     if (objFunction == null || objFunction.jsObjID == 0)
     {
@@ -1019,7 +1019,7 @@ static bool GUI_ModalWindow__Int32__Rect__WindowFunction__GUIContent(JSVCall vc,
         UnityEngine.GUI.WindowFunction arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.GUI.WindowFunction>(()=>
         {
             if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return GUI_ModalWindow_GetDelegate_member54_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+                return GUI_ModalWindow_GetDelegate_member56_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
             else
                 return (UnityEngine.GUI.WindowFunction)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         });
@@ -1029,7 +1029,45 @@ static bool GUI_ModalWindow__Int32__Rect__WindowFunction__GUIContent(JSVCall vc,
 
     return true;
 }
-public static UnityEngine.GUI.WindowFunction GUI_ModalWindow_GetDelegate_member55_arg2(CSRepresentedObject objFunction)
+public static UnityEngine.GUI.WindowFunction GUI_ModalWindow_GetDelegate_member57_arg2(CSRepresentedObject objFunction)
+{
+    if (objFunction == null || objFunction.jsObjID == 0)
+    {
+        return null;
+    }
+    var action = JSMgr.getJSFunCSDelegateRel<UnityEngine.GUI.WindowFunction>(objFunction.jsObjID);
+    if (action == null)
+    {
+        action = (id) => 
+        {
+            JSMgr.vCall.CallJSFunctionValue(0, objFunction.jsObjID, id);
+        };
+        JSMgr.addJSFunCSDelegateRel(objFunction.jsObjID, action);
+    }
+    return action;
+}
+
+static bool GUI_ModalWindow__Int32__Rect__WindowFunction__String(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Rect arg1 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.GUI.WindowFunction arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.GUI.WindowFunction>(()=>
+        {
+            if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
+                return GUI_ModalWindow_GetDelegate_member57_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+            else
+                return (UnityEngine.GUI.WindowFunction)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        });
+        System.String arg3 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.GUI.ModalWindow(arg0, arg1, arg2, arg3));
+    }
+
+    return true;
+}
+public static UnityEngine.GUI.WindowFunction GUI_ModalWindow_GetDelegate_member58_arg2(CSRepresentedObject objFunction)
 {
     if (objFunction == null || objFunction.jsObjID == 0)
     {
@@ -1057,7 +1095,7 @@ static bool GUI_ModalWindow__Int32__Rect__WindowFunction__Texture(JSVCall vc, in
         UnityEngine.GUI.WindowFunction arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.GUI.WindowFunction>(()=>
         {
             if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return GUI_ModalWindow_GetDelegate_member55_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+                return GUI_ModalWindow_GetDelegate_member58_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
             else
                 return (UnityEngine.GUI.WindowFunction)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         });
@@ -1084,21 +1122,6 @@ static bool GUI_PasswordField__Rect__String__Char__Int32__GUIStyle(JSVCall vc, i
     return true;
 }
 
-static bool GUI_PasswordField__Rect__String__Char__Int32(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 4) 
-    {
-        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        System.Char arg2 = (System.Char)JSApi.getChar((int)JSApi.GetType.Arg);
-        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-                JSApi.setStringS((int)JSApi.SetType.Rval, UnityEngine.GUI.PasswordField(arg0, arg1, arg2, arg3));
-    }
-
-    return true;
-}
-
 static bool GUI_PasswordField__Rect__String__Char__GUIStyle(JSVCall vc, int argc)
 {
     int len = argc;
@@ -1108,6 +1131,21 @@ static bool GUI_PasswordField__Rect__String__Char__GUIStyle(JSVCall vc, int argc
         System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
         System.Char arg2 = (System.Char)JSApi.getChar((int)JSApi.GetType.Arg);
         UnityEngine.GUIStyle arg3 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+                JSApi.setStringS((int)JSApi.SetType.Rval, UnityEngine.GUI.PasswordField(arg0, arg1, arg2, arg3));
+    }
+
+    return true;
+}
+
+static bool GUI_PasswordField__Rect__String__Char__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Char arg2 = (System.Char)JSApi.getChar((int)JSApi.GetType.Arg);
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
                 JSApi.setStringS((int)JSApi.SetType.Rval, UnityEngine.GUI.PasswordField(arg0, arg1, arg2, arg3));
     }
 
@@ -1128,13 +1166,13 @@ static bool GUI_PasswordField__Rect__String__Char(JSVCall vc, int argc)
     return true;
 }
 
-static bool GUI_RepeatButton__Rect__String__GUIStyle(JSVCall vc, int argc)
+static bool GUI_RepeatButton__Rect__GUIContent__GUIStyle(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 3) 
     {
         UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        UnityEngine.GUIContent arg1 = (UnityEngine.GUIContent)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.GUIStyle arg2 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.GUI.RepeatButton(arg0, arg1, arg2)));
     }
@@ -1156,28 +1194,15 @@ static bool GUI_RepeatButton__Rect__Texture__GUIStyle(JSVCall vc, int argc)
     return true;
 }
 
-static bool GUI_RepeatButton__Rect__GUIContent__GUIStyle(JSVCall vc, int argc)
+static bool GUI_RepeatButton__Rect__String__GUIStyle(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 3) 
     {
         UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.GUIContent arg1 = (UnityEngine.GUIContent)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
         UnityEngine.GUIStyle arg2 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.GUI.RepeatButton(arg0, arg1, arg2)));
-    }
-
-    return true;
-}
-
-static bool GUI_RepeatButton__Rect__Texture(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 2) 
-    {
-        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.Texture arg1 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.GUI.RepeatButton(arg0, arg1)));
     }
 
     return true;
@@ -1190,6 +1215,19 @@ static bool GUI_RepeatButton__Rect__GUIContent(JSVCall vc, int argc)
     {
         UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.GUIContent arg1 = (UnityEngine.GUIContent)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+                JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.GUI.RepeatButton(arg0, arg1)));
+    }
+
+    return true;
+}
+
+static bool GUI_RepeatButton__Rect__Texture(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 2) 
+    {
+        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.Texture arg1 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.GUI.RepeatButton(arg0, arg1)));
     }
 
@@ -1234,21 +1272,21 @@ static bool GUI_ScrollTowards__Rect__Single(JSVCall vc, int argc)
     return true;
 }
 
-static bool GUI_SelectionGrid__Rect__Int32__Texture_Array__Int32__GUIStyle(JSVCall vc, int argc)
+static bool GUI_SelectionGrid__Rect__Int32__GUIContent_Array__Int32__GUIStyle(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 5) 
     {
         UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.Texture[] arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.Texture[]>(() =>
+        UnityEngine.GUIContent[] arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.GUIContent[]>(() =>
         {
             int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
             int length = JSApi.getArrayLength(jsObjID);
-            var ret = new UnityEngine.Texture[length];
+            var ret = new UnityEngine.GUIContent[length];
             for (var i = 0; i < length; i++) {
                 JSApi.getElement(jsObjID, i);
-                ret[i] = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+                ret[i] = (UnityEngine.GUIContent)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
             }
             return ret;
         });
@@ -1286,21 +1324,21 @@ static bool GUI_SelectionGrid__Rect__Int32__String_Array__Int32__GUIStyle(JSVCal
     return true;
 }
 
-static bool GUI_SelectionGrid__Rect__Int32__GUIContent_Array__Int32__GUIStyle(JSVCall vc, int argc)
+static bool GUI_SelectionGrid__Rect__Int32__Texture_Array__Int32__GUIStyle(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 5) 
     {
         UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.GUIContent[] arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.GUIContent[]>(() =>
+        UnityEngine.Texture[] arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.Texture[]>(() =>
         {
             int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
             int length = JSApi.getArrayLength(jsObjID);
-            var ret = new UnityEngine.GUIContent[length];
+            var ret = new UnityEngine.Texture[length];
             for (var i = 0; i < length; i++) {
                 JSApi.getElement(jsObjID, i);
-                ret[i] = (UnityEngine.GUIContent)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+                ret[i] = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
             }
             return ret;
         });
@@ -1337,31 +1375,6 @@ static bool GUI_SelectionGrid__Rect__Int32__GUIContent_Array__Int32(JSVCall vc, 
     return true;
 }
 
-static bool GUI_SelectionGrid__Rect__Int32__String_Array__Int32(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 4) 
-    {
-        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        System.String[] arg2 = JSDataExchangeMgr.GetJSArg<System.String[]>(() =>
-        {
-            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
-            int length = JSApi.getArrayLength(jsObjID);
-            var ret = new System.String[length];
-            for (var i = 0; i < length; i++) {
-                JSApi.getElement(jsObjID, i);
-                ret[i] = (System.String)JSApi.getStringS((int)JSApi.GetType.SaveAndRemove);
-            }
-            return ret;
-        });
-        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.GUI.SelectionGrid(arg0, arg1, arg2, arg3)));
-    }
-
-    return true;
-}
-
 static bool GUI_SelectionGrid__Rect__Int32__Texture_Array__Int32(JSVCall vc, int argc)
 {
     int len = argc;
@@ -1377,6 +1390,31 @@ static bool GUI_SelectionGrid__Rect__Int32__Texture_Array__Int32(JSVCall vc, int
             for (var i = 0; i < length; i++) {
                 JSApi.getElement(jsObjID, i);
                 ret[i] = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+        System.Int32 arg3 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.GUI.SelectionGrid(arg0, arg1, arg2, arg3)));
+    }
+
+    return true;
+}
+
+static bool GUI_SelectionGrid__Rect__Int32__String_Array__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        System.String[] arg2 = JSDataExchangeMgr.GetJSArg<System.String[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new System.String[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (System.String)JSApi.getStringS((int)JSApi.GetType.SaveAndRemove);
             }
             return ret;
         });
@@ -1434,20 +1472,6 @@ static bool GUI_TextArea__Rect__String__Int32__GUIStyle(JSVCall vc, int argc)
     return true;
 }
 
-static bool GUI_TextArea__Rect__String__Int32(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 3) 
-    {
-        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-                JSApi.setStringS((int)JSApi.SetType.Rval, UnityEngine.GUI.TextArea(arg0, arg1, arg2));
-    }
-
-    return true;
-}
-
 static bool GUI_TextArea__Rect__String__GUIStyle(JSVCall vc, int argc)
 {
     int len = argc;
@@ -1456,6 +1480,20 @@ static bool GUI_TextArea__Rect__String__GUIStyle(JSVCall vc, int argc)
         UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
         UnityEngine.GUIStyle arg2 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+                JSApi.setStringS((int)JSApi.SetType.Rval, UnityEngine.GUI.TextArea(arg0, arg1, arg2));
+    }
+
+    return true;
+}
+
+static bool GUI_TextArea__Rect__String__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
                 JSApi.setStringS((int)JSApi.SetType.Rval, UnityEngine.GUI.TextArea(arg0, arg1, arg2));
     }
 
@@ -1490,20 +1528,6 @@ static bool GUI_TextField__Rect__String__Int32__GUIStyle(JSVCall vc, int argc)
     return true;
 }
 
-static bool GUI_TextField__Rect__String__Int32(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 3) 
-    {
-        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-                JSApi.setStringS((int)JSApi.SetType.Rval, UnityEngine.GUI.TextField(arg0, arg1, arg2));
-    }
-
-    return true;
-}
-
 static bool GUI_TextField__Rect__String__GUIStyle(JSVCall vc, int argc)
 {
     int len = argc;
@@ -1512,6 +1536,20 @@ static bool GUI_TextField__Rect__String__GUIStyle(JSVCall vc, int argc)
         UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
         UnityEngine.GUIStyle arg2 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+                JSApi.setStringS((int)JSApi.SetType.Rval, UnityEngine.GUI.TextField(arg0, arg1, arg2));
+    }
+
+    return true;
+}
+
+static bool GUI_TextField__Rect__String__Int32(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.String arg1 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        System.Int32 arg2 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
                 JSApi.setStringS((int)JSApi.SetType.Rval, UnityEngine.GUI.TextField(arg0, arg1, arg2));
     }
 
@@ -1592,14 +1630,14 @@ static bool GUI_Toggle__Rect__Boolean__String__GUIStyle(JSVCall vc, int argc)
     return true;
 }
 
-static bool GUI_Toggle__Rect__Boolean__GUIContent(JSVCall vc, int argc)
+static bool GUI_Toggle__Rect__Boolean__String(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 3) 
     {
         UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         System.Boolean arg1 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        UnityEngine.GUIContent arg2 = (UnityEngine.GUIContent)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.String arg2 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.GUI.Toggle(arg0, arg1, arg2)));
     }
 
@@ -1620,14 +1658,14 @@ static bool GUI_Toggle__Rect__Boolean__Texture(JSVCall vc, int argc)
     return true;
 }
 
-static bool GUI_Toggle__Rect__Boolean__String(JSVCall vc, int argc)
+static bool GUI_Toggle__Rect__Boolean__GUIContent(JSVCall vc, int argc)
 {
     int len = argc;
     if (len == 3) 
     {
         UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         System.Boolean arg1 = (System.Boolean)JSApi.getBooleanS((int)JSApi.GetType.Arg);
-        System.String arg2 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        UnityEngine.GUIContent arg2 = (UnityEngine.GUIContent)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
                 JSApi.setBooleanS((int)JSApi.SetType.Rval, (System.Boolean)(UnityEngine.GUI.Toggle(arg0, arg1, arg2)));
     }
 
@@ -1709,30 +1747,6 @@ static bool GUI_Toolbar__Rect__Int32__String_Array__GUIStyle(JSVCall vc, int arg
     return true;
 }
 
-static bool GUI_Toolbar__Rect__Int32__Texture_Array(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 3) 
-    {
-        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.Texture[] arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.Texture[]>(() =>
-        {
-            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
-            int length = JSApi.getArrayLength(jsObjID);
-            var ret = new UnityEngine.Texture[length];
-            for (var i = 0; i < length; i++) {
-                JSApi.getElement(jsObjID, i);
-                ret[i] = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
-            }
-            return ret;
-        });
-                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.GUI.Toolbar(arg0, arg1, arg2)));
-    }
-
-    return true;
-}
-
 static bool GUI_Toolbar__Rect__Int32__GUIContent_Array(JSVCall vc, int argc)
 {
     int len = argc;
@@ -1748,6 +1762,30 @@ static bool GUI_Toolbar__Rect__Int32__GUIContent_Array(JSVCall vc, int argc)
             for (var i = 0; i < length; i++) {
                 JSApi.getElement(jsObjID, i);
                 ret[i] = (UnityEngine.GUIContent)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
+            }
+            return ret;
+        });
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(UnityEngine.GUI.Toolbar(arg0, arg1, arg2)));
+    }
+
+    return true;
+}
+
+static bool GUI_Toolbar__Rect__Int32__Texture_Array(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 3) 
+    {
+        UnityEngine.Rect arg0 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        System.Int32 arg1 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Texture[] arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.Texture[]>(() =>
+        {
+            int jsObjID = JSApi.getObject((int)JSApi.GetType.Arg);
+            int length = JSApi.getArrayLength(jsObjID);
+            var ret = new UnityEngine.Texture[length];
+            for (var i = 0; i < length; i++) {
+                JSApi.getElement(jsObjID, i);
+                ret[i] = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.SaveAndRemove);
             }
             return ret;
         });
@@ -1856,85 +1894,7 @@ static bool GUI_VerticalSlider__Rect__Single__Single__Single(JSVCall vc, int arg
 
     return true;
 }
-public static UnityEngine.GUI.WindowFunction GUI_Window_GetDelegate_member102_arg2(CSRepresentedObject objFunction)
-{
-    if (objFunction == null || objFunction.jsObjID == 0)
-    {
-        return null;
-    }
-    var action = JSMgr.getJSFunCSDelegateRel<UnityEngine.GUI.WindowFunction>(objFunction.jsObjID);
-    if (action == null)
-    {
-        action = (id) => 
-        {
-            JSMgr.vCall.CallJSFunctionValue(0, objFunction.jsObjID, id);
-        };
-        JSMgr.addJSFunCSDelegateRel(objFunction.jsObjID, action);
-    }
-    return action;
-}
-
-static bool GUI_Window__Int32__Rect__WindowFunction__String__GUIStyle(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 5) 
-    {
-        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.Rect arg1 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.GUI.WindowFunction arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.GUI.WindowFunction>(()=>
-        {
-            if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return GUI_Window_GetDelegate_member102_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
-            else
-                return (UnityEngine.GUI.WindowFunction)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        });
-        System.String arg3 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
-        UnityEngine.GUIStyle arg4 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.GUI.Window(arg0, arg1, arg2, arg3, arg4));
-    }
-
-    return true;
-}
-public static UnityEngine.GUI.WindowFunction GUI_Window_GetDelegate_member103_arg2(CSRepresentedObject objFunction)
-{
-    if (objFunction == null || objFunction.jsObjID == 0)
-    {
-        return null;
-    }
-    var action = JSMgr.getJSFunCSDelegateRel<UnityEngine.GUI.WindowFunction>(objFunction.jsObjID);
-    if (action == null)
-    {
-        action = (id) => 
-        {
-            JSMgr.vCall.CallJSFunctionValue(0, objFunction.jsObjID, id);
-        };
-        JSMgr.addJSFunCSDelegateRel(objFunction.jsObjID, action);
-    }
-    return action;
-}
-
-static bool GUI_Window__Int32__Rect__WindowFunction__GUIContent__GUIStyle(JSVCall vc, int argc)
-{
-    int len = argc;
-    if (len == 5) 
-    {
-        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
-        UnityEngine.Rect arg1 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.GUI.WindowFunction arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.GUI.WindowFunction>(()=>
-        {
-            if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return GUI_Window_GetDelegate_member103_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
-            else
-                return (UnityEngine.GUI.WindowFunction)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        });
-        UnityEngine.GUIContent arg3 = (UnityEngine.GUIContent)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-        UnityEngine.GUIStyle arg4 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.GUI.Window(arg0, arg1, arg2, arg3, arg4));
-    }
-
-    return true;
-}
-public static UnityEngine.GUI.WindowFunction GUI_Window_GetDelegate_member104_arg2(CSRepresentedObject objFunction)
+public static UnityEngine.GUI.WindowFunction GUI_Window_GetDelegate_member105_arg2(CSRepresentedObject objFunction)
 {
     if (objFunction == null || objFunction.jsObjID == 0)
     {
@@ -1962,7 +1922,7 @@ static bool GUI_Window__Int32__Rect__WindowFunction__Texture__GUIStyle(JSVCall v
         UnityEngine.GUI.WindowFunction arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.GUI.WindowFunction>(()=>
         {
             if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return GUI_Window_GetDelegate_member104_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+                return GUI_Window_GetDelegate_member105_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
             else
                 return (UnityEngine.GUI.WindowFunction)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         });
@@ -1973,7 +1933,7 @@ static bool GUI_Window__Int32__Rect__WindowFunction__Texture__GUIStyle(JSVCall v
 
     return true;
 }
-public static UnityEngine.GUI.WindowFunction GUI_Window_GetDelegate_member105_arg2(CSRepresentedObject objFunction)
+public static UnityEngine.GUI.WindowFunction GUI_Window_GetDelegate_member106_arg2(CSRepresentedObject objFunction)
 {
     if (objFunction == null || objFunction.jsObjID == 0)
     {
@@ -1991,27 +1951,67 @@ public static UnityEngine.GUI.WindowFunction GUI_Window_GetDelegate_member105_ar
     return action;
 }
 
-static bool GUI_Window__Int32__Rect__WindowFunction__Texture(JSVCall vc, int argc)
+static bool GUI_Window__Int32__Rect__WindowFunction__String__GUIStyle(JSVCall vc, int argc)
 {
     int len = argc;
-    if (len == 4) 
+    if (len == 5) 
     {
         System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
         UnityEngine.Rect arg1 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         UnityEngine.GUI.WindowFunction arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.GUI.WindowFunction>(()=>
         {
             if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return GUI_Window_GetDelegate_member105_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+                return GUI_Window_GetDelegate_member106_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
             else
                 return (UnityEngine.GUI.WindowFunction)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         });
-        UnityEngine.Texture arg3 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
-                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.GUI.Window(arg0, arg1, arg2, arg3));
+        System.String arg3 = (System.String)JSApi.getStringS((int)JSApi.GetType.Arg);
+        UnityEngine.GUIStyle arg4 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.GUI.Window(arg0, arg1, arg2, arg3, arg4));
     }
 
     return true;
 }
-public static UnityEngine.GUI.WindowFunction GUI_Window_GetDelegate_member106_arg2(CSRepresentedObject objFunction)
+public static UnityEngine.GUI.WindowFunction GUI_Window_GetDelegate_member107_arg2(CSRepresentedObject objFunction)
+{
+    if (objFunction == null || objFunction.jsObjID == 0)
+    {
+        return null;
+    }
+    var action = JSMgr.getJSFunCSDelegateRel<UnityEngine.GUI.WindowFunction>(objFunction.jsObjID);
+    if (action == null)
+    {
+        action = (id) => 
+        {
+            JSMgr.vCall.CallJSFunctionValue(0, objFunction.jsObjID, id);
+        };
+        JSMgr.addJSFunCSDelegateRel(objFunction.jsObjID, action);
+    }
+    return action;
+}
+
+static bool GUI_Window__Int32__Rect__WindowFunction__GUIContent__GUIStyle(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 5) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Rect arg1 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.GUI.WindowFunction arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.GUI.WindowFunction>(()=>
+        {
+            if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
+                return GUI_Window_GetDelegate_member107_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+            else
+                return (UnityEngine.GUI.WindowFunction)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        });
+        UnityEngine.GUIContent arg3 = (UnityEngine.GUIContent)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.GUIStyle arg4 = (UnityEngine.GUIStyle)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.GUI.Window(arg0, arg1, arg2, arg3, arg4));
+    }
+
+    return true;
+}
+public static UnityEngine.GUI.WindowFunction GUI_Window_GetDelegate_member108_arg2(CSRepresentedObject objFunction)
 {
     if (objFunction == null || objFunction.jsObjID == 0)
     {
@@ -2039,7 +2039,7 @@ static bool GUI_Window__Int32__Rect__WindowFunction__String(JSVCall vc, int argc
         UnityEngine.GUI.WindowFunction arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.GUI.WindowFunction>(()=>
         {
             if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return GUI_Window_GetDelegate_member106_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+                return GUI_Window_GetDelegate_member108_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
             else
                 return (UnityEngine.GUI.WindowFunction)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         });
@@ -2049,7 +2049,45 @@ static bool GUI_Window__Int32__Rect__WindowFunction__String(JSVCall vc, int argc
 
     return true;
 }
-public static UnityEngine.GUI.WindowFunction GUI_Window_GetDelegate_member107_arg2(CSRepresentedObject objFunction)
+public static UnityEngine.GUI.WindowFunction GUI_Window_GetDelegate_member109_arg2(CSRepresentedObject objFunction)
+{
+    if (objFunction == null || objFunction.jsObjID == 0)
+    {
+        return null;
+    }
+    var action = JSMgr.getJSFunCSDelegateRel<UnityEngine.GUI.WindowFunction>(objFunction.jsObjID);
+    if (action == null)
+    {
+        action = (id) => 
+        {
+            JSMgr.vCall.CallJSFunctionValue(0, objFunction.jsObjID, id);
+        };
+        JSMgr.addJSFunCSDelegateRel(objFunction.jsObjID, action);
+    }
+    return action;
+}
+
+static bool GUI_Window__Int32__Rect__WindowFunction__Texture(JSVCall vc, int argc)
+{
+    int len = argc;
+    if (len == 4) 
+    {
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Rect arg1 = (UnityEngine.Rect)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        UnityEngine.GUI.WindowFunction arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.GUI.WindowFunction>(()=>
+        {
+            if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
+                return GUI_Window_GetDelegate_member109_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+            else
+                return (UnityEngine.GUI.WindowFunction)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+        });
+        UnityEngine.Texture arg3 = (UnityEngine.Texture)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
+                JSMgr.datax.setObject((int)JSApi.SetType.Rval, UnityEngine.GUI.Window(arg0, arg1, arg2, arg3));
+    }
+
+    return true;
+}
+public static UnityEngine.GUI.WindowFunction GUI_Window_GetDelegate_member110_arg2(CSRepresentedObject objFunction)
 {
     if (objFunction == null || objFunction.jsObjID == 0)
     {
@@ -2077,7 +2115,7 @@ static bool GUI_Window__Int32__Rect__WindowFunction__GUIContent(JSVCall vc, int 
         UnityEngine.GUI.WindowFunction arg2 = JSDataExchangeMgr.GetJSArg<UnityEngine.GUI.WindowFunction>(()=>
         {
             if (JSApi.isFunctionS((int)JSApi.GetType.Arg))
-                return GUI_Window_GetDelegate_member107_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
+                return GUI_Window_GetDelegate_member110_arg2(JSApi.getFunctionS((int)JSApi.GetType.Arg));
             else
                 return (UnityEngine.GUI.WindowFunction)JSMgr.datax.getObject((int)JSApi.GetType.Arg);
         });
@@ -2102,13 +2140,13 @@ public static void __Register()
     ci.properties = new JSMgr.CSCallbackProperty[]
     {
         GUI_skin,
+        GUI_matrix,
+        GUI_tooltip,
         GUI_color,
         GUI_backgroundColor,
         GUI_contentColor,
         GUI_changed,
         GUI_enabled,
-        GUI_matrix,
-        GUI_tooltip,
         GUI_depth,
 
     };
@@ -2119,29 +2157,31 @@ public static void __Register()
     };
     ci.methods = new JSMgr.MethodCallBackInfo[]
     {
+        new JSMgr.MethodCallBackInfo(GUI_BeginClip__Rect__Vector2__Vector2__Boolean, "BeginClip"),
+        new JSMgr.MethodCallBackInfo(GUI_BeginClip__Rect, "BeginClip"),
         new JSMgr.MethodCallBackInfo(GUI_BeginGroup__Rect__String__GUIStyle, "BeginGroup"),
-        new JSMgr.MethodCallBackInfo(GUI_BeginGroup__Rect__Texture__GUIStyle, "BeginGroup"),
         new JSMgr.MethodCallBackInfo(GUI_BeginGroup__Rect__GUIContent__GUIStyle, "BeginGroup"),
-        new JSMgr.MethodCallBackInfo(GUI_BeginGroup__Rect__Texture, "BeginGroup"),
+        new JSMgr.MethodCallBackInfo(GUI_BeginGroup__Rect__Texture__GUIStyle, "BeginGroup"),
         new JSMgr.MethodCallBackInfo(GUI_BeginGroup__Rect__String, "BeginGroup"),
+        new JSMgr.MethodCallBackInfo(GUI_BeginGroup__Rect__Texture, "BeginGroup"),
         new JSMgr.MethodCallBackInfo(GUI_BeginGroup__Rect__GUIStyle, "BeginGroup"),
         new JSMgr.MethodCallBackInfo(GUI_BeginGroup__Rect__GUIContent, "BeginGroup"),
         new JSMgr.MethodCallBackInfo(GUI_BeginGroup__Rect, "BeginGroup"),
         new JSMgr.MethodCallBackInfo(GUI_BeginScrollView__Rect__Vector2__Rect__Boolean__Boolean__GUIStyle__GUIStyle, "BeginScrollView"),
-        new JSMgr.MethodCallBackInfo(GUI_BeginScrollView__Rect__Vector2__Rect__GUIStyle__GUIStyle, "BeginScrollView"),
         new JSMgr.MethodCallBackInfo(GUI_BeginScrollView__Rect__Vector2__Rect__Boolean__Boolean, "BeginScrollView"),
+        new JSMgr.MethodCallBackInfo(GUI_BeginScrollView__Rect__Vector2__Rect__GUIStyle__GUIStyle, "BeginScrollView"),
         new JSMgr.MethodCallBackInfo(GUI_BeginScrollView__Rect__Vector2__Rect, "BeginScrollView"),
-        new JSMgr.MethodCallBackInfo(GUI_Box__Rect__String__GUIStyle, "Box"),
         new JSMgr.MethodCallBackInfo(GUI_Box__Rect__Texture__GUIStyle, "Box"),
         new JSMgr.MethodCallBackInfo(GUI_Box__Rect__GUIContent__GUIStyle, "Box"),
+        new JSMgr.MethodCallBackInfo(GUI_Box__Rect__String__GUIStyle, "Box"),
         new JSMgr.MethodCallBackInfo(GUI_Box__Rect__String, "Box"),
         new JSMgr.MethodCallBackInfo(GUI_Box__Rect__Texture, "Box"),
         new JSMgr.MethodCallBackInfo(GUI_Box__Rect__GUIContent, "Box"),
         new JSMgr.MethodCallBackInfo(GUI_BringWindowToBack__Int32, "BringWindowToBack"),
         new JSMgr.MethodCallBackInfo(GUI_BringWindowToFront__Int32, "BringWindowToFront"),
-        new JSMgr.MethodCallBackInfo(GUI_Button__Rect__Texture__GUIStyle, "Button"),
-        new JSMgr.MethodCallBackInfo(GUI_Button__Rect__String__GUIStyle, "Button"),
         new JSMgr.MethodCallBackInfo(GUI_Button__Rect__GUIContent__GUIStyle, "Button"),
+        new JSMgr.MethodCallBackInfo(GUI_Button__Rect__String__GUIStyle, "Button"),
+        new JSMgr.MethodCallBackInfo(GUI_Button__Rect__Texture__GUIStyle, "Button"),
         new JSMgr.MethodCallBackInfo(GUI_Button__Rect__Texture, "Button"),
         new JSMgr.MethodCallBackInfo(GUI_Button__Rect__String, "Button"),
         new JSMgr.MethodCallBackInfo(GUI_Button__Rect__GUIContent, "Button"),
@@ -2153,6 +2193,7 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(GUI_DrawTexture__Rect__Texture, "DrawTexture"),
         new JSMgr.MethodCallBackInfo(GUI_DrawTextureWithTexCoords__Rect__Texture__Rect__Boolean, "DrawTextureWithTexCoords"),
         new JSMgr.MethodCallBackInfo(GUI_DrawTextureWithTexCoords__Rect__Texture__Rect, "DrawTextureWithTexCoords"),
+        new JSMgr.MethodCallBackInfo(GUI_EndClip, "EndClip"),
         new JSMgr.MethodCallBackInfo(GUI_EndGroup, "EndGroup"),
         new JSMgr.MethodCallBackInfo(GUI_EndScrollView__Boolean, "EndScrollView"),
         new JSMgr.MethodCallBackInfo(GUI_EndScrollView, "EndScrollView"),
@@ -2164,68 +2205,68 @@ public static void __Register()
         new JSMgr.MethodCallBackInfo(GUI_HorizontalSlider__Rect__Single__Single__Single__GUIStyle__GUIStyle, "HorizontalSlider"),
         new JSMgr.MethodCallBackInfo(GUI_HorizontalSlider__Rect__Single__Single__Single, "HorizontalSlider"),
         new JSMgr.MethodCallBackInfo(GUI_Label__Rect__GUIContent__GUIStyle, "Label"),
-        new JSMgr.MethodCallBackInfo(GUI_Label__Rect__Texture__GUIStyle, "Label"),
         new JSMgr.MethodCallBackInfo(GUI_Label__Rect__String__GUIStyle, "Label"),
-        new JSMgr.MethodCallBackInfo(GUI_Label__Rect__GUIContent, "Label"),
+        new JSMgr.MethodCallBackInfo(GUI_Label__Rect__Texture__GUIStyle, "Label"),
         new JSMgr.MethodCallBackInfo(GUI_Label__Rect__String, "Label"),
+        new JSMgr.MethodCallBackInfo(GUI_Label__Rect__GUIContent, "Label"),
         new JSMgr.MethodCallBackInfo(GUI_Label__Rect__Texture, "Label"),
-        new JSMgr.MethodCallBackInfo(GUI_ModalWindow__Int32__Rect__WindowFunction__GUIContent__GUIStyle, "ModalWindow"),
         new JSMgr.MethodCallBackInfo(GUI_ModalWindow__Int32__Rect__WindowFunction__String__GUIStyle, "ModalWindow"),
         new JSMgr.MethodCallBackInfo(GUI_ModalWindow__Int32__Rect__WindowFunction__Texture__GUIStyle, "ModalWindow"),
-        new JSMgr.MethodCallBackInfo(GUI_ModalWindow__Int32__Rect__WindowFunction__String, "ModalWindow"),
+        new JSMgr.MethodCallBackInfo(GUI_ModalWindow__Int32__Rect__WindowFunction__GUIContent__GUIStyle, "ModalWindow"),
         new JSMgr.MethodCallBackInfo(GUI_ModalWindow__Int32__Rect__WindowFunction__GUIContent, "ModalWindow"),
+        new JSMgr.MethodCallBackInfo(GUI_ModalWindow__Int32__Rect__WindowFunction__String, "ModalWindow"),
         new JSMgr.MethodCallBackInfo(GUI_ModalWindow__Int32__Rect__WindowFunction__Texture, "ModalWindow"),
         new JSMgr.MethodCallBackInfo(GUI_PasswordField__Rect__String__Char__Int32__GUIStyle, "PasswordField"),
-        new JSMgr.MethodCallBackInfo(GUI_PasswordField__Rect__String__Char__Int32, "PasswordField"),
         new JSMgr.MethodCallBackInfo(GUI_PasswordField__Rect__String__Char__GUIStyle, "PasswordField"),
+        new JSMgr.MethodCallBackInfo(GUI_PasswordField__Rect__String__Char__Int32, "PasswordField"),
         new JSMgr.MethodCallBackInfo(GUI_PasswordField__Rect__String__Char, "PasswordField"),
-        new JSMgr.MethodCallBackInfo(GUI_RepeatButton__Rect__String__GUIStyle, "RepeatButton"),
-        new JSMgr.MethodCallBackInfo(GUI_RepeatButton__Rect__Texture__GUIStyle, "RepeatButton"),
         new JSMgr.MethodCallBackInfo(GUI_RepeatButton__Rect__GUIContent__GUIStyle, "RepeatButton"),
-        new JSMgr.MethodCallBackInfo(GUI_RepeatButton__Rect__Texture, "RepeatButton"),
+        new JSMgr.MethodCallBackInfo(GUI_RepeatButton__Rect__Texture__GUIStyle, "RepeatButton"),
+        new JSMgr.MethodCallBackInfo(GUI_RepeatButton__Rect__String__GUIStyle, "RepeatButton"),
         new JSMgr.MethodCallBackInfo(GUI_RepeatButton__Rect__GUIContent, "RepeatButton"),
+        new JSMgr.MethodCallBackInfo(GUI_RepeatButton__Rect__Texture, "RepeatButton"),
         new JSMgr.MethodCallBackInfo(GUI_RepeatButton__Rect__String, "RepeatButton"),
         new JSMgr.MethodCallBackInfo(GUI_ScrollTo__Rect, "ScrollTo"),
         new JSMgr.MethodCallBackInfo(GUI_ScrollTowards__Rect__Single, "ScrollTowards"),
-        new JSMgr.MethodCallBackInfo(GUI_SelectionGrid__Rect__Int32__Texture_Array__Int32__GUIStyle, "SelectionGrid"),
-        new JSMgr.MethodCallBackInfo(GUI_SelectionGrid__Rect__Int32__String_Array__Int32__GUIStyle, "SelectionGrid"),
         new JSMgr.MethodCallBackInfo(GUI_SelectionGrid__Rect__Int32__GUIContent_Array__Int32__GUIStyle, "SelectionGrid"),
+        new JSMgr.MethodCallBackInfo(GUI_SelectionGrid__Rect__Int32__String_Array__Int32__GUIStyle, "SelectionGrid"),
+        new JSMgr.MethodCallBackInfo(GUI_SelectionGrid__Rect__Int32__Texture_Array__Int32__GUIStyle, "SelectionGrid"),
         new JSMgr.MethodCallBackInfo(GUI_SelectionGrid__Rect__Int32__GUIContent_Array__Int32, "SelectionGrid"),
-        new JSMgr.MethodCallBackInfo(GUI_SelectionGrid__Rect__Int32__String_Array__Int32, "SelectionGrid"),
         new JSMgr.MethodCallBackInfo(GUI_SelectionGrid__Rect__Int32__Texture_Array__Int32, "SelectionGrid"),
+        new JSMgr.MethodCallBackInfo(GUI_SelectionGrid__Rect__Int32__String_Array__Int32, "SelectionGrid"),
         new JSMgr.MethodCallBackInfo(GUI_SetNextControlName__String, "SetNextControlName"),
         new JSMgr.MethodCallBackInfo(GUI_Slider__Rect__Single__Single__Single__Single__GUIStyle__GUIStyle__Boolean__Int32, "Slider"),
         new JSMgr.MethodCallBackInfo(GUI_TextArea__Rect__String__Int32__GUIStyle, "TextArea"),
-        new JSMgr.MethodCallBackInfo(GUI_TextArea__Rect__String__Int32, "TextArea"),
         new JSMgr.MethodCallBackInfo(GUI_TextArea__Rect__String__GUIStyle, "TextArea"),
+        new JSMgr.MethodCallBackInfo(GUI_TextArea__Rect__String__Int32, "TextArea"),
         new JSMgr.MethodCallBackInfo(GUI_TextArea__Rect__String, "TextArea"),
         new JSMgr.MethodCallBackInfo(GUI_TextField__Rect__String__Int32__GUIStyle, "TextField"),
-        new JSMgr.MethodCallBackInfo(GUI_TextField__Rect__String__Int32, "TextField"),
         new JSMgr.MethodCallBackInfo(GUI_TextField__Rect__String__GUIStyle, "TextField"),
+        new JSMgr.MethodCallBackInfo(GUI_TextField__Rect__String__Int32, "TextField"),
         new JSMgr.MethodCallBackInfo(GUI_TextField__Rect__String, "TextField"),
         new JSMgr.MethodCallBackInfo(GUI_Toggle__Rect__Int32__Boolean__GUIContent__GUIStyle, "Toggle"),
         new JSMgr.MethodCallBackInfo(GUI_Toggle__Rect__Boolean__GUIContent__GUIStyle, "Toggle"),
         new JSMgr.MethodCallBackInfo(GUI_Toggle__Rect__Boolean__Texture__GUIStyle, "Toggle"),
         new JSMgr.MethodCallBackInfo(GUI_Toggle__Rect__Boolean__String__GUIStyle, "Toggle"),
-        new JSMgr.MethodCallBackInfo(GUI_Toggle__Rect__Boolean__GUIContent, "Toggle"),
-        new JSMgr.MethodCallBackInfo(GUI_Toggle__Rect__Boolean__Texture, "Toggle"),
         new JSMgr.MethodCallBackInfo(GUI_Toggle__Rect__Boolean__String, "Toggle"),
+        new JSMgr.MethodCallBackInfo(GUI_Toggle__Rect__Boolean__Texture, "Toggle"),
+        new JSMgr.MethodCallBackInfo(GUI_Toggle__Rect__Boolean__GUIContent, "Toggle"),
         new JSMgr.MethodCallBackInfo(GUI_Toolbar__Rect__Int32__GUIContent_Array__GUIStyle, "Toolbar"),
         new JSMgr.MethodCallBackInfo(GUI_Toolbar__Rect__Int32__Texture_Array__GUIStyle, "Toolbar"),
         new JSMgr.MethodCallBackInfo(GUI_Toolbar__Rect__Int32__String_Array__GUIStyle, "Toolbar"),
-        new JSMgr.MethodCallBackInfo(GUI_Toolbar__Rect__Int32__Texture_Array, "Toolbar"),
         new JSMgr.MethodCallBackInfo(GUI_Toolbar__Rect__Int32__GUIContent_Array, "Toolbar"),
+        new JSMgr.MethodCallBackInfo(GUI_Toolbar__Rect__Int32__Texture_Array, "Toolbar"),
         new JSMgr.MethodCallBackInfo(GUI_Toolbar__Rect__Int32__String_Array, "Toolbar"),
         new JSMgr.MethodCallBackInfo(GUI_UnfocusWindow, "UnfocusWindow"),
         new JSMgr.MethodCallBackInfo(GUI_VerticalScrollbar__Rect__Single__Single__Single__Single__GUIStyle, "VerticalScrollbar"),
         new JSMgr.MethodCallBackInfo(GUI_VerticalScrollbar__Rect__Single__Single__Single__Single, "VerticalScrollbar"),
         new JSMgr.MethodCallBackInfo(GUI_VerticalSlider__Rect__Single__Single__Single__GUIStyle__GUIStyle, "VerticalSlider"),
         new JSMgr.MethodCallBackInfo(GUI_VerticalSlider__Rect__Single__Single__Single, "VerticalSlider"),
+        new JSMgr.MethodCallBackInfo(GUI_Window__Int32__Rect__WindowFunction__Texture__GUIStyle, "Window"),
         new JSMgr.MethodCallBackInfo(GUI_Window__Int32__Rect__WindowFunction__String__GUIStyle, "Window"),
         new JSMgr.MethodCallBackInfo(GUI_Window__Int32__Rect__WindowFunction__GUIContent__GUIStyle, "Window"),
-        new JSMgr.MethodCallBackInfo(GUI_Window__Int32__Rect__WindowFunction__Texture__GUIStyle, "Window"),
-        new JSMgr.MethodCallBackInfo(GUI_Window__Int32__Rect__WindowFunction__Texture, "Window"),
         new JSMgr.MethodCallBackInfo(GUI_Window__Int32__Rect__WindowFunction__String, "Window"),
+        new JSMgr.MethodCallBackInfo(GUI_Window__Int32__Rect__WindowFunction__Texture, "Window"),
         new JSMgr.MethodCallBackInfo(GUI_Window__Int32__Rect__WindowFunction__GUIContent, "Window"),
 
     };

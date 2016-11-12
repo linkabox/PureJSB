@@ -80,6 +80,19 @@ static void Profiler_enabled(JSVCall vc)
         UnityEngine.Profiler.enabled = arg0;
     }
 }
+static void Profiler_maxNumberOfSamplesPerFrame(JSVCall vc)
+{
+    if (vc.bGet)
+    { 
+        var result = UnityEngine.Profiler.maxNumberOfSamplesPerFrame;
+                JSApi.setInt32((int)JSApi.SetType.Rval, (System.Int32)(result));
+    }
+    else
+    { 
+        System.Int32 arg0 = (System.Int32)JSApi.getInt32((int)JSApi.GetType.Arg);
+        UnityEngine.Profiler.maxNumberOfSamplesPerFrame = arg0;
+    }
+}
 static void Profiler_usedHeapSize(JSVCall vc)
 {
         var result = UnityEngine.Profiler.usedHeapSize;
@@ -220,6 +233,7 @@ public static void __Register()
         Profiler_logFile,
         Profiler_enableBinaryLog,
         Profiler_enabled,
+        Profiler_maxNumberOfSamplesPerFrame,
         Profiler_usedHeapSize,
 
     };
