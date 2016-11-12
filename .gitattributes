@@ -39,3 +39,4 @@
 *.a filter=lfs diff=lfs merge=lfs -text
 *.dll filter=lfs diff=lfs merge=lfs -text
 Assets/Plugins/mozjswrap.bundle filter=lfs diff=lfs merge=lfs -text
+/Users/Linkabox/GitHub/PureJSB/Assets/Plugins/mozjswrap.bundle filter=lfs diff=lfs merge=lfs -text
